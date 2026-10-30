@@ -37,7 +37,7 @@ wordpress:latest,latest,app-official,
 wordpress:php8.4-apache,pinned,app-official,
 wordpress:php8.3-apache,pinned,app-official,
 wordpress:php8.2-apache,pinned,app-official,
-wordpress:php8.1-apache,pinned,app-official,EOL PHP
+wordpress:php8.1-apache,pinned,app-official,PHP 8.1 is end-of-life
 wordpress:php8.3-fpm,pinned,app-official,
 wordpress:fpm-alpine,latest,app-official,
 # Drupal
@@ -45,18 +45,18 @@ drupal:latest,latest,app-official,
 drupal:11-apache,pinned,app-official,
 drupal:10-apache,pinned,app-official,
 drupal:10-fpm-alpine,pinned,app-official,
-drupal:7-apache,pinned,app-official,Drupal 7 EOL
+drupal:7-apache,pinned,app-official,Drupal 7 is end-of-life (Jan 2025)
 # Joomla
 joomla:latest,latest,app-official,
 joomla:5-apache,pinned,app-official,
-joomla:4-apache,pinned,app-official,
+joomla:4-apache,pinned,app-official,Joomla 4 is end-of-life (Oct 2025); use joomla:5 or later
 # Nextcloud (pinned exact tags are the known trap)
 nextcloud:latest,latest,app-official,
 nextcloud:35-apache,pinned,app-official,
-nextcloud:35.0.1-apache,pinned,app-official,exact tag reported frozen on PHP 8.5.11
+nextcloud:35.0.1-apache,pinned,app-official,Exact patch tag; newer 35.0.x tags get the rebuilt PHP
 nextcloud:32-apache,pinned,app-official,
-nextcloud:31-apache,pinned,app-official,reported frozen on PHP 8.3.30
-nextcloud:30-apache,pinned,app-official,
+nextcloud:31-apache,pinned,app-official,Nextcloud 31 is end-of-life (Feb 2026)
+nextcloud:30-apache,pinned,app-official,Nextcloud 30 is end-of-life (2025)
 nextcloud:fpm-alpine,latest,app-official,
 # Matomo, phpMyAdmin, MediaWiki and other official app images
 matomo:latest,latest,app-official,
@@ -67,7 +67,7 @@ phpmyadmin:5.2-apache,pinned,app-official,
 phpmyadmin:fpm-alpine,latest,app-official,
 mediawiki:latest,latest,app-official,
 mediawiki:1.43,pinned,app-official,LTS
-mediawiki:1.39,pinned,app-official,old LTS
+mediawiki:1.39,pinned,app-official,MediaWiki 1.39 is end-of-life (Dec 31 2025); use 1.43 LTS
 adminer:latest,latest,app-official,
 yourls:latest,latest,app-official,
 monica:latest,latest,app-official,
@@ -107,7 +107,7 @@ mautic/mautic:latest,latest,community,
 prestashop/prestashop:latest,latest,community,
 librenms/librenms:latest,latest,community,
 roundcube/roundcubemail:latest,latest,community,
-osixia/phpldapadmin:latest,latest,community,old image; expected EOL PHP
+osixia/phpldapadmin:latest,latest,community,Not updated since 2021; Debian 10 and PHP 7.3 are end-of-life
 zabbix/zabbix-web-nginx-mysql:latest,latest,community,
 snipe/snipe-it:latest,latest,community,
 shlinkio/shlink:stable,latest,community,RoadRunner runtime

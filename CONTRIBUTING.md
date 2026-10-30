@@ -22,7 +22,7 @@ Use the "Wrong verdict" issue template. Include the image reference and digest, 
 
 ## Naming third-party images
 
-Before the public index or any post names a third-party image as vulnerable, its maintainers get at least 48–72 hours' notice. Please follow the same practice in issues and pull requests: describe the problem first, and name the image once the maintainers have been told.
+Before the public index or any post names a third-party image as vulnerable, we tell its maintainers. Please do the same in issues and pull requests: describe the problem first, and name the image once the maintainers have been told.
 
 ## Pull requests
 

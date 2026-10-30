@@ -199,3 +199,14 @@ func TestTrackedImageListParses(t *testing.T) {
 		}
 	}
 }
+
+func TestNotesRefreshWithoutRescan(t *testing.T) {
+	prev := &Index{Schema: SchemaVersion, Entries: []Entry{{Ref: "joomla:4-apache", Platform: "linux/amd64", TagDigest: "sha256:j",
+		ScannedAt: "2026-10-30T00:00:00Z", Action: "ACTION_NEEDED"}}}
+	f := &fake{digests: map[string]string{"joomla:4-apache": "sha256:j"}}
+	idx, _ := Update(context.Background(), []Image{{Ref: "joomla:4-apache", Kind: "pinned", Note: "Joomla 4 is end-of-life"}}, prev, f.resolve, f.scan,
+		Options{Platforms: amd, RescanAfter: 7 * 24 * time.Hour, Now: clock("2026-10-31T00:00:00Z")})
+	if len(f.scans) != 0 || idx.Entries[0].Note != "Joomla 4 is end-of-life" || idx.Entries[0].Kind != "pinned" {
+		t.Fatalf("scans %v, entry %+v", f.scans, idx.Entries[0])
+	}
+}

@@ -144,6 +144,7 @@
       var v = e.verdicts || {};
       var up = e.uploadProgress === "on" ? '<span class="chip warn">on</span>' : e.uploadProgress ? '<span class="chip ok">' + esc(e.uploadProgress) + "</span>" : "";
       return "<tr><td class=\"ref\">" + esc(e.ref) + (e.kind === "demo" ? ' <span class="muted small">control</span>' : "") +
+        (e.note ? '<div class="small muted" style="font-family:system-ui,sans-serif">' + esc(e.note) + "</div>" : "") +
         "</td><td>" + esc(e.platform.replace("linux/", "")) + "</td><td>" + phpCell(e) + "</td><td>" + verdictChip(v[CVES[0]]) +
         "</td><td>" + verdictChip(v[CVES[1]]) + '</td><td class="hide-sm">' + up + '</td><td class="hide-sm">' + builtCell(e) +
         '</td><td class="hide-sm small muted nowrap">' + day(e.checkedAt) + "</td></tr>";

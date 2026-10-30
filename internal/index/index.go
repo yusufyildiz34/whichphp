@@ -364,7 +364,15 @@ func Update(ctx context.Context, images []Image, prev *Index, resolve Resolver, 
 		entries[key] = e
 	}
 
+	// Labels come from the image list, so edits there apply without a rescan.
+	meta := map[string]Image{}
+	for _, img := range images {
+		meta[img.Ref] = img
+	}
 	for _, e := range entries {
+		if img, ok := meta[e.Ref]; ok {
+			e.Kind, e.Owner, e.Note = img.Kind, img.Owner, img.Note
+		}
 		next.Entries = append(next.Entries, e)
 	}
 	sort.Slice(next.Entries, func(a, b int) bool {
