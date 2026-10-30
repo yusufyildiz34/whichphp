@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>whichphp index: is the PHP in this image fixed for PHP2Shell?</title>
+<meta name="description" content="Daily index of the PHP inside popular container images, with per-tag verdicts for CVE-2026-109618 and CVE-2026-109619 (PHP2Shell).">
+<style>
+  :root {
+    --bg: #ffffff; --fg: #1d1f23; --muted: #5d6470; --line: #e3e6eb; --panel: #f6f7f9;
+    --bad: #b42318; --bad-bg: #fde8e7; --ok: #11733f; --ok-bg: #e3f5ea; --warn: #8a5a00; --warn-bg: #fdf1d8;
+    --link: #1f5fbf;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111316; --fg: #e8eaed; --muted: #a0a7b2; --line: #2a2e35; --panel: #181b20;
+      --bad: #ff8a80; --bad-bg: #3a1d1b; --ok: #6fd99a; --ok-bg: #16301f; --warn: #f2c35b; --warn-bg: #352a12;
+      --link: #8ab4f8;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--link); }
+  main { max-width: 1180px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: 26px; margin: 0 0 6px; }
+  .lede { color: var(--muted); margin: 0 0 24px; max-width: 760px; }
+  .stats { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+  .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; min-width: 150px; }
+  .stat b { display: block; font-size: 22px; }
+  .stat span { color: var(--muted); font-size: 13px; }
+  .controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+  input[type=search] { flex: 1 1 280px; padding: 9px 12px; font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; }
+  .filters button { font: inherit; padding: 7px 12px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 999px; cursor: pointer; }
+  .filters button[aria-pressed=true] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .03em; position: sticky; top: 0; background: var(--bg); }
+  td.ref { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; word-break: break-all; }
+  .chip { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .bad { color: var(--bad); background: var(--bad-bg); }
+  .ok { color: var(--ok); background: var(--ok-bg); }
+  .warn { color: var(--warn); background: var(--warn-bg); }
+  .muted { color: var(--muted); }
+  .small { font-size: 12px; }
+  .note { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; margin-top: 28px; }
+  .note h2 { font-size: 16px; margin: 0 0 6px; }
+  .note ul { margin: 6px 0 0; padding-left: 20px; }
+  .empty { padding: 24px 0; color: var(--muted); }
+  .nowrap { white-space: nowrap; }
+  @media (max-width: 760px) { .hide-sm { display: none; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Is the PHP in this image fixed for PHP2Shell?</h1>
+  <p class="lede">A daily, read-only check of the PHP inside popular container images for
+    CVE-2026-109618 and CVE-2026-109619. Images are read with Syft, never run. Each verdict
+    accounts for distro backports and end-of-life branches. Check your own images with
+    <a href="https://github.com/yusufyildiz34/whichphp">whichphp</a>; on shared hosting, see
+    <a href="https://github.com/yusufyildiz34/whichphp/blob/main/docs/ask-your-host.md">what to ask your host</a>
+    (<a href="https://github.com/yusufyildiz34/whichphp/blob/main/docs/ask-your-host.tr.md">Türkçe</a>).</p>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="controls">
+    <input type="search" id="q" placeholder="Filter by image, tag or PHP version (e.g. nextcloud, 8.3)" aria-label="Filter">
+    <div class="filters" role="group" aria-label="Show">
+      <button data-f="all" aria-pressed="true">All</button>
+      <button data-f="ACTION_NEEDED" aria-pressed="false">Action needed</button>
+      <button data-f="OK" aria-pressed="false">Fixed</button>
+      <button data-f="UNKNOWN" aria-pressed="false">Unknown</button>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Image</th><th>Platform</th><th>PHP</th><th>109618</th><th>109619</th>
+        <th class="hide-sm">Upload progress</th><th class="hide-sm">Image built</th><th class="hide-sm">Checked</th>
+      </tr>
+    </thead>
+    <tbody id="rows"><tr><td colspan="8" class="empty">Loading…</td></tr></tbody>
+  </table>
+
+  <div class="note">
+    <h2>What a verdict does not prove</h2>
+    <ul>
+      <li>It covers the image as published. Your running container may be older; recreate it to pick up a rebuilt tag.</li>
+      <li>Runtime settings (environment variables, mounted config files) can change <code>session.upload_progress.enabled</code>. Until PHP fixes CVE-2026-115560, turning it off server-wide is the mitigation.</li>
+      <li>"Fixed" says nothing about whether a system was compromised before it was fixed.</li>
+    </ul>
+    <p class="small muted" id="meta"></p>
+  </div>
+</main>
+<script>
+(function () {
+  "use strict";
+  var CVES = ["CVE-2026-109618", "CVE-2026-109619"];
+  var state = { entries: [], filter: "all", q: "" };
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function day(s) { return s ? esc(String(s).slice(0, 10)) : ""; }
+  function verdictChip(v) {
+    if (!v) return '<span class="muted">–</span>';
+    var cls = /^VULNERABLE/.test(v) ? "bad" : (v === "FIXED" || v === "FIXED_BY_DISTRO_BACKPORT" || v === "NOT_AFFECTED") ? "ok" : "warn";
+    var label = { FIXED_BY_DISTRO_BACKPORT: "FIXED (backport)", VULNERABLE_EOL: "VULNERABLE (EOL)", NEEDS_VENDOR_CONFIRMATION: "ASK VENDOR" }[v] || v;
+    return '<span class="chip ' + cls + '">' + esc(label) + "</span>";
+  }
+  function group(e) {
+    if (e.error) return "UNKNOWN";
+    if (e.action === "ACTION_NEEDED") return "ACTION_NEEDED";
+    if (e.action === "OK" || e.action === "NO_PHP") return "OK";
+    return "UNKNOWN";
+  }
+  function phpCell(e) {
+    if (e.action === "NO_BUILD") return '<span class="muted">no build</span>';
+    if (e.error) return '<span class="muted" title="' + esc(e.error) + '">not checked</span>';
+    if (!e.php || !e.php.length) return '<span class="muted">none</span>';
+    var seen = {};
+    return e.php.filter(function (p) { var k = p.version + p.source; if (seen[k]) return false; seen[k] = 1; return true; })
+      .map(function (p) { return esc(p.version) + (p.source === "upstream-build" ? "" : ' <span class="muted small">' + esc(p.provider || p.source) + "</span>"); })
+      .join("<br>");
+  }
+  function builtCell(e) {
+    if (!e.imageCreated) return "";
+    var s = day(e.imageCreated);
+    if (e.builtBeforeFix && e.action === "ACTION_NEEDED") s += '<br><span class="small" style="color:var(--bad)">not rebuilt since the fix</span>';
+    if (e.firstFixedSeen) s += '<br><span class="small muted">fixed since ' + day(e.firstFixedSeen) + "</span>";
+    return s;
+  }
+  function render() {
+    var q = state.q.toLowerCase();
+    var rows = state.entries.filter(function (e) {
+      if (state.filter !== "all" && group(e) !== state.filter) return false;
+      if (!q) return true;
+      var hay = (e.ref + " " + e.platform + " " + (e.php || []).map(function (p) { return p.version; }).join(" ")).toLowerCase();
+      return hay.indexOf(q) >= 0;
+    });
+    var html = rows.map(function (e) {
+      var v = e.verdicts || {};
+      var up = e.uploadProgress === "on" ? '<span class="chip warn">on</span>' : e.uploadProgress ? '<span class="chip ok">' + esc(e.uploadProgress) + "</span>" : "";
+      return "<tr><td class=\"ref\">" + esc(e.ref) + (e.kind === "demo" ? ' <span class="muted small">control</span>' : "") +
+        "</td><td>" + esc(e.platform.replace("linux/", "")) + "</td><td>" + phpCell(e) + "</td><td>" + verdictChip(v[CVES[0]]) +
+        "</td><td>" + verdictChip(v[CVES[1]]) + '</td><td class="hide-sm">' + up + '</td><td class="hide-sm">' + builtCell(e) +
+        '</td><td class="hide-sm small muted nowrap">' + day(e.checkedAt) + "</td></tr>";
+    }).join("");
+    document.getElementById("rows").innerHTML = html || '<tr><td colspan="8" class="empty">No images match.</td></tr>';
+  }
+  function stats(idx) {
+    var es = idx.entries.filter(function (e) { return e.kind !== "demo"; });
+    var needed = es.filter(function (e) { return e.action === "ACTION_NEEDED"; }).length;
+    var frozen = es.filter(function (e) { return e.action === "ACTION_NEEDED" && e.builtBeforeFix; }).length;
+    var upOn = es.filter(function (e) { return e.uploadProgress === "on"; }).length;
+    var withPHP = es.filter(function (e) { return e.php && e.php.length; }).length;
+    var cards = [
+      [es.length, "tags × platforms tracked"],
+      [needed, "need action (vulnerable PHP)"],
+      [frozen, "of those not rebuilt since Oct 21"],
+      [withPHP ? Math.round(100 * upOn / withPHP) + "%" : "–", "leave upload progress on (CVE-2026-115560)"]
+    ];
+    document.getElementById("stats").innerHTML = cards.map(function (c) {
+      return '<div class="stat"><b>' + esc(c[0]) + "</b><span>" + esc(c[1]) + "</span></div>";
+    }).join("");
+    document.getElementById("meta").textContent = "Data refreshed " + (idx.generated || "?") +
+      (idx.grypeDBBuilt ? " · Grype database built " + idx.grypeDBBuilt : "") + " · " + (idx.tool || "whichphp");
+  }
+
+  document.getElementById("q").addEventListener("input", function (ev) { state.q = ev.target.value; render(); });
+  Array.prototype.forEach.call(document.querySelectorAll(".filters button"), function (b) {
+    b.addEventListener("click", function () {
+      state.filter = b.getAttribute("data-f");
+      Array.prototype.forEach.call(document.querySelectorAll(".filters button"), function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      render();
+    });
+  });
+
+  fetch("index.json", { cache: "no-cache" }).then(function (r) {
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function (idx) {
+    state.entries = idx.entries || [];
+    stats(idx);
+    render();
+  }).catch(function (err) {
+    document.getElementById("rows").innerHTML = '<tr><td colspan="8" class="empty">Couldn\'t load the index (' + esc(err.message) + ").</td></tr>";
+  });
+})();
+</script>
+</body>
+</html>

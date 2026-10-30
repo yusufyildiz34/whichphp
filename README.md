@@ -60,14 +60,24 @@ Result: ACTION NEEDED: rebuild or replace this image (exit 1)
 2. **Grype checks distro packages** against the distros' own security data, which is where backports show up.
 3. **whichphp applies the PHP-specific rules:** fixed releases per branch, end-of-life branches and distros, third-party repositories that ship upstream releases (Sury, Remi), pre-release builds, and the effective `php.ini` settings.
 
-We checked whichphp against our own experiment: on 128 scans of popular images (amd64 and arm64), its verdicts matched our analysis in all 256 CVE checks.
+We checked whichphp against our own experiment: on 188 scans of popular images (amd64 and arm64), its verdicts matched our analysis in all 376 CVE checks.
+
+## The index
+
+`whichphp index` builds the public index from [`index/images.csv`](index/images.csv). Each daily run checks every tag's digest with a HEAD request, which doesn't count toward Docker Hub's pull limits. It rescans only tags that are new, changed, failed last time, or haven't been scanned for seven days, because distro security data can change without a new image. It records when a tag first went from vulnerable to fixed.
+
+```sh
+./whichphp index --images index/images.csv --data data --platforms linux/amd64,linux/arm64
+```
+
+The output is `data/index.json` plus a change log in `data/history.jsonl`. In CI the data lives on the `data` branch, and [`site/index.html`](site/index.html) renders it. Set `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` for authenticated pulls.
 
 ## Which question are you asking?
 
 | Your question | Short answer | Where to look |
 |---|---|---|
 | "`php -v` says 8.3.6. Am I patched?" | The version number alone can't tell you. Distros backport fixes without changing it. | [Why `php -v` lies](#why-php--v-lies), `whichphp image` |
-| "Is the image tag I pull fixed yet?" | Floating tags were rebuilt within days. Pinned and end-of-life tags often never are. | `whichphp image <ref>`, the index (coming) |
+| "Is the image tag I pull fixed yet?" | Floating tags were rebuilt within days. Pinned and end-of-life tags often never are. | `whichphp image <ref>`, [the index](#the-index) |
 | "Which PHP actually serves my site?" | Often not the one `php -v` shows. Images and hosts can carry several builds. | `whichphp image` lists every binary and SAPI |
 | "I'm on PHP 8.1 or older." | There is no upstream fix. Treat it as vulnerable unless your vendor proves a backport. | [Verdicts](#verdicts) |
 | "Is the CVE-2026-115560 mitigation on?" | In most images it isn't. Official images ship no `php.ini`, so the compiled default (on) applies. | `whichphp image` reports the effective value |

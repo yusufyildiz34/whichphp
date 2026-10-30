@@ -1,0 +1,113 @@
+# Images tracked by the whichphp index. One tag per line: ref,kind,owner,note.
+# Suggest additions with the "Add an image to the index" issue template.
+ref,kind,owner,note
+# kind: latest = floating newest tag | pinned = version-pinned tag people deploy | demo = exact pre-fix and post-fix tags kept as controls
+# owner: php-official = Docker official php image | app-official = Docker official app image | community = third-party publisher
+# Official php image: floating tags
+php:apache,latest,php-official,
+php:fpm,latest,php-official,
+php:fpm-alpine,latest,php-official,
+# Official php image: supported branches
+php:8.5-apache,pinned,php-official,
+php:8.5-fpm-alpine,pinned,php-official,
+php:8.4-apache,pinned,php-official,
+php:8.4-fpm,pinned,php-official,
+php:8.4-fpm-alpine,pinned,php-official,
+php:8.3-apache,pinned,php-official,
+php:8.3-fpm,pinned,php-official,
+php:8.3-fpm-alpine,pinned,php-official,
+php:8.2-apache,pinned,php-official,8.2 EOL Dec 31 2026
+php:8.2-fpm,pinned,php-official,
+php:8.2-fpm-alpine,pinned,php-official,
+# Official php image: EOL branches still pulled
+php:8.1-apache,pinned,php-official,EOL
+php:8.1-fpm,pinned,php-official,EOL
+php:8.0-apache,pinned,php-official,EOL
+php:7.4-apache,pinned,php-official,EOL
+php:7.4-fpm,pinned,php-official,EOL
+php:5.6-apache,pinned,php-official,EOL; 109618 not in NVD range
+# Controls: exact pre-fix and post-fix tags (they show the Trivy blind spot)
+php:8.4.26-apache,demo,php-official,pre-fix control
+php:8.3.35-fpm,demo,php-official,pre-fix control
+php:8.2.34-apache,demo,php-official,pre-fix control
+php:8.5.11-fpm-alpine,demo,php-official,pre-fix control
+php:8.4.27-apache,demo,php-official,post-fix control
+# WordPress
+wordpress:latest,latest,app-official,
+wordpress:php8.4-apache,pinned,app-official,
+wordpress:php8.3-apache,pinned,app-official,
+wordpress:php8.2-apache,pinned,app-official,
+wordpress:php8.1-apache,pinned,app-official,EOL PHP
+wordpress:php8.3-fpm,pinned,app-official,
+wordpress:fpm-alpine,latest,app-official,
+# Drupal
+drupal:latest,latest,app-official,
+drupal:11-apache,pinned,app-official,
+drupal:10-apache,pinned,app-official,
+drupal:10-fpm-alpine,pinned,app-official,
+drupal:7-apache,pinned,app-official,Drupal 7 EOL
+# Joomla
+joomla:latest,latest,app-official,
+joomla:5-apache,pinned,app-official,
+joomla:4-apache,pinned,app-official,
+# Nextcloud (pinned exact tags are the known trap)
+nextcloud:latest,latest,app-official,
+nextcloud:35-apache,pinned,app-official,
+nextcloud:35.0.1-apache,pinned,app-official,exact tag reported frozen on PHP 8.5.11
+nextcloud:32-apache,pinned,app-official,
+nextcloud:31-apache,pinned,app-official,reported frozen on PHP 8.3.30
+nextcloud:30-apache,pinned,app-official,
+nextcloud:fpm-alpine,latest,app-official,
+# Matomo, phpMyAdmin, MediaWiki and other official app images
+matomo:latest,latest,app-official,
+matomo:5-apache,pinned,app-official,
+matomo:fpm-alpine,latest,app-official,
+phpmyadmin:latest,latest,app-official,
+phpmyadmin:5.2-apache,pinned,app-official,
+phpmyadmin:fpm-alpine,latest,app-official,
+mediawiki:latest,latest,app-official,
+mediawiki:1.43,pinned,app-official,LTS
+mediawiki:1.39,pinned,app-official,old LTS
+adminer:latest,latest,app-official,
+yourls:latest,latest,app-official,
+monica:latest,latest,app-official,
+composer:latest,latest,app-official,CLI only; not a web server
+# linuxserver.io (Docker Hub mirror of lscr.io)
+linuxserver/nextcloud:latest,latest,community,
+linuxserver/bookstack:latest,latest,community,
+linuxserver/grocy:latest,latest,community,
+linuxserver/piwigo:latest,latest,community,
+linuxserver/dokuwiki:latest,latest,community,
+linuxserver/phpmyadmin:latest,latest,community,
+linuxserver/freshrss:latest,latest,community,
+linuxserver/heimdall:latest,latest,community,
+linuxserver/snipe-it:latest,latest,community,
+# Bitnami legacy catalog (frozen since Aug 28 2025)
+bitnamilegacy/php-fpm:latest,latest,community,frozen catalog
+bitnamilegacy/php-fpm:8.2,pinned,community,frozen catalog
+bitnamilegacy/wordpress:latest,latest,community,frozen catalog
+bitnamilegacy/wordpress:6,pinned,community,frozen catalog
+bitnamilegacy/drupal:10,pinned,community,frozen catalog
+bitnamilegacy/moodle:latest,latest,community,frozen catalog
+bitnamilegacy/phpmyadmin:latest,latest,community,frozen catalog
+# PHP base images from other publishers
+serversideup/php:8.4-fpm-nginx,pinned,community,
+serversideup/php:8.3-fpm-nginx,pinned,community,
+serversideup/php:8.2-fpm-apache,pinned,community,
+webdevops/php-nginx:8.4,pinned,community,
+webdevops/php-nginx:8.3,pinned,community,
+webdevops/php-apache:8.2,pinned,community,
+dunglas/frankenphp:latest,latest,community,static or embedded PHP
+dunglas/frankenphp:php8.3,pinned,community,
+# Popular self-hosted PHP apps
+freshrss/freshrss:latest,latest,community,
+kimai/kimai2:apache,latest,community,
+invoiceninja/invoiceninja:latest,latest,community,
+mautic/mautic:latest,latest,community,
+prestashop/prestashop:latest,latest,community,
+librenms/librenms:latest,latest,community,
+roundcube/roundcubemail:latest,latest,community,
+osixia/phpldapadmin:latest,latest,community,old image; expected EOL PHP
+zabbix/zabbix-web-nginx-mysql:latest,latest,community,
+snipe/snipe-it:latest,latest,community,
+shlinkio/shlink:stable,latest,community,RoadRunner runtime

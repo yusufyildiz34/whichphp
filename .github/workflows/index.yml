@@ -1,0 +1,113 @@
+name: Index
+
+# Rebuilds the public index of PHP inside popular images. Each run checks every tag's
+# digest with a HEAD request (free under Docker Hub's pull limits) and rescans only tags
+# that changed, failed, are new, or haven't been scanned for 7 days.
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+    inputs:
+      max_scans:
+        description: "Maximum image scans in this run (0 = no limit)"
+        default: "0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: index
+  cancel-in-progress: false
+
+env:
+  SYFT_VERSION: v1.55.0
+  GRYPE_VERSION: v0.121.0
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    env:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+          cache: false
+
+      - name: Install Syft, Grype and whichphp
+        run: |
+          mkdir -p "$HOME/bin" && echo "$HOME/bin" >> "$GITHUB_PATH"
+          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b "$HOME/bin" "$SYFT_VERSION"
+          curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b "$HOME/bin" "$GRYPE_VERSION"
+          go build -ldflags "-X main.version=$(git rev-parse --short HEAD)" -o "$HOME/bin/whichphp" ./cmd/whichphp
+          "$HOME/bin/grype" db update
+          "$HOME/bin/grype" db status
+
+      # Authenticated pulls get a higher Docker Hub limit. Add DOCKERHUB_USERNAME and a
+      # read-only DOCKERHUB_TOKEN as repository secrets; without them the run is anonymous.
+      - name: Log in to Docker Hub
+        if: env.DOCKERHUB_USERNAME != ''
+        uses: docker/login-action@v4
+        with:
+          username: ${{ env.DOCKERHUB_USERNAME }}
+          password: ${{ env.DOCKERHUB_TOKEN }}
+
+      - name: Check out the data branch
+        run: |
+          if git ls-remote --exit-code --heads origin data >/dev/null; then
+            git fetch --depth=1 origin data
+            git worktree add data-branch FETCH_HEAD
+            git -C data-branch checkout -B data
+          else
+            git worktree add --orphan -b data data-branch
+          fi
+
+      - name: Update the index
+        env:
+          GRYPE_DB_AUTO_UPDATE: "false"
+        run: |
+          whichphp index --images index/images.csv --data data-branch \
+            --max-scans "${{ github.event.inputs.max_scans || '0' }}"
+
+      - name: Commit the data
+        run: |
+          cd data-branch
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -q -m "Index update $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push -q origin data
+          fi
+
+      - name: Prepare the site
+        run: |
+          mkdir -p _site
+          cp site/index.html _site/
+          cp data-branch/index.json _site/index.json
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  # Publishes the site only once the repository is public, so nothing is shown before
+  # image maintainers have been notified.
+  deploy:
+    needs: index
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

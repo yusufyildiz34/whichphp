@@ -30,6 +30,7 @@ const usage = `whichphp: which PHP is inside this image, and is it really fixed 
 Usage:
   whichphp image [flags] <image>
   whichphp image --sbom <syft.json> [--grype-json <grype.json>] [flags]
+  whichphp index [--images index/images.csv] [--data data] [flags]
   whichphp version
 
 <image> is anything Syft accepts: nginx:latest, registry:repo/app:tag,
@@ -59,6 +60,8 @@ func run(args []string, stdout, stderr io.Writer) int {
 		return 0
 	case "image":
 		return runImage(args[1:], stdout, stderr)
+	case "index":
+		return runIndex(args[1:], stdout, stderr)
 	case "help", "-h", "--help":
 		fmt.Fprint(stdout, usage)
 		newImageFlags(stdout).fs.PrintDefaults()
@@ -141,7 +144,7 @@ func runImage(args []string, stdout, stderr io.Writer) int {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()
 
-	rep, err := scan(ctx, f, input, stderr)
+	rep, err := scan(ctx, f, input, stderr, nil)
 	if err != nil {
 		fmt.Fprintf(stderr, "whichphp: %v\n", err)
 		return 3
@@ -157,7 +160,10 @@ func runImage(args []string, stdout, stderr io.Writer) int {
 	return rep.Action.ExitCode()
 }
 
-func scan(ctx context.Context, f *imageFlags, input string, stderr io.Writer) (verdict.Report, error) {
+// feedCache remembers feed-coverage answers per distro release within one run.
+type feedCache map[string]map[string]grypejson.FeedStatus
+
+func scan(ctx context.Context, f *imageFlags, input string, stderr io.Writer, cache feedCache) (verdict.Report, error) {
 	useGrype := !f.noGrype
 	needSyft := f.sbom == ""
 	needGrypeBin := useGrype && (f.grypeJSON == "" || !f.skipFeedCheck)
@@ -230,7 +236,15 @@ func scan(ctx context.Context, f *imageFlags, input string, stderr io.Writer) (v
 				}
 			}
 			if !f.skipFeedCheck && hasDistroPHP(doc) {
-				in.Feed = feedCoverage(ctx, tools, stderr, f, doc, dir)
+				key := grypeDistro(doc.Distro.ID, doc.Distro.VersionID)
+				if cached, ok := cache[key]; ok && key != "" {
+					in.Feed = cached
+				} else {
+					in.Feed = feedCoverage(ctx, tools, stderr, f, doc, dir)
+					if cache != nil && key != "" {
+						cache[key] = in.Feed
+					}
+				}
 			}
 		}
 	}
