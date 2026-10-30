@@ -16,7 +16,7 @@ whether CVE-2026-109618 and CVE-2026-109619 are fixed, and why.</p>
 <a href="go.mod"><img alt="Go version" src="https://img.shields.io/github/go-mod/go-version/yusufyildiz34/whichphp"></a>
 <a href="go.mod"><img alt="Go dependencies: none" src="https://img.shields.io/badge/go%20dependencies-none-0f7a5c"></a>
 <a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/github/license/yusufyildiz34/whichphp"></a>
-<a href="https://github.com/yusufyildiz34/whichphp/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/yusufyildiz34/whichphp"></a>
+<a href="https://github.com/yusufyildiz34/whichphp/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/yusufyildiz34/whichphp?style=flat"></a>
 </p>
 
 <p>
