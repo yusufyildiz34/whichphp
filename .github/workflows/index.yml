@@ -97,7 +97,7 @@ jobs:
         if: ${{ vars.PUBLISH_INDEX == 'true' }}
         run: |
           mkdir -p _site
-          cp site/index.html _site/
+          cp -R site/. _site/
           cp data-branch/index.json _site/index.json
 
       - uses: actions/upload-pages-artifact@v5

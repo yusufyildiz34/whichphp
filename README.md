@@ -83,7 +83,7 @@ The output is `data/index.json` plus a change log in `data/history.jsonl`. In CI
 | "Is the CVE-2026-115560 mitigation on?" | In most images it isn't. Official images ship no `php.ini`, so the compiled default (on) applies. | `whichphp image` reports the effective value |
 | "My scanner says the image is clean." | Package-based scanners can't see PHP compiled from source. | [Why your scanner says clean](#why-your-scanner-says-clean) |
 | "Do I need to restart or redeploy?" | Yes. A running container keeps the old image until it is recreated. Save logs first. | Cluster mode (v0.2) |
-| "My site is on shared hosting." | You can't scan it yourself. Ask your host the right questions. | [What to ask your host](docs/ask-your-host.md) · [Türkçe](docs/ask-your-host.tr.md) |
+| "My site is on shared hosting." | You can't scan it yourself. Ask your host the right questions. | [What to ask your host](docs/ask-your-host.md) |
 | "Was I compromised?" | whichphp can't tell you. A "fixed" verdict says nothing about what happened before. | [NCSC-NL PHP2Shell repository](https://github.com/NCSC-NL/php2shell) and your vendor's guidance |
 | "Does a WAF protect me?" | Only partly, and only as a stopgap. Rules can miss variants. | [FAQ](#faq) |
 
@@ -170,7 +170,7 @@ No. The old version is vulnerable. Known regressions in 8.4.27 and 8.5.12 are be
 
 | Stage | What ships |
 |---|---|
-| **Launch (Nov 4)** | Release binaries for `whichphp image`; the public index; the host page in English and Turkish |
+| **Launch (Nov 4)** | Release binaries for `whichphp image`; the public index; the host page |
 | **v0.2** | `whichphp cluster`: what each pod actually runs and what to redeploy; SARIF and OpenVEX output; a GitHub Action; per-tag "tell me when it's fixed" feeds |
 | **Later** | Fixed-build data for third-party packagers (Sury, Remi, GetPageSpeed, TuxCare, Freexian, CloudLinux, cPanel); CycloneDX export; diff mode; base-image lineage |
 

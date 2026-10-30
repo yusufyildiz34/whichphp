@@ -16,22 +16,22 @@ php:8.4-fpm-alpine,pinned,php-official,
 php:8.3-apache,pinned,php-official,
 php:8.3-fpm,pinned,php-official,
 php:8.3-fpm-alpine,pinned,php-official,
-php:8.2-apache,pinned,php-official,8.2 EOL Dec 31 2026
+php:8.2-apache,pinned,php-official,PHP 8.2 reaches end-of-life on Dec 31 2026
 php:8.2-fpm,pinned,php-official,
 php:8.2-fpm-alpine,pinned,php-official,
 # Official php image: EOL branches still pulled
-php:8.1-apache,pinned,php-official,EOL
-php:8.1-fpm,pinned,php-official,EOL
-php:8.0-apache,pinned,php-official,EOL
-php:7.4-apache,pinned,php-official,EOL
-php:7.4-fpm,pinned,php-official,EOL
-php:5.6-apache,pinned,php-official,EOL; 109618 not in NVD range
+php:8.1-apache,pinned,php-official,PHP 8.1 is end-of-life
+php:8.1-fpm,pinned,php-official,PHP 8.1 is end-of-life
+php:8.0-apache,pinned,php-official,PHP 8.0 is end-of-life
+php:7.4-apache,pinned,php-official,PHP 7.4 is end-of-life
+php:7.4-fpm,pinned,php-official,PHP 7.4 is end-of-life
+php:5.6-apache,pinned,php-official,PHP 5.6 is end-of-life; CVE-2026-109618 does not reach back this far
 # Controls: exact pre-fix and post-fix tags (they show the Trivy blind spot)
-php:8.4.26-apache,demo,php-official,pre-fix control
-php:8.3.35-fpm,demo,php-official,pre-fix control
-php:8.2.34-apache,demo,php-official,pre-fix control
-php:8.5.11-fpm-alpine,demo,php-official,pre-fix control
-php:8.4.27-apache,demo,php-official,post-fix control
+php:8.4.26-apache,demo,php-official,Exact pre-fix tag, kept as a control
+php:8.3.35-fpm,demo,php-official,Exact pre-fix tag, kept as a control
+php:8.2.34-apache,demo,php-official,Exact pre-fix tag, kept as a control
+php:8.5.11-fpm-alpine,demo,php-official,Exact pre-fix tag, kept as a control
+php:8.4.27-apache,demo,php-official,Exact post-fix tag, kept as a control
 # WordPress
 wordpress:latest,latest,app-official,
 wordpress:php8.4-apache,pinned,app-official,
@@ -66,12 +66,12 @@ phpmyadmin:latest,latest,app-official,
 phpmyadmin:5.2-apache,pinned,app-official,
 phpmyadmin:fpm-alpine,latest,app-official,
 mediawiki:latest,latest,app-official,
-mediawiki:1.43,pinned,app-official,LTS
+mediawiki:1.43,pinned,app-official,Long-term support release
 mediawiki:1.39,pinned,app-official,MediaWiki 1.39 is end-of-life (Dec 31 2025); use 1.43 LTS
 adminer:latest,latest,app-official,
 yourls:latest,latest,app-official,
 monica:latest,latest,app-official,
-composer:latest,latest,app-official,CLI only; not a web server
+composer:latest,latest,app-official,Command-line PHP only; no web server
 # linuxserver.io (Docker Hub mirror of lscr.io)
 linuxserver/nextcloud:latest,latest,community,
 linuxserver/bookstack:latest,latest,community,
@@ -83,13 +83,13 @@ linuxserver/freshrss:latest,latest,community,
 linuxserver/heimdall:latest,latest,community,
 linuxserver/snipe-it:latest,latest,community,
 # Bitnami legacy catalog (frozen since Aug 28 2025)
-bitnamilegacy/php-fpm:latest,latest,community,frozen catalog
-bitnamilegacy/php-fpm:8.2,pinned,community,frozen catalog
-bitnamilegacy/wordpress:latest,latest,community,frozen catalog
-bitnamilegacy/wordpress:6,pinned,community,frozen catalog
-bitnamilegacy/drupal:10,pinned,community,frozen catalog
-bitnamilegacy/moodle:latest,latest,community,frozen catalog
-bitnamilegacy/phpmyadmin:latest,latest,community,frozen catalog
+bitnamilegacy/php-fpm:latest,latest,community,Bitnami legacy catalog; frozen and no longer updated
+bitnamilegacy/php-fpm:8.2,pinned,community,Bitnami legacy catalog; frozen and no longer updated
+bitnamilegacy/wordpress:latest,latest,community,Bitnami legacy catalog; frozen and no longer updated
+bitnamilegacy/wordpress:6,pinned,community,Bitnami legacy catalog; frozen and no longer updated
+bitnamilegacy/drupal:10,pinned,community,Bitnami legacy catalog; frozen and no longer updated
+bitnamilegacy/moodle:latest,latest,community,Bitnami legacy catalog; frozen and no longer updated
+bitnamilegacy/phpmyadmin:latest,latest,community,Bitnami legacy catalog; frozen and no longer updated
 # PHP base images from other publishers
 serversideup/php:8.4-fpm-nginx,pinned,community,
 serversideup/php:8.3-fpm-nginx,pinned,community,
@@ -97,7 +97,7 @@ serversideup/php:8.2-fpm-apache,pinned,community,
 webdevops/php-nginx:8.4,pinned,community,
 webdevops/php-nginx:8.3,pinned,community,
 webdevops/php-apache:8.2,pinned,community,
-dunglas/frankenphp:latest,latest,community,static or embedded PHP
+dunglas/frankenphp:latest,latest,community,PHP is built into the server binary
 dunglas/frankenphp:php8.3,pinned,community,
 # Popular self-hosted PHP apps
 freshrss/freshrss:latest,latest,community,
@@ -110,4 +110,4 @@ roundcube/roundcubemail:latest,latest,community,
 osixia/phpldapadmin:latest,latest,community,Not updated since 2021; Debian 10 and PHP 7.3 are end-of-life
 zabbix/zabbix-web-nginx-mysql:latest,latest,community,
 snipe/snipe-it:latest,latest,community,
-shlinkio/shlink:stable,latest,community,RoadRunner runtime
+shlinkio/shlink:stable,latest,community,Serves PHP through RoadRunner

@@ -1,7 +1,5 @@
 # What to ask your host about PHP2Shell
 
-*[Türkçe](ask-your-host.tr.md)*
-
 This page is for you if your site runs on shared or managed hosting and you have no shell access. You can't scan the server yourself, but you can ask questions that get a real answer instead of "we're protected."
 
 ## Background in one minute

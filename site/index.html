@@ -3,191 +3,662 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>whichphp index: is the PHP in this image fixed for PHP2Shell?</title>
-<meta name="description" content="Daily index of the PHP inside popular container images, with per-tag verdicts for CVE-2026-109618 and CVE-2026-109619 (PHP2Shell).">
+<title>whichphp: is the PHP in your image fixed for PHP2Shell?</title>
+<meta name="description" content="A daily, read-only check of the PHP inside popular container images for CVE-2026-109618 and CVE-2026-109619 (PHP2Shell). Search any tracked image to see whether its PHP is fixed.">
+<meta name="color-scheme" content="light dark">
+<link rel="preload" href="fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/martian-mono.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  @font-face { font-family: "Schibsted Grotesk"; src: url("fonts/schibsted-grotesk.woff2") format("woff2"); font-weight: 400 900; font-display: swap; }
+  @font-face { font-family: "Martian Mono"; src: url("fonts/martian-mono.woff2") format("woff2"); font-weight: 100 800; font-display: swap; }
+
   :root {
-    --bg: #ffffff; --fg: #1d1f23; --muted: #5d6470; --line: #e3e6eb; --panel: #f6f7f9;
-    --bad: #b42318; --bad-bg: #fde8e7; --ok: #11733f; --ok-bg: #e3f5ea; --warn: #8a5a00; --warn-bg: #fdf1d8;
-    --link: #1f5fbf;
+    --paper: #f5f6fa;
+    --surface: #ffffff;
+    --ink: #171b33;
+    --ink-2: #4c5272;
+    --ink-3: #7a7f9c;
+    --line: #dcdfec;
+    --line-2: #eceef6;
+    --indigo: #4b54c9;
+    --indigo-wash: #eceefe;
+    --seg-on: #ffffff;
+    --rust: #b93815;
+    --rust-wash: #fbebe5;
+    --pine: #0f7a5c;
+    --pine-wash: #e3f3ec;
+    --ochre: #9a620f;
+    --ochre-wash: #fbf1dd;
+    --sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --mono: "Martian Mono", ui-monospace, "SF Mono", Menlo, monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #111316; --fg: #e8eaed; --muted: #a0a7b2; --line: #2a2e35; --panel: #181b20;
-      --bad: #ff8a80; --bad-bg: #3a1d1b; --ok: #6fd99a; --ok-bg: #16301f; --warn: #f2c35b; --warn-bg: #352a12;
-      --link: #8ab4f8;
+      --paper: #121530;
+      --surface: #1a1e3e;
+      --ink: #e7e9f6;
+      --ink-2: #b4b8d3;
+      --ink-3: #8a8fb0;
+      --line: #2d3260;
+      --line-2: #23284f;
+      --indigo: #a3a9ff;
+      --indigo-wash: #262c5c;
+      --seg-on: #343a72;
+      --rust: #ff9474;
+      --rust-wash: #3a2333;
+      --pine: #67d7ad;
+      --pine-wash: #173a3c;
+      --ochre: #f1bd5f;
+      --ochre-wash: #3a3226;
     }
   }
+
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
-  a { color: var(--link); }
-  main { max-width: 1180px; margin: 0 auto; padding: 32px 20px 64px; }
-  h1 { font-size: 26px; margin: 0 0 6px; }
-  .lede { color: var(--muted); margin: 0 0 24px; max-width: 760px; }
-  .stats { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
-  .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; min-width: 150px; }
-  .stat b { display: block; font-size: 22px; }
-  .stat span { color: var(--muted); font-size: 13px; }
-  .controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
-  input[type=search] { flex: 1 1 280px; padding: 9px 12px; font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; }
-  .filters button { font: inherit; padding: 7px 12px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 999px; cursor: pointer; }
-  .filters button[aria-pressed=true] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .03em; position: sticky; top: 0; background: var(--bg); }
-  td.ref { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; word-break: break-all; }
-  .chip { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; }
-  .bad { color: var(--bad); background: var(--bad-bg); }
-  .ok { color: var(--ok); background: var(--ok-bg); }
-  .warn { color: var(--warn); background: var(--warn-bg); }
-  .muted { color: var(--muted); }
-  .small { font-size: 12px; }
-  .note { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; margin-top: 28px; }
-  .note h2 { font-size: 16px; margin: 0 0 6px; }
-  .note ul { margin: 6px 0 0; padding-left: 20px; }
-  .empty { padding: 24px 0; color: var(--muted); }
-  .nowrap { white-space: nowrap; }
-  @media (max-width: 760px) { .hide-sm { display: none; } }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 15px/1.55 var(--sans); font-feature-settings: "ss01"; }
+  a { color: var(--indigo); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; border-radius: 6px; }
+  .mono { font-family: var(--mono); font-feature-settings: normal; }
+  .id { white-space: nowrap; }
+  .lede .mono, .fine .mono, .empty .mono { font-size: 0.84em; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* Header */
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 26px 0 0; }
+  .wordmark { font: 600 17px/1 var(--mono); letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
+  .wordmark span { color: var(--indigo); }
+  .top nav { display: flex; gap: 22px; flex-wrap: wrap; font-size: 14px; }
+  .top nav a { color: var(--ink-2); text-decoration: none; }
+  .top nav a:hover { color: var(--ink); }
+
+  /* Hero */
+  .hero { padding: 72px 0 0; }
+  h1 { font-weight: 640; font-size: clamp(38px, 5.6vw, 64px); line-height: 1.02; letter-spacing: -0.035em; margin: 0; max-width: 13ch; }
+  .lede { font-size: 18px; line-height: 1.55; color: var(--ink-2); max-width: 60ch; margin: 22px 0 0; }
+
+  .search { position: relative; margin-top: 40px; }
+  .search input {
+    width: 100%; height: 76px; padding: 0 128px 0 64px;
+    font: 500 21px/1 var(--mono); letter-spacing: -0.01em; color: var(--ink);
+    background: var(--surface); border: 1.5px solid var(--line); border-radius: 18px;
+    box-shadow: 0 1px 0 rgba(23, 27, 51, 0.04), 0 12px 32px -18px rgba(23, 27, 51, 0.25);
+    transition: border-color .15s ease;
+  }
+  .search input::placeholder { color: var(--ink-3); }
+  .search input:focus { outline: none; border-color: var(--indigo); }
+  .search input::-webkit-search-cancel-button { display: none; }
+  .search svg { position: absolute; left: 24px; top: 50%; transform: translateY(-50%); color: var(--ink-3); pointer-events: none; }
+  .search .side { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; gap: 10px; }
+  .search kbd { font: 500 12px/1 var(--mono); color: var(--ink-3); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
+  .clear { font: 500 13px var(--sans); color: var(--ink-2); background: none; border: 0; cursor: pointer; padding: 8px; }
+  .clear[hidden] { display: none; }
+
+  /* Summary */
+  .summary { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 30px 0 0; max-width: 820px; }
+  .summary p { margin: 0; font-size: 17px; color: var(--ink-2); line-height: 1.6; }
+  .summary b { color: var(--ink); font-weight: 650; }
+  .bar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; background: var(--line-2); }
+  .bar i { display: block; height: 100%; }
+  .bar .f { background: var(--pine); } .bar .v { background: var(--rust); } .bar .u { background: var(--ochre); }
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; color: var(--ink-3); }
+  .legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 7px; vertical-align: 1px; }
+  .legend .f::before { background: var(--pine); } .legend .v::before { background: var(--rust); } .legend .u::before { background: var(--ochre); }
+
+  /* Toolbar */
+  .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 56px 0 14px; }
+  .seg { display: inline-flex; padding: 4px; background: var(--line-2); border-radius: 12px; gap: 2px; flex-wrap: wrap; }
+  .seg button { font: 550 14px var(--sans); color: var(--ink-2); background: none; border: 0; border-radius: 9px; padding: 8px 14px; cursor: pointer; }
+  .seg button .n { font: 500 12px var(--mono); color: var(--ink-3); margin-left: 6px; }
+  .seg button[aria-pressed="true"] { background: var(--seg-on); color: var(--ink); box-shadow: 0 1px 2px rgba(23, 27, 51, 0.12); }
+  .seg button[aria-pressed="true"] .n { color: var(--ink-2); }
+  .sort { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--ink-2); }
+  select { font: 500 14px var(--sans); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 7px 30px 7px 11px; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%237a7f9c' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 11px center; }
+
+  /* Table */
+  .table { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; }
+  thead th { text-align: left; font: 550 13px var(--sans); color: var(--ink-3); padding: 14px 20px; border-bottom: 1px solid var(--line); }
+  tbody tr.row { cursor: pointer; }
+  tbody tr.row td { padding: 16px 20px; border-bottom: 1px solid var(--line-2); vertical-align: top; }
+  tbody tr.row:hover td { background: color-mix(in srgb, var(--indigo-wash) 45%, transparent); }
+  tbody tr.row[aria-expanded="true"] td { background: var(--indigo-wash); border-bottom-color: transparent; }
+  tbody tr:last-child td { border-bottom: 0; }
+  .ref { font: 500 14px/1.45 var(--mono); color: var(--ink); word-break: break-word; }
+  .note { font-size: 13px; color: var(--ink-3); margin-top: 4px; max-width: 46ch; }
+  .tag { display: inline-block; font: 500 11px var(--mono); color: var(--ink-3); border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; margin-left: 8px; vertical-align: 2px; }
+  .ver { font: 500 13.5px/1.5 var(--mono); color: var(--ink-2); }
+  .ver small { display: block; font: 400 12px var(--sans); color: var(--ink-3); }
+  .status { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; padding: 4px 11px 4px 9px; border-radius: 999px; white-space: nowrap; }
+  .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .s-vuln { color: var(--rust); background: var(--rust-wash); }
+  .s-fixed { color: var(--pine); background: var(--pine-wash); }
+  .s-unknown { color: var(--ochre); background: var(--ochre-wash); }
+  .s-none { color: var(--ink-3); background: var(--line-2); }
+  .built { font-size: 14px; color: var(--ink-2); white-space: nowrap; }
+  .built small { display: block; font-size: 12.5px; white-space: normal; }
+  .built .stale { color: var(--rust); }
+  .built .since { color: var(--pine); }
+  .chev { width: 28px; text-align: right; color: var(--ink-3); }
+  .chev svg { transition: transform .2s ease; }
+  tr[aria-expanded="true"] .chev svg { transform: rotate(180deg); }
+  .empty { padding: 56px 20px; text-align: left; color: var(--ink-2); }
+  .empty b { color: var(--ink); }
+
+  /* Details */
+  tr.details td { padding: 0 20px 22px; background: var(--indigo-wash); border-bottom: 1px solid var(--line); }
+  .det { display: grid; gap: 14px; animation: reveal .22s ease-out; }
+  @keyframes reveal { from { opacity: 0; transform: translateY(-4px); } }
+  .plats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 14px; }
+  .plat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .plat h3 { font: 600 14px var(--mono); margin: 0 0 12px; display: flex; justify-content: space-between; gap: 10px; }
+  .plat h3 span { font: 400 13px var(--sans); color: var(--ink-3); }
+  .plat dl { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 8px 14px; margin: 0; font-size: 14px; }
+  .plat dt { color: var(--ink-3); }
+  .plat dd { margin: 0; color: var(--ink); min-width: 0; }
+  .plat dd .mono { font-size: 12.5px; word-break: break-all; }
+  .cmd { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px 12px 18px; }
+  .cmd code { font: 500 13px var(--mono); color: var(--ink); overflow-x: auto; white-space: nowrap; }
+  .btn { font: 550 13px var(--sans); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 7px 12px; cursor: pointer; white-space: nowrap; }
+  .btn:hover { border-color: var(--ink-3); }
+  .det-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* Pagination */
+  .pager { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 18px; font-size: 14px; color: var(--ink-2); }
+  .pages { display: flex; align-items: center; gap: 4px; }
+  .pages button { font: 500 14px var(--sans); min-width: 38px; height: 38px; padding: 0 10px; border-radius: 10px; border: 1px solid transparent; background: none; color: var(--ink-2); cursor: pointer; }
+  .pages button:hover:not(:disabled) { border-color: var(--line); background: var(--surface); }
+  .pages button[aria-current="page"] { background: var(--ink); color: var(--paper); }
+  .pages button:disabled { color: var(--ink-3); opacity: .5; cursor: default; }
+  .pages .gap { min-width: 24px; text-align: center; color: var(--ink-3); }
+  .size { display: flex; align-items: center; gap: 10px; }
+
+  /* Footer */
+  .fine { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 48px; margin: 80px 0 0; padding: 36px 0 56px; border-top: 1px solid var(--line); }
+  .fine h2 { font-size: 17px; font-weight: 620; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .fine ul { margin: 0; padding-left: 18px; color: var(--ink-2); }
+  .fine li { margin-bottom: 8px; }
+  .fine p { margin: 0 0 8px; color: var(--ink-2); font-size: 14px; }
+  .fine .meta { color: var(--ink-3); font-size: 13px; }
+
+  .toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); background: var(--ink); color: var(--paper); font-size: 14px; padding: 10px 16px; border-radius: 10px; opacity: 0; pointer-events: none; transition: opacity .15s ease; }
+  .toast.on { opacity: 1; }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 18px; }
+    .top { flex-wrap: wrap; gap: 14px; padding-top: 20px; }
+    .top nav { width: 100%; gap: 18px; font-size: 13.5px; }
+    .hero { padding-top: 40px; }
+    .lede { font-size: 16.5px; }
+    .search input { height: 64px; font-size: 16px; padding: 0 70px 0 52px; border-radius: 14px; }
+    .search svg { left: 18px; }
+    .search kbd { display: none; }
+    .summary p { font-size: 16px; }
+    .toolbar { margin-top: 40px; }
+    .seg { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; scrollbar-width: none; }
+    .seg button { flex: none; padding: 8px 12px; }
+    table, tbody { display: block; }
+    thead { display: none; }
+    tbody tr.row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; column-gap: 14px; padding: 14px 16px; border-bottom: 1px solid var(--line-2); }
+    tbody tr.row td, tbody tr.row:hover td, tbody tr.row[aria-expanded="true"] td { display: block; padding: 0; border: 0; background: none; }
+    tbody tr.row td:first-child { grid-column: 1 / -1; margin-bottom: 10px; }
+    tbody tr.row .col-built, tbody tr.row .col-chev { display: none; }
+    tbody tr.row:hover { background: color-mix(in srgb, var(--indigo-wash) 45%, transparent); }
+    tbody tr.row[aria-expanded="true"] { background: var(--indigo-wash); border-bottom-color: transparent; }
+    tr.details, tr.details td { display: block; }
+    tr.details td { padding: 0 12px 16px; }
+    tbody tr:not(.row):not(.details) { display: block; }
+    tbody tr:not(.row):not(.details) td { display: block; }
+    .plat dl { grid-template-columns: 112px minmax(0, 1fr); }
+    .pager { flex-direction: column; align-items: flex-start; }
+    .fine { grid-template-columns: 1fr; gap: 28px; margin-top: 56px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <h1>Is the PHP in this image fixed for PHP2Shell?</h1>
-  <p class="lede">A daily, read-only check of the PHP inside popular container images for
-    CVE-2026-109618 and CVE-2026-109619. Images are read with Syft, never run. Each verdict
-    accounts for distro backports and end-of-life branches. Check your own images with
-    <a href="https://github.com/yusufyildiz34/whichphp">whichphp</a>; on shared hosting, see
-    <a href="https://github.com/yusufyildiz34/whichphp/blob/main/docs/ask-your-host.md">what to ask your host</a>
-    (<a href="https://github.com/yusufyildiz34/whichphp/blob/main/docs/ask-your-host.tr.md">Türkçe</a>).</p>
+<div class="wrap">
+  <header class="top">
+    <a class="wordmark" href="./" aria-label="whichphp home">which<span>php</span></a>
+    <nav aria-label="Project">
+      <a href="https://github.com/yusufyildiz34/whichphp#readme">How it works</a>
+      <a href="https://github.com/yusufyildiz34/whichphp/blob/main/docs/ask-your-host.md">On shared hosting?</a>
+      <a href="https://github.com/yusufyildiz34/whichphp">GitHub</a>
+    </nav>
+  </header>
 
-  <div class="stats" id="stats"></div>
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <h1 id="title">Is the PHP in your image fixed?</h1>
+      <p class="lede">Every day, whichphp reads the PHP inside popular container images, without running them, and checks it against the PHP2Shell fixes for <span class="mono id">CVE-2026-109618</span> and <span class="mono id">CVE-2026-109619</span>. Distro backports and end-of-life branches are taken into account.</p>
 
-  <div class="controls">
-    <input type="search" id="q" placeholder="Filter by image, tag or PHP version (e.g. nextcloud, 8.3)" aria-label="Filter">
-    <div class="filters" role="group" aria-label="Show">
-      <button data-f="all" aria-pressed="true">All</button>
-      <button data-f="ACTION_NEEDED" aria-pressed="false">Action needed</button>
-      <button data-f="OK" aria-pressed="false">Fixed</button>
-      <button data-f="UNKNOWN" aria-pressed="false">Unknown</button>
+      <div class="search" role="search">
+        <label for="q" class="sr">Search an image</label>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="nextcloud:31-apache">
+        <div class="side">
+          <button class="clear" id="clear" type="button" hidden>Clear</button>
+          <kbd aria-hidden="true">/</kbd>
+        </div>
+      </div>
+
+      <div class="summary" id="summary" aria-live="polite"></div>
+    </section>
+
+    <section aria-labelledby="results-title">
+      <h2 id="results-title" class="sr">Images</h2>
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Show">
+          <button type="button" data-f="all" aria-pressed="true">All<span class="n" data-count="all"></span></button>
+          <button type="button" data-f="vuln" aria-pressed="false">Vulnerable<span class="n" data-count="vuln"></span></button>
+          <button type="button" data-f="fixed" aria-pressed="false">Fixed<span class="n" data-count="fixed"></span></button>
+          <button type="button" data-f="unknown" aria-pressed="false">Unknown<span class="n" data-count="unknown"></span></button>
+        </div>
+        <label class="sort">Sort by
+          <select id="sort">
+            <option value="name">Image name</option>
+            <option value="status">Status</option>
+            <option value="built">Most recently built</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Image</th>
+              <th scope="col">PHP</th>
+              <th scope="col">Status</th>
+              <th scope="col" class="col-built">Image built</th>
+              <th scope="col" class="col-chev"><span class="sr">Details</span></th>
+            </tr>
+          </thead>
+          <tbody id="rows"><tr><td colspan="5" class="empty">Loading the index…</td></tr></tbody>
+        </table>
+      </div>
+
+      <nav class="pager" aria-label="Pagination">
+        <span id="range" aria-live="polite"></span>
+        <div class="pages" id="pages"></div>
+        <label class="size">Rows per page
+          <select id="size">
+            <option>25</option>
+            <option>50</option>
+            <option>100</option>
+          </select>
+        </label>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="fine">
+    <div>
+      <h2>What a verdict doesn't prove</h2>
+      <ul>
+        <li>It covers the image as published. A container you started earlier keeps its old image until you recreate it, and recreating it erases its logs, so save those first.</li>
+        <li>Runtime settings can change <span class="mono">session.upload_progress.enabled</span>. Until PHP fixes <span class="id">CVE-2026-115560</span>, turning it off server-wide is the only mitigation.</li>
+        <li>"Fixed" says nothing about whether a system was compromised before it was fixed.</li>
+      </ul>
     </div>
-  </div>
+    <div>
+      <h2>About the data</h2>
+      <p>Images are read with Syft and matched with Grype; whichphp adds the PHP-specific rules. Nothing is executed and no traffic is sent to anyone's servers.</p>
+      <p>Wrong verdict? <a href="https://github.com/yusufyildiz34/whichphp/issues/new?template=wrong-verdict.yml">Report it with evidence</a>. Missing an image? <a href="https://github.com/yusufyildiz34/whichphp/issues/new?template=add-image.yml">Suggest it</a>.</p>
+      <p class="meta" id="meta"></p>
+    </div>
+  </footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Image</th><th>Platform</th><th>PHP</th><th>109618</th><th>109619</th>
-        <th class="hide-sm">Upload progress</th><th class="hide-sm">Image built</th><th class="hide-sm">Checked</th>
-      </tr>
-    </thead>
-    <tbody id="rows"><tr><td colspan="8" class="empty">Loading…</td></tr></tbody>
-  </table>
-
-  <div class="note">
-    <h2>What a verdict does not prove</h2>
-    <ul>
-      <li>It covers the image as published. Your running container may be older; recreate it to pick up a rebuilt tag.</li>
-      <li>Runtime settings (environment variables, mounted config files) can change <code>session.upload_progress.enabled</code>. Until PHP fixes CVE-2026-115560, turning it off server-wide is the mitigation.</li>
-      <li>"Fixed" says nothing about whether a system was compromised before it was fixed.</li>
-    </ul>
-    <p class="small muted" id="meta"></p>
-  </div>
-</main>
 <script>
 (function () {
   "use strict";
   var CVES = ["CVE-2026-109618", "CVE-2026-109619"];
-  var state = { entries: [], filter: "all", q: "" };
+  var FIX_DATE = Date.UTC(2026, 9, 21);
+  var SEV = { VULNERABLE_EOL: 7, VULNERABLE: 6, DATA_STALE: 5, UNKNOWN: 5, NEEDS_VENDOR_CONFIRMATION: 4, FIXED_BY_DISTRO_BACKPORT: 1, FIXED: 0, NOT_AFFECTED: 0 };
+  var LABEL = {
+    VULNERABLE_EOL: "End-of-life PHP", VULNERABLE: "Vulnerable", DATA_STALE: "Data out of date", UNKNOWN: "Unknown",
+    NEEDS_VENDOR_CONFIRMATION: "Ask the vendor", FIXED_BY_DISTRO_BACKPORT: "Fixed by distro backport", FIXED: "Fixed", NOT_AFFECTED: "Not affected"
+  };
+  var SAPI = { cli: "CLI", fpm: "FPM", "apache-module": "Apache module", cgi: "CGI", litespeed: "LiteSpeed", embedded: "embedded" };
+  var STATUS_RANK = { vuln: 3, unknown: 2, fixed: 1, none: 0 };
+
+  var images = [], index = null;
+  var state = { q: "", f: "all", sort: "name", page: 1, size: 25, open: null };
+  var $ = function (id) { return document.getElementById(id); };
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
-  function day(s) { return s ? esc(String(s).slice(0, 10)) : ""; }
-  function verdictChip(v) {
-    if (!v) return '<span class="muted">–</span>';
-    var cls = /^VULNERABLE/.test(v) ? "bad" : (v === "FIXED" || v === "FIXED_BY_DISTRO_BACKPORT" || v === "NOT_AFFECTED") ? "ok" : "warn";
-    var label = { FIXED_BY_DISTRO_BACKPORT: "FIXED (backport)", VULNERABLE_EOL: "VULNERABLE (EOL)", NEEDS_VENDOR_CONFIRMATION: "ASK VENDOR" }[v] || v;
-    return '<span class="chip ' + cls + '">' + esc(label) + "</span>";
+  function fmtDate(s) {
+    if (!s) return "";
+    var d = new Date(s);
+    if (isNaN(d)) return "";
+    return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
   }
-  function group(e) {
-    if (e.error) return "UNKNOWN";
-    if (e.action === "ACTION_NEEDED") return "ACTION_NEEDED";
-    if (e.action === "OK" || e.action === "NO_PHP") return "OK";
-    return "UNKNOWN";
-  }
-  function phpCell(e) {
-    if (e.action === "NO_BUILD") return '<span class="muted">no build</span>';
-    if (e.error) return '<span class="muted" title="' + esc(e.error) + '">not checked</span>';
-    if (!e.php || !e.php.length) return '<span class="muted">none</span>';
-    var seen = {};
-    return e.php.filter(function (p) { var k = p.version + p.source; if (seen[k]) return false; seen[k] = 1; return true; })
-      .map(function (p) { return esc(p.version) + (p.source === "upstream-build" ? "" : ' <span class="muted small">' + esc(p.provider || p.source) + "</span>"); })
-      .join("<br>");
-  }
-  function builtCell(e) {
-    if (!e.imageCreated) return "";
-    var s = day(e.imageCreated);
-    if (e.builtBeforeFix && e.action === "ACTION_NEEDED") s += '<br><span class="small" style="color:var(--bad)">not rebuilt since the fix</span>';
-    if (e.firstFixedSeen) s += '<br><span class="small muted">fixed since ' + day(e.firstFixedSeen) + "</span>";
-    return s;
-  }
-  function render() {
-    var q = state.q.toLowerCase();
-    var rows = state.entries.filter(function (e) {
-      if (state.filter !== "all" && group(e) !== state.filter) return false;
-      if (!q) return true;
-      var hay = (e.ref + " " + e.platform + " " + (e.php || []).map(function (p) { return p.version; }).join(" ")).toLowerCase();
-      return hay.indexOf(q) >= 0;
+  function shortDigest(d) { return d ? d.replace(/^(sha256:[0-9a-f]{12}).*$/, "$1…") : ""; }
+
+  // One verdict for an index entry (one tag on one platform).
+  function entryStatus(e) {
+    if (e.error) return { key: "unknown", label: "Not checked", detail: e.error };
+    if (e.action === "NO_BUILD") return { key: "none", label: "No build" };
+    if (e.action === "NO_PHP") return { key: "none", label: "No PHP" };
+    var worst = null;
+    CVES.forEach(function (c) {
+      var v = (e.verdicts || {})[c];
+      if (v && (worst === null || SEV[v] > SEV[worst])) worst = v;
     });
-    var html = rows.map(function (e) {
-      var v = e.verdicts || {};
-      var up = e.uploadProgress === "on" ? '<span class="chip warn">on</span>' : e.uploadProgress ? '<span class="chip ok">' + esc(e.uploadProgress) + "</span>" : "";
-      return "<tr><td class=\"ref\">" + esc(e.ref) + (e.kind === "demo" ? ' <span class="muted small">control</span>' : "") +
-        (e.note ? '<div class="small muted" style="font-family:system-ui,sans-serif">' + esc(e.note) + "</div>" : "") +
-        "</td><td>" + esc(e.platform.replace("linux/", "")) + "</td><td>" + phpCell(e) + "</td><td>" + verdictChip(v[CVES[0]]) +
-        "</td><td>" + verdictChip(v[CVES[1]]) + '</td><td class="hide-sm">' + up + '</td><td class="hide-sm">' + builtCell(e) +
-        '</td><td class="hide-sm small muted nowrap">' + day(e.checkedAt) + "</td></tr>";
-    }).join("");
-    document.getElementById("rows").innerHTML = html || '<tr><td colspan="8" class="empty">No images match.</td></tr>';
-  }
-  function stats(idx) {
-    var es = idx.entries.filter(function (e) { return e.kind !== "demo"; });
-    var needed = es.filter(function (e) { return e.action === "ACTION_NEEDED"; }).length;
-    var frozen = es.filter(function (e) { return e.action === "ACTION_NEEDED" && e.builtBeforeFix; }).length;
-    var upOn = es.filter(function (e) { return e.uploadProgress === "on"; }).length;
-    var withPHP = es.filter(function (e) { return e.php && e.php.length; }).length;
-    var cards = [
-      [es.length, "tags × platforms tracked"],
-      [needed, "need action (vulnerable PHP)"],
-      [frozen, "of those not rebuilt since Oct 21"],
-      [withPHP ? Math.round(100 * upOn / withPHP) + "%" : "–", "leave upload progress on (CVE-2026-115560)"]
-    ];
-    document.getElementById("stats").innerHTML = cards.map(function (c) {
-      return '<div class="stat"><b>' + esc(c[0]) + "</b><span>" + esc(c[1]) + "</span></div>";
-    }).join("");
-    document.getElementById("meta").textContent = "Data refreshed " + (idx.generated || "?") +
-      (idx.grypeDBBuilt ? " · Grype database built " + idx.grypeDBBuilt : "") + " · " + (idx.tool || "whichphp");
+    if (!worst) return { key: "unknown", label: "Unknown" };
+    var key = SEV[worst] >= 6 ? "vuln" : SEV[worst] >= 4 ? "unknown" : "fixed";
+    return { key: key, label: LABEL[worst] || worst, verdict: worst };
   }
 
-  document.getElementById("q").addEventListener("input", function (ev) { state.q = ev.target.value; render(); });
-  Array.prototype.forEach.call(document.querySelectorAll(".filters button"), function (b) {
-    b.addEventListener("click", function () {
-      state.filter = b.getAttribute("data-f");
-      Array.prototype.forEach.call(document.querySelectorAll(".filters button"), function (x) { x.setAttribute("aria-pressed", String(x === b)); });
-      render();
+  // Merge the per-platform entries of each tag into one image row.
+  function group(entries) {
+    var by = {};
+    entries.forEach(function (e) {
+      var g = by[e.ref] || (by[e.ref] = { ref: e.ref, note: e.note || "", kind: e.kind || "", platforms: [] });
+      if (e.note) g.note = e.note;
+      g.platforms.push(e);
     });
+    return Object.keys(by).map(function (ref) {
+      var g = by[ref];
+      g.platforms.sort(function (a, b) { return a.platform.localeCompare(b.platform); });
+      var best = null, versions = [], seen = {}, built = 0, stale = false, since = "";
+      g.platforms.forEach(function (e) {
+        var s = entryStatus(e);
+        e._status = s;
+        if (s.key !== "none" || !best) {
+          if (!best || STATUS_RANK[s.key] > STATUS_RANK[best.key] || best.key === "none") best = s;
+        }
+        (e.php || []).forEach(function (p) {
+          var k = p.version + "|" + p.source;
+          if (!seen[k]) { seen[k] = 1; versions.push(p); }
+        });
+        var t = Date.parse(e.imageCreated || "");
+        if (!isNaN(t) && t > built) built = t;
+        if (e.builtBeforeFix && s.key === "vuln") stale = true;
+        if (e.firstFixedSeen && (!since || e.firstFixedSeen < since)) since = e.firstFixedSeen;
+      });
+      g.status = best || { key: "unknown", label: "Unknown" };
+      g.versions = versions;
+      g.built = built;
+      g.stale = stale;
+      g.since = since;
+      g.search = (ref + " " + g.note + " " + versions.map(function (p) { return p.version; }).join(" ")).toLowerCase();
+      return g;
+    });
+  }
+
+  function filtered() {
+    var q = state.q.trim().toLowerCase();
+    var list = images.filter(function (g) {
+      if (q && g.search.indexOf(q) < 0) return false;
+      return state.f === "all" || g.status.key === state.f;
+    });
+    var byName = function (a, b) { return a.ref.localeCompare(b.ref, "en", { numeric: true }); };
+    if (state.sort === "status") list.sort(function (a, b) { return (STATUS_RANK[b.status.key] - STATUS_RANK[a.status.key]) || byName(a, b); });
+    else if (state.sort === "built") list.sort(function (a, b) { return (b.built - a.built) || byName(a, b); });
+    else list.sort(byName);
+    return list;
+  }
+
+  function counts() {
+    var q = state.q.trim().toLowerCase();
+    var c = { all: 0, vuln: 0, fixed: 0, unknown: 0 };
+    images.forEach(function (g) {
+      if (q && g.search.indexOf(q) < 0) return;
+      c.all++;
+      if (c[g.status.key] !== undefined) c[g.status.key]++;
+    });
+    return c;
+  }
+
+  function versionCell(g) {
+    if (!g.versions.length) return '<span class="ver">—</span>';
+    return g.versions.map(function (p) {
+      var up = /^(\d+\.\d+\.\d+)/.exec(p.version);
+      var sub = p.source === "distro" ? "distro package" : p.source === "third-party" ? (p.provider || "third-party") + " build" : "";
+      var shown = p.source === "distro" && up ? up[1] : p.version.replace(/-\d+$/, "");
+      return '<div class="ver" title="' + esc(p.version) + '">' + esc(shown) + (sub ? "<small>" + esc(sub) + "</small>" : "") + "</div>";
+    }).join("");
+  }
+
+  function builtCell(g) {
+    if (!g.built) return '<span class="built">—</span>';
+    var extra = "";
+    if (g.stale) extra = '<small class="stale">Not rebuilt since the Oct 21 fix</small>';
+    else if (g.since) extra = '<small class="since">Fixed since ' + esc(fmtDate(g.since)) + "</small>";
+    return '<span class="built">' + esc(fmtDate(new Date(g.built).toISOString())) + extra + "</span>";
+  }
+
+  function platformCard(e) {
+    var s = e._status;
+    var rows = [];
+    CVES.forEach(function (c) {
+      var v = (e.verdicts || {})[c];
+      rows.push("<dt>" + esc(c.replace("CVE-", "CVE-")) + "</dt><dd>" + (v ? esc(LABEL[v] || v) : esc(s.label)) + "</dd>");
+    });
+    if (e.php && e.php.length) {
+      rows.push("<dt>PHP found</dt><dd>" + e.php.map(function (p) {
+        return '<span class="mono">' + esc(p.name) + " " + esc(p.version) + "</span> " + esc(SAPI[p.sapi] || p.sapi || "");
+      }).join("<br>") + "</dd>");
+    }
+    if (e.uploadProgress) rows.push("<dt>Upload progress</dt><dd>" + (e.uploadProgress === "on" ? "On (the CVE-2026-115560 mitigation is not applied)" : esc(e.uploadProgress)) + "</dd>");
+    if (e.distro) rows.push("<dt>Base OS</dt><dd>" + esc(e.distro) + "</dd>");
+    if (e.imageDigest) rows.push('<dt>Digest</dt><dd><span class="mono" title="' + esc(e.imageDigest) + '">' + esc(shortDigest(e.imageDigest)) + "</span></dd>");
+    if (e.firstFixedSeen) rows.push("<dt>First seen fixed</dt><dd>" + esc(fmtDate(e.firstFixedSeen)) + "</dd>");
+    if (s.detail) rows.push("<dt>Error</dt><dd>" + esc(s.detail) + "</dd>");
+    return '<div class="plat"><h3>' + esc(e.platform) + "<span>" + esc(e.imageCreated ? "built " + fmtDate(e.imageCreated) : "") +
+      "</span></h3><dl>" + rows.join("") + "</dl></div>";
+  }
+
+  function detailsRow(g, id) {
+    var cmd = "whichphp image " + g.ref;
+    return '<tr class="details" id="' + id + '"><td colspan="5"><div class="det">' +
+      '<div class="plats">' + g.platforms.map(platformCard).join("") + "</div>" +
+      '<div class="cmd"><code>' + esc(cmd) + '</code><div class="det-actions">' +
+      '<button class="btn" type="button" data-copy="' + esc(cmd) + '">Copy command</button>' +
+      '<button class="btn" type="button" data-share="' + esc(g.ref) + '">Copy link</button></div></div>' +
+      "</div></td></tr>";
+  }
+
+  function pageList(cur, total) {
+    if (total <= 7) return Array.from({ length: total }, function (_, i) { return i + 1; });
+    var out = [1];
+    var lo = Math.max(2, cur - 1), hi = Math.min(total - 1, cur + 1);
+    if (cur <= 3) { lo = 2; hi = 4; }
+    if (cur >= total - 2) { lo = total - 3; hi = total - 1; }
+    if (lo > 2) out.push("…");
+    for (var i = lo; i <= hi; i++) out.push(i);
+    if (hi < total - 1) out.push("…");
+    out.push(total);
+    return out;
+  }
+
+  function render() {
+    var list = filtered();
+    var c = counts();
+    Object.keys(c).forEach(function (k) { var el = document.querySelector('[data-count="' + k + '"]'); if (el) el.textContent = c[k]; });
+
+    var pages = Math.max(1, Math.ceil(list.length / state.size));
+    if (state.page > pages) state.page = pages;
+    var start = (state.page - 1) * state.size;
+    var slice = list.slice(start, start + state.size);
+    if (list.length === 1) state.open = list[0].ref;
+
+    var html = slice.map(function (g, i) {
+      var id = "d" + (start + i);
+      var open = state.open === g.ref;
+      var row = '<tr class="row" tabindex="0" data-ref="' + esc(g.ref) + '" aria-expanded="' + open + '" aria-controls="' + id + '">' +
+        '<td><div class="ref">' + esc(g.ref) + (g.kind === "demo" ? '<span class="tag">control</span>' : "") + "</div>" +
+        (g.note ? '<div class="note">' + esc(g.note) + "</div>" : "") + "</td>" +
+        "<td>" + versionCell(g) + "</td>" +
+        '<td><span class="status s-' + g.status.key + '">' + esc(g.status.label) + "</span></td>" +
+        '<td class="col-built">' + builtCell(g) + "</td>" +
+        '<td class="chev col-chev"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></td></tr>';
+      return row + (open ? detailsRow(g, id) : "");
+    }).join("");
+
+    if (!slice.length) {
+      html = '<tr><td colspan="5" class="empty">' + (state.q
+        ? "<b>No tracked image matches “" + esc(state.q) + "”.</b><br>Check it yourself with <span class=\"mono\">whichphp image " + esc(state.q) + "</span>, or suggest it for the index."
+        : "<b>No images in this view.</b>") + "</td></tr>";
+    }
+    $("rows").innerHTML = html;
+
+    $("range").textContent = list.length ? "Showing " + (start + 1) + "–" + (start + slice.length) + " of " + list.length + (list.length === 1 ? " image" : " images") : "";
+    var pl = pageList(state.page, pages);
+    $("pages").innerHTML = pages <= 1 ? "" :
+      '<button type="button" data-page="' + (state.page - 1) + '" ' + (state.page === 1 ? "disabled" : "") + ' aria-label="Previous page">Prev</button>' +
+      pl.map(function (p) {
+        return p === "…" ? '<span class="gap" aria-hidden="true">…</span>' :
+          '<button type="button" data-page="' + p + '"' + (p === state.page ? ' aria-current="page"' : "") + ' aria-label="Page ' + p + '">' + p + "</button>";
+      }).join("") +
+      '<button type="button" data-page="' + (state.page + 1) + '" ' + (state.page === pages ? "disabled" : "") + ' aria-label="Next page">Next</button>';
+
+    $("clear").hidden = !state.q;
+    Array.prototype.forEach.call(document.querySelectorAll(".seg button"), function (b) { b.setAttribute("aria-pressed", String(b.dataset.f === state.f)); });
+    $("sort").value = state.sort;
+    $("size").value = String(state.size);
+    writeURL();
+  }
+
+  function summary() {
+    var tracked = images.filter(function (g) { return g.kind !== "demo"; });
+    var vuln = tracked.filter(function (g) { return g.status.key === "vuln"; });
+    var stale = vuln.filter(function (g) { return g.stale; });
+    var fixed = tracked.filter(function (g) { return g.status.key === "fixed"; });
+    var unk = tracked.filter(function (g) { return g.status.key === "unknown"; });
+    var withPHP = 0, upOn = 0;
+    index.entries.forEach(function (e) {
+      if (e.kind === "demo" || !e.php || !e.php.length) return;
+      withPHP++;
+      if (e.uploadProgress === "on") upOn++;
+    });
+    var pct = withPHP ? Math.round(100 * upOn / withPHP) : 0;
+    var n = tracked.length || 1;
+    var controls = images.length - tracked.length;
+    var text = "We track <b>" + tracked.length + " image tags</b> on amd64 and arm64" + (controls ? ", plus " + controls + " control tags" : "") + ". ";
+    if (!vuln.length) text += "None of them ships PHP from before the fix. ";
+    else {
+      text += "<b>" + vuln.length + "</b> still ship PHP from before the fix";
+      if (stale.length === vuln.length) text += ", and none of those has been rebuilt since October 21. ";
+      else if (stale.length) text += ", and <b>" + stale.length + "</b> of those haven't been rebuilt since October 21. ";
+      else text += ". ";
+    }
+    if (withPHP) text += "In <b>" + pct + "%</b> of the builds that ship PHP, session upload progress is on, which leaves <span class=\"id\">CVE-2026-115560</span> unmitigated.";
+    $("summary").innerHTML = "<p>" + text + "</p>" +
+      '<div class="bar" role="img" aria-label="' + fixed.length + " fixed, " + vuln.length + " vulnerable, " + unk.length + ' unknown">' +
+      '<i class="f" style="width:' + (100 * fixed.length / n) + '%"></i><i class="v" style="width:' + (100 * vuln.length / n) + '%"></i><i class="u" style="width:' + (100 * unk.length / n) + '%"></i></div>' +
+      '<div class="legend"><span class="f">' + fixed.length + " fixed</span><span class=\"v\">" + vuln.length + " vulnerable</span><span class=\"u\">" + unk.length + " unknown</span></div>";
+    var meta = [];
+    if (index.generated) meta.push("Data refreshed " + fmtDate(index.generated) + ", " + new Date(index.generated).toISOString().slice(11, 16) + " UTC.");
+    if (index.grypeDBBuilt) meta.push("Grype database built " + fmtDate(index.grypeDBBuilt) + ".");
+    $("meta").textContent = meta.join(" ");
+  }
+
+  // URL state, so a filtered view can be shared.
+  function readURL() {
+    var p = new URLSearchParams(location.search);
+    state.q = p.get("q") || "";
+    state.f = ["all", "vuln", "fixed", "unknown"].indexOf(p.get("status")) >= 0 ? p.get("status") : "all";
+    state.sort = ["name", "status", "built"].indexOf(p.get("sort")) >= 0 ? p.get("sort") : "name";
+    state.size = [25, 50, 100].indexOf(+p.get("size")) >= 0 ? +p.get("size") : 25;
+    state.page = Math.max(1, parseInt(p.get("page"), 10) || 1);
+    $("q").value = state.q;
+  }
+  function writeURL() {
+    var p = new URLSearchParams();
+    if (state.q) p.set("q", state.q);
+    if (state.f !== "all") p.set("status", state.f);
+    if (state.sort !== "name") p.set("sort", state.sort);
+    if (state.size !== 25) p.set("size", state.size);
+    if (state.page > 1) p.set("page", state.page);
+    var url = location.pathname + (p.toString() ? "?" + p : "");
+    try { history.replaceState(null, "", url); } catch (err) { /* file:// previews */ }
+  }
+
+  function toast(msg) {
+    var t = $("toast");
+    t.textContent = msg;
+    t.classList.add("on");
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function () { t.classList.remove("on"); }, 1600);
+  }
+  function copy(text, msg) {
+    var done = function () { toast(msg); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () { fallback(); });
+    } else fallback();
+    function fallback() {
+      var ta = document.createElement("textarea");
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); done(); } catch (e) { toast("Couldn't copy. Select the text instead."); }
+      document.body.removeChild(ta);
+    }
+  }
+
+  // Events.
+  var debounce;
+  $("q").addEventListener("input", function (ev) {
+    clearTimeout(debounce);
+    debounce = setTimeout(function () { state.q = ev.target.value; state.page = 1; state.open = null; render(); }, 90);
+  });
+  $("clear").addEventListener("click", function () { $("q").value = ""; state.q = ""; state.page = 1; state.open = null; render(); $("q").focus(); });
+  document.addEventListener("keydown", function (ev) {
+    if (ev.key === "/" && document.activeElement !== $("q") && !/input|select|textarea/i.test(document.activeElement.tagName)) { ev.preventDefault(); $("q").focus(); }
+    if (ev.key === "Escape" && document.activeElement === $("q") && state.q) { $("clear").click(); }
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".seg button"), function (b) {
+    b.addEventListener("click", function () { state.f = b.dataset.f; state.page = 1; state.open = null; render(); });
+  });
+  $("sort").addEventListener("change", function (ev) { state.sort = ev.target.value; state.page = 1; render(); });
+  $("size").addEventListener("change", function (ev) { state.size = +ev.target.value; state.page = 1; render(); });
+  $("pages").addEventListener("click", function (ev) {
+    var b = ev.target.closest("button[data-page]");
+    if (!b || b.disabled) return;
+    state.page = +b.dataset.page; state.open = null; render();
+    document.querySelector(".toolbar").scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  });
+  function toggle(row) {
+    var ref = row.getAttribute("data-ref");
+    state.open = state.open === ref ? null : ref;
+    render();
+    var again = document.querySelector('tr.row[data-ref="' + CSS.escape(ref) + '"]');
+    if (again) again.focus();
+  }
+  $("rows").addEventListener("click", function (ev) {
+    var c = ev.target.closest("[data-copy]"), s = ev.target.closest("[data-share]");
+    if (c) return copy(c.getAttribute("data-copy"), "Command copied");
+    if (s) return copy(location.origin + location.pathname + "?q=" + encodeURIComponent(s.getAttribute("data-share")), "Link copied");
+    var row = ev.target.closest("tr.row");
+    if (row) toggle(row);
+  });
+  $("rows").addEventListener("keydown", function (ev) {
+    var row = ev.target.closest("tr.row");
+    if (row && (ev.key === "Enter" || ev.key === " ")) { ev.preventDefault(); toggle(row); }
   });
 
+  readURL();
   fetch("index.json", { cache: "no-cache" }).then(function (r) {
-    if (!r.ok) throw new Error(r.status);
+    if (!r.ok) throw new Error("HTTP " + r.status);
     return r.json();
   }).then(function (idx) {
-    state.entries = idx.entries || [];
-    stats(idx);
+    index = idx;
+    images = group(idx.entries || []);
+    summary();
     render();
   }).catch(function (err) {
-    document.getElementById("rows").innerHTML = '<tr><td colspan="8" class="empty">Couldn\'t load the index (' + esc(err.message) + ").</td></tr>";
+    $("rows").innerHTML = '<tr><td colspan="5" class="empty"><b>The index couldn\'t be loaded (' + esc(err.message) + ").</b><br>Reload the page. If it keeps failing, the data is also on the repository's <a href=\"https://github.com/yusufyildiz34/whichphp/tree/data\">data branch</a>.</td></tr>";
   });
 })();
 </script>
