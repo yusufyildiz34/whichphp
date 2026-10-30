@@ -180,6 +180,14 @@ func TestLoadImagesAndRoundTrip(t *testing.T) {
 	}
 }
 
+func TestLoadImagesRejectsUnquotedCommas(t *testing.T) {
+	p := filepath.Join(t.TempDir(), "images.csv")
+	os.WriteFile(p, []byte("ref,kind,owner,note\nphp:8.4-apache,pinned,php-official,first, second\n"), 0o644)
+	if _, err := LoadImages(p); err == nil {
+		t.Fatal("want an error for a note with an unquoted comma")
+	}
+}
+
 func TestTrackedImageListParses(t *testing.T) {
 	imgs, err := LoadImages(filepath.Join("..", "..", "index", "images.csv"))
 	if err != nil {

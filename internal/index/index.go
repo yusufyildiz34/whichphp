@@ -153,6 +153,9 @@ func LoadImages(path string) ([]Image, error) {
 		if i == 0 && len(rec) > 0 && rec[0] == "ref" {
 			continue
 		}
+		if len(rec) > 4 {
+			return nil, fmt.Errorf("%s: %s has %d fields, want at most 4 (quote a note that contains commas)", path, rec[0], len(rec))
+		}
 		img := Image{Ref: strings.TrimSpace(rec[0])}
 		if len(rec) > 1 {
 			img.Kind = strings.TrimSpace(rec[1])

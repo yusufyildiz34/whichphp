@@ -22,7 +22,7 @@ func runIndex(args []string, stdout, stderr io.Writer) int {
 	fs := flag.NewFlagSet("index", flag.ContinueOnError)
 	fs.SetOutput(stderr)
 	images := fs.String("images", "index/images.csv", "tracked images (CSV: ref,kind,owner,note)")
-	data := fs.String("data", "data", "directory for index.json and history.jsonl")
+	data := fs.String("data", "data", "directory for index.json, history.jsonl and badges/")
 	platforms := fs.String("platforms", "linux/amd64,linux/arm64", "comma-separated platforms to index")
 	rescanDays := fs.Int("rescan-days", 7, "rescan unchanged tags after this many days (distro data can change)")
 	maxScans := fs.Int("max-scans", 0, "maximum image scans in this run (0 for no limit)")
@@ -87,6 +87,10 @@ func runIndex(args []string, stdout, stderr io.Writer) int {
 		return 3
 	}
 	if err := index.AppendHistory(filepath.Join(*data, "history.jsonl"), changes); err != nil {
+		fmt.Fprintf(stderr, "whichphp: %v\n", err)
+		return 3
+	}
+	if err := index.SaveBadges(filepath.Join(*data, "badges"), index.Badges(next)); err != nil {
 		fmt.Fprintf(stderr, "whichphp: %v\n", err)
 		return 3
 	}

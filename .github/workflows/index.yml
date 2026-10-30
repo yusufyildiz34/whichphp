@@ -7,7 +7,7 @@ name: Index
 # Publishing is gated by the repository variable PUBLISH_INDEX. Until it is "true",
 # scheduled runs are skipped and manual runs only test the pipeline: nothing is
 # committed, uploaded or deployed, and the log shows counts, not verdicts. Set it only
-# after the maintainers of affected images have had 48-72 hours' notice.
+# after the maintainers of affected images have been told (see CONTRIBUTING.md).
 on:
   schedule:
     - cron: "17 5 * * *"
@@ -99,6 +99,7 @@ jobs:
           mkdir -p _site
           cp -R site/. _site/
           cp data-branch/index.json _site/index.json
+          cp -R data-branch/badges _site/badges
 
       - uses: actions/upload-pages-artifact@v5
         if: ${{ vars.PUBLISH_INDEX == 'true' }}

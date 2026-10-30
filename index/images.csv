@@ -27,11 +27,11 @@ php:7.4-apache,pinned,php-official,PHP 7.4 is end-of-life
 php:7.4-fpm,pinned,php-official,PHP 7.4 is end-of-life
 php:5.6-apache,pinned,php-official,PHP 5.6 is end-of-life; CVE-2026-109618 does not reach back this far
 # Controls: exact pre-fix and post-fix tags (they show the Trivy blind spot)
-php:8.4.26-apache,demo,php-official,Exact pre-fix tag, kept as a control
-php:8.3.35-fpm,demo,php-official,Exact pre-fix tag, kept as a control
-php:8.2.34-apache,demo,php-official,Exact pre-fix tag, kept as a control
-php:8.5.11-fpm-alpine,demo,php-official,Exact pre-fix tag, kept as a control
-php:8.4.27-apache,demo,php-official,Exact post-fix tag, kept as a control
+php:8.4.26-apache,demo,php-official,Exact pre-fix release; kept for comparison
+php:8.3.35-fpm,demo,php-official,Exact pre-fix release; kept for comparison
+php:8.2.34-apache,demo,php-official,Exact pre-fix release; kept for comparison
+php:8.5.11-fpm-alpine,demo,php-official,Exact pre-fix release; kept for comparison
+php:8.4.27-apache,demo,php-official,Exact post-fix release; kept for comparison
 # WordPress
 wordpress:latest,latest,app-official,
 wordpress:php8.4-apache,pinned,app-official,
