@@ -1,0 +1,17 @@
+# Build output
+/bin/
+/dist/
+*.exe
+*.test
+*.out
+coverage.*
+
+# Local scan output and image archives
+/out/
+/.work/
+*.tar
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store

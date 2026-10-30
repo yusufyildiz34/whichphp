@@ -1,0 +1,26 @@
+name: Packager fixed-build data
+description: Add or correct which builds from a packager include the PHP2Shell fixes.
+title: "Fixed builds: <packager>"
+labels: ["data"]
+body:
+  - type: input
+    id: packager
+    attributes:
+      label: Packager or repository
+      placeholder: "Sury, Remi, GetPageSpeed, TuxCare, Freexian, CloudLinux, cPanel, ..."
+    validations:
+      required: true
+  - type: textarea
+    id: builds
+    attributes:
+      label: Fixed builds
+      description: Package names and exact releases that include the fix, per PHP branch and OS release.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: Link to the packager's advisory, changelog or tracker for each entry.
+    validations:
+      required: true

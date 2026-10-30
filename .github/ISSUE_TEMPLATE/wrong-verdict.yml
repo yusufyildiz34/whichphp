@@ -1,0 +1,48 @@
+name: Wrong verdict
+description: whichphp gave a verdict you believe is wrong.
+title: "Wrong verdict: <image>"
+labels: ["verdict"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for checking our work. Please include evidence; verdict changes need a source.
+        Don't include exploit material or payloads.
+  - type: input
+    id: image
+    attributes:
+      label: Image reference and digest
+      placeholder: "php:8.3-fpm@sha256:..."
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      placeholder: linux/amd64
+  - type: input
+    id: got
+    attributes:
+      label: Verdict whichphp gave
+      placeholder: "VULNERABLE (CVE-2026-109618)"
+    validations:
+      required: true
+  - type: input
+    id: expected
+    attributes:
+      label: Verdict you expect
+      placeholder: FIXED_BY_DISTRO_BACKPORT
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Package release, changelog entry, vendor advisory or tracker link.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: whichphp output (JSON preferred)
+      render: json

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security problem in whichphp itself
+    url: https://github.com/yusufyildiz34/whichphp/security/advisories/new
+    about: Please report vulnerabilities in whichphp privately.
+  - name: Status of a vendor product or appliance
+    url: https://github.com/NCSC-NL/php2shell
+    about: NCSC-NL tracks the PHP2Shell status of vendor products.

@@ -1,0 +1,24 @@
+name: Add an image to the index
+description: Suggest a PHP image or tag for the daily index.
+title: "Add image: <image>"
+labels: ["index"]
+body:
+  - type: input
+    id: image
+    attributes:
+      label: Image and tags
+      placeholder: "example/app:2, example/app:2-apache"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters
+      description: Pull counts, how widely the tag is pinned, or where it's used.
+  - type: checkboxes
+    id: public
+    attributes:
+      label: Registry
+      options:
+        - label: The image is public and can be pulled without special access.
+          required: true
