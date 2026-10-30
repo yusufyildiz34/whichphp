@@ -2,7 +2,7 @@
 
 Every verdict rule in whichphp should have a test case, and every case should come from something that happened: a bug report, a wrong verdict from another tool, or a real image. CI fails if a code change flips an expected verdict.
 
-Each case will become a small directory with a synthetic image layout (package database entries, version strings in placeholder binaries, ini files) and an `expected.json`. No real PHP binaries and no exploit material are stored here.
+Today the cases run as Go tests on synthetic SBOMs, in `internal/verdict`, `internal/phpini` and `internal/phpver`. Each will also get a small directory here with a synthetic image layout (package database entries, version strings in placeholder binaries, ini files) and an `expected.json`. No real PHP binaries and no exploit material are stored here.
 
 ## Planned cases
 

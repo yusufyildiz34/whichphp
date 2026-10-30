@@ -2,7 +2,7 @@
 
 **Which PHP is inside this container image, and is it really fixed for PHP2Shell (CVE-2026-109618 / CVE-2026-109619)? whichphp answers without running the image.**
 
-> **Status: pre-release.** The first release is planned for November 4, 2026. Until then, this repository holds the design, the documentation and the test cases. The CLI and the public index are being built.
+> **Status: pre-release.** `whichphp image` works today if you build it from source. The first release and the public index are planned for November 4, 2026.
 
 ## What it does
 
@@ -10,6 +10,57 @@
 - **Gives a verdict for each CVE, with the evidence.** It understands distro backports, third-party builds and end-of-life branches. A verdict always says *why*: which binary, which package release, which data source.
 - **Reads the image's PHP settings.** It reports the effective `php.ini` defaults, including `session.upload_progress.enabled`. Turning that setting off is the only mitigation for CVE-2026-115560, which is still unfixed.
 - **Publishes a daily index of popular PHP images** (planned). For each tag and architecture it will show the PHP version, the verdict, when the tag was last rebuilt and the first digest that carried the fix.
+
+## Quick start
+
+You need [Syft](https://github.com/anchore/syft) and [Grype](https://github.com/anchore/grype) on your `PATH`, and Go 1.22 or later to build whichphp.
+
+```sh
+git clone https://github.com/yusufyildiz34/whichphp && cd whichphp
+go build -o whichphp ./cmd/whichphp
+
+./whichphp image php:8.4-apache
+./whichphp image --platform linux/arm64 wordpress:latest
+./whichphp image -o json docker-archive:image.tar
+```
+
+Example (output shortened):
+
+```text
+Image:   php:8.4.26-apache
+Distro:  debian 13.7 (supported)
+Serves:  apache mod_php
+
+PHP      VERSION  SOURCE          SAPI           2026-109618  2026-109619
+libphp   8.4.26   upstream-build  apache-module  VULNERABLE   VULNERABLE
+php-cli  8.4.26   upstream-build  cli            VULNERABLE   VULNERABLE
+
+Why:
+  libphp 8.4.26 (CVE-2026-109618, CVE-2026-109619): 8.4.26 is older than 8.4.27, the first fixed 8.4 release
+    evidence: /usr/lib/apache2/modules/libphp.so
+  ...
+
+Result: ACTION NEEDED: rebuild or replace this image (exit 1)
+```
+
+**Useful flags**
+
+| Flag | What it does |
+|---|---|
+| `--platform linux/arm64` | Check one architecture of a multi-arch image |
+| `-o json` | Machine-readable output for CI |
+| `--sbom syft.json` / `--grype-json grype.json` | Reuse output you already have instead of scanning again |
+| `--no-grype` | Skip the vulnerability database; distro packages then get `UNKNOWN` |
+| `--fail-on-mitigation` | Also exit 1 when `session.upload_progress` is on |
+| `--max-db-age 7` | Days after which Grype's database counts as stale |
+
+### How it works
+
+1. **Syft reads the image layers.** whichphp asks it to catalog packages and binaries and to capture the contents of PHP configuration files. Nothing in the image runs.
+2. **Grype checks distro packages** against the distros' own security data, which is where backports show up.
+3. **whichphp applies the PHP-specific rules:** fixed releases per branch, end-of-life branches and distros, third-party repositories that ship upstream releases (Sury, Remi), pre-release builds, and the effective `php.ini` settings.
+
+We checked whichphp against our own experiment: on 128 scans of popular images (amd64 and arm64), its verdicts matched our analysis in all 256 CVE checks.
 
 ## Which question are you asking?
 
@@ -69,8 +120,9 @@ whichphp gives one verdict per CVE.
 | `NEEDS_VENDOR_CONFIRMATION` | A third-party build whose fix status only the vendor can confirm |
 | `UNKNOWN` | Not enough evidence; the output says what is missing |
 | `DATA_STALE` | The vulnerability data is too old to trust |
+| `NOT_AFFECTED` | The version is older than the first affected release for this CVE |
 
-**Exit codes:** `0` fixed, `1` action needed, `2` unknown. An `UNKNOWN` is an honest answer, not a failure, and whichphp never turns it into "safe."
+**Exit codes:** `0` fixed (or no PHP), `1` action needed, `2` unknown, `3` error. An `UNKNOWN` is an honest answer, not a failure, and whichphp never turns it into "safe."
 
 ## What a verdict does not prove
 
@@ -108,7 +160,7 @@ No. The old version is vulnerable. Known regressions in 8.4.27 and 8.5.12 are be
 
 | Stage | What ships |
 |---|---|
-| **Launch (Nov 4)** | `whichphp image <ref>`; the public index; this README; the host page in English and Turkish |
+| **Launch (Nov 4)** | Release binaries for `whichphp image`; the public index; the host page in English and Turkish |
 | **v0.2** | `whichphp cluster`: what each pod actually runs and what to redeploy; SARIF and OpenVEX output; a GitHub Action; per-tag "tell me when it's fixed" feeds |
 | **Later** | Fixed-build data for third-party packagers (Sury, Remi, GetPageSpeed, TuxCare, Freexian, CloudLinux, cPanel); CycloneDX export; diff mode; base-image lineage |
 

@@ -1,6 +1,7 @@
 # Build output
 /bin/
 /dist/
+/whichphp
 *.exe
 *.test
 *.out
