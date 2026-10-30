@@ -3,6 +3,11 @@ name: Index
 # Rebuilds the public index of PHP inside popular images. Each run checks every tag's
 # digest with a HEAD request (free under Docker Hub's pull limits) and rescans only tags
 # that changed, failed, are new, or haven't been scanned for 7 days.
+#
+# Publishing is gated by the repository variable PUBLISH_INDEX. Until it is "true",
+# scheduled runs are skipped and manual runs only test the pipeline: nothing is
+# committed, uploaded or deployed, and the log shows counts, not verdicts. Set it only
+# after the maintainers of affected images have had 48-72 hours' notice.
 on:
   schedule:
     - cron: "17 5 * * *"
@@ -25,6 +30,7 @@ env:
 
 jobs:
   index:
+    if: ${{ github.event_name == 'workflow_dispatch' || vars.PUBLISH_INDEX == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 330
     env:
@@ -74,6 +80,7 @@ jobs:
             --max-scans "${{ github.event.inputs.max_scans || '0' }}"
 
       - name: Commit the data
+        if: ${{ vars.PUBLISH_INDEX == 'true' }}
         run: |
           cd data-branch
           git config user.name "github-actions[bot]"
@@ -87,20 +94,21 @@ jobs:
           fi
 
       - name: Prepare the site
+        if: ${{ vars.PUBLISH_INDEX == 'true' }}
         run: |
           mkdir -p _site
           cp site/index.html _site/
           cp data-branch/index.json _site/index.json
 
       - uses: actions/upload-pages-artifact@v5
+        if: ${{ vars.PUBLISH_INDEX == 'true' }}
         with:
           path: _site
 
-  # Publishes the site only once the repository is public, so nothing is shown before
-  # image maintainers have been notified.
+  # Publishes the site only when the repository is public and PUBLISH_INDEX is "true".
   deploy:
     needs: index
-    if: ${{ !github.event.repository.private }}
+    if: ${{ !github.event.repository.private && vars.PUBLISH_INDEX == 'true' }}
     runs-on: ubuntu-latest
     permissions:
       pages: write
