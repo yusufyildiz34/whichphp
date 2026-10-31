@@ -62,6 +62,9 @@ type CVEResult struct {
 	Verdict Verdict `json:"verdict"`
 	Why     string  `json:"why"`
 	Grype   bool    `json:"grypeMatched"`
+	// Unconfirmed marks a FIXED_BY_DISTRO_BACKPORT that rests only on the absence of
+	// a Grype match, without confirming that the distro's feed covers the CVE.
+	Unconfirmed bool `json:"unconfirmed,omitempty"`
 }
 
 // PHP is one PHP binary or package found in the image.
@@ -69,6 +72,7 @@ type PHP struct {
 	Name     string               `json:"name"`
 	Version  string               `json:"version"`
 	Type     string               `json:"type"`
+	PURL     string               `json:"purl,omitempty"`
 	Source   string               `json:"source"`
 	Provider string               `json:"provider,omitempty"`
 	SAPI     string               `json:"sapi"`
@@ -85,11 +89,17 @@ type Distro struct {
 
 // Image describes what was scanned.
 type Image struct {
-	Input          string `json:"input"`
-	ImageID        string `json:"imageID,omitempty"`
-	ManifestDigest string `json:"manifestDigest,omitempty"`
-	Architecture   string `json:"architecture,omitempty"`
-	Created        string `json:"created,omitempty"`
+	Input string `json:"input"`
+	// SourceType is Syft's source type: "image", "directory" or "file".
+	SourceType string `json:"sourceType,omitempty"`
+	// Tags and RepoDigests come from the image metadata. A repo digest
+	// (repo@sha256:...) shows which registry the image was pulled from.
+	Tags           []string `json:"tags,omitempty"`
+	RepoDigests    []string `json:"repoDigests,omitempty"`
+	ImageID        string   `json:"imageID,omitempty"`
+	ManifestDigest string   `json:"manifestDigest,omitempty"`
+	Architecture   string   `json:"architecture,omitempty"`
+	Created        string   `json:"created,omitempty"`
 	// BuiltBeforeFix is true when the image was created before the fixed releases.
 	BuiltBeforeFix *bool  `json:"builtBeforeFix,omitempty"`
 	ServingHint    string `json:"servingHint,omitempty"`
@@ -180,7 +190,7 @@ func Find(doc *syftjson.Document) []PHP {
 		key := a.Type + "|" + a.Name + "|" + a.Version
 		p := byKey[key]
 		if p == nil {
-			p = &PHP{Name: a.Name, Version: a.Version, Type: a.Type, Source: source, Provider: provider}
+			p = &PHP{Name: a.Name, Version: a.Version, Type: a.Type, PURL: a.PURL, Source: source, Provider: provider}
 			byKey[key] = p
 			order = append(order, key)
 		}
@@ -325,8 +335,10 @@ func Evaluate(in Inputs) Report {
 
 	// Image and distro.
 	r.Image.Input = in.Input
+	r.Image.SourceType = doc.Source.Type
 	md, cfg := doc.Image()
 	if md != nil {
+		r.Image.Tags, r.Image.RepoDigests = md.Tags, md.RepoDigests
 		r.Image.ImageID = md.ImageID
 		r.Image.ManifestDigest = md.ManifestDigest
 		r.Image.Architecture = md.Architecture
@@ -463,11 +475,11 @@ func judge(p PHP, cve string, in Inputs, support advisory.DistroSupport, builtBe
 				res.Why += fmt.Sprintf(" (fixed in %s)", st.FixVersion)
 			}
 		default:
-			res.Verdict = FixedByDistroBackport
+			res.Verdict, res.Unconfirmed = FixedByDistroBackport, true
 			res.Why = fmt.Sprintf("version %s looks old, but the %s security data has no open match for it (feed coverage not checked)", p.Version, distro)
 		}
 		if dbStale {
-			res.Verdict = DataStale
+			res.Verdict, res.Unconfirmed = DataStale, false
 			res.Why += "; Grype's database is out of date"
 		}
 	}

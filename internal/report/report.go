@@ -1,4 +1,4 @@
-// Package report renders a verdict report as a table or JSON.
+// Package report renders a verdict report as a table, JSON, SARIF or OpenVEX.
 package report
 
 import (
@@ -8,6 +8,7 @@ import (
 	"sort"
 	"strings"
 	"text/tabwriter"
+	"unicode"
 
 	"github.com/yusufyildiz34/whichphp/internal/advisory"
 	"github.com/yusufyildiz34/whichphp/internal/phpini"
@@ -21,34 +22,69 @@ func JSON(w io.Writer, r verdict.Report) error {
 	return enc.Encode(r)
 }
 
+// errWriter remembers the first write error, so Table can report it once.
+type errWriter struct {
+	w   io.Writer
+	err error
+}
+
+func (e *errWriter) Write(p []byte) (int, error) {
+	if e.err != nil {
+		return 0, e.err
+	}
+	n, err := e.w.Write(p)
+	if err != nil {
+		e.err = err
+	}
+	return n, err
+}
+
+// clean makes text that comes from the image safe to print: control characters,
+// including newlines, become "?", and a leading "::" becomes "?:". A CI log reads a
+// line that starts with "::" as a workflow command, so a crafted package name must
+// neither start a new line nor begin one.
+func clean(s string) string {
+	s = strings.Map(func(r rune) rune {
+		if unicode.IsControl(r) || r == '\u2028' || r == '\u2029' {
+			return '?'
+		}
+		return r
+	}, s)
+	if strings.HasPrefix(s, "::") {
+		s = "?" + s[1:]
+	}
+	return s
+}
+
 // Table writes a human-readable report.
-func Table(w io.Writer, r verdict.Report) {
-	fmt.Fprintf(w, "Image:   %s\n", r.Image.Input)
+func Table(out io.Writer, r verdict.Report) error {
+	w := &errWriter{w: out}
+	fmt.Fprintf(w, "Image:   %s\n", clean(imageLabel(r)))
 	if r.Image.ManifestDigest != "" {
-		fmt.Fprintf(w, "Digest:  %s", r.Image.ManifestDigest)
+		fmt.Fprintf(w, "Digest:  %s", clean(r.Image.ManifestDigest))
 		if r.Image.Architecture != "" {
-			fmt.Fprintf(w, " (%s)", r.Image.Architecture)
+			fmt.Fprintf(w, " (%s)", clean(r.Image.Architecture))
 		}
 		fmt.Fprintln(w)
 	}
 	if r.Distro.ID != "" {
-		fmt.Fprintf(w, "Distro:  %s %s (%s)\n", r.Distro.ID, r.Distro.Version, r.Distro.Support)
+		fmt.Fprintf(w, "Distro:  %s %s (%s)\n", clean(r.Distro.ID), clean(r.Distro.Version), r.Distro.Support)
 	}
 	if r.Image.Created != "" {
 		built := ""
 		if r.Image.BuiltBeforeFix != nil && *r.Image.BuiltBeforeFix {
 			built = ", before the Oct 21, 2026 fixes"
 		}
-		fmt.Fprintf(w, "Created: %s%s\n", r.Image.Created, built)
+		fmt.Fprintf(w, "Created: %s%s\n", clean(r.Image.Created), built)
 	}
 	if r.Image.ServingHint != "" {
-		fmt.Fprintf(w, "Serves:  %s\n", r.Image.ServingHint)
+		fmt.Fprintf(w, "Serves:  %s\n", clean(r.Image.ServingHint))
 	}
 	fmt.Fprintln(w)
 
 	if len(r.PHP) == 0 {
 		fmt.Fprintln(w, "No PHP found in this image.")
-		return
+		return w.err
 	}
 
 	tw := tabwriter.NewWriter(w, 0, 0, 2, ' ', 0)
@@ -59,6 +95,9 @@ func Table(w io.Writer, r verdict.Report) {
 			src += " (" + p.Provider + ")"
 		}
 		cells := []string{p.Name, p.Version, src, p.SAPI}
+		for i := range cells {
+			cells[i] = strings.ReplaceAll(clean(cells[i]), "\t", " ")
+		}
 		for _, c := range advisory.CVEs {
 			cells = append(cells, string(p.CVEs[c].Verdict))
 		}
@@ -79,14 +118,14 @@ func Table(w io.Writer, r verdict.Report) {
 		}
 		sort.Strings(keys)
 		for _, why := range keys {
-			fmt.Fprintf(w, "  %s %s (%s): %s\n", p.Name, p.Version, strings.Join(reasons[why], ", "), why)
+			fmt.Fprintf(w, "  %s %s (%s): %s\n", clean(p.Name), clean(p.Version), strings.Join(reasons[why], ", "), clean(why))
 		}
 		if len(p.Paths) > 0 {
 			shown, more := p.Paths, ""
 			if len(shown) > 2 {
 				shown, more = shown[:2], fmt.Sprintf(" (+%d more)", len(p.Paths)-2)
 			}
-			fmt.Fprintf(w, "    evidence: %s%s\n", strings.Join(shown, ", "), more)
+			fmt.Fprintf(w, "    evidence: %s%s\n", clean(strings.Join(shown, ", ")), more)
 		}
 	}
 
@@ -99,8 +138,8 @@ func Table(w io.Writer, r verdict.Report) {
 		sort.Strings(names)
 		for _, n := range names {
 			s := r.Settings[n]
-			fmt.Fprintf(w, "  %s = %s: %s\n", n, s.Effective, s.Why)
-			if n == phpini.UploadProgress && s.Effective != "off" {
+			fmt.Fprintf(w, "  %s = %s: %s\n", n, s.Effective, clean(s.Why))
+			if n == phpini.UploadProgress && (s.Effective == "on" || s.Effective == "unknown") {
 				fmt.Fprintf(w, "    %s has no fix yet; turning this off server-wide is the mitigation.\n", advisory.MitigationCVE)
 			}
 		}
@@ -109,12 +148,13 @@ func Table(w io.Writer, r verdict.Report) {
 	if len(r.Notes) > 0 {
 		fmt.Fprintln(w, "\nNotes:")
 		for _, n := range r.Notes {
-			fmt.Fprintf(w, "  - %s\n", n)
+			fmt.Fprintf(w, "  - %s\n", clean(n))
 		}
 	}
 
 	fmt.Fprintf(w, "\nResult: %s\n", describe(r.Action))
 	fmt.Fprintln(w, "A verdict covers the PHP in this image only. It says nothing about earlier compromise.")
+	return w.err
 }
 
 func shortCVEs() []string {

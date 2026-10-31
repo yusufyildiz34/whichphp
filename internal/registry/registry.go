@@ -32,7 +32,7 @@ const acceptManifests = "application/vnd.oci.image.index.v1+json, " +
 type Ref struct {
 	Registry   string // host, e.g. registry-1.docker.io
 	Repository string // e.g. library/php
-	Tag        string // tag, or "" when Digest is set
+	Tag        string // tag; "" when only a digest was given
 	Digest     string
 }
 
@@ -65,12 +65,11 @@ func ParseRef(s string) (Ref, error) {
 			host, s = first, s[i+1:]
 		}
 	}
-	if r.Digest == "" {
-		if i := strings.LastIndex(s, ":"); i >= 0 && !strings.Contains(s[i:], "/") {
-			r.Tag, s = s[i+1:], s[:i]
-		} else {
-			r.Tag = "latest"
-		}
+	// A reference can carry both a tag and a digest (php:8.4-apache@sha256:...).
+	if i := strings.LastIndex(s, ":"); i >= 0 && !strings.Contains(s[i:], "/") {
+		r.Tag, s = s[i+1:], s[:i]
+	} else if r.Digest == "" {
+		r.Tag = "latest"
 	}
 	if host == "docker.io" || host == "index.docker.io" || host == "registry-1.docker.io" {
 		host = "registry-1.docker.io"

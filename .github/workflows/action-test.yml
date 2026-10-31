@@ -1,0 +1,93 @@
+name: Action
+
+# Runs the whichphp GitHub Action from this checkout against official php images: one
+# released before the PHP2Shell fix, one after it, and one that doesn't exist.
+on:
+  push:
+    branches: [main]
+    paths: ["action.yml", "cmd/**", "internal/**", "go.mod", ".github/workflows/action-test.yml"]
+  pull_request:
+    paths: ["action.yml", "cmd/**", "internal/**", "go.mod", ".github/workflows/action-test.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  test:
+    name: Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Pre-fix image, fail-on never
+        id: before
+        uses: ./
+        with:
+          image: php:8.4.26-apache
+          platform: linux/amd64
+          fail-on: never
+          sarif-file: before.sarif
+
+      - name: Pre-fix image, default fail-on
+        id: strict
+        continue-on-error: true
+        uses: ./
+        with:
+          image: php:8.4.26-apache
+          platform: linux/amd64
+          sarif-file: strict.sarif
+
+      - name: Fixed image
+        id: after
+        uses: ./
+        with:
+          image: php:8.4.27-apache
+          platform: linux/amd64
+          sarif-file: after.sarif
+
+      - name: Image that doesn't exist
+        id: missing
+        continue-on-error: true
+        uses: ./
+        with:
+          image: whichphp-test/does-not-exist:never
+          fail-on: never
+          sarif-file: missing.sarif
+
+      - name: Compare with the expected results
+        env:
+          BEFORE: ${{ steps.before.outputs.action }}
+          BEFORE_JSON: ${{ steps.before.outputs.json-file }}
+          STRICT: ${{ steps.strict.outcome }}
+          AFTER: ${{ steps.after.outputs.action }}
+          AFTER_JSON: ${{ steps.after.outputs.json-file }}
+          MISSING: ${{ steps.missing.outputs.action }}
+          MISSING_OUTCOME: ${{ steps.missing.outcome }}
+        run: |
+          set -euo pipefail
+          echo "pre-fix: $BEFORE; default fail-on: $STRICT; fixed: $AFTER; missing: $MISSING ($MISSING_OUTCOME)"
+          test "$BEFORE" = ACTION_NEEDED
+          test "$STRICT" = failure
+          test "$AFTER" = OK
+          test "$MISSING" = ERROR
+          test "$MISSING_OUTCOME" = failure
+          # Each step keeps its own report.
+          test "$BEFORE_JSON" != "$AFTER_JSON"
+          test "$(jq -r .action "$BEFORE_JSON")" = ACTION_NEEDED
+          test "$(jq -r .action "$AFTER_JSON")" = OK
+          # SARIF: the pre-fix image has errors for both CVEs, the fixed one none.
+          jq -e '[.runs[].results[] | select(.level == "error") | .ruleId] | unique == ["CVE-2026-109618", "CVE-2026-109619"]' before.sarif
+          jq -e '[.runs[].results[] | select(.level == "error")] | length == 0' after.sarif
+          # A failed scan leaves no SARIF behind to be uploaded by mistake.
+          test ! -e missing.sarif

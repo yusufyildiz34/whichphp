@@ -1,0 +1,283 @@
+name: whichphp
+description: Check whether the PHP inside a container image is fixed for PHP2Shell (CVE-2026-109618, CVE-2026-109619), without running the image.
+author: yusufyildiz34
+branding:
+  icon: shield
+  color: blue
+
+inputs:
+  image:
+    description: "Image to check: php:8.4-apache, ghcr.io/acme/app:1.2, an image built earlier in the job, or docker-archive:image.tar"
+    required: true
+  platform:
+    description: "Platform of a multi-arch image, e.g. linux/arm64"
+    default: ""
+  fail-on:
+    description: "When the step fails: action-needed (default), unknown (also when the evidence is inconclusive), or never. A scan error always fails."
+    default: action-needed
+  fail-on-mitigation:
+    description: "true to also fail when session.upload_progress is on, which leaves CVE-2026-115560 unmitigated"
+    default: "false"
+  sarif-file:
+    description: "Where to write the SARIF report"
+    default: whichphp.sarif
+  upload-sarif:
+    description: "true to upload the SARIF report to GitHub code scanning; the job needs security-events: write. Skipped on pull requests from forks."
+    default: "false"
+  category:
+    description: "Code scanning category. Defaults to one per image and platform, so several images can be uploaded from one workflow."
+    default: ""
+  syft-version:
+    description: "Syft release to install"
+    default: v1.55.0
+  grype-version:
+    description: "Grype release to install"
+    default: v0.121.0
+
+outputs:
+  action:
+    description: "OK, ACTION_NEEDED, UNKNOWN, NO_PHP, or ERROR when the image couldn't be checked"
+    value: ${{ steps.scan.outputs.action }}
+  exit-code:
+    description: "whichphp's exit code: 0 fixed or no PHP, 1 action needed, 2 unknown, 3 error"
+    value: ${{ steps.scan.outputs.exit-code }}
+  sarif-file:
+    description: "Path of the SARIF report"
+    value: ${{ inputs.sarif-file }}
+  json-file:
+    description: "Path of the full JSON report from this step"
+    value: ${{ steps.scan.outputs.json-file }}
+
+runs:
+  using: composite
+  steps:
+    # Every value from the workflow reaches the scripts through env, never through
+    # ${{ }} inside a script, so an image name can't inject shell code.
+    - name: Check the inputs
+      id: plan
+      shell: bash
+      env:
+        ACTION_REF: ${{ github.action_ref }}
+        FAIL_ON: ${{ inputs.fail-on }}
+        FAIL_ON_MITIGATION: ${{ inputs.fail-on-mitigation }}
+        UPLOAD_SARIF: ${{ inputs.upload-sarif }}
+        SYFT_VERSION: ${{ inputs.syft-version }}
+        GRYPE_VERSION: ${{ inputs.grype-version }}
+      run: |
+        set -euo pipefail
+        case "$FAIL_ON" in
+          action-needed|unknown|never) ;;
+          *) echo "::error::fail-on must be action-needed, unknown or never, not \"$FAIL_ON\""; exit 1 ;;
+        esac
+        for pair in "fail-on-mitigation=$FAIL_ON_MITIGATION" "upload-sarif=$UPLOAD_SARIF"; do
+          case "${pair#*=}" in
+            true|false) ;;
+            *) echo "::error::${pair%%=*} must be true or false"; exit 1 ;;
+          esac
+        done
+        for v in "$SYFT_VERSION" "$GRYPE_VERSION"; do
+          if [[ ! "$v" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Tool versions look like v1.2.3, not \"$v\""
+            exit 1
+          fi
+        done
+        case "$RUNNER_OS" in
+          Linux|macOS) ;;
+          *) echo "::error::The whichphp action runs on Linux and macOS runners."; exit 1 ;;
+        esac
+        # A release tag downloads that release; anything else builds from source.
+        if [[ "$ACTION_REF" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+          echo "release=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "release=false" >> "$GITHUB_OUTPUT"
+          # whichphp needs Go 1.24 or later; an older Go would fail or fetch a toolchain.
+          minor="$(go env GOVERSION 2> /dev/null | sed -n 's/^go1\.\([0-9]*\).*/\1/p')"
+          if [ "${minor:-0}" -ge 24 ]; then echo "have-go=true" >> "$GITHUB_OUTPUT"; fi
+        fi
+
+    # Only when building from source on a runner without Go (self-hosted, containers).
+    - name: Set up Go
+      if: ${{ steps.plan.outputs.release == 'false' && steps.plan.outputs.have-go != 'true' }}
+      uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+      with:
+        go-version: stable
+        cache: false
+
+    - name: Install whichphp, Syft and Grype
+      id: install
+      shell: bash
+      env:
+        ACTION_REF: ${{ github.action_ref }}
+        ACTION_PATH: ${{ github.action_path }}
+        RELEASE: ${{ steps.plan.outputs.release }}
+        SYFT_VERSION: ${{ inputs.syft-version }}
+        GRYPE_VERSION: ${{ inputs.grype-version }}
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        set -euo pipefail
+        case "$RUNNER_OS" in Linux) os=linux ;; macOS) os=darwin ;; esac
+        case "$RUNNER_ARCH" in
+          X64) arch=amd64 ;;
+          ARM64) arch=arm64 ;;
+          *) echo "::error::Unsupported runner architecture $RUNNER_ARCH."; exit 1 ;;
+        esac
+        # One directory per version set, so a second use in the same job reuses it.
+        # The tools stay off PATH and don't replace the job's own syft or grype.
+        key="${ACTION_REF:-local}-$SYFT_VERSION-$GRYPE_VERSION"
+        bin="$RUNNER_TEMP/whichphp-tools/${key//[^A-Za-z0-9._-]/_}"
+        echo "bin=$bin" >> "$GITHUB_OUTPUT"
+        if [ -x "$bin/whichphp" ] && [ -x "$bin/syft" ] && [ -x "$bin/grype" ]; then
+          echo "Reusing the tools installed earlier in this job."
+          exit 0
+        fi
+        mkdir -p "$bin"
+        work="$(mktemp -d)"
+
+        if [ "$RELEASE" = true ]; then
+          name="whichphp_${ACTION_REF#v}_${os}_${arch}"
+          base="https://github.com/yusufyildiz34/whichphp/releases/download/$ACTION_REF"
+          curl -sSfL -o "$work/$name.tar.gz" "$base/$name.tar.gz"
+          curl -sSfL -o "$work/SHA256SUMS" "$base/SHA256SUMS"
+          awk -v f="$name.tar.gz" '$2 == f' "$work/SHA256SUMS" > "$work/sum"
+          if [ ! -s "$work/sum" ]; then echo "::error::$name.tar.gz isn't in SHA256SUMS"; exit 1; fi
+          if command -v sha256sum > /dev/null; then
+            (cd "$work" && sha256sum -c sum)
+          else
+            (cd "$work" && shasum -a 256 -c sum)
+          fi
+          # The checksum file comes from the same place as the archive, so also check
+          # the signed provenance: built by this repo's release workflow, from this tag.
+          if gh attestation verify --help 2> /dev/null | grep -q -- '--source-ref'; then
+            gh attestation verify "$work/$name.tar.gz" --repo yusufyildiz34/whichphp \
+              --signer-workflow yusufyildiz34/whichphp/.github/workflows/release.yml \
+              --source-ref "refs/tags/$ACTION_REF"
+          else
+            echo "::warning::This runner's gh is missing or too old to verify build provenance; only the checksum was checked."
+          fi
+          tar -xzf "$work/$name.tar.gz" -C "$work"
+          mv "$work/$name/whichphp" "$bin/whichphp"
+        else
+          (cd "$ACTION_PATH" && CGO_ENABLED=0 GOTOOLCHAIN=local go build -trimpath -buildvcs=false \
+            -ldflags "-X main.version=${ACTION_REF:-dev}" -o "$bin/whichphp" ./cmd/whichphp)
+        fi
+        # The token was only for the provenance check; the code below doesn't need it.
+        unset GH_TOKEN
+
+        # The install scripts come from the tool's release tag, not a moving branch, and
+        # check the archive they download against the release checksums.
+        curl -sSfL "https://raw.githubusercontent.com/anchore/syft/$SYFT_VERSION/install.sh" | sh -s -- -b "$bin" "$SYFT_VERSION"
+        curl -sSfL "https://raw.githubusercontent.com/anchore/grype/$GRYPE_VERSION/install.sh" | sh -s -- -b "$bin" "$GRYPE_VERSION"
+        "$bin/grype" db update
+        "$bin/whichphp" version
+        rm -rf "$work"
+
+    - name: Check the image
+      id: scan
+      shell: bash
+      env:
+        BIN: ${{ steps.install.outputs.bin }}
+        IMAGE: ${{ inputs.image }}
+        PLATFORM: ${{ inputs.platform }}
+        SARIF_FILE: ${{ inputs.sarif-file }}
+        FAIL_ON_MITIGATION: ${{ inputs.fail-on-mitigation }}
+        CATEGORY: ${{ inputs.category }}
+      run: |
+        # No -e: whichphp's exit code is the result, not a failure of this step.
+        set +e -uo pipefail
+        out="$(mktemp -d "$RUNNER_TEMP/whichphp.XXXXXX")"
+        json="$out/report.json"
+        rm -f "$SARIF_FILE"
+        export WHICHPHP_SYFT="$BIN/syft" WHICHPHP_GRYPE="$BIN/grype"
+
+        args=(image -o table -o "sarif=$SARIF_FILE" -o "json=$json")
+        if [ -n "$PLATFORM" ]; then args+=(--platform "$PLATFORM"); fi
+        if [ "$FAIL_ON_MITIGATION" = true ]; then args+=(--fail-on-mitigation); fi
+        args+=(-- "$IMAGE")
+
+        # Text from the image is printed, so stop the runner from reading it as
+        # workflow commands while it is.
+        token="$(od -An -N16 -tx1 /dev/urandom | tr -d ' \n')"
+        echo "::stop-commands::$token"
+        "$BIN/whichphp" "${args[@]}" > "$out/report.txt" 2> "$out/stderr.txt"
+        code=$?
+        cat "$out/report.txt"
+        cat "$out/stderr.txt" >&2
+        echo "::$token::"
+
+        action=ERROR
+        case "$code" in
+          0|1|2)
+            if [ -s "$json" ]; then
+              if command -v jq > /dev/null; then
+                action="$(jq -r '.action // "ERROR"' "$json")"
+              else
+                action="$(sed -n 's/^  "action": "\([A-Z_]*\)",\{0,1\}$/\1/p' "$json" | head -n 1)"
+              fi
+            fi ;;
+        esac
+        case "$action" in OK|ACTION_NEEDED|UNKNOWN|NO_PHP) ;; *) action=ERROR ;; esac
+
+        # The default category leaves out the tag and digest, so an image tagged per
+        # commit keeps one code scanning category and its alerts can close.
+        if [ -z "$CATEGORY" ]; then
+          repo="$IMAGE"
+          for scheme in registry: docker: podman: containerd:; do repo="${repo#"$scheme"}"; done
+          repo="${repo%%@*}"
+          last="${repo##*/}"
+          if [[ "$last" == *:* ]]; then repo="${repo%:*}"; fi
+          CATEGORY="whichphp/$repo${PLATFORM:+/$PLATFORM}"
+        fi
+        {
+          echo "exit-code=$code"
+          echo "action=$action"
+          echo "json-file=$json"
+          echo "category=$(printf '%s' "$CATEGORY" | tr -d '\r\n')"
+        } >> "$GITHUB_OUTPUT"
+
+        escape() { sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g'; }
+        {
+          printf '### whichphp: <code>%s</code>\n\n' "$(printf '%s%s' "$IMAGE" "${PLATFORM:+ ($PLATFORM)}" | tr -d '\r\n' | escape)"
+          echo "<pre>"
+          escape < "$out/report.txt"
+          if [ "$action" = ERROR ]; then
+            echo "whichphp couldn't check this image (exit $code):"
+            tail -n 20 "$out/stderr.txt" | escape
+          fi
+          echo "</pre>"
+        } >> "$GITHUB_STEP_SUMMARY"
+        exit 0
+
+    - name: Upload the SARIF report
+      if: ${{ inputs.upload-sarif == 'true' && steps.scan.outputs.action != 'ERROR' && github.event.pull_request.head.repo.fork != true }}
+      uses: github/codeql-action/upload-sarif@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1
+      with:
+        sarif_file: ${{ inputs.sarif-file }}
+        category: ${{ steps.scan.outputs.category }}
+
+    - name: Apply fail-on
+      shell: bash
+      env:
+        IMAGE: ${{ inputs.image }}
+        ACTION: ${{ steps.scan.outputs.action }}
+        CODE: ${{ steps.scan.outputs.exit-code }}
+        FAIL_ON: ${{ inputs.fail-on }}
+      run: |
+        name="$(printf '%s' "$IMAGE" | tr -d '\r\n')"
+        case "$ACTION" in
+          OK|NO_PHP) ;;
+          ACTION_NEEDED)
+            if [ "$FAIL_ON" != never ]; then
+              echo "::error::The PHP in $name needs action: rebuild or replace the image."
+              exit 1
+            fi
+            echo "::warning::The PHP in $name needs action: rebuild or replace the image." ;;
+          UNKNOWN)
+            if [ "$FAIL_ON" = unknown ]; then
+              echo "::error::whichphp couldn't prove whether the PHP in $name is fixed."
+              exit 1
+            fi
+            echo "::warning::whichphp couldn't prove whether the PHP in $name is fixed." ;;
+          *)
+            echo "::error::whichphp couldn't check $name (exit $CODE). The job summary has the details."
+            exit 1 ;;
+        esac

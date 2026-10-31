@@ -1,0 +1,6 @@
+rules:
+  # The action test workflow checks out the repository and runs the action as
+  # "uses: ./", which is what it is testing.
+  self-repository:
+    ignore:
+      - action-test.yml

@@ -5,6 +5,7 @@
 //   - PHP release announcements for 8.5.12, 8.4.27, 8.3.36 and 8.2.35 (October 21, 2026).
 //   - NVD CPE ranges, analyzed October 28–29, 2026: CVE-2026-109618 from 7.3.0,
 //     CVE-2026-109619 from 5.4.0.
+//   - CVSS v4.0 9.2 for both CVEs, from PHP's announcement (php.net, October 21, 2026).
 //   - CVE-2026-115560 has no fix yet; the mitigation is session.upload_progress.enabled=0.
 package advisory
 
@@ -12,6 +13,14 @@ import "time"
 
 // CVEs are the PHP2Shell vulnerabilities whichphp gives verdicts for.
 var CVEs = []string{"CVE-2026-109618", "CVE-2026-109619"}
+
+// Severity is the CVSS v4.0 base score that PHP, the CVE Numbering Authority, gave
+// each CVE in its October 21, 2026 announcement. NVD's CVSS 3.1 scores are 9.8 for
+// CVE-2026-109618 and 8.1 for CVE-2026-109619.
+var Severity = map[string]string{
+	"CVE-2026-109618": "9.2",
+	"CVE-2026-109619": "9.2",
+}
 
 // MitigationCVE is the related, still-unfixed CVE whose mitigation whichphp checks.
 const MitigationCVE = "CVE-2026-115560"

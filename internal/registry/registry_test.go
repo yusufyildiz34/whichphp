@@ -19,6 +19,7 @@ func TestParseRef(t *testing.T) {
 		{"localhost:5000/app", "localhost:5000", "app", "latest", ""},
 		{"php@sha256:abc", "registry-1.docker.io", "library/php", "", "sha256:abc"},
 		{"registry:php:8.5-fpm", "registry-1.docker.io", "library/php", "8.5-fpm", ""},
+		{"php:8.4-apache@sha256:abc", "registry-1.docker.io", "library/php", "8.4-apache", "sha256:abc"},
 	}
 	for _, c := range cases {
 		r, err := ParseRef(c.in)

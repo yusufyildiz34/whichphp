@@ -65,7 +65,7 @@ func runIndex(args []string, stdout, stderr io.Writer) int {
 	cache := feedCache{}
 	scanOne := func(ctx context.Context, ref, platform string) (verdict.Report, error) {
 		f := newImageFlags(io.Discard)
-		f.output, f.platform, f.maxDBAgeDays, f.verbose = "json", platform, *maxDBAge, *verbose
+		f.quiet, f.platform, f.maxDBAgeDays, f.verbose = true, platform, *maxDBAge, *verbose
 		// Pull straight from the registry. Through the Docker daemon, every image would
 		// stay in its storage, and a full run fills a CI runner's disk.
 		return scan(ctx, f, "registry:"+ref, stderr, cache)

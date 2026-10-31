@@ -65,10 +65,12 @@ func (t Tools) SBOM(ctx context.Context, source, platform, dir string) (string, 
 		return "", err
 	}
 	out := filepath.Join(dir, "sbom.syft.json")
-	args := []string{"scan", source, "-c", cfg, "-o", "json=" + out}
+	args := []string{"scan", "-c", cfg, "-o", "json=" + out}
 	if platform != "" {
 		args = append(args, "--platform", platform)
 	}
+	// "--" so a source can never be read as a Syft flag.
+	args = append(args, "--", source)
 	// No -q: quiet mode also hides the error message. Output is captured either way.
 	if _, err := t.run(ctx, t.Syft, args...); err != nil {
 		return "", fmt.Errorf("syft failed: %w", err)

@@ -53,7 +53,7 @@ whether CVE-2026-109618 and CVE-2026-109619 are fixed, and why.</p>
 > **CVE-2026-115560 is still unfixed.** Until PHP's next regular release, set `session.upload_progress.enabled = 0` server-wide.
 
 > [!NOTE]
-> whichphp is pre-release. `whichphp image` works today if you [build it from source](#quick-start), and the [public index](https://yusufyildiz34.github.io/whichphp/) updates daily. Release binaries ship on November 4, 2026.
+> whichphp is pre-release. `whichphp image` and the [GitHub Action](#use-it-in-ci) work today if you [install from source](#quick-start), and the [public index](https://yusufyildiz34.github.io/whichphp/) updates daily. Release binaries ship on November 4, 2026.
 
 ## Why whichphp
 
@@ -69,19 +69,30 @@ Every verdict comes with its evidence: which binary, which package release, whic
 
 ## Quick start
 
-You need [Syft](https://github.com/anchore/syft) and [Grype](https://github.com/anchore/grype) on your `PATH`, and Go 1.22 or later to build whichphp.
+whichphp needs [Syft](https://github.com/anchore/syft) and [Grype](https://github.com/anchore/grype) on your `PATH`. Install whichphp with Go 1.24 or later:
 
 ```sh
-git clone https://github.com/yusufyildiz34/whichphp && cd whichphp
-go build -o whichphp ./cmd/whichphp
+go install github.com/yusufyildiz34/whichphp/cmd/whichphp@latest
+```
 
-./whichphp image php:8.4-apache
-./whichphp image --platform linux/arm64 wordpress:latest
-./whichphp image -o json docker-archive:image.tar
+From November 4, the [releases page](https://github.com/yusufyildiz34/whichphp/releases) also has binaries for Linux, macOS and Windows on amd64 and arm64, with SHA256 checksums and signed build provenance. Check a download before you run it:
+
+```sh
+sha256sum --ignore-missing -c SHA256SUMS
+gh attestation verify whichphp_*_linux_amd64.tar.gz --repo yusufyildiz34/whichphp
+```
+
+Then check an image:
+
+```sh
+whichphp image php:8.4-apache
+whichphp image --platform linux/arm64 wordpress:latest
+whichphp image -o table -o sarif=whichphp.sarif -o openvex=whichphp.vex.json ghcr.io/acme/app:1.2
+whichphp image docker-archive:image.tar
 ```
 
 ```text
-$ ./whichphp image php:8.4.26-apache
+$ whichphp image php:8.4.26-apache
 Image:   php:8.4.26-apache
 Distro:  debian 13.7 (supported)
 Serves:  apache mod_php
@@ -105,11 +116,58 @@ Result: ACTION NEEDED: rebuild or replace this image (exit 1)
 | Flag | What it does |
 |---|---|
 | `--platform linux/arm64` | Check one architecture of a multi-arch image |
-| `-o json` | Machine-readable output for CI |
+| `-o <format>[=<file>]` | `table` (default), `json`, `sarif` for code scanning, or `openvex`. Repeat it to write several formats in one run; only one can go to stdout. Files are written only when the run succeeds |
+| `--vex-author "Acme Security"` | Who issues the OpenVEX document; VEX consumers trust statements by their author |
 | `--sbom syft.json` / `--grype-json grype.json` | Reuse output you already have instead of scanning again |
 | `--no-grype` | Skip the vulnerability database; distro packages then get `UNKNOWN` |
 | `--fail-on-mitigation` | Also exit 1 when `session.upload_progress` is on |
 | `--max-db-age 7` | Days after which Grype's database counts as stale |
+
+</details>
+
+## Use it in CI
+
+The GitHub Action checks an image, writes the result to the job summary, and fails the step when the image needs action. It can also send the findings to GitHub code scanning.
+
+```yaml
+jobs:
+  whichphp:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write # only for upload-sarif
+      actions: read # only for upload-sarif in a private repository
+    steps:
+      - uses: yusufyildiz34/whichphp@v0.1.0 # until the first release, use @main
+        with:
+          image: ghcr.io/acme/app:latest
+          upload-sarif: true
+```
+
+It also works on an image built earlier in the same job, since Syft reads the local Docker daemon.
+
+<details>
+<summary><b>Inputs and outputs</b></summary>
+<br>
+
+| Input | Default | What it does |
+|---|---|---|
+| `image` | required | The image to check |
+| `platform` | | One architecture of a multi-arch image, e.g. `linux/arm64` |
+| `fail-on` | `action-needed` | `action-needed`, `unknown` (also fail when the evidence is inconclusive), or `never`. A scan error always fails |
+| `fail-on-mitigation` | `false` | Also fail when `session.upload_progress` is on |
+| `sarif-file` | `whichphp.sarif` | Where to write the SARIF report |
+| `upload-sarif` | `false` | Upload the report to code scanning; needs `security-events: write`. Skipped on pull requests from forks |
+| `category` | one per image | Code scanning category. The default, `whichphp/<repository>[/<platform>]`, leaves out the tag so per-commit tags keep their alerts together; set it when one workflow uploads several tags of the same image |
+| `syft-version`, `grype-version` | pinned | Tool versions to install |
+
+| Output | Value |
+|---|---|
+| `action` | `OK`, `ACTION_NEEDED`, `UNKNOWN`, `NO_PHP`, or `ERROR` |
+| `exit-code` | whichphp's exit code |
+| `sarif-file`, `json-file` | Paths of the reports |
+
+A release tag (`@v0.1.0`) downloads that release and checks both its checksum and its signed build provenance. A branch or commit builds whichphp from source, setting up Go first if the runner has none. The tools stay out of your job's `PATH`.
 
 </details>
 
@@ -151,6 +209,8 @@ whichphp gives one verdict per CVE.
 | `3` | Error |
 
 An `UNKNOWN` is an honest answer, not a failure, and whichphp never turns it into "safe."
+
+**In SARIF and OpenVEX.** Vulnerable verdicts are SARIF errors and uncertain ones are warnings; fixed PHP produces no result. OpenVEX says `fixed` or `not_affected` only on positive evidence, so a VEX consumer never hides a scanner's finding because whichphp found nothing: uncertain verdicts, unconfirmed backports and images with no PHP found are `under_investigation`.
 
 ## How it works
 
@@ -271,9 +331,11 @@ No. The old version is vulnerable. Known regressions in 8.4.27 and 8.5.12 are be
 
 - [x] `whichphp image`: every PHP binary and SAPI, backport-aware verdicts, effective `php.ini` settings
 - [x] A daily public index for amd64 and arm64, with shields.io badges
-- [ ] Release binaries (November 4, 2026)
+- [x] SARIF and OpenVEX output
+- [x] A GitHub Action, with code scanning upload
+- [ ] Release binaries with checksums and signed build provenance (first release November 4, 2026)
 - [ ] `whichphp cluster`: what each pod actually runs and what to redeploy (v0.2)
-- [ ] SARIF and OpenVEX output, a GitHub Action, and per-tag "tell me when it's fixed" feeds (v0.2)
+- [ ] Per-tag "tell me when it's fixed" feeds (v0.2)
 - [ ] Fixed-build data for third-party packagers: Sury, Remi, GetPageSpeed, TuxCare, Freexian, CloudLinux, cPanel
 - [ ] CycloneDX export, a diff mode, and base-image lineage
 

@@ -150,6 +150,29 @@ func TestUbuntuBackport(t *testing.T) {
 	}
 }
 
+// A backport counts as confirmed only when the feed is known to cover the CVE; VEX
+// output relies on this to avoid claiming "fixed" from the absence of a match.
+func TestBackportConfirmation(t *testing.T) {
+	d := doc(t, "ubuntu", "24.04", "2026-10-25T00:00:00Z", nil, ubuntuBackport())
+	listed := map[string]grypejson.FeedStatus{cve18: {Listed: true}, cve19: {Listed: true}}
+	cases := []struct {
+		name        string
+		in          Inputs
+		verdict     Verdict
+		unconfirmed bool
+	}{
+		{"feed checked", Inputs{Doc: d, GrypeRan: true, Feed: listed, Now: now}, FixedByDistroBackport, false},
+		{"feed not checked", Inputs{Doc: d, GrypeRan: true, Now: now}, FixedByDistroBackport, true},
+		{"database stale", Inputs{Doc: d, GrypeRan: true, Now: now, DBBuilt: now.Add(-10 * 24 * time.Hour), MaxDBAge: 7 * 24 * time.Hour}, DataStale, false},
+	}
+	for _, c := range cases {
+		res := Evaluate(c.in).PHP[0].CVEs[cve18]
+		if res.Verdict != c.verdict || res.Unconfirmed != c.unconfirmed {
+			t.Errorf("%s: got %s, unconfirmed %v", c.name, res.Verdict, res.Unconfirmed)
+		}
+	}
+}
+
 func TestUbuntuFeedDoesNotListCVE(t *testing.T) {
 	d := doc(t, "ubuntu", "24.04", "2026-10-25T00:00:00Z", nil, ubuntuBackport())
 	feed := map[string]grypejson.FeedStatus{cve18: {Listed: false}, cve19: {Listed: false}}

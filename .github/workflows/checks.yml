@@ -1,0 +1,95 @@
+name: Checks
+
+# Static checks for the workflows, the composite action and the Go code. The tools are
+# installed at pinned versions through the Go module proxy, whose checksum database
+# verifies each download. The weekly run catches new Go advisories in unchanged code.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "41 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  ACTIONLINT_VERSION: v1.7.12
+  GOVULNCHECK_VERSION: v1.9.0
+  STATICCHECK_VERSION: "2026.2.2"
+
+jobs:
+  actions:
+    name: Workflows and action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: stable
+          cache: false
+
+      # actionlint also runs shellcheck on every run: block in the workflows.
+      - name: actionlint
+        run: |
+          go install "github.com/rhysd/actionlint/cmd/actionlint@$ACTIONLINT_VERSION"
+          "$(go env GOPATH)/bin/actionlint" -color
+
+      # actionlint doesn't read action.yml, so shellcheck its run: blocks directly, and
+      # make sure none of them expands an expression (values must come through env).
+      - name: shellcheck the composite action
+        run: |
+          set -euo pipefail
+          dir="$RUNNER_TEMP/action-steps"
+          mkdir -p "$dir"
+          expr='$''{{'
+          n=$(yq -r '.runs.steps | length' action.yml)
+          for i in $(seq 0 $((n - 1))); do
+            body=$(yq -r ".runs.steps[$i].run // \"\"" action.yml)
+            [ -z "$body" ] && continue
+            if grep -qF "$expr" <<< "$body"; then
+              echo "::error file=action.yml::step $i uses an expression inside run:; pass values through env instead"
+              exit 1
+            fi
+            printf '#!/usr/bin/env bash\n%s\n' "$body" > "$dir/step$i.sh"
+          done
+          shellcheck --severity=style "$dir"/*.sh
+
+      - name: zizmor
+        uses: zizmorcore/zizmor-action@53290badfa369cb0bf7ad16342cb62c2fa47ac7b # v0.8.0
+        with:
+          advanced-security: false
+          persona: regular
+
+  go:
+    name: Go vulnerabilities and static analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # The newest Go: release binaries are built with it, so its standard library is
+      # what govulncheck should judge.
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: stable
+          cache: false
+
+      - name: govulncheck
+        run: |
+          go install "golang.org/x/vuln/cmd/govulncheck@$GOVULNCHECK_VERSION"
+          "$(go env GOPATH)/bin/govulncheck" ./...
+
+      - name: staticcheck
+        run: |
+          go install "honnef.co/go/tools/cmd/staticcheck@$STATICCHECK_VERSION"
+          "$(go env GOPATH)/bin/staticcheck" ./...
