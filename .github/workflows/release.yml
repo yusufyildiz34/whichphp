@@ -3,7 +3,8 @@ name: Release
 # Pushing a version tag (git tag v0.1.0 && git push origin v0.1.0) builds whichphp for
 # Linux, macOS and Windows on amd64 and arm64 and publishes a GitHub release with the
 # archives, SHA256 checksums and signed build provenance. Verify a download with:
-#   gh attestation verify whichphp_0.1.0_linux_amd64.tar.gz --repo yusufyildiz34/whichphp
+#   gh attestation verify whichphp_0.1.0_linux_amd64.tar.gz --repo yusufyildiz34/whichphp \
+#     --signer-workflow yusufyildiz34/whichphp/.github/workflows/release.yml
 #
 # The build job only reads the repository; the publish job, which can write, runs no
 # repository code. A tag with a suffix (v0.2.0-rc.1) becomes a pre-release.

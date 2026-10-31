@@ -47,6 +47,9 @@ outputs:
   json-file:
     description: "Path of the full JSON report from this step"
     value: ${{ steps.scan.outputs.json-file }}
+  install:
+    description: "How whichphp was installed: release-verified (a release archive whose checksum and signed build provenance were checked), release-checksum-only (the runner's gh couldn't check provenance), or source"
+    value: ${{ steps.install.outputs.install }}
 
 runs:
   using: composite
@@ -63,7 +66,6 @@ runs:
         UPLOAD_SARIF: ${{ inputs.upload-sarif }}
         SYFT_VERSION: ${{ inputs.syft-version }}
         GRYPE_VERSION: ${{ inputs.grype-version }}
-        GH_TOKEN: ${{ github.token }}
       run: |
         set -euo pipefail
         case "$FAIL_ON" in
@@ -100,12 +102,18 @@ runs:
             why="gh isn't installed"
           elif ! grep -q -- '--source-digest' <<< "$help" || ! grep -q -- '--source-ref' <<< "$help"; then
             why="this runner's gh can't verify which commit a release was built from"
-          elif ! tags="$(gh api --hostname github.com --paginate \
-            "repos/yusufyildiz34/whichphp/tags?per_page=100" \
-            --jq ".[] | select(.commit.sha == \"$ACTION_REF\") | .name")"; then
+          elif ! command -v git > /dev/null; then
+            why="git isn't installed"
+          # Public refs, read with no token, so this also works on GitHub Enterprise
+          # runners. The tag is only a hint: the install step still checks that the
+          # release was built from exactly this commit. Run outside the workspace, so a
+          # checkout's stored credentials aren't sent.
+          elif ! refs="$(GIT_TERMINAL_PROMPT=0 git -C "$RUNNER_TEMP" ls-remote --tags \
+            https://github.com/yusufyildiz34/whichphp 'v*')"; then
             why="the tag lookup failed"
           else
-            tag="$(grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' <<< "$tags" | head -n 1 || true)"
+            tag="$(awk -v s="$ACTION_REF" '$1 "" == s { sub("^refs/tags/", "", $2); sub("\\^\\{\\}$", "", $2); print $2 }' <<< "$refs" |
+              grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -n 1 || true)"
             if [ -z "$tag" ]; then why="no release tag points at this commit"; fi
           fi
         fi
@@ -150,8 +158,12 @@ runs:
         SYFT_VERSION: ${{ inputs.syft-version }}
         GRYPE_VERSION: ${{ inputs.grype-version }}
         GH_TOKEN: ${{ github.token }}
+        SERVER_URL: ${{ github.server_url }}
       run: |
         set -euo pipefail
+        # Releases live on github.com. On GitHub Enterprise the job's token isn't valid
+        # there, so don't send it (gh would also pick up a GITHUB_TOKEN the job sets).
+        if [ "$SERVER_URL" != "https://github.com" ]; then unset GH_TOKEN GITHUB_TOKEN; fi
         case "$RUNNER_OS" in Linux) os=linux ;; macOS) os=darwin ;; esac
         case "$RUNNER_ARCH" in
           X64) arch=amd64 ;;
@@ -163,8 +175,9 @@ runs:
         key="${ACTION_REF:-local}-$SYFT_VERSION-$GRYPE_VERSION"
         bin="$RUNNER_TEMP/whichphp-tools/${key//[^A-Za-z0-9._-]/_}"
         echo "bin=$bin" >> "$GITHUB_OUTPUT"
-        if [ -x "$bin/whichphp" ] && [ -x "$bin/syft" ] && [ -x "$bin/grype" ]; then
+        if [ -x "$bin/whichphp" ] && [ -x "$bin/syft" ] && [ -x "$bin/grype" ] && [ -s "$bin/.install" ]; then
           echo "Reusing the tools installed earlier in this job."
+          echo "install=$(head -n 1 "$bin/.install")" >> "$GITHUB_OUTPUT"
           exit 0
         fi
         mkdir -p "$bin"
@@ -185,6 +198,7 @@ runs:
           # The checksum file comes from the same place as the archive, so also check
           # the signed provenance: built by this repo's release workflow, from this tag,
           # and, when the action is pinned by SHA, from exactly that commit.
+          install=release-checksum-only
           help="$(gh attestation verify --help 2> /dev/null || true)"
           digest=()
           if [[ "$ACTION_REF" =~ ^[0-9a-f]{40}$ ]]; then
@@ -199,9 +213,33 @@ runs:
           host=()
           if grep -q -- '--hostname' <<< "$help"; then host=(--hostname github.com); fi
           if grep -q -- '--source-ref' <<< "$help"; then
-            gh attestation verify "$work/$name.tar.gz" --repo yusufyildiz34/whichphp \
-              --signer-workflow yusufyildiz34/whichphp/.github/workflows/release.yml \
-              --source-ref "refs/tags/$TAG" ${digest[@]+"${digest[@]}"} ${host[@]+"${host[@]}"}
+            policy=(--repo yusufyildiz34/whichphp
+              --signer-workflow yusufyildiz34/whichphp/.github/workflows/release.yml
+              --source-ref "refs/tags/$TAG" ${digest[@]+"${digest[@]}"} ${host[@]+"${host[@]}"})
+            # First with the Sigstore bundle published with the release, which needs no
+            # GitHub API and no token; then, if that fails or can't run (say Sigstore's
+            # trust root is unreachable), with GitHub's attestation API. Both check the
+            # same signature against the same identity, so either one passing proves the
+            # same thing, and the step fails if neither does.
+            verified=false
+            if curl -sSfL --retry 3 -o "$work/bundle.json" "$base/whichphp_${TAG#v}.sigstore.json"; then
+              if gh attestation verify "$work/$name.tar.gz" --bundle "$work/bundle.json" "${policy[@]}"; then
+                verified=true
+              else
+                echo "::warning::The release's Sigstore bundle couldn't be verified here; checking the build provenance with GitHub's attestation API instead."
+              fi
+            else
+              echo "::notice::Couldn't download the release's Sigstore bundle; checking the build provenance with GitHub's attestation API instead."
+            fi
+            if [ "$verified" != true ] && ! gh attestation verify "$work/$name.tar.gz" "${policy[@]}"; then
+              hint=""
+              if [ "$SERVER_URL" != "https://github.com" ]; then
+                hint=" On GitHub Enterprise the bundle check needs github.com, release-assets.githubusercontent.com and tuf-repo-cdn.sigstore.dev (plus tuf-repo.github.com with gh older than 2.83); the attestation API fallback can't work there."
+              fi
+              echo "::error::The build provenance of $name.tar.gz couldn't be verified, so it wasn't installed.$hint"
+              exit 1
+            fi
+            install=release-verified
           else
             echo "::warning::This runner's gh is missing or too old to verify build provenance; only the checksum was checked. Pin the action by commit SHA to build from source instead."
           fi
@@ -210,15 +248,18 @@ runs:
         else
           (cd "$ACTION_PATH" && CGO_ENABLED=0 GOTOOLCHAIN=local go build -trimpath -buildvcs=false \
             -ldflags "-X main.version=${ACTION_REF:-dev}" -o "$bin/whichphp" ./cmd/whichphp)
+          install=source
         fi
         # The token was only for the provenance check; the code below doesn't need it.
-        unset GH_TOKEN
+        unset GH_TOKEN GITHUB_TOKEN
 
         # Release archives checked against SHA-256 hashes pinned in the script; no
         # downloaded script runs.
         bash "$ACTION_PATH/scripts/install-tools.sh" "$bin"
         "$bin/grype" db update
         "$bin/whichphp" version
+        echo "$install" > "$bin/.install"
+        echo "install=$install" >> "$GITHUB_OUTPUT"
         rm -rf "$work"
 
     - name: Check the image

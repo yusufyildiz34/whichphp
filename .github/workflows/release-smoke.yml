@@ -4,8 +4,9 @@ name: Release smoke test
 # the commit SHA of the latest release, with a read-only token. The action should find
 # the release tag for that commit, download the release archive, and check its checksum
 # and its signed build provenance (built by release.yml from exactly that commit)
-# before it scans anything. A source build would also pass the scans, so the last step
-# checks that the binary that ran is the release build. Dependabot moves the pin at its
+# before it scans anything. A source build would also pass the scans, so the comparison
+# step checks that the binary that ran is the release build, and the last step checks the
+# release's Sigstore bundle on its own, with no token. Dependabot moves the pin at its
 # first weekly run after a release, and its pull request runs this test against the new
 # release before the pin changes on main.
 on:
@@ -57,6 +58,7 @@ jobs:
           BEFORE: ${{ steps.before.outputs.action }}
           BEFORE_JSON: ${{ steps.before.outputs.json-file }}
           AFTER: ${{ steps.after.outputs.action }}
+          INSTALL: ${{ steps.before.outputs.install }}
         run: |
           set -euo pipefail
           echo "pre-fix: $BEFORE; fixed: $AFTER"
@@ -69,3 +71,29 @@ jobs:
             echo "::error::The action built whichphp from source instead of using the release."
             exit 1
           fi
+          # Releases after v0.1.0 say how they were installed; anything but a release
+          # whose provenance was checked is a failure.
+          echo "install: ${INSTALL:-(not reported by this release)}"
+          if { [ "$version" != v0.1.0 ] || [ -n "$INSTALL" ]; } && [ "$INSTALL" != release-verified ]; then
+            echo "::error::The release was installed as ${INSTALL:-(nothing reported)}, not release-verified."
+            exit 1
+          fi
+
+      # The action falls back to GitHub's attestation API when the bundle check fails,
+      # which would hide a broken bundle on github.com. Check the bundle on its own, with
+      # no token, the way a GitHub Enterprise runner would.
+      - name: Verify the release's Sigstore bundle without a token
+        env:
+          BEFORE_JSON: ${{ steps.before.outputs.json-file }}
+        run: |
+          set -euo pipefail
+          unset GH_TOKEN GITHUB_TOKEN
+          version="$(jq -r .version "$BEFORE_JSON")"
+          [[ "$version" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          base="https://github.com/yusufyildiz34/whichphp/releases/download/$version"
+          dir="$(mktemp -d)"
+          curl -sSfL --retry 3 -o "$dir/archive.tar.gz" "$base/whichphp_${version#v}_linux_amd64.tar.gz"
+          curl -sSfL --retry 3 -o "$dir/bundle.json" "$base/whichphp_${version#v}.sigstore.json"
+          gh attestation verify "$dir/archive.tar.gz" --bundle "$dir/bundle.json" --hostname github.com \
+            --repo yusufyildiz34/whichphp --signer-workflow yusufyildiz34/whichphp/.github/workflows/release.yml \
+            --source-ref "refs/tags/$version"

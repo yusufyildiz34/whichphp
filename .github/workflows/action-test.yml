@@ -100,6 +100,8 @@ jobs:
           AFTER_JSON: ${{ steps.after.outputs.json-file }}
           MISSING: ${{ steps.missing.outputs.action }}
           MISSING_OUTCOME: ${{ steps.missing.outcome }}
+          INSTALL_BEFORE: ${{ steps.before.outputs.install }}
+          INSTALL_AFTER: ${{ steps.after.outputs.install }}
         run: |
           set -euo pipefail
           echo "pre-fix: $BEFORE; default fail-on: $STRICT; fixed: $AFTER; missing: $MISSING ($MISSING_OUTCOME)"
@@ -108,6 +110,9 @@ jobs:
           test "$AFTER" = OK
           test "$MISSING" = ERROR
           test "$MISSING_OUTCOME" = failure
+          # uses: ./ always builds from source; later steps reuse that build.
+          test "$INSTALL_BEFORE" = source
+          test "$INSTALL_AFTER" = source
           # Each step keeps its own report.
           test "$BEFORE_JSON" != "$AFTER_JSON"
           test "$(jq -r .action "$BEFORE_JSON")" = ACTION_NEEDED

@@ -56,7 +56,7 @@ whether CVE-2026-109618 and CVE-2026-109619 are fixed, and why.</p>
 > **CVE-2026-115560 is still unfixed.** Until PHP's next regular release, set `session.upload_progress.enabled = 0` server-wide.
 
 > [!NOTE]
-> whichphp is new: v0.1.0 is its first release. [Report a wrong verdict](https://github.com/yusufyildiz34/whichphp/issues/new?template=wrong-verdict.yml) with evidence and it gets fixed in the next release and the next [index](https://yusufyildiz34.github.io/whichphp/) run.
+> whichphp is new: v0.1.0 was its first release. [Report a wrong verdict](https://github.com/yusufyildiz34/whichphp/issues/new?template=wrong-verdict.yml) with evidence and it gets fixed in the next release and the next [index](https://yusufyildiz34.github.io/whichphp/) run.
 
 ## Why whichphp
 
@@ -78,9 +78,11 @@ Download whichphp for Linux, macOS or Windows (amd64 or arm64) from the [latest 
 
 ```sh
 sha256sum --ignore-missing -c SHA256SUMS        # on macOS: shasum -a 256 --ignore-missing -c SHA256SUMS
-gh attestation verify whichphp_*_linux_amd64.tar.gz --repo yusufyildiz34/whichphp
+gh attestation verify whichphp_*_linux_amd64.tar.gz --repo yusufyildiz34/whichphp \
+  --signer-workflow yusufyildiz34/whichphp/.github/workflows/release.yml
 # or with the provenance bundle from the release, without GitHub's attestation API:
-gh attestation verify whichphp_*_linux_amd64.tar.gz --repo yusufyildiz34/whichphp --bundle whichphp_*.sigstore.json
+gh attestation verify whichphp_*_linux_amd64.tar.gz --repo yusufyildiz34/whichphp \
+  --signer-workflow yusufyildiz34/whichphp/.github/workflows/release.yml --bundle whichphp_*.sigstore.json
 ```
 
 Or install it with Go 1.24 or later:
@@ -145,7 +147,7 @@ jobs:
       security-events: write # only for upload-sarif
       actions: read # only for upload-sarif in a private repository
     steps:
-      - uses: yusufyildiz34/whichphp@v0.1.0
+      - uses: yusufyildiz34/whichphp@v0.1.1
         with:
           image: ghcr.io/acme/app:latest
           upload-sarif: true
@@ -173,8 +175,9 @@ It also works on an image built earlier in the same job, since Syft reads the lo
 | `action` | `OK`, `ACTION_NEEDED`, `UNKNOWN`, `NO_PHP`, or `ERROR` |
 | `exit-code` | whichphp's exit code |
 | `sarif-file`, `json-file` | Paths of the reports |
+| `install` | How whichphp was installed: `release-verified`, `release-checksum-only` (the runner's `gh` couldn't check provenance), or `source` |
 
-A release tag (`@v0.1.0`) downloads that release and checks its checksum and, when the runner's `gh` can, its signed build provenance. Pinned by the commit SHA of a release, the action downloads the release only when the runner's `gh` can check that the binary was built from exactly that commit, and the step fails if that check fails; when `gh` can't check it, the action builds that commit from source and says why in a notice. A release that isn't downloadable yet (a tag pushed minutes ago) also builds from source, with a notice. So you can pin the action by SHA, as many security policies require, and never trust more than the source you pinned. Any other branch or commit builds whichphp from source, setting up Go first if the runner has none. Syft and Grype are installed from their release archives; the default versions are checked against SHA-256 hashes pinned in [`scripts/install-tools.sh`](scripts/install-tools.sh), and other versions against their release's checksums file, with a warning. None of these tools go on your job's `PATH`.
+A release tag (`@v0.1.1`) downloads that release and checks its checksum and, when the runner's `gh` can, its signed build provenance. The provenance is checked against the Sigstore bundle published with the release, which needs no GitHub API access and no token, so it also works on GitHub Enterprise Server and GHE.com runners that can reach `github.com`, `release-assets.githubusercontent.com` and `tuf-repo-cdn.sigstore.dev` (plus `tuf-repo.github.com` with gh older than 2.83). If that check fails or can't run, the action asks GitHub's attestation API instead, which can't succeed on GitHub Enterprise because the job's token isn't valid on github.com. Both enforce the same signer workflow and tag, plus the commit for a SHA pin, and the step fails if neither passes. Pinned by the commit SHA of a release, the action downloads the release only when the runner's `gh` can check that the binary was built from exactly that commit, and the step fails if that check fails; when `gh` can't check it, the action builds that commit from source and says why in a notice. A release that isn't downloadable yet (a tag pushed minutes ago) also builds from source, with a notice. So you can pin the action by SHA, as many security policies require, and never trust more than the source you pinned. Any other branch or commit builds whichphp from source, setting up Go first if the runner has none. Syft and Grype are installed from their release archives; the default versions are checked against SHA-256 hashes pinned in [`scripts/install-tools.sh`](scripts/install-tools.sh), and other versions against their release's checksums file, with a warning. None of these tools go on your job's `PATH`.
 
 </details>
 
