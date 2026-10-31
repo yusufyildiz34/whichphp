@@ -6,9 +6,11 @@ updates:
     schedule:
       interval: weekly
     # Wait a week after a release before proposing it, so a compromised release is
-    # likely to be caught and pulled first.
+    # likely to be caught and pulled first. Our own action is exempt: the release smoke
+    # test pins it and should test each new release as soon as it is out.
     cooldown:
       default-days: 7
+      exclude: ["yusufyildiz34/whichphp"]
     groups:
       actions:
         patterns: ["*"]

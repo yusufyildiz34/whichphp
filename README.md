@@ -17,6 +17,7 @@ whether CVE-2026-109618 and CVE-2026-109619 are fixed, and why.</p>
 <a href="go.mod"><img alt="Go dependencies: none" src="https://img.shields.io/badge/go%20dependencies-none-0f7a5c"></a>
 <a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/github/license/yusufyildiz34/whichphp"></a>
 <a href="https://scorecard.dev/viewer/?uri=github.com/yusufyildiz34/whichphp"><img alt="OpenSSF Scorecard" src="https://api.scorecard.dev/projects/github.com/yusufyildiz34/whichphp/badge"></a>
+<a href="https://www.bestpractices.dev/projects/16111"><img alt="OpenSSF Best Practices" src="https://www.bestpractices.dev/projects/16111/badge"></a>
 <a href="https://github.com/yusufyildiz34/whichphp/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/yusufyildiz34/whichphp"></a>
 <a href="https://github.com/yusufyildiz34/whichphp/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/yusufyildiz34/whichphp?style=flat"></a>
 </p>
@@ -244,7 +245,7 @@ flowchart LR
 
 ## The index
 
-The [live index](https://yusufyildiz34.github.io/whichphp/) covers the tags listed in [`index/images.csv`](index/images.csv) on amd64 and arm64. For each one it shows the PHP inside, the verdict, when the tag was last built and when it first carried the fix. Search any tag, filter by status, and share the link to a filtered view.
+The [live index](https://yusufyildiz34.github.io/whichphp/) covers the tags listed in [`index/images.csv`](index/images.csv) on amd64 and arm64. For each one it shows the PHP inside, the verdict, when the tag was last built and, once the index has seen it change, when it first carried the fix. A tag whose amd64 and arm64 builds get different results is flagged. Search any tag, filter by status, and share the link to a filtered view.
 
 `whichphp index` builds it. Each daily run checks every tag's digest with a HEAD request, which doesn't count toward Docker Hub's pull limits. It rescans only tags that are new, changed, failed last time, or haven't been scanned for seven days, because distro security data can change without a new image.
 

@@ -23,6 +23,7 @@ jobs:
   install-tools:
     name: Install tools (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
@@ -45,6 +46,7 @@ jobs:
   test:
     name: Test (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
@@ -63,7 +65,7 @@ jobs:
           fail-on: never
           sarif-file: before.sarif
 
-      - name: Pre-fix image, default fail-on
+      - name: Pre-fix image, default fail-on (expected to fail)
         id: strict
         continue-on-error: true
         uses: ./
@@ -80,7 +82,7 @@ jobs:
           platform: linux/amd64
           sarif-file: after.sarif
 
-      - name: Image that doesn't exist
+      - name: Image that doesn't exist (expected to fail)
         id: missing
         continue-on-error: true
         uses: ./

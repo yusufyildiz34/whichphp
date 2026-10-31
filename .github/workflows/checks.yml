@@ -111,7 +111,7 @@ jobs:
           go-version: stable
           cache: false
 
-      # Everything these parse comes from images, SBOMs or registries. A short run on
+      # Everything these parse comes from images, SBOMs, Grype or registries. A short run on
       # every change; a failing input is saved under testdata/fuzz and uploaded below.
       - name: Fuzz
         run: |
@@ -122,6 +122,9 @@ jobs:
             echo "::endgroup::"
           done <<'TARGETS'
           internal/phpver FuzzParse
+          internal/grypejson FuzzParseMatches
+          internal/grypejson FuzzParseSearch
+          internal/grypejson FuzzParseStatus
           internal/registry FuzzParseRef
           internal/registry FuzzParseChallenge
           internal/syftjson FuzzParse

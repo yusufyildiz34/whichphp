@@ -1,0 +1,71 @@
+name: Release smoke test
+
+# Runs the published whichphp Action the way a security-conscious user does: pinned to
+# the commit SHA of the latest release, with a read-only token. The action should find
+# the release tag for that commit, download the release archive, and check its checksum
+# and its signed build provenance (built by release.yml from exactly that commit)
+# before it scans anything. A source build would also pass the scans, so the last step
+# checks that the binary that ran is the release build. Dependabot moves the pin at its
+# first weekly run after a release, and its pull request runs this test against the new
+# release before the pin changes on main.
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/release-smoke.yml"]
+  pull_request:
+    paths: [".github/workflows/release-smoke.yml"]
+  schedule:
+    - cron: "37 8 * * 3"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  smoke:
+    name: Released action (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - name: Pre-fix image
+        id: before
+        uses: yusufyildiz34/whichphp@52bc982a15e7f81e26b0c73e142f450b8720117c # v0.1.0
+        with:
+          image: php:8.4.26-apache
+          platform: linux/amd64
+          fail-on: never
+          sarif-file: before.sarif
+
+      - name: Fixed image
+        id: after
+        uses: yusufyildiz34/whichphp@52bc982a15e7f81e26b0c73e142f450b8720117c # v0.1.0
+        with:
+          image: php:8.4.27-apache
+          platform: linux/amd64
+          sarif-file: after.sarif
+
+      - name: Compare with the expected results
+        env:
+          BEFORE: ${{ steps.before.outputs.action }}
+          BEFORE_JSON: ${{ steps.before.outputs.json-file }}
+          AFTER: ${{ steps.after.outputs.action }}
+        run: |
+          set -euo pipefail
+          echo "pre-fix: $BEFORE; fixed: $AFTER"
+          test "$BEFORE" = ACTION_NEEDED
+          test "$AFTER" = OK
+          # A release build reports its tag; a source build of a SHA pin reports the SHA.
+          version="$(jq -r .version "$BEFORE_JSON")"
+          echo "whichphp version: $version"
+          if [[ ! "$version" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::The action built whichphp from source instead of using the release."
+            exit 1
+          fi

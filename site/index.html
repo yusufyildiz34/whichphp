@@ -29,6 +29,7 @@
     --pine-wash: #e3f3ec;
     --ochre: #9a620f;
     --ochre-wash: #fbf1dd;
+    --ochre-text: #825515;
     --sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
     --mono: "Martian Mono", ui-monospace, "SF Mono", Menlo, monospace;
   }
@@ -50,6 +51,7 @@
       --pine-wash: #173a3c;
       --ochre: #f1bd5f;
       --ochre-wash: #3a3226;
+      --ochre-text: #efc57a;
     }
   }
 
@@ -138,6 +140,11 @@
   .s-fixed { color: var(--pine); background: var(--pine-wash); }
   .s-unknown { color: var(--ochre); background: var(--ochre-wash); }
   .s-none { color: var(--ink-3); background: var(--line-2); }
+  .split { display: block; margin-top: 6px; font-size: 12.5px; color: var(--ochre-text); }
+  .split-note { margin: 0 0 14px; font-size: 14px; color: var(--ink-2); max-width: 72ch; }
+  .split-note b { color: var(--ink); }
+  .split-note .mono { font-size: .84em; color: var(--ink); }
+  .split-note .nw { white-space: nowrap; }
   .built { font-size: 14px; color: var(--ink-2); white-space: nowrap; }
   .built small { display: block; font-size: 12.5px; white-space: normal; }
   .built .stale { color: var(--rust); }
@@ -150,7 +157,7 @@
 
   /* Details */
   tr.details td { padding: 0 20px 22px; background: var(--indigo-wash); border-bottom: 1px solid var(--line); }
-  .det { display: grid; gap: 14px; animation: reveal .22s ease-out; }
+  .det { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; animation: reveal .22s ease-out; }
   @keyframes reveal { from { opacity: 0; transform: translateY(-4px); } }
   .plats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 14px; }
   .plat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
@@ -206,7 +213,7 @@
     tbody tr.row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; column-gap: 14px; padding: 14px 16px; border-bottom: 1px solid var(--line-2); }
     tbody tr.row td, tbody tr.row:hover td, tbody tr.row[aria-expanded="true"] td { display: block; padding: 0; border: 0; background: none; }
     tbody tr.row td:first-child { grid-column: 1 / -1; margin-bottom: 10px; }
-    tbody tr.row .col-built, tbody tr.row .col-chev { display: none; }
+    tbody tr.row td.col-built, tbody tr.row td.col-chev { display: none; }
     tbody tr.row:hover { background: color-mix(in srgb, var(--indigo-wash) 45%, transparent); }
     tbody tr.row[aria-expanded="true"] { background: var(--indigo-wash); border-bottom-color: transparent; }
     tr.details, tr.details td { display: block; }
@@ -345,6 +352,7 @@
     if (isNaN(d)) return "";
     return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
   }
+  function own(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
   function shortDigest(d) { return d ? d.replace(/^(sha256:[0-9a-f]{12}).*$/, "$1…") : ""; }
 
   // One verdict for an index entry (one tag on one platform).
@@ -352,14 +360,16 @@
     if (e.error) return { key: "unknown", label: "Not checked", detail: e.error };
     if (e.action === "NO_BUILD") return { key: "none", label: "No build" };
     if (e.action === "NO_PHP") return { key: "none", label: "No PHP" };
+    // A verdict this page doesn't know counts as unknown, never as fixed.
+    var sev = function (v) { return own(SEV, v) ? SEV[v] : SEV.UNKNOWN; };
     var worst = null;
     CVES.forEach(function (c) {
       var v = (e.verdicts || {})[c];
-      if (v && (worst === null || SEV[v] > SEV[worst])) worst = v;
+      if (v && (worst === null || sev(v) > sev(worst))) worst = v;
     });
     if (!worst) return { key: "unknown", label: "Unknown" };
-    var key = SEV[worst] >= 6 ? "vuln" : SEV[worst] >= 4 ? "unknown" : "fixed";
-    return { key: key, label: LABEL[worst] || worst, verdict: worst };
+    var key = sev(worst) >= 6 ? "vuln" : sev(worst) >= 4 ? "unknown" : "fixed";
+    return { key: key, label: own(LABEL, worst) ? LABEL[worst] : "Unknown", verdict: worst };
   }
 
   // Merge the per-platform entries of each tag into one image row.
@@ -373,10 +383,12 @@
     return Object.keys(by).map(function (ref) {
       var g = by[ref];
       g.platforms.sort(function (a, b) { return a.platform.localeCompare(b.platform); });
-      var best = null, versions = [], seen = {}, built = 0, stale = false, since = "";
+      var best = null, versions = [], seen = {}, built = 0, stale = false, since = "", keys = {}, stalePlats = [], withBuild = 0, oldBuilds = 0, fixedN = 0, fixedDated = 0;
       g.platforms.forEach(function (e) {
         var s = entryStatus(e);
         e._status = s;
+        // A failed scan or a platform without a build isn't a disagreement.
+        if (!e.error && s.key !== "none") keys[s.key] = 1;
         if (s.key !== "none" || !best) {
           if (!best || STATUS_RANK[s.key] > STATUS_RANK[best.key] || best.key === "none") best = s;
         }
@@ -386,14 +398,28 @@
         });
         var t = Date.parse(e.imageCreated || "");
         if (!isNaN(t) && t > built) built = t;
-        if (e.builtBeforeFix && s.key === "vuln") stale = true;
-        if (e.firstFixedSeen && (!since || e.firstFixedSeen < since)) since = e.firstFixedSeen;
+        if (e.builtBeforeFix && s.key === "vuln") { stale = true; stalePlats.push(e.platform.replace(/^linux\//, "")); }
+        // The tag is fixed everywhere only once its last fixed platform is.
+        if (s.key === "fixed") {
+          fixedN++;
+          if (e.firstFixedSeen) { fixedDated++; if (!since || e.firstFixedSeen > since) since = e.firstFixedSeen; }
+        }
+        if (e.action !== "NO_BUILD") withBuild++;
+        if (e.builtBeforeFix === true) oldBuilds++;
       });
       g.status = best || { key: "unknown", label: "Unknown" };
       g.versions = versions;
       g.built = built;
       g.stale = stale;
-      g.since = since;
+      g.stalePlats = stalePlats;
+      // Name the stale platforms unless every platform with a build predates the fix.
+      g.namePlats = oldBuilds < withBuild;
+      g.allStale = stale && oldBuilds === withBuild;
+      // Only when every fixed platform has a date; otherwise the date could be too early.
+      g.since = fixedN && fixedDated === fixedN ? since : "";
+      // Tags are often rebuilt at different times per architecture, so the same tag can
+      // be fixed on one platform and not on another.
+      g.split = Object.keys(keys).length > 1;
       g.search = (ref + " " + g.note + " " + versions.map(function (p) { return p.version; }).join(" ")).toLowerCase();
       return g;
     });
@@ -436,8 +462,8 @@
   function builtCell(g) {
     if (!g.built) return '<span class="built">—</span>';
     var extra = "";
-    if (g.stale) extra = '<small class="stale">Not rebuilt since the Oct 21 fix</small>';
-    else if (g.since) extra = '<small class="since">Fixed since ' + esc(fmtDate(g.since)) + "</small>";
+    if (g.stale) extra = '<small class="stale">' + (g.namePlats ? esc(g.stalePlats.join(" and ")) + " not rebuilt" : "Not rebuilt") + " since the Oct 21 fix</small>";
+    else if (g.since && g.status.key === "fixed") extra = '<small class="since">Fixed since ' + esc(fmtDate(g.since)) + "</small>";
     return '<span class="built">' + esc(fmtDate(new Date(g.built).toISOString())) + extra + "</span>";
   }
 
@@ -446,7 +472,7 @@
     var rows = [];
     CVES.forEach(function (c) {
       var v = (e.verdicts || {})[c];
-      rows.push("<dt>" + esc(c.replace("CVE-", "CVE-")) + "</dt><dd>" + (v ? esc(LABEL[v] || v) : esc(s.label)) + "</dd>");
+      rows.push("<dt>" + esc(c.replace("CVE-", "CVE-")) + "</dt><dd>" + (v ? esc(own(LABEL, v) ? LABEL[v] : "Unknown (" + v + ")") : esc(s.label)) + "</dd>");
     });
     if (e.php && e.php.length) {
       rows.push("<dt>PHP found</dt><dd>" + e.php.map(function (p) {
@@ -465,7 +491,16 @@
 
   function detailsRow(g, id) {
     var cmd = "whichphp image " + g.ref;
-    return '<tr class="details" id="' + id + '"><td colspan="5"><div class="det">' +
+    var split = "";
+    if (g.split) {
+      var checked = g.platforms.filter(function (e) { return !e.error && e._status.key !== "none"; });
+      var worst = checked.slice().sort(function (a, b) { return STATUS_RANK[b._status.key] - STATUS_RANK[a._status.key]; })[0];
+      split = '<p class="split-note"><b>Results differ by platform:</b> ' + checked.map(function (e) {
+        return esc(e.platform) + ": " + esc(e._status.label);
+      }).join("; ") + ". Each platform is a separate image, so check the one you deploy, for example <span class=\"mono\">whichphp image " +
+        esc(g.ref) + ' <span class="nw">--platform ' + esc(worst.platform) + "</span></span>.</p>";
+    }
+    return '<tr class="details" id="' + id + '"><td colspan="5"><div class="det">' + split +
       '<div class="plats">' + g.platforms.map(platformCard).join("") + "</div>" +
       '<div class="cmd"><code>' + esc(cmd) + '</code><div class="det-actions">' +
       '<button class="btn" type="button" data-copy="' + esc(cmd) + '">Copy command</button>' +
@@ -495,7 +530,7 @@
     if (state.page > pages) state.page = pages;
     var start = (state.page - 1) * state.size;
     var slice = list.slice(start, start + state.size);
-    if (list.length === 1) state.open = list[0].ref;
+    if (list.length === 1 && state.open === null) state.open = list[0].ref;
 
     var html = slice.map(function (g, i) {
       var id = "d" + (start + i);
@@ -504,15 +539,22 @@
         '<td><div class="ref">' + esc(g.ref) + (g.kind === "demo" ? '<span class="tag">control</span>' : "") + "</div>" +
         (g.note ? '<div class="note">' + esc(g.note) + "</div>" : "") + "</td>" +
         "<td>" + versionCell(g) + "</td>" +
-        '<td><span class="status s-' + g.status.key + '">' + esc(g.status.label) + "</span></td>" +
+        '<td><span class="status s-' + g.status.key + '">' + esc(g.status.label) + "</span>" +
+        (g.split ? '<small class="split">Differs by platform</small>' : "") + "</td>" +
         '<td class="col-built">' + builtCell(g) + "</td>" +
         '<td class="chev col-chev"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></td></tr>';
       return row + (open ? detailsRow(g, id) : "");
     }).join("");
 
     if (!slice.length) {
-      html = '<tr><td colspan="5" class="empty">' + (state.q
-        ? "<b>No tracked image matches “" + esc(state.q) + "”.</b><br>Check it yourself with <span class=\"mono\">whichphp image " + esc(state.q) + "</span>, or suggest it for the index."
+      var q = state.q.trim(), ql = q.toLowerCase();
+      var hidden = !ql || state.f === "all" ? 0 : images.filter(function (g) { return g.search.indexOf(ql) >= 0; }).length;
+      html = '<tr><td colspan="5" class="empty">' + (hidden
+        ? "<b>No image matching “" + esc(q) + "” is in this view.</b><br>" + (hidden === 1
+          ? "One matching image has a different status; choose All to see it."
+          : hidden + " matching images have a different status; choose All to see them.")
+        : q
+        ? "<b>No tracked image matches “" + esc(q) + "”.</b><br>Check it yourself with <span class=\"mono\">whichphp image " + esc(q) + "</span>, or suggest it for the index."
         : "<b>No images in this view.</b>") + "</td></tr>";
     }
     $("rows").innerHTML = html;
@@ -537,7 +579,7 @@
   function summary() {
     var tracked = images.filter(function (g) { return g.kind !== "demo"; });
     var vuln = tracked.filter(function (g) { return g.status.key === "vuln"; });
-    var stale = vuln.filter(function (g) { return g.stale; });
+    var stale = vuln.filter(function (g) { return g.allStale; });
     var fixed = tracked.filter(function (g) { return g.status.key === "fixed"; });
     var unk = tracked.filter(function (g) { return g.status.key === "unknown"; });
     var withPHP = 0, upOn = 0;
@@ -549,14 +591,16 @@
     var pct = withPHP ? Math.round(100 * upOn / withPHP) : 0;
     var n = tracked.length || 1;
     var controls = images.length - tracked.length;
-    var text = "We track <b>" + tracked.length + " image tags</b> on amd64 and arm64" + (controls ? ", plus " + controls + " control tags" : "") + ". ";
+    var text = "We track <b>" + tracked.length + (tracked.length === 1 ? " image tag" : " image tags") + "</b> on amd64 and arm64" + (controls ? ", plus " + controls + (controls === 1 ? " control tag" : " control tags") : "") + ". ";
     if (!vuln.length) text += "None of them ships PHP from before the fix. ";
     else {
-      text += "<b>" + vuln.length + "</b> still ship PHP from before the fix";
-      if (stale.length === vuln.length) text += ", and none of those has been rebuilt since October 21. ";
-      else if (stale.length) text += ", and <b>" + stale.length + "</b> of those haven't been rebuilt since October 21. ";
+      text += "<b>" + vuln.length + "</b> still " + (vuln.length === 1 ? "ships" : "ship") + " PHP from before the fix";
+      if (stale.length === vuln.length) text += vuln.length === 1 ? ", and it hasn't been rebuilt since October 21. " : ", and none of those has been rebuilt since October 21. ";
+      else if (stale.length) text += ", and <b>" + stale.length + "</b> of those " + (stale.length === 1 ? "hasn't" : "haven't") + " been rebuilt since October 21. ";
       else text += ". ";
     }
+    var split = tracked.filter(function (g) { return g.split; });
+    if (split.length) text += "<b>" + split.length + "</b> " + (split.length === 1 ? "tag gives" : "tags give") + " a different result on amd64 than on arm64. ";
     if (withPHP) text += "In <b>" + pct + "%</b> of the builds that ship PHP, session upload progress is on, which leaves <span class=\"id\">CVE-2026-115560</span> unmitigated.";
     $("summary").innerHTML = "<p>" + text + "</p>" +
       '<div class="bar" role="img" aria-label="' + fixed.length + " fixed, " + vuln.length + " vulnerable, " + unk.length + ' unknown">' +
@@ -633,7 +677,8 @@
   });
   function toggle(row) {
     var ref = row.getAttribute("data-ref");
-    state.open = state.open === ref ? null : ref;
+    // "" marks a row the reader closed, so a single result doesn't reopen itself.
+    state.open = state.open === ref ? "" : ref;
     render();
     var again = document.querySelector('tr.row[data-ref="' + CSS.escape(ref) + '"]');
     if (again) again.focus();

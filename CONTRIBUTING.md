@@ -24,10 +24,27 @@ Use the "Wrong verdict" issue template. Include the image reference and digest, 
 
 Before the public index or any post names a third-party image as vulnerable, we tell its maintainers. Please do the same in issues and pull requests: describe the problem first, and name the image once the maintainers have been told.
 
+## Development and tests
+
+whichphp needs Go 1.24 or later. Before you open a pull request, run:
+
+```sh
+gofmt -l .        # prints nothing when the code is formatted
+go vet ./...
+go test ./...     # CI adds -race, which on Linux and Windows needs cgo and a C compiler
+```
+
+On every pull request, CI also runs staticcheck, govulncheck, CodeQL, actionlint, shellcheck, zizmor and a short fuzzing pass over the parsers of untrusted input (Syft and Grype JSON, image references, registry headers, version strings and `php.ini` files). Please get them all green. To fuzz a parser locally, for example: `go test ./internal/registry -run='^$' -fuzz=FuzzParseRef -fuzztime=1m`.
+
+**Test policy:**
+
+- New functionality in the Go code comes with tests in the Go test suite, and a bug fix comes with a test that fails without the fix.
+- A change to a verdict rule also adds or updates a test case (see [testdata/cases](testdata/cases/README.md)).
+- New code that parses data from images, SBOMs, Grype or registries gets a fuzz target, listed in the fuzz job in `.github/workflows/checks.yml`.
+
 ## Pull requests
 
 - Keep each pull request focused on one change.
-- Add or update a test case when a verdict rule changes.
 - Commits should explain *why*, not only *what*.
 
 By contributing, you agree that your contribution is licensed under the [Apache License 2.0](LICENSE).
