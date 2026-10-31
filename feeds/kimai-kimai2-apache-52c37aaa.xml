@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: kimai/kimai2:apache</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of kimai/kimai2:apache, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:fc6e2c150631f22cdc3d39e15ea58177</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/kimai-kimai2-apache-52c37aaa.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=kimai%2Fkimai2%3Aapache"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>kimai/kimai2:apache (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:a16f56aebe5dfe639522ce6fb0204be3</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=kimai%2Fkimai2%3Aapache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:10796d56695966991159f5086875b04daf9b77d2c8bb0ba6555388a14ca03c84&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=kimai%2Fkimai2%3Aapache&#xA;</content>
+  </entry>
+  <entry>
+    <title>kimai/kimai2:apache (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3d0236dde9fd697281bf169cc478f2a9</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=kimai%2Fkimai2%3Aapache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:1cf3aa2ebb6924d514769d480302924953fa9d36acc5207762e7180c527910fd&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=kimai%2Fkimai2%3Aapache&#xA;</content>
+  </entry>
+</feed>

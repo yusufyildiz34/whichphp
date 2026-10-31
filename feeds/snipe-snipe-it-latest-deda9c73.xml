@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: snipe/snipe-it:latest</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of snipe/snipe-it:latest, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:3005dd7148de4c795170d43d54197c71</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/snipe-snipe-it-latest-deda9c73.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>snipe/snipe-it:latest (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:0caf01cf1bfc61980c68e59cafeeba35</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2eb36ba26384c30481791afee77c12aa3702aef544bccfed357489eec0e8257b&#xA;CVE-2026-109618: FIXED_BY_DISTRO_BACKPORT&#xA;CVE-2026-109619: FIXED_BY_DISTRO_BACKPORT&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>snipe/snipe-it:latest (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:b948908e6a79d7e34acdb79d1b156424</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:c57ec21142b12ed9786a4f3585ba822583ff836153cf70a2c91044c55363bd49&#xA;CVE-2026-109618: FIXED_BY_DISTRO_BACKPORT&#xA;CVE-2026-109619: FIXED_BY_DISTRO_BACKPORT&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest&#xA;</content>
+  </entry>
+</feed>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: nextcloud:35.0.1-apache</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of nextcloud:35.0.1-apache, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:6021847d5e2fc33802b18dabfed32c0f</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/nextcloud-35.0.1-apache-1192f3bf.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A35.0.1-apache"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>nextcloud:35.0.1-apache (linux/amd64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e3c7e3eaec766bd2ef21e2303dd1d324</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A35.0.1-apache"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:8cfe6765cdfe3fcecbbf25b4140cbf6f77c38a53e8988349a3900be9311ea11b&#xA;CVE-2026-109618: VULNERABLE&#xA;CVE-2026-109619: VULNERABLE&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A35.0.1-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>nextcloud:35.0.1-apache (linux/arm64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:702c6d8b974327bb3f82465ae006a628</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A35.0.1-apache"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:3c2ab51814fbd0b24c9646a8b6782e25d41e8f54939b89a254bdc8d9fdd67682&#xA;CVE-2026-109618: VULNERABLE&#xA;CVE-2026-109619: VULNERABLE&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A35.0.1-apache&#xA;</content>
+  </entry>
+</feed>

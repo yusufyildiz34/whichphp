@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: php:8.4-fpm-alpine</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of php:8.4-fpm-alpine, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:6c6f73b97b95bdc0a4f989275e701c49</id>
+  <updated>2026-10-30T22:47:59Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/php-8.4-fpm-alpine-5bcc8cb4.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-fpm-alpine"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>php:8.4-fpm-alpine (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:bf30067ef525386321d31bead7c390a1</id>
+    <updated>2026-10-30T22:47:59Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-fpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:dffc90c2fb171a84f8e7de217437878b9787e34d3e8ba47e0f673f34b247ccaa&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-30T22:47:59Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-fpm-alpine&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.4-fpm-alpine (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:20268a6c045b1c81b07c05b66135c638</id>
+    <updated>2026-10-30T22:47:59Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-fpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:72049cd3bc03ccd933decba6c888c560b6549879b54ba0aa5cb0a91ddd45ca6c&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-30T22:47:59Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-fpm-alpine&#xA;</content>
+  </entry>
+</feed>

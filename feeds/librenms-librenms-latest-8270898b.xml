@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: librenms/librenms:latest</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of librenms/librenms:latest, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:0b0d722c2c95f519d7cd7d3afed25e3b</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/librenms-librenms-latest-8270898b.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=librenms%2Flibrenms%3Alatest"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>librenms/librenms:latest (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:127c68428f578bfa577f05f5a5577e5a</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=librenms%2Flibrenms%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:26ac4e009cd7ff6f483c8a86f95ea3c03b6c52985d5bd67f8fd501320eb04ec6&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=librenms%2Flibrenms%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>librenms/librenms:latest (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e5720c24957f074f2ef0f876b5ae9deb</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=librenms%2Flibrenms%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:7cf9c042da253056d92f4bf1cc6d967c38b13d08cf59c2a4553685b249f1431f&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=librenms%2Flibrenms%3Alatest&#xA;</content>
+  </entry>
+</feed>

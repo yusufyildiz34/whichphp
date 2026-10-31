@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: linuxserver/dokuwiki:latest</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of linuxserver/dokuwiki:latest, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:30e3b31a51ac865f476a234a039a2c7a</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/linuxserver-dokuwiki-latest-8e3fbc2b.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fdokuwiki%3Alatest"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>linuxserver/dokuwiki:latest (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6cfaf0f29daf2cefa227a26f7cac97e9</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fdokuwiki%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:62c773c8e369582f09f48c739f9f1910ac93911982f84063dabedad73ca3828c&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fdokuwiki%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>linuxserver/dokuwiki:latest (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6074b98ec46da8ed7a2cb7f7c96bd085</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fdokuwiki%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:b515978923947f0ed940b2ad59813d7d937b3905ef0f81d866254fa7cd402f1b&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fdokuwiki%3Alatest&#xA;</content>
+  </entry>
+</feed>

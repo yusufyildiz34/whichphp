@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: linuxserver/freshrss:latest</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of linuxserver/freshrss:latest, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:37553d122f4aa5876a9224673ec800ef</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/linuxserver-freshrss-latest-115efcc1.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Ffreshrss%3Alatest"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>linuxserver/freshrss:latest (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:ba489c96df03ac7e3b35a7147804c16e</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Ffreshrss%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:864e7e99981f640a329f258570170cf7e30e39139b783d51b861b5296c6feb47&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Ffreshrss%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>linuxserver/freshrss:latest (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:a9188cb90da01a4135f26729a4bebf4d</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Ffreshrss%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0475a7087060456a433cd8aba5622616013e8c7e79c7edcd422022509feac444&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Ffreshrss%3Alatest&#xA;</content>
+  </entry>
+</feed>

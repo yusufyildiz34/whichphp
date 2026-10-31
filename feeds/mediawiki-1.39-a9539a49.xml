@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: mediawiki:1.39</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of mediawiki:1.39, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:5cb56916ad1c87d85b3eaa645b7fc928</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/mediawiki-1.39-a9539a49.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.39"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>mediawiki:1.39 (linux/amd64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:bbb027ff2eac0f354db71dfaf1444282</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.39"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:51bd691906e6b74860058940ceb14ee69bbc457be20c0a95d93bd9c43935d989&#xA;CVE-2026-109618: VULNERABLE&#xA;CVE-2026-109619: VULNERABLE&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.39&#xA;</content>
+  </entry>
+  <entry>
+    <title>mediawiki:1.39 (linux/arm64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:127233403b9b3415191e4fb036d25f2e</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.39"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:ad7b1e177c6062a0ec8610c5cf126ed2a40fd61a436ee552018bc2830a8c202a&#xA;CVE-2026-109618: VULNERABLE&#xA;CVE-2026-109619: VULNERABLE&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.39&#xA;</content>
+  </entry>
+</feed>

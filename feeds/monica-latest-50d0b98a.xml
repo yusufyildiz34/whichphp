@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: monica:latest</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of monica:latest, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:f0f6bdb2e34409306188c16e62be8054</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/monica-latest-50d0b98a.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=monica%3Alatest"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>monica:latest (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:553b482c06e3196b88258b2d2c29173d</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=monica%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:4fb70d45e12f0afc20ab6d277a712d3bf415f17f250f06ecc13d46e050573554&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=monica%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>monica:latest (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:41493082de75feb120ddd61d6161e308</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=monica%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:568d382c02fbc5bcc884b4e533b20e617ca802b405a86fa0152d64d6b22abc04&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=monica%3Alatest&#xA;</content>
+  </entry>
+</feed>

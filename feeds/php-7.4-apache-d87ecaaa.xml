@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: php:7.4-apache</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of php:7.4-apache, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:d388668b90ff56a287ab8bd10ee511b4</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/php-7.4-apache-d87ecaaa.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A7.4-apache"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>php:7.4-apache (linux/amd64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:8c75f27897c971ef4a66925ee1e710ad</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A7.4-apache"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:18b3497ee7f2099a90b66c23a0bc3d5261b12bab367263e1b40e9b004c39e882&#xA;CVE-2026-109618: VULNERABLE_EOL&#xA;CVE-2026-109619: VULNERABLE_EOL&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A7.4-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:7.4-apache (linux/arm64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:862197d0ac088f12db1c2cd5a07f9ed6</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A7.4-apache"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:cef99caa15fe8fdcd9b6edce648170b984bb470cb4fd7c3470a8677cbf70ccf6&#xA;CVE-2026-109618: VULNERABLE_EOL&#xA;CVE-2026-109619: VULNERABLE_EOL&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A7.4-apache&#xA;</content>
+  </entry>
+</feed>

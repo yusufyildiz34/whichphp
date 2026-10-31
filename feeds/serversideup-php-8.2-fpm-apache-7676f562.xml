@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: serversideup/php:8.2-fpm-apache</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of serversideup/php:8.2-fpm-apache, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:2e8f474072641ee74a8691ed2188b85e</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/serversideup-php-8.2-fpm-apache-7676f562.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.2-fpm-apache"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>serversideup/php:8.2-fpm-apache (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:f4f6f6641bd3f5d433c6bb4263cef551</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.2-fpm-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:30ea1ef44844d789a5761485ca9a85590eb3e5b20ce8782792765ac3acd2cee1&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.2-fpm-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>serversideup/php:8.2-fpm-apache (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:7d03632906ba27d3a52d88500ee83eb5</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.2-fpm-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:68969c4d5da9f192520c2e153464544079b6d3015388dbe4acdbacdda0287bf4&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.2-fpm-apache&#xA;</content>
+  </entry>
+</feed>

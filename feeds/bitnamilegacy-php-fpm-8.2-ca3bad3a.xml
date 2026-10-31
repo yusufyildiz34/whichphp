@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: bitnamilegacy/php-fpm:8.2</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of bitnamilegacy/php-fpm:8.2, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:8681b1e8dc2a319e82e4ed05b2988cb8</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/bitnamilegacy-php-fpm-8.2-ca3bad3a.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=bitnamilegacy%2Fphp-fpm%3A8.2"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>bitnamilegacy/php-fpm:8.2 (linux/amd64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3a2bea5a6f13658d7ca126a6f186e2c7</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=bitnamilegacy%2Fphp-fpm%3A8.2"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:3dd4c574f7dd7cbc236242ec39e98f67c929cad8e7c316c4b6323a5336a06ca5&#xA;CVE-2026-109618: VULNERABLE&#xA;CVE-2026-109619: VULNERABLE&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=bitnamilegacy%2Fphp-fpm%3A8.2&#xA;</content>
+  </entry>
+  <entry>
+    <title>bitnamilegacy/php-fpm:8.2 (linux/arm64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:964eebab3fe5602ffb3c7c2982100b91</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=bitnamilegacy%2Fphp-fpm%3A8.2"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:242de751b407c337a22d467626bc6b7dd02a05a2f5a72957fab4b0fe595dff65&#xA;CVE-2026-109618: VULNERABLE&#xA;CVE-2026-109619: VULNERABLE&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=bitnamilegacy%2Fphp-fpm%3A8.2&#xA;</content>
+  </entry>
+</feed>

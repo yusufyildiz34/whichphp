@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: drupal:10-fpm-alpine</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of drupal:10-fpm-alpine, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:cfbb8d369ad217d4f07ce80e7a19f51f</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/drupal-10-fpm-alpine-ee6c722d.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>drupal:10-fpm-alpine (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:f82df80ec146246c67545b637b1aa76f</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:021a741f58008436aa197bfb0020a3dfdeb2e3f0d0e063c6edee73d2082b2257&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine&#xA;</content>
+  </entry>
+  <entry>
+    <title>drupal:10-fpm-alpine (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3d70529a0204e6404991b2053e5efc28</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2c5fa9f54ece70e1223e8c4107631f72345e08b80541835e75ccf3d2c8da8411&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine&#xA;</content>
+  </entry>
+</feed>

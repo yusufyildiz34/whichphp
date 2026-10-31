@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: drupal:7-apache</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of drupal:7-apache, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:b6e7c63cbd4d9c0d4d777ba707f429ae</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/drupal-7-apache-5899b95e.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A7-apache"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>drupal:7-apache (linux/amd64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:35eb58e4bd090b9f60b96421e277f3fe</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A7-apache"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:30caab130589d6f0688400c0f7db280c96e28fcb9df7c28633ebb0e2f1877bfb&#xA;CVE-2026-109618: VULNERABLE_EOL&#xA;CVE-2026-109619: VULNERABLE_EOL&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A7-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>drupal:7-apache (linux/arm64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:bb664f6d7fd9f177ed12981f06daff7c</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A7-apache"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:6149bc87180955ff27235859127ca390377c33b3cc3aa24bbdc86d19f1866053&#xA;CVE-2026-109618: VULNERABLE_EOL&#xA;CVE-2026-109619: VULNERABLE_EOL&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A7-apache&#xA;</content>
+  </entry>
+</feed>

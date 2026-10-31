@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: mediawiki:1.43</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of mediawiki:1.43, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:90b90101018702e5c8d181d4c3482d60</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/mediawiki-1.43-f1acf3ff.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.43"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>mediawiki:1.43 (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c396fe007423828881399805bd7713d0</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.43"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:17e9b8414b8838ca5cf4c9abf9bcf42fc8de771c91a79661a74ccf670d315b54&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.43&#xA;</content>
+  </entry>
+  <entry>
+    <title>mediawiki:1.43 (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:1e1f8e51bd8d79fb23e9251c4a9d8d3e</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.43"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:f2bceed32dadf84eadde12e3143ab7930138f4380fab3ff74daf6d8eaf8bd3a4&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.43&#xA;</content>
+  </entry>
+</feed>

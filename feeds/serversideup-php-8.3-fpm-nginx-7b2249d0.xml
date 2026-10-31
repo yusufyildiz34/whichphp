@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: serversideup/php:8.3-fpm-nginx</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of serversideup/php:8.3-fpm-nginx, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:918b546a60ba755c4c381e71f9744d5e</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/serversideup-php-8.3-fpm-nginx-7b2249d0.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>serversideup/php:8.3-fpm-nginx (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3c9634c4e65ce583b75d2bd6920e57cb</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:954960fcd9b5c7e4fe97f4261635f09b25884346a7255f54f3a52f4cf48700a5&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx&#xA;</content>
+  </entry>
+  <entry>
+    <title>serversideup/php:8.3-fpm-nginx (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:4d8e42ff87b67a9e6b6d404b9325ccb1</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:f954f54eef7263821c55129388efa1f7ca82e65f6201ec5c733f112dc79a45b0&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx&#xA;</content>
+  </entry>
+</feed>

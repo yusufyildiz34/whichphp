@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: shlinkio/shlink:stable</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of shlinkio/shlink:stable, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:3d44e2ea2e59c451675ac5fd176d6fb4</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/shlinkio-shlink-stable-d738dad2.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=shlinkio%2Fshlink%3Astable"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>shlinkio/shlink:stable (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:07afd72758cc8dc4ed29a9f336ac3a88</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=shlinkio%2Fshlink%3Astable"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:9083dc4ba2b682c43e1a477b69ef451738253fc8ad680db072663ea68530a973&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=shlinkio%2Fshlink%3Astable&#xA;</content>
+  </entry>
+  <entry>
+    <title>shlinkio/shlink:stable (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:9b69be643fd597f1a304b4378560b202</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=shlinkio%2Fshlink%3Astable"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:c1b363e945602b51e139ad73baf5d7f01e50bf67b1ecf617045fa98deb04fb48&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=shlinkio%2Fshlink%3Astable&#xA;</content>
+  </entry>
+</feed>

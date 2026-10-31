@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: php:8.3-apache</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of php:8.3-apache, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:bb28ccdd22aad3b6adc4fa676528abc6</id>
+  <updated>2026-10-30T22:47:59Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/php-8.3-apache-82c546aa.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-apache"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>php:8.3-apache (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:4619c88ad1deb903d3945e46cac48d13</id>
+    <updated>2026-10-30T22:47:59Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:743addf5fe02b56b325e3940ab7f1f87021ed8f4c1cd1e1e4973178b92149dce&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-30T22:47:59Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.3-apache (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:091b73728ab903723a10ae4ba58af9b4</id>
+    <updated>2026-10-30T22:47:59Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:1a8e02d42e6b7a8b5baed5e7c6b076be5ad59df2864788c9f6a81eb004d67529&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-30T22:47:59Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-apache&#xA;</content>
+  </entry>
+</feed>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: php:7.4-fpm</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of php:7.4-fpm, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:fa4c172edf63400e2e25545ae43d169d</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/php-7.4-fpm-5b338cbb.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A7.4-fpm"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>php:7.4-fpm (linux/amd64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:82ac800c393624412e4ebb575ed568e4</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A7.4-fpm"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:7c6a2cba718f37c4b3ca3486476c7d3dc68dc3ea9b12bde9c57bd4b8d9479fc0&#xA;CVE-2026-109618: VULNERABLE_EOL&#xA;CVE-2026-109619: VULNERABLE_EOL&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A7.4-fpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:7.4-fpm (linux/arm64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:5014c8c74d758be000a4d567b9d773e7</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A7.4-fpm"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:9c00954ba8f0286c50a6419334786a86e4c0621ee0e4ee08068bc44c46ffdb78&#xA;CVE-2026-109618: VULNERABLE_EOL&#xA;CVE-2026-109619: VULNERABLE_EOL&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A7.4-fpm&#xA;</content>
+  </entry>
+</feed>

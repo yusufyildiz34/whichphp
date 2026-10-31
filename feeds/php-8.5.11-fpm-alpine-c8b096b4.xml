@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: php:8.5.11-fpm-alpine</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of php:8.5.11-fpm-alpine, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:56df59fc1052588d228bcfdb04022564</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/php-8.5.11-fpm-alpine-c8b096b4.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.5.11-fpm-alpine"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>php:8.5.11-fpm-alpine (linux/amd64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:21f484cf3f19374a51885a87ac927978</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.5.11-fpm-alpine"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:aba7168955e4b1e1f5e61e2e5a0257eff5b1563d3fc4ca272373183b57f53005&#xA;CVE-2026-109618: VULNERABLE&#xA;CVE-2026-109619: VULNERABLE&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.5.11-fpm-alpine&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.5.11-fpm-alpine (linux/arm64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:fe43d5c4a4ea540464996be9ee09213b</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.5.11-fpm-alpine"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:bc7398fb5ae7567d887eedb90c0473ddfe02ff1abd7650f5c7142d4b537d4cef&#xA;CVE-2026-109618: VULNERABLE&#xA;CVE-2026-109619: VULNERABLE&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.5.11-fpm-alpine&#xA;</content>
+  </entry>
+</feed>

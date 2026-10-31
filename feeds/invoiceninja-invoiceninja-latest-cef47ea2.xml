@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: invoiceninja/invoiceninja:latest</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of invoiceninja/invoiceninja:latest, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:f50baf1867bb3a64f3ed2c8b0292245a</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/invoiceninja-invoiceninja-latest-cef47ea2.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=invoiceninja%2Finvoiceninja%3Alatest"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>invoiceninja/invoiceninja:latest (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:93675928722bbe693a98d8a51b445a1f</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=invoiceninja%2Finvoiceninja%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a4382d5e589c6d6458e64a0efbd85455be5fa9d7d04b35706094c98fbee6be49&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=invoiceninja%2Finvoiceninja%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>invoiceninja/invoiceninja:latest (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c5a90c1ace024b5cf241f0d9797e2aea</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=invoiceninja%2Finvoiceninja%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:e71c57146f5de80841b4abb6d8a7797627fb2ea756dbdbcd357dd40914451c63&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=invoiceninja%2Finvoiceninja%3Alatest&#xA;</content>
+  </entry>
+</feed>

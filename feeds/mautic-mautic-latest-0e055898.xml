@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: mautic/mautic:latest</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of mautic/mautic:latest, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:d33a093ddc12bf1db665aa86ba98767f</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/mautic-mautic-latest-0e055898.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mautic%2Fmautic%3Alatest"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>mautic/mautic:latest (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6d322084f7f561cda8ec0151c1537efe</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mautic%2Fmautic%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:84ec7fbf7f47e54692dfd5bc788af1ff0be38ef31ac178a554fc5d743a95fdda&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=mautic%2Fmautic%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>mautic/mautic:latest (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e903ecc0c5501572c9678fa447662fd8</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mautic%2Fmautic%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:5d346bd9baed94dd18749d829df86a067c01f2a8c7da7678c6d4124b73fa3205&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=mautic%2Fmautic%3Alatest&#xA;</content>
+  </entry>
+</feed>

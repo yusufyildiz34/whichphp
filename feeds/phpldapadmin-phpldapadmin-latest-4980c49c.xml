@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: phpldapadmin/phpldapadmin:latest</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of phpldapadmin/phpldapadmin:latest, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:b409757c4062e43fa6f9632a678034aa</id>
+  <updated>2026-10-31T15:13:07Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/phpldapadmin-phpldapadmin-latest-4980c49c.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=phpldapadmin%2Fphpldapadmin%3Alatest"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>phpldapadmin/phpldapadmin:latest (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:f4f28089ac731b714e3a9cd188d5f536</id>
+    <updated>2026-10-31T15:13:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=phpldapadmin%2Fphpldapadmin%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2f032e044495190bb49ae57fec31f3eb0e7eb4e3d9c2e66c35a65eaf32d5f7c0&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T15:13:07Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=phpldapadmin%2Fphpldapadmin%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>phpldapadmin/phpldapadmin:latest (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:fe5a9fbc2fe6257cf36998a7bc32ae8f</id>
+    <updated>2026-10-31T15:13:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=phpldapadmin%2Fphpldapadmin%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:ef0c7d6ca64daf61a5871977f40fe4fcb786a4a0cf05b562fa7ce7f6373ff975&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T15:13:07Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=phpldapadmin%2Fphpldapadmin%3Alatest&#xA;</content>
+  </entry>
+</feed>

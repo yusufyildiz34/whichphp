@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: prestashop/prestashop:latest</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of prestashop/prestashop:latest, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:0603792fd7f343426ad15fed22555826</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/prestashop-prestashop-latest-99df5935.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=prestashop%2Fprestashop%3Alatest"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>prestashop/prestashop:latest (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:801cf05b43fb2daba5683bf924216956</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=prestashop%2Fprestashop%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:517ea9171e4c54bd58f52181ae52b02e4713b987ebd21a56db300fe54d7659c5&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=prestashop%2Fprestashop%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>prestashop/prestashop:latest (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:10ecee5bde6d498f5a75e5662c5114bf</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=prestashop%2Fprestashop%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:c089cfc174ffac779d222ab5a437fb3835bc6bb47937ba2b9ab9ea25f0fac9d1&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=prestashop%2Fprestashop%3Alatest&#xA;</content>
+  </entry>
+</feed>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: php:8.2-fpm</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of php:8.2-fpm, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:499ddda6b1b6d27996d495ac9e710387</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/php-8.2-fpm-e368959d.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.2-fpm"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>php:8.2-fpm (linux/amd64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:ad7ce3f582a3b36e9dda1c728b874d5d</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.2-fpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:5568e1345df99332c38f4f5eb11d2ea569eeebc47104291ddac1587aed2bdab0&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.2-fpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.2-fpm (linux/arm64): first checked, no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:87c7a3e8f92be703c702e1089d303d1b</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.2-fpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2eea4ca6b8654b671dbdf7acc42358f12d9009d4a0ce7e5c9476229148c91b63&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.2-fpm&#xA;</content>
+  </entry>
+</feed>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whichphp: php:8.3.35-fpm</title>
+  <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of php:8.3.35-fpm, per platform.</subtitle>
+  <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:e010550c33259857c7813d6ea09e6b40</id>
+  <updated>2026-10-31T01:35:10Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/php-8.3.35-fpm-79a63e72.xml"></link>
+  <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3.35-fpm"></link>
+  <author>
+    <name>whichphp</name>
+    <uri>https://github.com/yusufyildiz34/whichphp</uri>
+  </author>
+  <generator>whichphp</generator>
+  <entry>
+    <title>php:8.3.35-fpm (linux/amd64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:389184523bc682424b9a552c20e5f3c1</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3.35-fpm"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:76ff8673ad93804ff9e8c2647214e36af7a4439518a267a5769aecf4e93c962e&#xA;CVE-2026-109618: VULNERABLE&#xA;CVE-2026-109619: VULNERABLE&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3.35-fpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.3.35-fpm (linux/arm64): first checked, action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:df9b124a3c1f5c848c75be3ff1dd2cb3</id>
+    <updated>2026-10-31T01:35:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3.35-fpm"></link>
+    <content type="text">Status: action needed.&#xA;Image digest: sha256:2205ae45c751f126d879169d8697564f69b20b2e9a021b7a63f2ab1a9aaf8e77&#xA;CVE-2026-109618: VULNERABLE&#xA;CVE-2026-109619: VULNERABLE&#xA;Checked by the whichphp index at 2026-10-31T01:35:10Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3.35-fpm&#xA;</content>
+  </entry>
+</feed>
