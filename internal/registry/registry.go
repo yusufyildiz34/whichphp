@@ -15,6 +15,7 @@ import (
 	"strings"
 	"sync"
 	"time"
+	"unicode"
 )
 
 // ErrRateLimited is returned when the registry answers 429.
@@ -52,10 +53,14 @@ func ParseRef(s string) (Ref, error) {
 	if s == "" {
 		return Ref{}, errors.New("empty image reference")
 	}
+	in := s
 	var r Ref
 	if i := strings.Index(s, "@"); i >= 0 {
 		r.Digest = s[i+1:]
 		s = s[:i]
+		if r.Digest == "" {
+			return Ref{}, fmt.Errorf("invalid image reference %q: empty digest", in)
+		}
 	}
 	// The first path component is a registry host if it contains "." or ":" or is "localhost".
 	host := "docker.io"
@@ -68,17 +73,23 @@ func ParseRef(s string) (Ref, error) {
 	// A reference can carry both a tag and a digest (php:8.4-apache@sha256:...).
 	if i := strings.LastIndex(s, ":"); i >= 0 && !strings.Contains(s[i:], "/") {
 		r.Tag, s = s[i+1:], s[:i]
+		if r.Tag == "" {
+			return Ref{}, fmt.Errorf("invalid image reference %q: empty tag", in)
+		}
 	} else if r.Digest == "" {
 		r.Tag = "latest"
+	}
+	// Each path component of the repository must be non-empty, without ":" or spaces.
+	for _, c := range strings.Split(s, "/") {
+		if c == "" || strings.ContainsFunc(c, func(r rune) bool { return r == ':' || unicode.IsSpace(r) }) {
+			return Ref{}, fmt.Errorf("invalid image reference %q", in)
+		}
 	}
 	if host == "docker.io" || host == "index.docker.io" || host == "registry-1.docker.io" {
 		host = "registry-1.docker.io"
 		if !strings.Contains(s, "/") {
 			s = "library/" + s
 		}
-	}
-	if s == "" {
-		return Ref{}, fmt.Errorf("invalid image reference %q", s)
 	}
 	r.Registry, r.Repository = host, s
 	return r, nil

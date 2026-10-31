@@ -63,6 +63,7 @@ runs:
         UPLOAD_SARIF: ${{ inputs.upload-sarif }}
         SYFT_VERSION: ${{ inputs.syft-version }}
         GRYPE_VERSION: ${{ inputs.grype-version }}
+        GH_TOKEN: ${{ github.token }}
       run: |
         set -euo pipefail
         case "$FAIL_ON" in
@@ -85,9 +86,40 @@ runs:
           Linux|macOS) ;;
           *) echo "::error::The whichphp action runs on Linux and macOS runners."; exit 1 ;;
         esac
-        # A release tag downloads that release; anything else builds from source.
+        # A release tag, or the commit SHA of one, downloads that release; anything else
+        # builds from source. A SHA pin takes the release only when gh can prove the
+        # binary was built from exactly that commit, so the pin never trusts less than
+        # the source it names.
+        tag=""
+        why=""
         if [[ "$ACTION_REF" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+          tag="$ACTION_REF"
+        elif [[ "$ACTION_REF" =~ ^[0-9a-f]{40}$ ]]; then
+          help="$(gh attestation verify --help 2> /dev/null || true)"
+          if ! command -v gh > /dev/null; then
+            why="gh isn't installed"
+          elif ! grep -q -- '--source-digest' <<< "$help" || ! grep -q -- '--source-ref' <<< "$help"; then
+            why="this runner's gh can't verify which commit a release was built from"
+          elif ! tags="$(gh api --hostname github.com --paginate \
+            "repos/yusufyildiz34/whichphp/tags?per_page=100" \
+            --jq ".[] | select(.commit.sha == \"$ACTION_REF\") | .name")"; then
+            why="the tag lookup failed"
+          else
+            tag="$(grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' <<< "$tags" | head -n 1 || true)"
+            if [ -z "$tag" ]; then why="no release tag points at this commit"; fi
+          fi
+        fi
+        # A tag pushed a minute ago, or one whose release workflow failed, has no assets.
+        if [ -n "$tag" ] && ! curl -sSfL --retry 3 -o /dev/null \
+          "https://github.com/yusufyildiz34/whichphp/releases/download/$tag/SHA256SUMS"; then
+          why="the $tag release isn't downloadable (no assets yet, or the download failed)"
+          tag=""
+        fi
+        if [ -n "$why" ]; then echo "::notice::Building whichphp from source: $why."; fi
+        if [ -n "$tag" ]; then
           echo "release=true" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "Using the whichphp $tag release."
         else
           echo "release=false" >> "$GITHUB_OUTPUT"
           # whichphp needs Go 1.24 or later; an older Go would fail or fetch a toolchain.
@@ -114,6 +146,7 @@ runs:
         ACTION_REF: ${{ github.action_ref }}
         ACTION_PATH: ${{ github.action_path }}
         RELEASE: ${{ steps.plan.outputs.release }}
+        TAG: ${{ steps.plan.outputs.tag }}
         SYFT_VERSION: ${{ inputs.syft-version }}
         GRYPE_VERSION: ${{ inputs.grype-version }}
         GH_TOKEN: ${{ github.token }}
@@ -138,10 +171,10 @@ runs:
         work="$(mktemp -d)"
 
         if [ "$RELEASE" = true ]; then
-          name="whichphp_${ACTION_REF#v}_${os}_${arch}"
-          base="https://github.com/yusufyildiz34/whichphp/releases/download/$ACTION_REF"
-          curl -sSfL -o "$work/$name.tar.gz" "$base/$name.tar.gz"
-          curl -sSfL -o "$work/SHA256SUMS" "$base/SHA256SUMS"
+          name="whichphp_${TAG#v}_${os}_${arch}"
+          base="https://github.com/yusufyildiz34/whichphp/releases/download/$TAG"
+          curl -sSfL --retry 3 -o "$work/$name.tar.gz" "$base/$name.tar.gz"
+          curl -sSfL --retry 3 -o "$work/SHA256SUMS" "$base/SHA256SUMS"
           awk -v f="$name.tar.gz" '$2 == f' "$work/SHA256SUMS" > "$work/sum"
           if [ ! -s "$work/sum" ]; then echo "::error::$name.tar.gz isn't in SHA256SUMS"; exit 1; fi
           if command -v sha256sum > /dev/null; then
@@ -150,13 +183,27 @@ runs:
             (cd "$work" && shasum -a 256 -c sum)
           fi
           # The checksum file comes from the same place as the archive, so also check
-          # the signed provenance: built by this repo's release workflow, from this tag.
-          if gh attestation verify --help 2> /dev/null | grep -q -- '--source-ref'; then
+          # the signed provenance: built by this repo's release workflow, from this tag,
+          # and, when the action is pinned by SHA, from exactly that commit.
+          help="$(gh attestation verify --help 2> /dev/null || true)"
+          digest=()
+          if [[ "$ACTION_REF" =~ ^[0-9a-f]{40}$ ]]; then
+            digest=(--source-digest "$ACTION_REF")
+            # The plan step only picks a release for a SHA pin when gh can check this.
+            if ! grep -q -- '--source-digest' <<< "$help" || ! grep -q -- '--source-ref' <<< "$help"; then
+              echo "::error::Can't verify that the $TAG release was built from $ACTION_REF."
+              exit 1
+            fi
+          fi
+          # The release lives on github.com, whatever GH_HOST the job sets.
+          host=()
+          if grep -q -- '--hostname' <<< "$help"; then host=(--hostname github.com); fi
+          if grep -q -- '--source-ref' <<< "$help"; then
             gh attestation verify "$work/$name.tar.gz" --repo yusufyildiz34/whichphp \
               --signer-workflow yusufyildiz34/whichphp/.github/workflows/release.yml \
-              --source-ref "refs/tags/$ACTION_REF"
+              --source-ref "refs/tags/$TAG" ${digest[@]+"${digest[@]}"} ${host[@]+"${host[@]}"}
           else
-            echo "::warning::This runner's gh is missing or too old to verify build provenance; only the checksum was checked."
+            echo "::warning::This runner's gh is missing or too old to verify build provenance; only the checksum was checked. Pin the action by commit SHA to build from source instead."
           fi
           tar -xzf "$work/$name.tar.gz" -C "$work"
           mv "$work/$name/whichphp" "$bin/whichphp"
@@ -167,10 +214,9 @@ runs:
         # The token was only for the provenance check; the code below doesn't need it.
         unset GH_TOKEN
 
-        # The install scripts come from the tool's release tag, not a moving branch, and
-        # check the archive they download against the release checksums.
-        curl -sSfL "https://raw.githubusercontent.com/anchore/syft/$SYFT_VERSION/install.sh" | sh -s -- -b "$bin" "$SYFT_VERSION"
-        curl -sSfL "https://raw.githubusercontent.com/anchore/grype/$GRYPE_VERSION/install.sh" | sh -s -- -b "$bin" "$GRYPE_VERSION"
+        # Release archives checked against SHA-256 hashes pinned in the script; no
+        # downloaded script runs.
+        bash "$ACTION_PATH/scripts/install-tools.sh" "$bin"
         "$bin/grype" db update
         "$bin/whichphp" version
         rm -rf "$work"

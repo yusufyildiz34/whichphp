@@ -5,9 +5,9 @@ name: Action
 on:
   push:
     branches: [main]
-    paths: ["action.yml", "cmd/**", "internal/**", "go.mod", ".github/workflows/action-test.yml"]
+    paths: ["action.yml", "scripts/install-tools.sh", "cmd/**", "internal/**", "go.mod", ".github/workflows/action-test.yml"]
   pull_request:
-    paths: ["action.yml", "cmd/**", "internal/**", "go.mod", ".github/workflows/action-test.yml"]
+    paths: ["action.yml", "scripts/install-tools.sh", "cmd/**", "internal/**", "go.mod", ".github/workflows/action-test.yml"]
   workflow_dispatch:
 
 permissions:
@@ -18,6 +18,30 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  # The action and the index install Syft and Grype with this script; check its pinned
+  # hashes and archive layout on every platform the action supports.
+  install-tools:
+    name: Install tools (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, ubuntu-24.04-arm, macos-latest, macos-15-intel]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install and run
+        env:
+          REQUIRE_PINNED: "1"
+        run: |
+          set -euo pipefail
+          bin="$RUNNER_TEMP/tools"
+          bash scripts/install-tools.sh "$bin"
+          "$bin/syft" version
+          "$bin/grype" version
+
   test:
     name: Test (${{ matrix.os }})
     runs-on: ${{ matrix.os }}

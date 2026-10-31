@@ -22,6 +22,8 @@ jobs:
   build:
     name: Build and test
     runs-on: ubuntu-latest
+    outputs:
+      has-notes: ${{ steps.notes.outputs.has-notes }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -53,6 +55,26 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
+      # Hand-written notes for this version, if docs/releases/<tag>.md exists.
+      - name: Collect the release notes
+        id: notes
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          mkdir -p notes
+          if [ -s "docs/releases/$TAG.md" ]; then
+            cp "docs/releases/$TAG.md" notes/notes.md
+            echo "has-notes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: ${{ steps.notes.outputs.has-notes == 'true' }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: notes
+          path: notes/
+          if-no-files-found: error
+          retention-days: 7
+
   publish:
     name: Attest and publish
     needs: build
@@ -67,17 +89,31 @@ jobs:
           name: dist
           path: dist
 
+      - if: ${{ needs.build.outputs.has-notes == 'true' }}
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: notes
+          path: notes
+
       - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        id: attest
         with:
           subject-path: dist/*
 
-      # Fails if the release already exists: published assets are never replaced.
+      # Fails if the release already exists: published assets are never replaced. The
+      # signed provenance bundle goes with the archives, so a download can be checked
+      # without GitHub's attestation API: gh attestation verify <file> --bundle <bundle>
+      # --repo <owner/repo>.
       - name: Publish the release
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ github.ref_name }}
+          BUNDLE: ${{ steps.attest.outputs.bundle-path }}
+          HAS_NOTES: ${{ needs.build.outputs.has-notes }}
         run: |
-          prerelease=()
-          if [[ "$TAG" == *-* ]]; then prerelease=(--prerelease); fi
-          gh release create "$TAG" dist/* --repo "$GITHUB_REPOSITORY" --verify-tag \
-            --generate-notes --title "whichphp $TAG" "${prerelease[@]}"
+          set -euo pipefail
+          cp "$BUNDLE" "dist/whichphp_${TAG#v}.sigstore.json"
+          flags=(--title "whichphp $TAG")
+          if [ "$HAS_NOTES" = true ]; then flags+=(--notes-file notes/notes.md); else flags+=(--generate-notes); fi
+          if [[ "$TAG" == *-* ]]; then flags+=(--prerelease); fi
+          gh release create "$TAG" dist/* --repo "$GITHUB_REPOSITORY" --verify-tag "${flags[@]}"

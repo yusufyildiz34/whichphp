@@ -82,10 +82,26 @@ func Evaluate(files map[string]string, contentSeen bool) Result {
 		return res
 	}
 
+	// Read the files in a fixed order, so the result never depends on map order. When
+	// two names mean the same path ("etc/php.ini" and "/etc/php.ini"), the absolute
+	// name's contents win.
+	byPath := map[string]string{}
+	var paths []string
+	for name, content := range files {
+		p := "/" + strings.TrimPrefix(name, "/")
+		if _, dup := byPath[p]; !dup {
+			paths = append(paths, p)
+		} else if name != p {
+			continue
+		}
+		byPath[p] = content
+	}
+	sort.Strings(paths)
+
 	trees := map[string]*tree{}
 	var pools []poolOverride
-	for p, content := range files {
-		p = "/" + strings.TrimPrefix(p, "/")
+	for _, p := range paths {
+		content := byPath[p]
 		if !configPath.MatchString(p) {
 			continue
 		}

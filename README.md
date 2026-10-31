@@ -16,6 +16,8 @@ whether CVE-2026-109618 and CVE-2026-109619 are fixed, and why.</p>
 <a href="go.mod"><img alt="Go version" src="https://img.shields.io/github/go-mod/go-version/yusufyildiz34/whichphp"></a>
 <a href="go.mod"><img alt="Go dependencies: none" src="https://img.shields.io/badge/go%20dependencies-none-0f7a5c"></a>
 <a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/github/license/yusufyildiz34/whichphp"></a>
+<a href="https://scorecard.dev/viewer/?uri=github.com/yusufyildiz34/whichphp"><img alt="OpenSSF Scorecard" src="https://api.scorecard.dev/projects/github.com/yusufyildiz34/whichphp/badge"></a>
+<a href="https://github.com/yusufyildiz34/whichphp/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/yusufyildiz34/whichphp"></a>
 <a href="https://github.com/yusufyildiz34/whichphp/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/yusufyildiz34/whichphp?style=flat"></a>
 </p>
 
@@ -53,7 +55,7 @@ whether CVE-2026-109618 and CVE-2026-109619 are fixed, and why.</p>
 > **CVE-2026-115560 is still unfixed.** Until PHP's next regular release, set `session.upload_progress.enabled = 0` server-wide.
 
 > [!NOTE]
-> whichphp is pre-release. `whichphp image` and the [GitHub Action](#use-it-in-ci) work today if you [install from source](#quick-start), and the [public index](https://yusufyildiz34.github.io/whichphp/) updates daily. Release binaries ship on November 4, 2026.
+> whichphp is new: v0.1.0 is its first release. [Report a wrong verdict](https://github.com/yusufyildiz34/whichphp/issues/new?template=wrong-verdict.yml) with evidence and it gets fixed in the next release and the next [index](https://yusufyildiz34.github.io/whichphp/) run.
 
 ## Why whichphp
 
@@ -69,17 +71,21 @@ Every verdict comes with its evidence: which binary, which package release, whic
 
 ## Quick start
 
-whichphp needs [Syft](https://github.com/anchore/syft) and [Grype](https://github.com/anchore/grype) on your `PATH`. Install whichphp with Go 1.24 or later:
+whichphp needs [Syft](https://github.com/anchore/syft) and [Grype](https://github.com/anchore/grype) on your `PATH`.
+
+Download whichphp for Linux, macOS or Windows (amd64 or arm64) from the [latest release](https://github.com/yusufyildiz34/whichphp/releases/latest). Every release has SHA256 checksums and signed build provenance, so check the download before you run it:
+
+```sh
+sha256sum --ignore-missing -c SHA256SUMS        # on macOS: shasum -a 256 --ignore-missing -c SHA256SUMS
+gh attestation verify whichphp_*_linux_amd64.tar.gz --repo yusufyildiz34/whichphp
+# or with the provenance bundle from the release, without GitHub's attestation API:
+gh attestation verify whichphp_*_linux_amd64.tar.gz --repo yusufyildiz34/whichphp --bundle whichphp_*.sigstore.json
+```
+
+Or install it with Go 1.24 or later:
 
 ```sh
 go install github.com/yusufyildiz34/whichphp/cmd/whichphp@latest
-```
-
-From November 4, the [releases page](https://github.com/yusufyildiz34/whichphp/releases) also has binaries for Linux, macOS and Windows on amd64 and arm64, with SHA256 checksums and signed build provenance. Check a download before you run it:
-
-```sh
-sha256sum --ignore-missing -c SHA256SUMS
-gh attestation verify whichphp_*_linux_amd64.tar.gz --repo yusufyildiz34/whichphp
 ```
 
 Then check an image:
@@ -138,7 +144,7 @@ jobs:
       security-events: write # only for upload-sarif
       actions: read # only for upload-sarif in a private repository
     steps:
-      - uses: yusufyildiz34/whichphp@v0.1.0 # until the first release, use @main
+      - uses: yusufyildiz34/whichphp@v0.1.0
         with:
           image: ghcr.io/acme/app:latest
           upload-sarif: true
@@ -167,7 +173,7 @@ It also works on an image built earlier in the same job, since Syft reads the lo
 | `exit-code` | whichphp's exit code |
 | `sarif-file`, `json-file` | Paths of the reports |
 
-A release tag (`@v0.1.0`) downloads that release and checks both its checksum and its signed build provenance. A branch or commit builds whichphp from source, setting up Go first if the runner has none. The tools stay out of your job's `PATH`.
+A release tag (`@v0.1.0`) downloads that release and checks its checksum and, when the runner's `gh` can, its signed build provenance. Pinned by the commit SHA of a release, the action downloads the release only when the runner's `gh` can check that the binary was built from exactly that commit, and the step fails if that check fails; when `gh` can't check it, the action builds that commit from source and says why in a notice. A release that isn't downloadable yet (a tag pushed minutes ago) also builds from source, with a notice. So you can pin the action by SHA, as many security policies require, and never trust more than the source you pinned. Any other branch or commit builds whichphp from source, setting up Go first if the runner has none. Syft and Grype are installed from their release archives; the default versions are checked against SHA-256 hashes pinned in [`scripts/install-tools.sh`](scripts/install-tools.sh), and other versions against their release's checksums file, with a warning. None of these tools go on your job's `PATH`.
 
 </details>
 
@@ -333,7 +339,7 @@ No. The old version is vulnerable. Known regressions in 8.4.27 and 8.5.12 are be
 - [x] A daily public index for amd64 and arm64, with shields.io badges
 - [x] SARIF and OpenVEX output
 - [x] A GitHub Action, with code scanning upload
-- [ ] Release binaries with checksums and signed build provenance (first release November 4, 2026)
+- [x] Release binaries with checksums and signed build provenance (v0.1.0)
 - [ ] `whichphp cluster`: what each pod actually runs and what to redeploy (v0.2)
 - [ ] Per-tag "tell me when it's fixed" feeds (v0.2)
 - [ ] Fixed-build data for third-party packagers: Sury, Remi, GetPageSpeed, TuxCare, Freexian, CloudLinux, cPanel

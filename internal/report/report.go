@@ -39,10 +39,12 @@ func (e *errWriter) Write(p []byte) (int, error) {
 	return n, err
 }
 
-// clean makes text that comes from the image safe to print: control characters,
-// including newlines, become "?", and a leading "::" becomes "?:". A CI log reads a
-// line that starts with "::" as a workflow command, so a crafted package name must
-// neither start a new line nor begin one.
+// clean makes text that comes from the image safe to print in a CI log, which reads
+// workflow commands from it. Control characters, including newlines, become "?", so a
+// crafted package name can't start a new line. A "::" after any leading white space
+// becomes "?:", because the GitHub Actions runner trims a line before it looks for
+// "::command". And "##[" becomes "#?[" wherever it is, because the runner also reads
+// the older "##[command]" form anywhere in a line.
 func clean(s string) string {
 	s = strings.Map(func(r rune) rune {
 		if unicode.IsControl(r) || r == '\u2028' || r == '\u2029' {
@@ -50,10 +52,11 @@ func clean(s string) string {
 		}
 		return r
 	}, s)
-	if strings.HasPrefix(s, "::") {
-		s = "?" + s[1:]
+	if t := strings.TrimLeftFunc(s, unicode.IsSpace); strings.HasPrefix(t, "::") {
+		i := len(s) - len(t)
+		s = s[:i] + "?" + s[i+1:]
 	}
-	return s
+	return strings.ReplaceAll(s, "##[", "#?[")
 }
 
 // Table writes a human-readable report.

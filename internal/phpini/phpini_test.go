@@ -67,3 +67,21 @@ func TestNonPHPPathIgnored(t *testing.T) {
 		t.Fatalf("upload_progress = %q, want on (nginx path is not PHP config)", got)
 	}
 }
+
+func TestEvaluateSamePathTwice(t *testing.T) {
+	for _, dir := range []string{"usr/local/etc/php", ".x/etc/php"} {
+		files := map[string]string{
+			dir + "/php.ini":       "session.upload_progress.enabled = On\n",
+			"/" + dir + "/php.ini": "session.upload_progress.enabled = Off\n",
+		}
+		for i := 0; i < 20; i++ {
+			res := Evaluate(files, true)
+			if got := res.Settings[UploadProgress].Effective; got != "off" {
+				t.Fatalf("%s, run %d: got %q, want the absolute path's value, off", dir, i, got)
+			}
+			if len(res.FilesSeen) != 1 {
+				t.Fatalf("FilesSeen = %v", res.FilesSeen)
+			}
+		}
+	}
+}

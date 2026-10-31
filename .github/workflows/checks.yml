@@ -63,6 +63,9 @@ jobs:
           done
           shellcheck --severity=style "$dir"/*.sh
 
+      - name: Syft and Grype pins
+        run: bash scripts/check-tool-pins.sh
+
       - name: zizmor
         uses: zizmorcore/zizmor-action@53290badfa369cb0bf7ad16342cb62c2fa47ac7b # v0.8.0
         with:
@@ -93,3 +96,44 @@ jobs:
         run: |
           go install "honnef.co/go/tools/cmd/staticcheck@$STATICCHECK_VERSION"
           "$(go env GOPATH)/bin/staticcheck" ./...
+
+  fuzz:
+    name: Fuzz the parsers
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: stable
+          cache: false
+
+      # Everything these parse comes from images, SBOMs or registries. A short run on
+      # every change; a failing input is saved under testdata/fuzz and uploaded below.
+      - name: Fuzz
+        run: |
+          set -euo pipefail
+          while read -r pkg target; do
+            echo "::group::$pkg $target"
+            go test "./$pkg" -run='^$' -fuzz="^$target\$" -fuzztime=30s -fuzzminimizetime=5s
+            echo "::endgroup::"
+          done <<'TARGETS'
+          internal/phpver FuzzParse
+          internal/registry FuzzParseRef
+          internal/registry FuzzParseChallenge
+          internal/syftjson FuzzParse
+          internal/phpini FuzzEvaluate
+          internal/report FuzzReports
+          TARGETS
+
+      - name: Upload the failing inputs
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: fuzz-failures
+          path: internal/*/testdata/fuzz/
+          if-no-files-found: ignore
+          retention-days: 14

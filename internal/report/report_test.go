@@ -395,6 +395,23 @@ func TestTableCleansImageText(t *testing.T) {
 	}
 }
 
+func TestClean(t *testing.T) {
+	for in, want := range map[string]string{
+		"libphp":              "libphp",
+		"::warning::x":        "?:warning::x",
+		" ::warning::x":       " ?:warning::x",
+		"\u00a0\u3000::x":     "\u00a0\u3000?:x",
+		"a::b":                "a::b",
+		"8.4.26##[add-mask]x": "8.4.26#?[add-mask]x",
+		"x\n::y":              "x?::y",
+		"\u2028::y":           "?::y",
+	} {
+		if got := clean(in); got != want {
+			t.Errorf("clean(%q) = %q, want %q", in, got, want)
+		}
+	}
+}
+
 type failWriter struct{}
 
 func (failWriter) Write([]byte) (int, error) { return 0, errors.New("disk full") }

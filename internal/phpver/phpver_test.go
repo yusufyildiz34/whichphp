@@ -25,6 +25,8 @@ func TestParse(t *testing.T) {
 		{"The PHP Group", false, [3]int{}, "", 0},
 		{"2:93ubuntu2", false, [3]int{}, "", 0},
 		{"", false, [3]int{}, "", 0},
+		{"8.4.99999999999999999999", false, [3]int{}, "", 0},
+		{"8.6.0rc99999999999999999999", false, [3]int{}, "", 0},
 	}
 	for _, c := range cases {
 		v, ok := Parse(c.in)

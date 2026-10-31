@@ -32,6 +32,14 @@ func TestParseRef(t *testing.T) {
 	}
 }
 
+func TestParseRefRejects(t *testing.T) {
+	for _, in := range []string{"", " ", ":", "@", "php:", "php@", "/php", "php/", "a//b", "ghcr.io/", "ghcr.io/a b", "x/a:b/c"} {
+		if r, err := ParseRef(in); err == nil {
+			t.Errorf("ParseRef(%q) = %+v, want an error", in, r)
+		}
+	}
+}
+
 func TestParseChallenge(t *testing.T) {
 	p := parseChallenge(`Bearer realm="https://auth.docker.io/token",service="registry.docker.io",scope="repository:library/php:pull"`)
 	if p["realm"] != "https://auth.docker.io/token" || p["service"] != "registry.docker.io" || p["scope"] != "repository:library/php:pull" {

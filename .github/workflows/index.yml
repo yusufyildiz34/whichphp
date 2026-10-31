@@ -60,12 +60,14 @@ jobs:
           go-version: stable
           cache: false
 
-      # The install scripts come from each tool's release tag, not a moving branch.
+      # Release archives checked against SHA-256 hashes pinned in the script; a version
+      # without pinned hashes fails here rather than quietly losing the pin.
       - name: Install Syft, Grype and whichphp
+        env:
+          REQUIRE_PINNED: "1"
         run: |
           mkdir -p "$HOME/bin" && echo "$HOME/bin" >> "$GITHUB_PATH"
-          curl -sSfL "https://raw.githubusercontent.com/anchore/syft/$SYFT_VERSION/install.sh" | sh -s -- -b "$HOME/bin" "$SYFT_VERSION"
-          curl -sSfL "https://raw.githubusercontent.com/anchore/grype/$GRYPE_VERSION/install.sh" | sh -s -- -b "$HOME/bin" "$GRYPE_VERSION"
+          bash scripts/install-tools.sh "$HOME/bin"
           go build -trimpath -ldflags "-X main.version=$(git rev-parse --short HEAD)" -o "$HOME/bin/whichphp" ./cmd/whichphp
           "$HOME/bin/grype" db update
           "$HOME/bin/grype" db status

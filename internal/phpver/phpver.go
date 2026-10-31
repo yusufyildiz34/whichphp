@@ -40,13 +40,19 @@ func Parse(s string) (Version, bool) {
 		return Version{}, false
 	}
 	v := Version{Raw: raw}
-	v.Major, _ = strconv.Atoi(m[1])
-	v.Minor, _ = strconv.Atoi(m[2])
-	v.Patch, _ = strconv.Atoi(m[3])
+	// A number too large for an int isn't a PHP version; Atoi would clamp it.
+	var err error
+	for i, p := range []*int{&v.Major, &v.Minor, &v.Patch} {
+		if *p, err = strconv.Atoi(m[i+1]); err != nil {
+			return Version{}, false
+		}
+	}
 	if m[4] != "" {
 		v.Pre = strings.ToLower(m[4])
 		if m[5] != "" {
-			v.PreNum, _ = strconv.Atoi(m[5])
+			if v.PreNum, err = strconv.Atoi(m[5]); err != nil {
+				return Version{}, false
+			}
 		}
 	}
 	return v, true
