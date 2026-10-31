@@ -69,9 +69,7 @@ func (t Tools) SBOM(ctx context.Context, source, platform, dir string) (string, 
 	if platform != "" {
 		args = append(args, "--platform", platform)
 	}
-	if !t.Verbose {
-		args = append(args, "-q")
-	}
+	// No -q: quiet mode also hides the error message. Output is captured either way.
 	if _, err := t.run(ctx, t.Syft, args...); err != nil {
 		return "", fmt.Errorf("syft failed: %w", err)
 	}
@@ -82,9 +80,6 @@ func (t Tools) SBOM(ctx context.Context, source, platform, dir string) (string, 
 func (t Tools) Match(ctx context.Context, sbom, dir string) (string, error) {
 	out := filepath.Join(dir, "grype.json")
 	args := []string{"sbom:" + sbom, "-o", "json", "--file", out}
-	if !t.Verbose {
-		args = append(args, "-q")
-	}
 	if _, err := t.run(ctx, t.Grype, args...); err != nil {
 		var exit *exec.ExitError
 		// Grype exits non-zero only with --fail-on; any other failure is real.
@@ -114,6 +109,7 @@ func (t Tools) DBSearch(ctx context.Context, id, distro string) ([]byte, error) 
 
 func (t Tools) run(ctx context.Context, bin string, args ...string) ([]byte, error) {
 	cmd := exec.CommandContext(ctx, bin, args...)
+	cmd.Env = append(os.Environ(), "SYFT_CHECK_FOR_APP_UPDATE=false", "GRYPE_CHECK_FOR_APP_UPDATE=false")
 	var stdout, stderr bytes.Buffer
 	cmd.Stdout = &stdout
 	if t.Verbose {
@@ -123,6 +119,10 @@ func (t Tools) run(ctx context.Context, bin string, args ...string) ([]byte, err
 	}
 	if err := cmd.Run(); err != nil {
 		msg := strings.TrimSpace(stderr.String())
+		if msg == "" {
+			msg = strings.TrimSpace(stdout.String())
+		}
+		// The tools print the error last, after any warnings.
 		if len(msg) > 2000 {
 			msg = msg[len(msg)-2000:]
 		}

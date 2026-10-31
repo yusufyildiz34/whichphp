@@ -444,8 +444,9 @@ func describeScanError(err error) string {
 	case strings.Contains(low, "toomanyrequests"), strings.Contains(low, "rate limit"):
 		return "registry rate limit reached"
 	}
-	if len(msg) > 300 {
-		msg = msg[:300] + "…"
+	// Keep the start (which tool failed) and the end (the tool's own error message).
+	if len(msg) > 500 {
+		msg = msg[:120] + " … " + msg[len(msg)-360:]
 	}
 	return msg
 }
