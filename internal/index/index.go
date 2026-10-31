@@ -75,6 +75,9 @@ type Entry struct {
 	FirstFixedDigest string `json:"firstFixedDigest,omitempty"`
 	FirstFixedSeen   string `json:"firstFixedSeen,omitempty"`
 
+	// Feed is the tag's Atom feed, relative to the site: feeds/<FeedFile(Ref)>.
+	Feed string `json:"feed,omitempty"`
+
 	Error string `json:"error,omitempty"`
 }
 

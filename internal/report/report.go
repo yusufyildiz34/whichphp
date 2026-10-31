@@ -59,6 +59,9 @@ func clean(s string) string {
 	return strings.ReplaceAll(s, "##[", "#?[")
 }
 
+// Clean is clean for other packages that print text from images or clusters.
+func Clean(s string) string { return clean(s) }
+
 // Table writes a human-readable report.
 func Table(out io.Writer, r verdict.Report) error {
 	w := &errWriter{w: out}

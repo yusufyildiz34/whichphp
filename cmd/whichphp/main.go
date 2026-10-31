@@ -31,6 +31,7 @@ const usage = `whichphp: which PHP is inside this image, and is it really fixed 
 Usage:
   whichphp image [flags] <image>
   whichphp image --sbom <syft.json> [--grype-json <grype.json>] [flags]
+  whichphp cluster --context <name> [-n namespace] [-l selector] [flags]
   whichphp index [--images index/images.csv] [--data data] [flags]
   whichphp version
 
@@ -45,6 +46,10 @@ Output formats (-o, repeatable; add =<file> to write to a file):
   e.g. whichphp image -o table -o sarif=whichphp.sarif php:8.4-apache
 
 Exit codes: 0 fixed or no PHP, 1 action needed, 2 unknown, 3 error.
+
+"whichphp cluster" reads which images a cluster's pods actually run (kubectl get,
+nothing else) and says which workloads to redeploy and which images to rebuild.
+Run "whichphp cluster -h" for its flags.
 
 Flags for "image":
 `
@@ -72,6 +77,8 @@ func run(args []string, stdout, stderr io.Writer) int {
 		return runImage(args[1:], stdout, stderr)
 	case "index":
 		return runIndex(args[1:], stdout, stderr)
+	case "cluster":
+		return runCluster(args[1:], stdout, stderr)
 	case "help", "-h", "--help":
 		fmt.Fprint(stdout, usage)
 		newImageFlags(stdout).fs.PrintDefaults()
@@ -305,7 +312,9 @@ func runImage(args []string, stdout, stderr io.Writer) int {
 
 	rep, err := scan(ctx, f, input, stderr, nil)
 	if err != nil {
-		fmt.Fprintf(stderr, "whichphp: %v\n", err)
+		// The error can quote the image or the tools' output: one clean line, so it
+		// can't start a CI log command.
+		fmt.Fprintf(stderr, "whichphp: %s\n", report.Clean(err.Error()))
 		return 3
 	}
 	// Write every file, then move them all into place, then print to stdout: a run
@@ -537,5 +546,6 @@ func progress(w io.Writer, f *imageFlags, format string, a ...any) {
 	if o, ok := f.outputs.toStdout(); ok && o.format != "table" && !f.verbose {
 		return
 	}
-	fmt.Fprintf(w, format+"\n", a...)
+	// The input can come from a pod spec; keep it from starting a CI log command.
+	fmt.Fprintln(w, report.Clean(fmt.Sprintf(format, a...)))
 }

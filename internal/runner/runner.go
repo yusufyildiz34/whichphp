@@ -7,10 +7,13 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"io"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"strings"
+	"unicode"
 
 	"github.com/yusufyildiz34/whichphp/internal/phpini"
 )
@@ -109,20 +112,60 @@ func (t Tools) DBSearch(ctx context.Context, id, distro string) ([]byte, error) 
 	return t.run(ctx, t.Grype, args...)
 }
 
+// ansiRE matches terminal escape sequences, which the tools use to color errors:
+// CSI sequences, terminated OSC sequences, nF escapes such as ESC ( B, and the other
+// two-byte escapes. An unterminated OSC loses only its ESC ], so the text after it,
+// often the cause, stays.
+var ansiRE = regexp.MustCompile("\x1b(\\[[0-?]*[ -/]*[@-~]|\\][^\x07\x1b]*(\x07|\x1b\\\\)|[ -/]+[0-~]|[0-Z\\\\-~])")
+
+// cleanMessage removes escape sequences and turns other control characters, except
+// newlines and tabs, into "?".
+func cleanMessage(s string) string {
+	return strings.Map(func(r rune) rune {
+		if r != '\n' && r != '\t' && unicode.IsControl(r) {
+			return '?'
+		}
+		return r
+	}, ansiRE.ReplaceAllString(s, ""))
+}
+
+// ignoreErrors keeps a broken terminal from stopping the copy of a tool's output.
+type ignoreErrors struct{ w io.Writer }
+
+func (i ignoreErrors) Write(p []byte) (int, error) {
+	_, _ = i.w.Write(p) // the terminal is best effort; the tail must still fill
+	return len(p), nil
+}
+
+// tail keeps the last max bytes written to it.
+type tail struct {
+	buf []byte
+	max int
+}
+
+func (t *tail) Write(p []byte) (int, error) {
+	t.buf = append(t.buf, p...)
+	if len(t.buf) > t.max {
+		t.buf = append(t.buf[:0], t.buf[len(t.buf)-t.max:]...)
+	}
+	return len(p), nil
+}
+
 func (t Tools) run(ctx context.Context, bin string, args ...string) ([]byte, error) {
 	cmd := exec.CommandContext(ctx, bin, args...)
-	cmd.Env = append(os.Environ(), "SYFT_CHECK_FOR_APP_UPDATE=false", "GRYPE_CHECK_FOR_APP_UPDATE=false")
-	var stdout, stderr bytes.Buffer
+	cmd.Env = append(os.Environ(), "SYFT_CHECK_FOR_APP_UPDATE=false", "GRYPE_CHECK_FOR_APP_UPDATE=false", "NO_COLOR=1")
+	var stdout bytes.Buffer
+	stderr := &tail{max: 64 << 10}
 	cmd.Stdout = &stdout
+	cmd.Stderr = stderr
 	if t.Verbose {
-		cmd.Stderr = os.Stderr
-	} else {
-		cmd.Stderr = &stderr
+		// Show the progress, and still keep the end for the error message.
+		cmd.Stderr = io.MultiWriter(stderr, ignoreErrors{os.Stderr})
 	}
 	if err := cmd.Run(); err != nil {
-		msg := strings.TrimSpace(stderr.String())
+		msg := strings.TrimSpace(cleanMessage(string(stderr.buf)))
 		if msg == "" {
-			msg = strings.TrimSpace(stdout.String())
+			msg = strings.TrimSpace(cleanMessage(stdout.String()))
 		}
 		// The tools print the error last, after any warnings.
 		if len(msg) > 2000 {

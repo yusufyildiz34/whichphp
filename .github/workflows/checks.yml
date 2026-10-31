@@ -111,7 +111,7 @@ jobs:
           go-version: stable
           cache: false
 
-      # Everything these parse comes from images, SBOMs, Grype or registries. A short run on
+      # Everything these parse comes from images, SBOMs, Grype, registries or clusters. A short run on
       # every change; a failing input is saved under testdata/fuzz and uploaded below.
       - name: Fuzz
         run: |
@@ -130,6 +130,8 @@ jobs:
           internal/syftjson FuzzParse
           internal/phpini FuzzEvaluate
           internal/report FuzzReports
+          internal/index FuzzFeeds
+          internal/cluster FuzzInventory
           TARGETS
 
       - name: Upload the failing inputs

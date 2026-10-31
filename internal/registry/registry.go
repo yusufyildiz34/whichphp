@@ -9,9 +9,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
+	"math"
 	"net/http"
 	"net/url"
 	"os"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -105,7 +108,15 @@ type Client struct {
 	Scheme string
 
 	mu     sync.Mutex
-	tokens map[string]string // key: realm|service|scope
+	tokens map[string]cachedToken // key: registry|realm|service|scope
+	now    func() time.Time       // tests replace it
+}
+
+// cachedToken is a bearer token and when to stop using it. Registries give tokens a
+// short life (Docker Hub: 300 seconds), shorter than a cluster check can take.
+type cachedToken struct {
+	value   string
+	expires time.Time
 }
 
 // NewClient returns a client with credentials from the environment.
@@ -135,13 +146,22 @@ func (c *Client) Digest(ctx context.Context, ref Ref) (string, error) {
 	}
 	if resp.StatusCode == http.StatusUnauthorized {
 		challenge := resp.Header.Get("Www-Authenticate")
-		token, err := c.token(ctx, challenge, ref)
+		token, cached, err := c.token(ctx, challenge, ref, false)
 		if err != nil {
 			return "", err
 		}
 		resp, err = c.head(ctx, u, token)
 		if err != nil {
 			return "", err
+		}
+		// A cached token can be rejected before its stated expiry; get a fresh one once.
+		if resp.StatusCode == http.StatusUnauthorized && cached {
+			if token, _, err = c.token(ctx, challenge, ref, true); err != nil {
+				return "", err
+			}
+			if resp, err = c.head(ctx, u, token); err != nil {
+				return "", err
+			}
 		}
 	}
 	switch resp.StatusCode {
@@ -183,22 +203,37 @@ func (c *Client) head(ctx context.Context, u, token string) (*http.Response, err
 	return resp, nil
 }
 
-// token fetches (and caches) a bearer token for the challenge.
-func (c *Client) token(ctx context.Context, challenge string, ref Ref) (string, error) {
+// token fetches (and caches until shortly before it expires) a bearer token for the
+// challenge, and says whether it came from the cache. With fresh set, it ignores the
+// cache.
+func (c *Client) token(ctx context.Context, challenge string, ref Ref, fresh bool) (string, bool, error) {
 	params := parseChallenge(challenge)
 	realm := params["realm"]
 	if realm == "" {
-		return "", fmt.Errorf("%s: registry asked for unsupported authentication %q", ref, challenge)
+		return "", false, fmt.Errorf("%s: registry asked for unsupported authentication %q", ref, challenge)
+	}
+	// The realm comes from the registry, which in cluster mode anyone who can create
+	// a pod chooses. Tokens are fetched only over https (http only in tests).
+	realmURL, err := url.Parse(realm)
+	if err != nil || realmURL.Host == "" || realmURL.User != nil || (realmURL.Scheme != "https" && !(c.Scheme == "http" && realmURL.Scheme == "http")) {
+		return "", false, fmt.Errorf("%s: registry asked for a token from %q, which isn't allowed: it must be an https URL with a host and no user", ref, realm)
 	}
 	scope := params["scope"]
 	if scope == "" {
 		scope = "repository:" + ref.Repository + ":pull"
 	}
-	key := realm + "|" + params["service"] + "|" + scope
+	// A token belongs to the registry that asked for it: a token made with the
+	// Docker Hub credentials must never be sent to another registry that names the
+	// same realm in its challenge.
+	key := ref.Registry + "|" + realm + "|" + params["service"] + "|" + scope
+	now := time.Now
+	if c.now != nil {
+		now = c.now
+	}
 	c.mu.Lock()
-	if t, ok := c.tokens[key]; ok {
+	if t, ok := c.tokens[key]; ok && !fresh && now().Before(t.expires) {
 		c.mu.Unlock()
-		return t, nil
+		return t.value, true, nil
 	}
 	c.mu.Unlock()
 
@@ -209,40 +244,63 @@ func (c *Client) token(ctx context.Context, challenge string, ref Ref) (string, 
 	q.Set("scope", scope)
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, realm+"?"+q.Encode(), nil)
 	if err != nil {
-		return "", err
+		return "", false, err
 	}
-	if c.Username != "" && c.Password != "" && strings.Contains(realm, "docker.io") {
+	if c.Username != "" && c.Password != "" && dockerHubAuth(ref, realmURL) {
 		req.SetBasicAuth(c.Username, c.Password)
 	}
 	resp, err := c.client().Do(req)
 	if err != nil {
-		return "", err
+		return "", false, err
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode == http.StatusTooManyRequests {
-		return "", fmt.Errorf("%s: %w", ref, ErrRateLimited)
+		return "", false, fmt.Errorf("%s: %w", ref, ErrRateLimited)
 	}
 	if resp.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("%s: token request answered %s", ref, resp.Status)
+		return "", false, fmt.Errorf("%s: token request answered %s", ref, resp.Status)
 	}
 	var body struct {
-		Token       string `json:"token"`
-		AccessToken string `json:"access_token"`
+		Token       string          `json:"token"`
+		AccessToken string          `json:"access_token"`
+		ExpiresIn   json.RawMessage `json:"expires_in"`
 	}
-	if err := json.NewDecoder(resp.Body).Decode(&body); err != nil {
-		return "", fmt.Errorf("%s: bad token response: %w", ref, err)
+	if err := json.NewDecoder(io.LimitReader(resp.Body, 1<<20)).Decode(&body); err != nil {
+		return "", false, fmt.Errorf("%s: bad token response: %w", ref, err)
 	}
 	t := body.Token
 	if t == "" {
 		t = body.AccessToken
 	}
+	life := tokenLife(body.ExpiresIn)
 	c.mu.Lock()
 	if c.tokens == nil {
-		c.tokens = map[string]string{}
+		c.tokens = map[string]cachedToken{}
 	}
-	c.tokens[key] = t
+	c.tokens[key] = cachedToken{value: t, expires: now().Add(life)}
 	c.mu.Unlock()
-	return t, nil
+	return t, false, nil
+}
+
+// dockerHubAuth reports whether the Docker Hub credentials may go with this token
+// request: only for a Docker Hub image, and only to Docker Hub's own token service.
+func dockerHubAuth(ref Ref, realm *url.URL) bool {
+	return ref.Registry == "registry-1.docker.io" && realm.Scheme == "https" && realm.Host == "auth.docker.io"
+}
+
+// tokenLife reads expires_in, which registries send as a number or a string, and
+// returns how long to use the token: a little less than its life, at most an hour.
+// The token spec's default life is 60 seconds.
+func tokenLife(raw json.RawMessage) time.Duration {
+	secs, err := strconv.ParseFloat(strings.Trim(string(raw), `"`), 64)
+	if err != nil || secs <= 0 || math.IsNaN(secs) {
+		secs = 60
+	}
+	life := time.Duration(min(secs, 3600)) * time.Second
+	if life > 30*time.Second {
+		life -= 15 * time.Second
+	}
+	return life
 }
 
 // parseChallenge parses `Bearer realm="…",service="…",scope="…"`.

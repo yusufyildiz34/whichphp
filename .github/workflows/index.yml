@@ -31,6 +31,7 @@ concurrency:
 env:
   SYFT_VERSION: v1.55.0
   GRYPE_VERSION: v0.121.0
+  SITE_URL: https://yusufyildiz34.github.io/whichphp/
 
 jobs:
   scan:
@@ -102,7 +103,7 @@ jobs:
             echo "::error::max_scans must be a whole number"
             exit 1
           fi
-          whichphp index --images index/images.csv --data data --max-scans "$MAX_SCANS"
+          whichphp index --images index/images.csv --data data --max-scans "$MAX_SCANS" --site-url "$SITE_URL"
 
       - name: Show disk usage
         if: ${{ always() }}
@@ -168,6 +169,53 @@ jobs:
             jq -e '.schemaVersion == 1' "$f" > /dev/null
             cp "$f" "$CHECKED/badges/"
           done
+          # Feeds are served from the site, so they must be plain Atom: only Atom
+          # elements, text content, links to the site, no DTDs or entities. Anything
+          # else could run script in a browser that opens the file.
+          mkdir -p "$CHECKED/feeds"
+          if [ -d "$NEW_DATA/feeds" ]; then
+            python3 - "$NEW_DATA/feeds" "$CHECKED/feeds" "$SITE_URL" <<'PY'
+          import os, re, shutil, sys
+          import xml.etree.ElementTree as ET
+          src, dst, site = sys.argv[1:4]
+          atom = "{http://www.w3.org/2005/Atom}"
+          header = b'<?xml version="1.0" encoding="UTF-8"?>\n'
+          allowed = {"feed", "title", "subtitle", "id", "updated", "link", "author", "name", "uri", "generator", "entry", "content"}
+          names = sorted(os.listdir(src))
+          if len(names) > 2000:
+              sys.exit(f"::error::{len(names)} feed files")
+          for name in names:
+              path = os.path.join(src, name)
+              if not re.fullmatch(r"[a-z0-9][a-z0-9._-]{0,99}\.xml", name) or os.path.islink(path) or not os.path.isfile(path):
+                  sys.exit(f"::error::unexpected feed file {name!r}")
+              if os.path.getsize(path) > 1_000_000:
+                  sys.exit(f"::error::feed {name} is too large")
+              data = open(path, "rb").read()
+              # UTF-8 with Go's exact header, so these byte checks see all markup: no other
+              # processing instruction (xml-stylesheet runs XSLT), DTD, comment or CDATA.
+              body = data[len(header):]
+              if not data.startswith(header) or b"<?" in body or b"<!" in body or b"\0" in data:
+                  sys.exit(f"::error::feed {name} has a DTD, processing instruction or unexpected encoding")
+              body.decode("utf-8")
+              root = ET.fromstring(data)
+              if root.tag != atom + "feed":
+                  sys.exit(f"::error::feed {name} isn't an Atom feed")
+              for el in root.iter():
+                  if not el.tag.startswith(atom) or el.tag[len(atom):] not in allowed:
+                      sys.exit(f"::error::feed {name} has an unexpected element {el.tag}")
+                  for attr, value in el.attrib.items():
+                      if attr not in ("rel", "type", "href") or (attr != "type" and el.tag != atom + "link"):
+                          sys.exit(f"::error::feed {name} has attribute {attr}")
+                      if attr == "href" and not value.startswith(site):
+                          sys.exit(f"::error::feed {name} links outside the site")
+                  if el.tag == atom + "content" and el.get("type") != "text":
+                      sys.exit(f"::error::feed {name} has non-text content")
+                  if el.get("type") is not None and el.tag not in (atom + "link", atom + "content"):
+                      sys.exit(f"::error::feed {name} has a typed {el.tag}")
+              shutil.copyfile(path, os.path.join(dst, name))
+          print(f"{len(names)} feeds checked")
+          PY
+          fi
 
       - name: Commit the data
         env:
@@ -183,6 +231,8 @@ jobs:
           else
             git worktree add --orphan -b data data-branch
           fi
+          # The feeds are regenerated each run; drop any that are no longer produced.
+          rm -rf data-branch/feeds
           cp -R "$NEW_DATA/." data-branch/
           cd data-branch
           git config user.name "github-actions[bot]"
@@ -203,6 +253,7 @@ jobs:
           cp -R site/. _site/
           cp "$NEW_DATA/index.json" _site/index.json
           cp -R "$NEW_DATA/badges" _site/badges
+          cp -R "$NEW_DATA/feeds" _site/feeds
 
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:

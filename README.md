@@ -147,7 +147,7 @@ jobs:
       security-events: write # only for upload-sarif
       actions: read # only for upload-sarif in a private repository
     steps:
-      - uses: yusufyildiz34/whichphp@v0.1.1
+      - uses: yusufyildiz34/whichphp@v0.2.0
         with:
           image: ghcr.io/acme/app:latest
           upload-sarif: true
@@ -177,9 +177,61 @@ It also works on an image built earlier in the same job, since Syft reads the lo
 | `sarif-file`, `json-file` | Paths of the reports |
 | `install` | How whichphp was installed: `release-verified`, `release-checksum-only` (the runner's `gh` couldn't check provenance), or `source` |
 
-A release tag (`@v0.1.1`) downloads that release and checks its checksum and, when the runner's `gh` can, its signed build provenance. The provenance is checked against the Sigstore bundle published with the release, which needs no GitHub API access and no token, so it also works on GitHub Enterprise Server and GHE.com runners that can reach `github.com`, `release-assets.githubusercontent.com` and `tuf-repo-cdn.sigstore.dev` (plus `tuf-repo.github.com` with gh older than 2.83). If that check fails or can't run, the action asks GitHub's attestation API instead, which can't succeed on GitHub Enterprise because the job's token isn't valid on github.com. Both enforce the same signer workflow and tag, plus the commit for a SHA pin, and the step fails if neither passes. Pinned by the commit SHA of a release, the action downloads the release only when the runner's `gh` can check that the binary was built from exactly that commit, and the step fails if that check fails; when `gh` can't check it, the action builds that commit from source and says why in a notice. A release that isn't downloadable yet (a tag pushed minutes ago) also builds from source, with a notice. So you can pin the action by SHA, as many security policies require, and never trust more than the source you pinned. Any other branch or commit builds whichphp from source, setting up Go first if the runner has none. Syft and Grype are installed from their release archives; the default versions are checked against SHA-256 hashes pinned in [`scripts/install-tools.sh`](scripts/install-tools.sh), and other versions against their release's checksums file, with a warning. None of these tools go on your job's `PATH`.
+A release tag (`@v0.2.0`) downloads that release and checks its checksum and, when the runner's `gh` can, its signed build provenance. The provenance is checked against the Sigstore bundle published with the release, which needs no GitHub API access and no token, so it also works on GitHub Enterprise Server and GHE.com runners that can reach `github.com`, `release-assets.githubusercontent.com` and `tuf-repo-cdn.sigstore.dev` (plus `tuf-repo.github.com` with gh older than 2.83). If that check fails or can't run, the action asks GitHub's attestation API instead, which can't succeed on GitHub Enterprise because the job's token isn't valid on github.com. Both enforce the same signer workflow and tag, plus the commit for a SHA pin, and the step fails if neither passes. Pinned by the commit SHA of a release, the action downloads the release only when the runner's `gh` can check that the binary was built from exactly that commit, and the step fails if that check fails; when `gh` can't check it, the action builds that commit from source and says why in a notice. A release that isn't downloadable yet (a tag pushed minutes ago) also builds from source, with a notice. So you can pin the action by SHA, as many security policies require, and never trust more than the source you pinned. Any other branch or commit builds whichphp from source, setting up Go first if the runner has none. Syft and Grype are installed from their release archives; the default versions are checked against SHA-256 hashes pinned in [`scripts/install-tools.sh`](scripts/install-tools.sh), and other versions against their release's checksums file, with a warning. None of these tools go on your job's `PATH`.
 
 </details>
+
+## Check a Kubernetes cluster
+
+A running pod keeps the image it started with, even after its tag was rebuilt with the fix. `whichphp cluster` reads which image digest each pod actually runs, checks it, and tells you per workload whether a redeploy is enough or the image itself has to be rebuilt.
+
+```sh
+whichphp cluster --context my-cluster
+whichphp cluster --context my-cluster -n shop -o table -o json=cluster.json
+```
+
+In this example, `shop/web` sets `imagePullPolicy: Always`:
+
+```text
+Context: my-cluster
+Checked 3 running pods: 3 images in 2 workloads.
+
+ACTION NEEDED  legacy/Deployment/app
+  app: php:8.1-apache on linux/arm64, 1 pod
+    running sha256:c03e58a7d114…
+    PHP 8.1.33: end-of-life PHP
+    The tag still points to this image: rebuild it on a fixed PHP or move to a fixed tag, then redeploy.
+
+ACTION NEEDED  shop/Deployment/web
+  php: php:8.4-apache on linux/amd64, 2 pods
+    running sha256:5b6a1f0f9c2e…
+    PHP 8.4.26: vulnerable
+    the tag now points to sha256:9e41c7d2a0b8…: fixed
+    The tag now points to a fixed image: redeploy to pick it up.
+  Redeploy: kubectl --context my-cluster -n shop rollout restart deployment/web
+
+Before you redeploy: recreating a pod deletes its logs and writable layer. If you need to check whether it was compromised, save them first.
+Settings come from the images; a php.ini mounted from a ConfigMap or set through the environment isn't read.
+```
+
+- **Read-only.** It runs `kubectl get pods` and `kubectl get nodes` against the context you name, and reads images from their registries. It changes nothing in the cluster and runs nothing. `--context` is required, so it never uses your current context by accident.
+- **What it checks.** Every container of every running pod, including init containers, on its node's platform, using the digest from the pod status. Pods running the same image are checked once. When an image given by tag isn't fixed, it also looks up what the tag points to now and, if that changed, checks the new image too.
+- **Redeploy or rebuild.** The `Redeploy:` command appears only when every container that needs action would get a fixed image from its tag and pulls the tag on every start (`imagePullPolicy: Always`). With `IfNotPresent`, the default for most tags, nodes that already have the old image keep using it, so the advice says to pin the new digest or change the policy first. The command names the same `--context`, and the same `--kubeconfig` or `KUBECONFIG`, that the check read. On Windows, when `KUBECONFIG` lists several files or a value contains `%`, `$` or a backtick, the report gives no command and says why.
+- **What it needs.** `kubectl`, `syft` and `grype` on `PATH`, and permission to list pods. Listing nodes is optional; without it, each image is checked for its default platform and pods on Windows nodes aren't skipped. Syft reads private images with the credentials in your Docker config. The lookup of what a tag points to now is anonymous, except on Docker Hub with `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN`, so for a private registry it can fail; the report then says the tag couldn't be checked.
+- **Exit codes.** 0: nothing to do. 1: at least one workload needs action. 2: whichphp couldn't prove an image fixed, or couldn't check one. 3: an error, such as a cluster that couldn't be read, no running pods to check, Syft or Grype missing, or an interrupted run.
+
+| Flag | What it does |
+|---|---|
+| `--context <name>` | The kubectl context to read (required) |
+| `-n <namespace>` | Only this namespace. By default, every namespace except `kube-system`, `kube-public` and `kube-node-lease` |
+| `-l <selector>` | Only pods matching a label selector, e.g. `app=shop` |
+| `--include-system` | Also check the system namespaces |
+| `--kubeconfig <file>` | A kubeconfig other than kubectl's default |
+| `-o table\|json[=<file>]` | Output, repeatable, as for `whichphp image` |
+| `--max-db-age 7` | Days after which Grype's database counts as stale |
+| `--verbose` | Pass Syft's and Grype's own output through to stderr |
+
+Recreating a pod deletes its logs and writable layer, so save them first if you need to check whether it was compromised. Settings come from the images: a `php.ini` mounted from a ConfigMap, or set through the environment, isn't read yet. An image loaded straight into a node, rather than pulled, has no registry digest in the pod status, so the image in the pod spec is checked instead. For a tag, a fixed or no-PHP result then counts only when the image ID matches the tag's image; otherwise the result is unknown, since the pods may run another image.
 
 ## Which question are you asking?
 
@@ -191,7 +243,7 @@ A release tag (`@v0.1.1`) downloads that release and checks its checksum and, wh
 | "I'm on PHP 8.1 or older." | There is no upstream fix. Treat it as vulnerable unless your vendor proves a backport. | [Verdicts](#verdicts) |
 | "Is the CVE-2026-115560 mitigation on?" | In most images it isn't. Official images ship no `php.ini`, so the compiled default (on) applies. | `whichphp image` reports the effective value |
 | "My scanner says the image is clean." | Package-based scanners can't see PHP compiled from source. | [Why your scanner says clean](#why-your-scanner-says-clean) |
-| "Do I need to restart or redeploy?" | Yes. A running container keeps the old image until it is recreated. Save logs first. | Cluster mode (v0.2) |
+| "Do I need to restart or redeploy?" | Yes. A running container keeps the old image until it is recreated. Save logs first. | [`whichphp cluster`](#check-a-kubernetes-cluster) |
 | "My site is on shared hosting." | You can't scan it yourself. Ask your host the right questions. | [What to ask your host](docs/ask-your-host.md) |
 | "Was I compromised?" | whichphp can't tell you. A "fixed" verdict says nothing about what happened before. | [NCSC-NL PHP2Shell repository](https://github.com/NCSC-NL/php2shell) and your vendor's guidance |
 | "Does a WAF protect me?" | Only partly, and only as a stopgap. Rules can miss variants. | [FAQ](#faq) |
@@ -250,13 +302,15 @@ flowchart LR
 
 The [live index](https://yusufyildiz34.github.io/whichphp/) covers the tags listed in [`index/images.csv`](index/images.csv) on amd64 and arm64. For each one it shows the PHP inside, the verdict, when the tag was last built and, once the index has seen it change, when it first carried the fix. A tag whose amd64 and arm64 builds get different results is flagged. Search any tag, filter by status, and share the link to a filtered view.
 
+**Get told when a tag is fixed.** Every tag has an Atom feed, linked as "Follow changes" in its details, with an entry each time the index sees its status, image digest or verdicts change. Add it to a feed reader, or to Slack with Slack's RSS app (`/feed subscribe <url>`). [`feeds/all.xml`](https://yusufyildiz34.github.io/whichphp/feeds/all.xml) has the latest changes across the index.
+
 `whichphp index` builds it. Each daily run checks every tag's digest with a HEAD request, which doesn't count toward Docker Hub's pull limits. It rescans only tags that are new, changed, failed last time, or haven't been scanned for seven days, because distro security data can change without a new image.
 
 ```sh
 ./whichphp index --images index/images.csv --data data --platforms linux/amd64,linux/arm64
 ```
 
-The run writes `index.json`, a change log in `history.jsonl`, and the [shields.io endpoint badges](https://shields.io/badges/endpoint-badge) shown at the top of this page. In CI the data lives on the [`data` branch](https://github.com/yusufyildiz34/whichphp/tree/data), and [`site/index.html`](site/index.html) renders it. Set `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` for authenticated pulls.
+The run writes `index.json`, a change log in `history.jsonl`, an Atom feed per tag in `feeds/` (links point to `--site-url`), and the [shields.io endpoint badges](https://shields.io/badges/endpoint-badge) shown at the top of this page. In CI the data lives on the [`data` branch](https://github.com/yusufyildiz34/whichphp/tree/data), and [`site/index.html`](site/index.html) renders it. Set `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` for authenticated pulls.
 
 Missing an image? [Suggest it](https://github.com/yusufyildiz34/whichphp/issues/new?template=add-image.yml). Think a verdict is wrong? [Report it with evidence](https://github.com/yusufyildiz34/whichphp/issues/new?template=wrong-verdict.yml).
 
@@ -344,8 +398,8 @@ No. The old version is vulnerable. Known regressions in 8.4.27 and 8.5.12 are be
 - [x] SARIF and OpenVEX output
 - [x] A GitHub Action, with code scanning upload
 - [x] Release binaries with checksums and signed build provenance (v0.1.0)
-- [ ] `whichphp cluster`: what each pod actually runs and what to redeploy (v0.2)
-- [ ] Per-tag "tell me when it's fixed" feeds (v0.2)
+- [x] `whichphp cluster`: what each pod actually runs and what to redeploy (v0.2.0)
+- [x] Per-tag "tell me when it's fixed" feeds (v0.2.0)
 - [ ] Fixed-build data for third-party packagers: Sury, Remi, GetPageSpeed, TuxCare, Freexian, CloudLinux, cPanel
 - [ ] CycloneDX export, a diff mode, and base-image lineage
 

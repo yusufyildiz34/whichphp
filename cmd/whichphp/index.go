@@ -15,6 +15,7 @@ import (
 
 	"github.com/yusufyildiz34/whichphp/internal/index"
 	"github.com/yusufyildiz34/whichphp/internal/registry"
+	"github.com/yusufyildiz34/whichphp/internal/report"
 	"github.com/yusufyildiz34/whichphp/internal/verdict"
 )
 
@@ -22,7 +23,8 @@ func runIndex(args []string, stdout, stderr io.Writer) int {
 	fs := flag.NewFlagSet("index", flag.ContinueOnError)
 	fs.SetOutput(stderr)
 	images := fs.String("images", "index/images.csv", "tracked images (CSV: ref,kind,owner,note)")
-	data := fs.String("data", "data", "directory for index.json, history.jsonl and badges/")
+	data := fs.String("data", "data", "directory for index.json, history.jsonl, badges/ and feeds/")
+	siteURL := fs.String("site-url", "https://yusufyildiz34.github.io/whichphp/", "where the index page is published, for links in the Atom feeds")
 	platforms := fs.String("platforms", "linux/amd64,linux/arm64", "comma-separated platforms to index")
 	rescanDays := fs.Int("rescan-days", 7, "rescan unchanged tags after this many days (distro data can change)")
 	maxScans := fs.Int("max-scans", 0, "maximum image scans in this run (0 for no limit)")
@@ -37,17 +39,17 @@ func runIndex(args []string, stdout, stderr io.Writer) int {
 
 	imgs, err := index.LoadImages(*images)
 	if err != nil {
-		fmt.Fprintf(stderr, "whichphp: %v\n", err)
+		fmt.Fprintf(stderr, "whichphp: %s\n", report.Clean(err.Error()))
 		return 3
 	}
 	if err := os.MkdirAll(*data, 0o755); err != nil {
-		fmt.Fprintf(stderr, "whichphp: %v\n", err)
+		fmt.Fprintf(stderr, "whichphp: %s\n", report.Clean(err.Error()))
 		return 3
 	}
 	indexPath := filepath.Join(*data, "index.json")
 	prev, err := index.Load(indexPath)
 	if err != nil {
-		fmt.Fprintf(stderr, "whichphp: %v\n", err)
+		fmt.Fprintf(stderr, "whichphp: %s\n", report.Clean(err.Error()))
 		return 3
 	}
 
@@ -84,16 +86,35 @@ func runIndex(args []string, stdout, stderr io.Writer) int {
 		Log:         stderr,
 		Tool:        "whichphp " + version,
 	})
+	for i := range next.Entries {
+		next.Entries[i].Feed = "feeds/" + index.FeedFile(next.Entries[i].Ref)
+	}
 	if err := index.Save(indexPath, next); err != nil {
-		fmt.Fprintf(stderr, "whichphp: %v\n", err)
+		fmt.Fprintf(stderr, "whichphp: %s\n", report.Clean(err.Error()))
 		return 3
 	}
 	if err := index.AppendHistory(filepath.Join(*data, "history.jsonl"), changes); err != nil {
-		fmt.Fprintf(stderr, "whichphp: %v\n", err)
+		fmt.Fprintf(stderr, "whichphp: %s\n", report.Clean(err.Error()))
 		return 3
 	}
 	if err := index.SaveBadges(filepath.Join(*data, "badges"), index.Badges(next)); err != nil {
-		fmt.Fprintf(stderr, "whichphp: %v\n", err)
+		fmt.Fprintf(stderr, "whichphp: %s\n", report.Clean(err.Error()))
+		return 3
+	}
+	history, bad, err := index.LoadHistory(filepath.Join(*data, "history.jsonl"))
+	if err != nil {
+		fmt.Fprintf(stderr, "whichphp: %s\n", report.Clean(err.Error()))
+		return 3
+	}
+	if bad > 0 {
+		fmt.Fprintf(stderr, "whichphp: skipped %d unreadable history lines\n", bad)
+	}
+	feeds, err := index.Feeds(next, history, index.FeedOptions{SiteURL: *siteURL})
+	if err == nil {
+		err = index.SaveFeeds(filepath.Join(*data, "feeds"), feeds)
+	}
+	if err != nil {
+		fmt.Fprintf(stderr, "whichphp: feeds: %v\n", err)
 		return 3
 	}
 

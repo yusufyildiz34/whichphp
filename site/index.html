@@ -6,6 +6,7 @@
 <title>whichphp: is the PHP in your image fixed for PHP2Shell?</title>
 <meta name="description" content="A daily, read-only check of the PHP inside popular container images for CVE-2026-109618 and CVE-2026-109619 (PHP2Shell). Search any tracked image to see whether its PHP is fixed.">
 <meta name="color-scheme" content="light dark">
+<link rel="alternate" type="application/atom+xml" title="whichphp: all index changes" href="feeds/all.xml">
 <link rel="preload" href="fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/martian-mono.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -173,6 +174,7 @@
   .btn { font: 550 13px var(--sans); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 7px 12px; cursor: pointer; white-space: nowrap; }
   .btn:hover { border-color: var(--ink-3); }
   .det-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  a.btn { text-decoration: none; display: inline-block; }
 
   /* Pagination */
   .pager { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 18px; font-size: 14px; color: var(--ink-2); }
@@ -317,6 +319,7 @@
     <div>
       <h2>About the data</h2>
       <p>Images are read with Syft and matched with Grype; whichphp adds the PHP-specific rules. Nothing is executed and no traffic is sent to anyone's servers.</p>
+      <p>Follow a tag with the Atom feed in its details, or <a href="feeds/all.xml">the latest changes across the index</a>.</p>
       <p>Wrong verdict? <a href="https://github.com/yusufyildiz34/whichphp/issues/new?template=wrong-verdict.yml">Report it with evidence</a>. Missing an image? <a href="https://github.com/yusufyildiz34/whichphp/issues/new?template=add-image.yml">Suggest it</a>.</p>
       <p class="meta" id="meta"></p>
     </div>
@@ -420,6 +423,11 @@
       // Tags are often rebuilt at different times per architecture, so the same tag can
       // be fixed on one platform and not on another.
       g.split = Object.keys(keys).length > 1;
+      // The feed path comes from the data, so accept only the shape the indexer writes.
+      g.feed = "";
+      g.platforms.forEach(function (e) {
+        if (!g.feed && typeof e.feed === "string" && /^feeds\/[a-z0-9][a-z0-9._-]{0,99}\.xml$/.test(e.feed)) g.feed = e.feed;
+      });
       g.search = (ref + " " + g.note + " " + versions.map(function (p) { return p.version; }).join(" ")).toLowerCase();
       return g;
     });
@@ -504,7 +512,9 @@
       '<div class="plats">' + g.platforms.map(platformCard).join("") + "</div>" +
       '<div class="cmd"><code>' + esc(cmd) + '</code><div class="det-actions">' +
       '<button class="btn" type="button" data-copy="' + esc(cmd) + '">Copy command</button>' +
-      '<button class="btn" type="button" data-share="' + esc(g.ref) + '">Copy link</button></div></div>' +
+      '<button class="btn" type="button" data-share="' + esc(g.ref) + '">Copy link</button>' +
+      (g.feed ? '<a class="btn" href="' + esc(g.feed) + '" type="application/atom+xml">Follow changes (Atom)</a>' : "") +
+      "</div></div>" +
       "</div></td></tr>";
   }
 
