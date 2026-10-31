@@ -91,7 +91,11 @@ runs:
         else
           echo "release=false" >> "$GITHUB_OUTPUT"
           # whichphp needs Go 1.24 or later; an older Go would fail or fetch a toolchain.
-          minor="$(go env GOVERSION 2> /dev/null | sed -n 's/^go1\.\([0-9]*\).*/\1/p')"
+          # macOS runners have no go on PATH, so look before asking it for a version.
+          minor=""
+          if command -v go > /dev/null; then
+            minor="$(go env GOVERSION 2> /dev/null | sed -n 's/^go1\.\([0-9]*\).*/\1/p' || true)"
+          fi
           if [ "${minor:-0}" -ge 24 ]; then echo "have-go=true" >> "$GITHUB_OUTPUT"; fi
         fi
 
