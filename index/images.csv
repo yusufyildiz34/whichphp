@@ -107,7 +107,8 @@ mautic/mautic:latest,latest,community,
 prestashop/prestashop:latest,latest,community,
 librenms/librenms:latest,latest,community,
 roundcube/roundcubemail:latest,latest,community,
-osixia/phpldapadmin:latest,latest,community,Not updated since 2021; Debian 10 and PHP 7.3 are end-of-life
+osixia/phpldapadmin:latest,latest,community,Repository archived on Oct 28 2026 and not updated since 2021; Debian 10 and PHP 7.3 are end-of-life
+phpldapadmin/phpldapadmin:latest,latest,community,phpLDAPadmin v2; published by the phpLDAPadmin project
 zabbix/zabbix-web-nginx-mysql:latest,latest,community,
 snipe/snipe-it:latest,latest,community,
 shlinkio/shlink:stable,latest,community,Serves PHP through RoadRunner
