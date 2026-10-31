@@ -81,7 +81,7 @@ linuxserver/dokuwiki:latest,latest,community,
 linuxserver/phpmyadmin:latest,latest,community,
 linuxserver/freshrss:latest,latest,community,
 linuxserver/heimdall:latest,latest,community,
-linuxserver/snipe-it:latest,latest,community,
+# linuxserver/snipe-it:latest is not listed: its tag has no linux/amd64 or linux/arm64 build.
 # Bitnami legacy catalog (frozen since Aug 28 2025)
 bitnamilegacy/php-fpm:latest,latest,community,Bitnami legacy catalog; frozen and no longer updated
 bitnamilegacy/php-fpm:8.2,pinned,community,Bitnami legacy catalog; frozen and no longer updated
