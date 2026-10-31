@@ -1,9 +1,3721 @@
 {
  "schema": 1,
- "generated": "2026-10-30T22:47:59Z",
- "tool": "whichphp ab99103",
+ "generated": "2026-10-31T01:35:10Z",
+ "tool": "whichphp 0f0ffbd",
  "grypeDBBuilt": "2026-10-30T06:23:28Z",
  "entries": [
+  {
+   "ref": "adminer:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:400af848ac3f57938abde4867677df1b195674d232c8896a27d111d04b9c088c",
+   "imageDigest": "sha256:aeb16dc1ad7f297cfedef858b6fadd7a422103e62ed59ac777508c267c977e28",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-27T16:25:10Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "adminer:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:400af848ac3f57938abde4867677df1b195674d232c8896a27d111d04b9c088c",
+   "imageDigest": "sha256:a62f6b3d1af64ab5339ab1c8352cb0ca59a0081444606fe744c00e016760b4fb",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-27T16:25:10Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "bitnamilegacy/drupal:10",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "community",
+   "note": "Bitnami legacy catalog; frozen and no longer updated",
+   "tagDigest": "sha256:8350b86b970263348e2e5e73f4330db3ade5c6fd6a19cc5615cda01d0083a47a",
+   "imageDigest": "sha256:fd6b645656b1fe637e0e9cb46e82666d44290c6ee7e9333f1c55b10a207bceff",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2024-11-24T20:12:56Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.8",
+   "php": [
+    {
+     "name": "php",
+     "version": "8.2.26-0",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "bitnamilegacy/drupal:10",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "community",
+   "note": "Bitnami legacy catalog; frozen and no longer updated",
+   "tagDigest": "sha256:8350b86b970263348e2e5e73f4330db3ade5c6fd6a19cc5615cda01d0083a47a",
+   "imageDigest": "sha256:d8fe9758f7be2ac8d1438f4aa9699c6f70bd115a37c9876b387e57d9b564ddaf",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2024-11-24T20:16:28Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.8",
+   "php": [
+    {
+     "name": "php",
+     "version": "8.2.26-0",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "bitnamilegacy/moodle:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "note": "Bitnami legacy catalog; frozen and no longer updated",
+   "tagDigest": "sha256:a7bd6bf34b736dad22ee22168d4bfd830b7bedf9e34b89732d92d437317cb1d0",
+   "imageDigest": "sha256:ecf3c5f414458e123c72ded6f563b9f3077dda48cb345337adc680b705027397",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-07-17T02:33:20Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.11",
+   "php": [
+    {
+     "name": "php",
+     "version": "8.2.29-2",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "bitnamilegacy/moodle:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "note": "Bitnami legacy catalog; frozen and no longer updated",
+   "tagDigest": "sha256:a7bd6bf34b736dad22ee22168d4bfd830b7bedf9e34b89732d92d437317cb1d0",
+   "imageDigest": "sha256:62b37360d51f375829b2ce136bea40b54cf6ed7896d6004373d9071856458110",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-07-17T02:36:33Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.11",
+   "php": [
+    {
+     "name": "php",
+     "version": "8.2.29-2",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "bitnamilegacy/php-fpm:8.2",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "community",
+   "note": "Bitnami legacy catalog; frozen and no longer updated",
+   "tagDigest": "sha256:26a060ba52320fa2ab32e762dfb88db75e9a1b8cf192ee0a65dbd1eda834bdf3",
+   "imageDigest": "sha256:3dd4c574f7dd7cbc236242ec39e98f67c929cad8e7c316c4b6323a5336a06ca5",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2024-11-28T16:07:19Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.8",
+   "php": [
+    {
+     "name": "php",
+     "version": "8.2.26-2",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "bitnamilegacy/php-fpm:8.2",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "community",
+   "note": "Bitnami legacy catalog; frozen and no longer updated",
+   "tagDigest": "sha256:26a060ba52320fa2ab32e762dfb88db75e9a1b8cf192ee0a65dbd1eda834bdf3",
+   "imageDigest": "sha256:242de751b407c337a22d467626bc6b7dd02a05a2f5a72957fab4b0fe595dff65",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2024-11-28T16:08:55Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.8",
+   "php": [
+    {
+     "name": "php",
+     "version": "8.2.26-2",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "bitnamilegacy/php-fpm:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "note": "Bitnami legacy catalog; frozen and no longer updated",
+   "tagDigest": "sha256:d4e1d1fb4dada0d1d3c19c8836b35fd797654a12efd89978064576cfc2119fe0",
+   "imageDigest": "sha256:2bc5bd332a0fc825d153023dd13fc89aaf3b3a439c08840ff33ec6a4905fe670",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-07-17T02:55:21Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.11",
+   "php": [
+    {
+     "name": "php",
+     "version": "8.4.10-2",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "bitnamilegacy/php-fpm:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "note": "Bitnami legacy catalog; frozen and no longer updated",
+   "tagDigest": "sha256:d4e1d1fb4dada0d1d3c19c8836b35fd797654a12efd89978064576cfc2119fe0",
+   "imageDigest": "sha256:68584b972c52146ea35ec6fb0a1c52fb2be372c810b34943216eb9f52d321a09",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-07-17T02:56:48Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.11",
+   "php": [
+    {
+     "name": "php",
+     "version": "8.4.10-2",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "bitnamilegacy/phpmyadmin:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "note": "Bitnami legacy catalog; frozen and no longer updated",
+   "tagDigest": "sha256:1844c2e8ac40d2bce9f64398d6d9d514c6c3840d20a022fe019f27e5109e1557",
+   "imageDigest": "sha256:b286bf68a9431fa2551e4718f972612f1052ece7ae5961ed5ff12c46ea796a05",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-07-17T13:19:44Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.11",
+   "php": [
+    {
+     "name": "php",
+     "version": "8.2.29-2",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "bitnamilegacy/phpmyadmin:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "note": "Bitnami legacy catalog; frozen and no longer updated",
+   "tagDigest": "sha256:1844c2e8ac40d2bce9f64398d6d9d514c6c3840d20a022fe019f27e5109e1557",
+   "imageDigest": "sha256:c1452d0e42d0b6942d643a7436002bce8f017a935cf54d7383d6a81e271dbc2d",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-07-17T13:21:33Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.11",
+   "php": [
+    {
+     "name": "php",
+     "version": "8.2.29-2",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "bitnamilegacy/wordpress:6",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "community",
+   "note": "Bitnami legacy catalog; frozen and no longer updated",
+   "tagDigest": "sha256:a8cf0d987f218c32458449cf91b43591f4dc77d26d98a3f028fd637bdf6f5ae5",
+   "imageDigest": "sha256:eb919e94a449e184894ed206f2258033adb814058cbed4ae23ddd2a803060b0b",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-07-23T12:55:08Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.11",
+   "php": [
+    {
+     "name": "php",
+     "version": "8.2.29-2",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "bitnamilegacy/wordpress:6",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "community",
+   "note": "Bitnami legacy catalog; frozen and no longer updated",
+   "tagDigest": "sha256:a8cf0d987f218c32458449cf91b43591f4dc77d26d98a3f028fd637bdf6f5ae5",
+   "imageDigest": "sha256:089e9b06702fe0cea4220af10f191b6ace7deaf0e655ccbce06381323a2eaaa3",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-07-23T12:57:04Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.11",
+   "php": [
+    {
+     "name": "php",
+     "version": "8.2.29-2",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "bitnamilegacy/wordpress:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "note": "Bitnami legacy catalog; frozen and no longer updated",
+   "tagDigest": "sha256:a8cf0d987f218c32458449cf91b43591f4dc77d26d98a3f028fd637bdf6f5ae5",
+   "imageDigest": "sha256:eb919e94a449e184894ed206f2258033adb814058cbed4ae23ddd2a803060b0b",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-07-23T12:55:08Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.11",
+   "php": [
+    {
+     "name": "php",
+     "version": "8.2.29-2",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "bitnamilegacy/wordpress:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "note": "Bitnami legacy catalog; frozen and no longer updated",
+   "tagDigest": "sha256:a8cf0d987f218c32458449cf91b43591f4dc77d26d98a3f028fd637bdf6f5ae5",
+   "imageDigest": "sha256:089e9b06702fe0cea4220af10f191b6ace7deaf0e655ccbce06381323a2eaaa3",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-07-23T12:57:04Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.11",
+   "php": [
+    {
+     "name": "php",
+     "version": "8.2.29-2",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "composer:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "note": "Command-line PHP only; no web server",
+   "tagDigest": "sha256:4ed71c38c6d788eb4e4e3747b5332f5b40d5b5a6fcadd5062a1a70986a118e0a",
+   "imageDigest": "sha256:22844d23aacc7140fccf24992829ae98bc2c92e0240ccca3b35716bf5d82ed70",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T20:19:40Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "composer:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "note": "Command-line PHP only; no web server",
+   "tagDigest": "sha256:4ed71c38c6d788eb4e4e3747b5332f5b40d5b5a6fcadd5062a1a70986a118e0a",
+   "imageDigest": "sha256:9c383fb6f07d2b2cbbf0f21133789b335a55996c4c857c0f2775d16f31922872",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T20:19:40Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "drupal:10-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:3e7361f61d67bef44bc887b3010e955cc98639a7aaed55dee7cab3c1e3b42d79",
+   "imageDigest": "sha256:0071823943dd1936d650e5a73d33202810c8c645988a44354085ad9bbb877e1e",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T20:34:01Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "drupal:10-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:3e7361f61d67bef44bc887b3010e955cc98639a7aaed55dee7cab3c1e3b42d79",
+   "imageDigest": "sha256:f609e978876bbbca8e1d071d109a16335fb4fd21f7f1830eb72318d119d226c8",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T20:35:02Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "drupal:10-fpm-alpine",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:d90f63a987e6900e0b25a4aafe8640cf6d2fbe117fc85fd9cb9fd3fee5622cf5",
+   "imageDigest": "sha256:021a741f58008436aa197bfb0020a3dfdeb2e3f0d0e063c6edee73d2082b2257",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T20:34:40Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "drupal:10-fpm-alpine",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:d90f63a987e6900e0b25a4aafe8640cf6d2fbe117fc85fd9cb9fd3fee5622cf5",
+   "imageDigest": "sha256:2c5fa9f54ece70e1223e8c4107631f72345e08b80541835e75ccf3d2c8da8411",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T20:35:10Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "drupal:11-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:5c59f78965b4e56f4612f73724df22dac22d6262c1d010657631184c4ca4de8e",
+   "imageDigest": "sha256:a418c4cd3941f2a31de8659a2a3da9657a29a1a871b078885b090cd482ce0764",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T20:32:21Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "drupal:11-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:5c59f78965b4e56f4612f73724df22dac22d6262c1d010657631184c4ca4de8e",
+   "imageDigest": "sha256:026bf81a5976d348318da44dfc5642de668e47d82ab0f184c9ded7157cd611e0",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T20:32:25Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "drupal:7-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "Drupal 7 is end-of-life (Jan 2025)",
+   "tagDigest": "sha256:b2985acdd1770c9bbab262f7b294a322b84aceb0419ab4a9d0f574132ee9554d",
+   "imageDigest": "sha256:30caab130589d6f0688400c0f7db280c96e28fcb9df7c28633ebb0e2f1877bfb",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2024-12-04T16:27:27Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.8",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.1.31",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.1.31",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "drupal:7-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "Drupal 7 is end-of-life (Jan 2025)",
+   "tagDigest": "sha256:b2985acdd1770c9bbab262f7b294a322b84aceb0419ab4a9d0f574132ee9554d",
+   "imageDigest": "sha256:6149bc87180955ff27235859127ca390377c33b3cc3aa24bbdc86d19f1866053",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2024-12-04T16:27:27Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.8",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.1.31",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.1.31",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "drupal:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:5c59f78965b4e56f4612f73724df22dac22d6262c1d010657631184c4ca4de8e",
+   "imageDigest": "sha256:a418c4cd3941f2a31de8659a2a3da9657a29a1a871b078885b090cd482ce0764",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T20:32:21Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "drupal:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:5c59f78965b4e56f4612f73724df22dac22d6262c1d010657631184c4ca4de8e",
+   "imageDigest": "sha256:026bf81a5976d348318da44dfc5642de668e47d82ab0f184c9ded7157cd611e0",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T20:32:25Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "dunglas/frankenphp:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "note": "PHP is built into the server binary",
+   "tagDigest": "sha256:c8abcc7925f16b1431f139d0410abe8f48db3fd862bacb646b05a4413337106a",
+   "imageDigest": "sha256:edc584c8019ea382af1393cabf0fbe4ef10f5e4eee28b5245cb2275aef1e6316",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-26T15:34:41Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "dunglas/frankenphp:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "note": "PHP is built into the server binary",
+   "tagDigest": "sha256:c8abcc7925f16b1431f139d0410abe8f48db3fd862bacb646b05a4413337106a",
+   "imageDigest": "sha256:e671deccceea23d402574206537126df917923ebc7dfe8f132893dab612aba1d",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-26T15:34:41Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "dunglas/frankenphp:php8.3",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "community",
+   "tagDigest": "sha256:33646e8433aa9b2c117d54133f1dea5d44726d105b9293067909bb53daad5bf7",
+   "imageDigest": "sha256:0989bc95f5b5f1d1286cabb09c891bfc74f6bf0f4443ace0d1ea4b991ca72e75",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-26T15:34:41Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "dunglas/frankenphp:php8.3",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "community",
+   "tagDigest": "sha256:33646e8433aa9b2c117d54133f1dea5d44726d105b9293067909bb53daad5bf7",
+   "imageDigest": "sha256:3249c1e93a1c165c4cf7bdd0c3f9a6f43aba90fd6fc707a130e63072b4a1b54e",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-26T15:34:41Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "freshrss/freshrss:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:af44385229541bee24aa9148d0ff8f3b40e095373c63a2c0f74e09a27d3c59df",
+   "imageDigest": "sha256:a003730e81c89abf86c3ca9c8b263c818804734b574469d59586234364f425b0",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-21T20:46:47Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libapache2-mod-php8.4",
+     "version": "8.4.27-1~deb13u1",
+     "source": "distro",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php8.4-cli",
+     "version": "8.4.27-1~deb13u1",
+     "source": "distro",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "freshrss/freshrss:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:af44385229541bee24aa9148d0ff8f3b40e095373c63a2c0f74e09a27d3c59df",
+   "imageDigest": "sha256:c889a3e8baddfb73dc1cecc553697f250c70cbfc7dbac6212626bf5cbccfc797",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-21T20:54:32Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libapache2-mod-php8.4",
+     "version": "8.4.27-1~deb13u1",
+     "source": "distro",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php8.4-cli",
+     "version": "8.4.27-1~deb13u1",
+     "source": "distro",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "invoiceninja/invoiceninja:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:29bfc04d43a6393811c82fd55f0bbefe1df9bd3543ef3ca5bf7886c5d5f7bd35",
+   "imageDigest": "sha256:a4382d5e589c6d6458e64a0efbd85455be5fa9d7d04b35706094c98fbee6be49",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T20:50:00Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "invoiceninja/invoiceninja:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:29bfc04d43a6393811c82fd55f0bbefe1df9bd3543ef3ca5bf7886c5d5f7bd35",
+   "imageDigest": "sha256:e71c57146f5de80841b4abb6d8a7797627fb2ea756dbdbcd357dd40914451c63",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T21:00:56Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "joomla:4-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "Joomla 4 is end-of-life (Oct 2025); use joomla:5 or later",
+   "tagDigest": "sha256:5e5a7b9aba78a5470967985c4fc1cfd5653d24b94c1ec508f2becddb4c1bde48",
+   "imageDigest": "sha256:06a1dc241e94ca5bae353ded30dfb191e1ca52c85615d92ce9eafae57e983dcc",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-09-30T18:08:03Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.12",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.2.29",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.2.29",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "joomla:4-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "Joomla 4 is end-of-life (Oct 2025); use joomla:5 or later",
+   "tagDigest": "sha256:5e5a7b9aba78a5470967985c4fc1cfd5653d24b94c1ec508f2becddb4c1bde48",
+   "imageDigest": "sha256:ebb2ac5d8e0be625e5358e5c67083050c082117f7f1f17c8f9fa6150ea3fb42e",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-09-30T18:08:03Z",
+   "builtBeforeFix": true,
+   "distro": "debian 12.12",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.2.29",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.2.29",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "joomla:5-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:ba5271a9e962362f3746c7345d42a9b7da10155290be3ad5f5d7fbdee67576ea",
+   "imageDigest": "sha256:f96e5ffa3d7c268e69d78902b779986345e828926a6c2bdb38c333871125cb7e",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:32:45Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "joomla:5-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:ba5271a9e962362f3746c7345d42a9b7da10155290be3ad5f5d7fbdee67576ea",
+   "imageDigest": "sha256:7e75f25b4fc4337f6e7795c2a3d9b06938e114c0f30d856f5ce474c402a19dbe",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:45:25Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "joomla:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:d27fff30aac7260164723983ea5eab832e3093785cbb903ad711964302d77354",
+   "imageDigest": "sha256:18a7680764e1572343161ee5c5bf31514f22207777d3e7faaf62ab956d6225c4",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:31:51Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "joomla:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:d27fff30aac7260164723983ea5eab832e3093785cbb903ad711964302d77354",
+   "imageDigest": "sha256:43a8976d327c5f3e5999fa0adf7e5cca73d9839e03ddd1646faa37520f1cfa80",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:43:12Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "kimai/kimai2:apache",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:19b34043e7631b122c5e5aca27c3f3caa0bb37d2bce1478342c666bcdfe84f48",
+   "imageDigest": "sha256:10796d56695966991159f5086875b04daf9b77d2c8bb0ba6555388a14ca03c84",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-25T18:52:30Z",
+   "builtBeforeFix": false,
+   "distro": "debian 12.15",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "kimai/kimai2:apache",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:19b34043e7631b122c5e5aca27c3f3caa0bb37d2bce1478342c666bcdfe84f48",
+   "imageDigest": "sha256:1cf3aa2ebb6924d514769d480302924953fa9d36acc5207762e7180c527910fd",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-25T19:14:03Z",
+   "builtBeforeFix": false,
+   "distro": "debian 12.15",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "librenms/librenms:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:66f586a84355b6c80758e373aaa7c0b230284d1d22588b29b3706540041e2806",
+   "imageDigest": "sha256:26ac4e009cd7ff6f483c8a86f95ea3c03b6c52985d5bd67f8fd501320eb04ec6",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-25T13:54:08Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.1",
+   "php": [
+    {
+     "name": "php84",
+     "version": "8.4.27-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php84-fpm",
+     "version": "8.4.27-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "librenms/librenms:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:66f586a84355b6c80758e373aaa7c0b230284d1d22588b29b3706540041e2806",
+   "imageDigest": "sha256:7cf9c042da253056d92f4bf1cc6d967c38b13d08cf59c2a4553685b249f1431f",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-25T13:54:11Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.1",
+   "php": [
+    {
+     "name": "php84",
+     "version": "8.4.27-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php84-fpm",
+     "version": "8.4.27-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/bookstack:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:da6324232770050b7d5f6222e8f4e223f1c688363b02ebb3c15a7546dd7133d5",
+   "imageDigest": "sha256:b7c7030d23f421ec2a64cd16f505ec315d1ed66ce9870bd2c1c4513e38282e28",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T23:29:23Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/bookstack:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:da6324232770050b7d5f6222e8f4e223f1c688363b02ebb3c15a7546dd7133d5",
+   "imageDigest": "sha256:dc5d29c94596b24b46c8ca78e26419dd4b0288bda21da531953c5d925591f704",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T23:29:45Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/dokuwiki:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:fac142ae9f7df5d3457037bc8bb668f8bfc6a6b9e02d5d1a5743bf1d030f9a10",
+   "imageDigest": "sha256:62c773c8e369582f09f48c739f9f1910ac93911982f84063dabedad73ca3828c",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T20:08:37Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/dokuwiki:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:fac142ae9f7df5d3457037bc8bb668f8bfc6a6b9e02d5d1a5743bf1d030f9a10",
+   "imageDigest": "sha256:b515978923947f0ed940b2ad59813d7d937b3905ef0f81d866254fa7cd402f1b",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T20:08:50Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/freshrss:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:ad3ebe2553250edcecf74995c051b6426fc85b7ca18e744991cb1ca99c8d943d",
+   "imageDigest": "sha256:864e7e99981f640a329f258570170cf7e30e39139b783d51b861b5296c6feb47",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-25T16:55:37Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.2",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/freshrss:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:ad3ebe2553250edcecf74995c051b6426fc85b7ca18e744991cb1ca99c8d943d",
+   "imageDigest": "sha256:0475a7087060456a433cd8aba5622616013e8c7e79c7edcd422022509feac444",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-25T16:56:00Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.2",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/grocy:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:6282144f9a14d4a4dca2bc96801a2e43a2ff51116f001b13e5488eacad7b80e2",
+   "imageDigest": "sha256:cb02c63fdc2dd9536ca9614d74f0a130b318c5813f76963570db1f782968c574",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-25T12:47:47Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.2",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/grocy:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:6282144f9a14d4a4dca2bc96801a2e43a2ff51116f001b13e5488eacad7b80e2",
+   "imageDigest": "sha256:a1c8c0c2e3d218adb2f57924b8d4332d95a3c7efe5b29bb3ecf7a1cf171d0e5b",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-25T12:48:24Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.2",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/heimdall:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:80c6a91e8d14e7ac5b7461a0877b8db8bca659e62ddc944d1f37e5159e7efa55",
+   "imageDigest": "sha256:2d7521b2d4111e3a06475f19e2f54ddb7ce6bc73d5e772253fa2436ddb300a27",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T22:22:33Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/heimdall:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:80c6a91e8d14e7ac5b7461a0877b8db8bca659e62ddc944d1f37e5159e7efa55",
+   "imageDigest": "sha256:754477c7b49107bbd4367de647f930fa06cb3b0c7909197183cc3859e2cceef4",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T22:23:00Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/nextcloud:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:b980e092ea0ce7b509b8c1f03b8b5ae244348faccd4ae9e519d61e32706aa20a",
+   "imageDigest": "sha256:ac3bae2cbc93ce4cd1028f04562ac9515084ddc9cf85b70461f027c25da4dce3",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-27T16:59:08Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/nextcloud:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:b980e092ea0ce7b509b8c1f03b8b5ae244348faccd4ae9e519d61e32706aa20a",
+   "imageDigest": "sha256:fc03f32d2c34bad490c3784a83e7d4c7d1933dcfba36258245692947b31da406",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-27T17:00:22Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/phpmyadmin:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:3964e223a0fa71ef7d79445c277511b11454680e017ae6e642c6f0b79e75159b",
+   "imageDigest": "sha256:ba49d6ca06ab624d7b2a4081339d9b47db001ad223bb7b7656a0b21c195c4cb8",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-31T00:59:22Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/phpmyadmin:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:3964e223a0fa71ef7d79445c277511b11454680e017ae6e642c6f0b79e75159b",
+   "imageDigest": "sha256:ee6b51c584f20c9702b749ae3842feec04ab12065b775f0475936dcc4aa8e84e",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-31T00:59:41Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/piwigo:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:ae48cf752e94920c06c49cbfd902266e3a7822c90c418b6090137509637b1106",
+   "imageDigest": "sha256:14681f345e6601fb11832b8a2fe615e697d015d09956f8086b9e77df43c3eb4b",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-24T18:10:22Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.2",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-cgi",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cgi"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/piwigo:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:ae48cf752e94920c06c49cbfd902266e3a7822c90c418b6090137509637b1106",
+   "imageDigest": "sha256:5ac51e5f39fa7549438b3b7b7361a9863e1ebb571a3d272ecf9816485edfdea7",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-24T18:10:44Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.2",
+   "php": [
+    {
+     "name": "php85",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php85-cgi",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "cgi"
+    },
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "linuxserver/snipe-it:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:eb37f58646a901dc7727cf448cae36daaefaba79de33b5058dab79aa4c04aefb",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "error": "syft failed: exit status 1"
+  },
+  {
+   "ref": "linuxserver/snipe-it:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:eb37f58646a901dc7727cf448cae36daaefaba79de33b5058dab79aa4c04aefb",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "error": "syft failed: exit status 1"
+  },
+  {
+   "ref": "matomo:5-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:480fd87e3a1f1f8987f54ee6e68547560e2743f6269bbddfbf6e26996c51f3db",
+   "imageDigest": "sha256:58b15e160a51042497d23a917adc8e7e00dfebdcd946ee4ab35a49afed9cb3ee",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:32:47Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "matomo:5-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:480fd87e3a1f1f8987f54ee6e68547560e2743f6269bbddfbf6e26996c51f3db",
+   "imageDigest": "sha256:d15d948359955efbab0c6bfde40bc1ab4e9acc9c0937042240c1ac96d1012695",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:44:42Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "matomo:fpm-alpine",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:4bb11d6b1051d868c7cd0472d015e1782ade843bf40ffdba3a7e77a5d7eb19dd",
+   "imageDigest": "sha256:bb26d8295761fcf9a38d70f2c69afa4dfb0237611cffc8ae272b42d1649e69ae",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-22T22:24:45Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "matomo:fpm-alpine",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:4bb11d6b1051d868c7cd0472d015e1782ade843bf40ffdba3a7e77a5d7eb19dd",
+   "imageDigest": "sha256:be5b5c0e5a65bfcfc3b4d800940b6b21108f1c47dcac400d959833c27db34218",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-22T22:25:02Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "matomo:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:480fd87e3a1f1f8987f54ee6e68547560e2743f6269bbddfbf6e26996c51f3db",
+   "imageDigest": "sha256:58b15e160a51042497d23a917adc8e7e00dfebdcd946ee4ab35a49afed9cb3ee",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:32:47Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "matomo:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:480fd87e3a1f1f8987f54ee6e68547560e2743f6269bbddfbf6e26996c51f3db",
+   "imageDigest": "sha256:d15d948359955efbab0c6bfde40bc1ab4e9acc9c0937042240c1ac96d1012695",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:44:42Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "mautic/mautic:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:83461b9ec7c109413281490180e1f96c379aa935bd92f80c68294f98487a9015",
+   "imageDigest": "sha256:84ec7fbf7f47e54692dfd5bc788af1ff0be38ef31ac178a554fc5d743a95fdda",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-26T13:08:20Z",
+   "builtBeforeFix": false,
+   "distro": "debian 12.15",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "mautic/mautic:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:83461b9ec7c109413281490180e1f96c379aa935bd92f80c68294f98487a9015",
+   "imageDigest": "sha256:5d346bd9baed94dd18749d829df86a067c01f2a8c7da7678c6d4124b73fa3205",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-26T13:55:36Z",
+   "builtBeforeFix": false,
+   "distro": "debian 12.15",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "mediawiki:1.39",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "MediaWiki 1.39 is end-of-life (Dec 31 2025); use 1.43 LTS",
+   "tagDigest": "sha256:1e821253cc8845d78e19bc0d57c7a4082fc81c89bb62a2a17e93e6f7e99b49b5",
+   "imageDigest": "sha256:51bd691906e6b74860058940ceb14ee69bbc457be20c0a95d93bd9c43935d989",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-12-30T01:39:06Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.2",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.29",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.29",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "mediawiki:1.39",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "MediaWiki 1.39 is end-of-life (Dec 31 2025); use 1.43 LTS",
+   "tagDigest": "sha256:1e821253cc8845d78e19bc0d57c7a4082fc81c89bb62a2a17e93e6f7e99b49b5",
+   "imageDigest": "sha256:ad7b1e177c6062a0ec8610c5cf126ed2a40fd61a436ee552018bc2830a8c202a",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-12-30T01:43:50Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.2",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.29",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.29",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "mediawiki:1.43",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "Long-term support release",
+   "tagDigest": "sha256:fe7fe8565a4ee862f578c9b17eec3725d6d2f2810d380b8144a614d95f764d69",
+   "imageDigest": "sha256:17e9b8414b8838ca5cf4c9abf9bcf42fc8de771c91a79661a74ccf670d315b54",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:34:45Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "mediawiki:1.43",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "Long-term support release",
+   "tagDigest": "sha256:fe7fe8565a4ee862f578c9b17eec3725d6d2f2810d380b8144a614d95f764d69",
+   "imageDigest": "sha256:f2bceed32dadf84eadde12e3143ab7930138f4380fab3ff74daf6d8eaf8bd3a4",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:47:52Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "mediawiki:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:13e538ae39045e78a7219269d036db3328f980f1a94ef1faabde075ba46eeb59",
+   "imageDigest": "sha256:b036c086df488a30a6a3c0c720ec991316a524ee722046ba97bb0240d9775ced",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:34:39Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "mediawiki:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:13e538ae39045e78a7219269d036db3328f980f1a94ef1faabde075ba46eeb59",
+   "imageDigest": "sha256:6994085916974d289e10c1ab88b439564a987753b1aa40265378e339a78b4924",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:46:26Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "monica:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:11830fa6335965c3e613eb16cb5c7755f4cf25bdb59806f5f782378651d372a3",
+   "imageDigest": "sha256:4fb70d45e12f0afc20ab6d277a712d3bf415f17f250f06ecc13d46e050573554",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:34:40Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "monica:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:11830fa6335965c3e613eb16cb5c7755f4cf25bdb59806f5f782378651d372a3",
+   "imageDigest": "sha256:568d382c02fbc5bcc884b4e533b20e617ca802b405a86fa0152d64d6b22abc04",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:47:34Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "nextcloud:30-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "Nextcloud 30 is end-of-life (2025)",
+   "tagDigest": "sha256:fb966733647ea03f0446b0c22eac9733c8eb616d37b960caca9d4c3010e14a08",
+   "imageDigest": "sha256:4ba4dff13ce3d461180b3b7984207a88ccdd04e9021933ad27336d7427959432",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-11-20T20:55:48Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.2",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.28",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.28",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "nextcloud:30-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "Nextcloud 30 is end-of-life (2025)",
+   "tagDigest": "sha256:fb966733647ea03f0446b0c22eac9733c8eb616d37b960caca9d4c3010e14a08",
+   "imageDigest": "sha256:656d012b0a924ed2f3a8ba77a9273e82ff40623f9498589441c5037415220c7e",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-11-20T20:55:50Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.2",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.28",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.28",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "nextcloud:31-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "Nextcloud 31 is end-of-life (Feb 2026)",
+   "tagDigest": "sha256:07ec73cc816e58d6f45a162cd53ef886462c29271a23fc68d0124cec276e3767",
+   "imageDigest": "sha256:cbe9aaba3bca1093510ff51b48c84abb412b70fb037c1b77b77e703b1ee63bb7",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-03-16T23:38:16Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.4",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.30",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.30",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "nextcloud:31-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "Nextcloud 31 is end-of-life (Feb 2026)",
+   "tagDigest": "sha256:07ec73cc816e58d6f45a162cd53ef886462c29271a23fc68d0124cec276e3767",
+   "imageDigest": "sha256:cfd9217bf40573a3cef513e32be7ac2517b3f57dc597eddbe4d2e81b0271c526",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-03-16T23:45:08Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.4",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.30",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.30",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "nextcloud:32-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:a7ab427cdc56de0bb44152d743b8a2938c65897b9c021f97db1e2ccc3ed9bc46",
+   "imageDigest": "sha256:474c241dbc2552b77b3f6c93b8c174849f24267ea62d3097523c01fb30e40b83",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:38:18Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "off",
+   "action": "OK"
+  },
+  {
+   "ref": "nextcloud:32-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:a7ab427cdc56de0bb44152d743b8a2938c65897b9c021f97db1e2ccc3ed9bc46",
+   "imageDigest": "sha256:ecec3fc44d64cefa547a8a16f8d66802f4e2985981f89e987e4e533dc94a4cb6",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:50:31Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "off",
+   "action": "OK"
+  },
+  {
+   "ref": "nextcloud:35-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:e0b1a2af52c82c07b7a0e8e59878bd8769e704447734d5d238a836982f51b9c8",
+   "imageDigest": "sha256:c73d6b4ada5126dc56bbd6357f9c73c9caf99f4a692bd2da4187ea58b9089eec",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:38:28Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "off",
+   "action": "OK"
+  },
+  {
+   "ref": "nextcloud:35-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:e0b1a2af52c82c07b7a0e8e59878bd8769e704447734d5d238a836982f51b9c8",
+   "imageDigest": "sha256:4478b49880092ba06edb38decb8f6062acb984f65f8c00548a1d935a48a09e07",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:52:04Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "off",
+   "action": "OK"
+  },
+  {
+   "ref": "nextcloud:35.0.1-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "Exact patch tag; newer 35.0.x tags get the rebuilt PHP",
+   "tagDigest": "sha256:8f2f0e93aca5e9457019933936dea1f313052e72c696b4aecb31580a208b859f",
+   "imageDigest": "sha256:8cfe6765cdfe3fcecbbf25b4140cbf6f77c38a53e8988349a3900be9311ea11b",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-06T02:48:01Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.5.11",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.5.11",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "nextcloud:35.0.1-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "Exact patch tag; newer 35.0.x tags get the rebuilt PHP",
+   "tagDigest": "sha256:8f2f0e93aca5e9457019933936dea1f313052e72c696b4aecb31580a208b859f",
+   "imageDigest": "sha256:3c2ab51814fbd0b24c9646a8b6782e25d41e8f54939b89a254bdc8d9fdd67682",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-06T02:42:22Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.5.11",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.5.11",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "nextcloud:fpm-alpine",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:7ac4ac3c22fe716f39300ec9db6eaeb4eddd7fe96376fbd468727850bab0a3dc",
+   "imageDigest": "sha256:3328c38bcdb667e0ef436f7be3fd85de7386dcf23fb176b0eb70e259927e6c48",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-23T16:41:47Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "off",
+   "action": "OK"
+  },
+  {
+   "ref": "nextcloud:fpm-alpine",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:7ac4ac3c22fe716f39300ec9db6eaeb4eddd7fe96376fbd468727850bab0a3dc",
+   "imageDigest": "sha256:904e8916f3b7ea1e21f18800b9fcb4e173557bebac2d88df40de58ebb60a1395",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-23T16:42:39Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "off",
+   "action": "OK"
+  },
+  {
+   "ref": "nextcloud:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:e0b1a2af52c82c07b7a0e8e59878bd8769e704447734d5d238a836982f51b9c8",
+   "imageDigest": "sha256:c73d6b4ada5126dc56bbd6357f9c73c9caf99f4a692bd2da4187ea58b9089eec",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:38:28Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "off",
+   "action": "OK"
+  },
+  {
+   "ref": "nextcloud:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:e0b1a2af52c82c07b7a0e8e59878bd8769e704447734d5d238a836982f51b9c8",
+   "imageDigest": "sha256:4478b49880092ba06edb38decb8f6062acb984f65f8c00548a1d935a48a09e07",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:52:04Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "off",
+   "action": "OK"
+  },
+  {
+   "ref": "osixia/phpldapadmin:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "note": "Not updated since 2021; Debian 10 and PHP 7.3 are end-of-life",
+   "tagDigest": "sha256:9831569a2f3d1d764aabcb5abe6e463771b9595f1565fe3007fe77c4c3979043",
+   "imageDigest": "sha256:79ab716881d78192442873d7c64034d849496111d465d1fb1e8c15cc4a3d569a",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2021-02-19T13:51:05Z",
+   "builtBeforeFix": true,
+   "distro": "debian 10.1",
+   "php": [
+    {
+     "name": "php7.3-cli",
+     "version": "7.3.27-1~deb10u1",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php7.3-fpm",
+     "version": "7.3.27-1~deb10u1",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "osixia/phpldapadmin:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "note": "Not updated since 2021; Debian 10 and PHP 7.3 are end-of-life",
+   "tagDigest": "sha256:9831569a2f3d1d764aabcb5abe6e463771b9595f1565fe3007fe77c4c3979043",
+   "imageDigest": "sha256:4ff7fa572e055c0fd91cbf067b6534a510e0ab51c06ddd0e83c773cf7a007d3d",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2021-02-19T13:58:30Z",
+   "builtBeforeFix": true,
+   "distro": "debian 10.1",
+   "php": [
+    {
+     "name": "php7.3-cli",
+     "version": "7.3.27-1~deb10u1",
+     "source": "distro",
+     "sapi": "cli"
+    },
+    {
+     "name": "php7.3-fpm",
+     "version": "7.3.27-1~deb10u1",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:5.6-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "note": "PHP 5.6 is end-of-life; CVE-2026-109618 does not reach back this far",
+   "tagDigest": "sha256:0a40fd273961b99d8afe69a61a68c73c04bc0caa9de384d3b2dd9e7986eec86d",
+   "imageDigest": "sha256:95f5e2cf93f20c1cd5199f9be5e28097c0317086c4f3492bf33a7d0dc4176b94",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2019-01-23T00:10:47Z",
+   "builtBeforeFix": true,
+   "distro": "debian 9.6",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "5.6.40",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "5.6.40",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "NOT_AFFECTED",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:5.6-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "note": "PHP 5.6 is end-of-life; CVE-2026-109618 does not reach back this far",
+   "tagDigest": "sha256:0a40fd273961b99d8afe69a61a68c73c04bc0caa9de384d3b2dd9e7986eec86d",
+   "imageDigest": "sha256:c75536b8c2e1f7fe33bf6c841d7152c47eadb842567247a2ce809426e19dac82",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2019-01-25T09:52:07Z",
+   "builtBeforeFix": true,
+   "distro": "debian 9.6",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "5.6.40",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "5.6.40",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "NOT_AFFECTED",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:7.4-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "note": "PHP 7.4 is end-of-life",
+   "tagDigest": "sha256:c9d7e608f73832673479770d66aacc8100011ec751d1905ff63fae3fe2e0ca6d",
+   "imageDigest": "sha256:18b3497ee7f2099a90b66c23a0bc3d5261b12bab367263e1b40e9b004c39e882",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2022-11-15T06:04:04Z",
+   "builtBeforeFix": true,
+   "distro": "debian 11.5",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "7.4.33",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "7.4.33",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:7.4-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "note": "PHP 7.4 is end-of-life",
+   "tagDigest": "sha256:c9d7e608f73832673479770d66aacc8100011ec751d1905ff63fae3fe2e0ca6d",
+   "imageDigest": "sha256:cef99caa15fe8fdcd9b6edce648170b984bb470cb4fd7c3470a8677cbf70ccf6",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2022-11-15T03:41:48Z",
+   "builtBeforeFix": true,
+   "distro": "debian 11.5",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "7.4.33",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "7.4.33",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:7.4-fpm",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "note": "PHP 7.4 is end-of-life",
+   "tagDigest": "sha256:3ac7c8c74b2b047c7cb273469d74fc0d59b857aa44043e6ea6a0084372811d5b",
+   "imageDigest": "sha256:7c6a2cba718f37c4b3ca3486476c7d3dc68dc3ea9b12bde9c57bd4b8d9479fc0",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2022-11-15T06:06:50Z",
+   "builtBeforeFix": true,
+   "distro": "debian 11.5",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "7.4.33",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "7.4.33",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:7.4-fpm",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "note": "PHP 7.4 is end-of-life",
+   "tagDigest": "sha256:3ac7c8c74b2b047c7cb273469d74fc0d59b857aa44043e6ea6a0084372811d5b",
+   "imageDigest": "sha256:9c00954ba8f0286c50a6419334786a86e4c0621ee0e4ee08068bc44c46ffdb78",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2022-11-15T03:43:49Z",
+   "builtBeforeFix": true,
+   "distro": "debian 11.5",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "7.4.33",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "7.4.33",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:8.0-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "note": "PHP 8.0 is end-of-life",
+   "tagDigest": "sha256:c87b4c94d53b35520467b6d026f38656ab9a6d446fa3a0fbba1bc633125f9ad2",
+   "imageDigest": "sha256:862325aee87fc1d9b818bfc96a4412b9cd008a951101913077421d3d86c4cc9d",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2023-11-21T16:14:26Z",
+   "builtBeforeFix": true,
+   "distro": "debian 11.8",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.0.30",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.0.30",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:8.0-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "note": "PHP 8.0 is end-of-life",
+   "tagDigest": "sha256:c87b4c94d53b35520467b6d026f38656ab9a6d446fa3a0fbba1bc633125f9ad2",
+   "imageDigest": "sha256:bcc4586d30d5e72460e26517f994515042a88367a7c780a42eb2a78f10510e99",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2023-11-21T16:18:34Z",
+   "builtBeforeFix": true,
+   "distro": "debian 11.8",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.0.30",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.0.30",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:8.1-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "note": "PHP 8.1 is end-of-life",
+   "tagDigest": "sha256:72f0c0134922985022d55a39b0390d35dc7a10e961aa6c44fa35b4c3102f4268",
+   "imageDigest": "sha256:8277f9063e65c061456beef9d8fd5376bc4f59e75c2039d2ab4149006871f8a8",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-12-29T23:36:23Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.2",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.1.34",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.1.34",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:8.1-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "note": "PHP 8.1 is end-of-life",
+   "tagDigest": "sha256:72f0c0134922985022d55a39b0390d35dc7a10e961aa6c44fa35b4c3102f4268",
+   "imageDigest": "sha256:7805d08e3de3fead78019894c3e096959d8c0587d08703d6d2b88b1a3feafdaa",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-12-29T23:39:40Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.2",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.1.34",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.1.34",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:8.1-fpm",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "note": "PHP 8.1 is end-of-life",
+   "tagDigest": "sha256:a3118db1911fdd3b3ac66605122ddc859286688ced86fc860fec6d19cc2d6c55",
+   "imageDigest": "sha256:99290dd99e3de7786de51dbcefbf7b3bfd460ce0723808cea7099d37f281b967",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-12-29T23:36:07Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.2",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.1.34",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.1.34",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:8.1-fpm",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "note": "PHP 8.1 is end-of-life",
+   "tagDigest": "sha256:a3118db1911fdd3b3ac66605122ddc859286688ced86fc860fec6d19cc2d6c55",
+   "imageDigest": "sha256:6fba1aa9f16ee25ec7c38f05a34404fc69a162338b6b76e1197433b48781d06a",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-12-29T23:39:42Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.2",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.1.34",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.1.34",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:8.2-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "note": "PHP 8.2 reaches end-of-life on Dec 31 2026",
+   "tagDigest": "sha256:7b7574ed556f3cd450aafbdcb1424acdfbd67d540ce50c2c9f03e5698bca93d0",
+   "imageDigest": "sha256:480ff83b75c3bed75e4dce2b9a2396ab9f2091e00cced4a2fbaafe16c2dba922",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T01:30:41Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "php:8.2-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "note": "PHP 8.2 reaches end-of-life on Dec 31 2026",
+   "tagDigest": "sha256:7b7574ed556f3cd450aafbdcb1424acdfbd67d540ce50c2c9f03e5698bca93d0",
+   "imageDigest": "sha256:b0aa310c804c5070c8e1b4571b04e90a5f76ffd94bdcb6182ef1f3b90b5522c3",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T01:32:59Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "php:8.2-fpm",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "tagDigest": "sha256:7f97976c601c9710547d7caa20726e59458826a34951d706803d4d6b10b3854b",
+   "imageDigest": "sha256:5568e1345df99332c38f4f5eb11d2ea569eeebc47104291ddac1587aed2bdab0",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T01:30:21Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "php:8.2-fpm",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "tagDigest": "sha256:7f97976c601c9710547d7caa20726e59458826a34951d706803d4d6b10b3854b",
+   "imageDigest": "sha256:2eea4ca6b8654b671dbdf7acc42358f12d9009d4a0ce7e5c9476229148c91b63",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T01:33:47Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "php:8.2-fpm-alpine",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "tagDigest": "sha256:f7d0ea0acdaa28bef474b3741ef0ee00423f05078e216d31f1aa5c4a681ae6d4",
+   "imageDigest": "sha256:51132530b69eb57aca11cb05bf483e07a65398e20c2f630c131ca0dbbdc0a98c",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-21T22:55:09Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "php:8.2-fpm-alpine",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "tagDigest": "sha256:f7d0ea0acdaa28bef474b3741ef0ee00423f05078e216d31f1aa5c4a681ae6d4",
+   "imageDigest": "sha256:1fecc1b0c69bca9783645b527346f2d70ed94b0ae64387eda4fce991f95f6ec5",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-21T23:15:59Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "php:8.2.34-apache",
+   "platform": "linux/amd64",
+   "kind": "demo",
+   "owner": "php-official",
+   "note": "Exact pre-fix release; kept for comparison",
+   "tagDigest": "sha256:1650dcb528360aad05d6ed2f83cb403a2a39c31bd14552efd9a747b2207dea86",
+   "imageDigest": "sha256:40cb2b25df442bf62b0bd3e77ed7845ca1289249216b617eca7e9694e71ef199",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-21T00:36:08Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.2.34",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.2.34",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:8.2.34-apache",
+   "platform": "linux/arm64",
+   "kind": "demo",
+   "owner": "php-official",
+   "note": "Exact pre-fix release; kept for comparison",
+   "tagDigest": "sha256:1650dcb528360aad05d6ed2f83cb403a2a39c31bd14552efd9a747b2207dea86",
+   "imageDigest": "sha256:eff84eded00aede6aa8c695f03800baf0d3233e5bc28ae6fea3bd87214f78a07",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-21T00:39:00Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.2.34",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.2.34",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
   {
    "ref": "php:8.3-apache",
    "platform": "linux/amd64",
@@ -11,7 +3723,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:11093ce0630a495ce9436647d2939b5ca44b411d2a04917afe8b2d051ae2d2ed",
    "imageDigest": "sha256:743addf5fe02b56b325e3940ab7f1f87021ed8f4c1cd1e1e4973178b92149dce",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-28T01:27:47Z",
    "builtBeforeFix": false,
@@ -44,7 +3756,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:11093ce0630a495ce9436647d2939b5ca44b411d2a04917afe8b2d051ae2d2ed",
    "imageDigest": "sha256:1a8e02d42e6b7a8b5baed5e7c6b076be5ad59df2864788c9f6a81eb004d67529",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-28T01:30:26Z",
    "builtBeforeFix": false,
@@ -77,7 +3789,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:699495096ad60a969b9265aa52808c722b72f5e393f3784b794b168cc095a9e6",
    "imageDigest": "sha256:faf731814bf8a0e25236dba06fe36ed82bd0502c9c616a094a2fe02dcd7f2e08",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-28T01:27:51Z",
    "builtBeforeFix": false,
@@ -110,7 +3822,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:699495096ad60a969b9265aa52808c722b72f5e393f3784b794b168cc095a9e6",
    "imageDigest": "sha256:b5a04ce28a5388384526269d29678b398a44ab500ae025e9a0fc58e1c319c8c3",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-28T01:30:14Z",
    "builtBeforeFix": false,
@@ -137,13 +3849,147 @@
    "action": "OK"
   },
   {
+   "ref": "php:8.3-fpm-alpine",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "tagDigest": "sha256:25e15cf35ed0f5b75d8cf14fc2c4ed7e0e6bee00d359e681b7fa3e91a7bee49f",
+   "imageDigest": "sha256:4bba7da77c6a8473122b7826df62763b5639d89b1eedfe6d38ffa10bb222f4fa",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-21T22:55:05Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "php:8.3-fpm-alpine",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "php-official",
+   "tagDigest": "sha256:25e15cf35ed0f5b75d8cf14fc2c4ed7e0e6bee00d359e681b7fa3e91a7bee49f",
+   "imageDigest": "sha256:e7895641feafab60a1897a0a2ed846f23a09a5cb5de530ab37c763bad6f0108b",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-21T23:18:20Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "php:8.3.35-fpm",
+   "platform": "linux/amd64",
+   "kind": "demo",
+   "owner": "php-official",
+   "note": "Exact pre-fix release; kept for comparison",
+   "tagDigest": "sha256:d39c9597ccbf6dd86be11e933831e37c6f5fd7719a4571c569d7d208e45e73f8",
+   "imageDigest": "sha256:76ff8673ad93804ff9e8c2647214e36af7a4439518a267a5769aecf4e93c962e",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-21T00:34:11Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.3.35",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:8.3.35-fpm",
+   "platform": "linux/arm64",
+   "kind": "demo",
+   "owner": "php-official",
+   "note": "Exact pre-fix release; kept for comparison",
+   "tagDigest": "sha256:d39c9597ccbf6dd86be11e933831e37c6f5fd7719a4571c569d7d208e45e73f8",
+   "imageDigest": "sha256:2205ae45c751f126d879169d8697564f69b20b2e9a021b7a63f2ab1a9aaf8e77",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-21T00:38:05Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.3.35",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
    "ref": "php:8.4-apache",
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "php-official",
    "tagDigest": "sha256:be1326658a7d36dba6be79a71212d6ff9c5f854335b8ba77d714da1852c1b2ea",
    "imageDigest": "sha256:8020e1f98926051d65acdba49922108735314afa575b61ee26e54d8bd060ce83",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-28T01:24:47Z",
    "builtBeforeFix": false,
@@ -176,7 +4022,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:be1326658a7d36dba6be79a71212d6ff9c5f854335b8ba77d714da1852c1b2ea",
    "imageDigest": "sha256:82c1d96d246e6993f886f0f20b26d77965f065c6619b68b8862fdc3a37869dd0",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-28T01:26:37Z",
    "builtBeforeFix": false,
@@ -209,7 +4055,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:f3397667c5dbd19225fe1f4ba1e3485d4fdf840818d179423ccdc5e0b0ed35eb",
    "imageDigest": "sha256:aabc8d762a2ed9bcde8f5b3bd5c17344dfbcce62243f8f859e9791ac120feea2",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-28T01:24:50Z",
    "builtBeforeFix": false,
@@ -242,7 +4088,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:f3397667c5dbd19225fe1f4ba1e3485d4fdf840818d179423ccdc5e0b0ed35eb",
    "imageDigest": "sha256:d6973f226cbb4612674ed6f8c29d88ff5127f2789aea3537144c47814db86ebc",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-28T01:26:34Z",
    "builtBeforeFix": false,
@@ -275,7 +4121,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:93aa3f61216b73cc6f878235c9772849449f4efc18dfe3d6678eed645076c00d",
    "imageDigest": "sha256:dffc90c2fb171a84f8e7de217437878b9787e34d3e8ba47e0f673f34b247ccaa",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-21T22:54:14Z",
    "builtBeforeFix": false,
@@ -308,7 +4154,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:93aa3f61216b73cc6f878235c9772849449f4efc18dfe3d6678eed645076c00d",
    "imageDigest": "sha256:72049cd3bc03ccd933decba6c888c560b6549879b54ba0aa5cb0a91ddd45ca6c",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-22T00:13:40Z",
    "builtBeforeFix": false,
@@ -335,13 +4181,149 @@
    "action": "OK"
   },
   {
+   "ref": "php:8.4.26-apache",
+   "platform": "linux/amd64",
+   "kind": "demo",
+   "owner": "php-official",
+   "note": "Exact pre-fix release; kept for comparison",
+   "tagDigest": "sha256:60111400ff77bdc44fa79b4f072afe49a42abba71e0846ad496be4761dc9c11a",
+   "imageDigest": "sha256:b0ae0e0d4a3b7f0e800017482752b94f58ab049f2d7fcd108e5452afce3f50d1",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-21T00:32:27Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.26",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.26",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:8.4.26-apache",
+   "platform": "linux/arm64",
+   "kind": "demo",
+   "owner": "php-official",
+   "note": "Exact pre-fix release; kept for comparison",
+   "tagDigest": "sha256:60111400ff77bdc44fa79b4f072afe49a42abba71e0846ad496be4761dc9c11a",
+   "imageDigest": "sha256:ea85eb8ef702cfe8656d4cf38230228ff7a7fa36a153d298be330bd364721929",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-21T00:34:11Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.26",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.26",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:8.4.27-apache",
+   "platform": "linux/amd64",
+   "kind": "demo",
+   "owner": "php-official",
+   "note": "Exact post-fix release; kept for comparison",
+   "tagDigest": "sha256:be1326658a7d36dba6be79a71212d6ff9c5f854335b8ba77d714da1852c1b2ea",
+   "imageDigest": "sha256:f285280aa665ef0fe6f9645ed5e6aa94df2c4595b62c07d4c90c79dcc0ddc8a4",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T01:24:47Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "php:8.4.27-apache",
+   "platform": "linux/arm64",
+   "kind": "demo",
+   "owner": "php-official",
+   "note": "Exact post-fix release; kept for comparison",
+   "tagDigest": "sha256:be1326658a7d36dba6be79a71212d6ff9c5f854335b8ba77d714da1852c1b2ea",
+   "imageDigest": "sha256:19ab1c5b5b1463a1e8bf4761d54e848e858c806f930f42401bad8309d4adeed2",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T01:26:37Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
    "ref": "php:8.5-apache",
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "php-official",
    "tagDigest": "sha256:fce5eaf640e8fb620aac9aaf53efebe5584b3f3c1f2033b78b08be252be92adc",
    "imageDigest": "sha256:1d06277360d06c086da17655ae5e30091ff172d2b6d11821f084d5e86248b047",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-28T01:22:05Z",
    "builtBeforeFix": false,
@@ -374,7 +4356,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:fce5eaf640e8fb620aac9aaf53efebe5584b3f3c1f2033b78b08be252be92adc",
    "imageDigest": "sha256:f267256920df8a5f637904c08ca484fe389ee15dccc3de7f6b73833f9a1e846e",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-28T01:23:22Z",
    "builtBeforeFix": false,
@@ -407,7 +4389,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:4c2818074ec49f6abe46620f3965e0cb75bc3a5f2b417edd1aacaba6f091c40e",
    "imageDigest": "sha256:893a9110988d2846847ccb9323684645f1fdafbf284196e8db380b9788332f3d",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-21T22:51:36Z",
    "builtBeforeFix": false,
@@ -440,7 +4422,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:4c2818074ec49f6abe46620f3965e0cb75bc3a5f2b417edd1aacaba6f091c40e",
    "imageDigest": "sha256:7ce8f4bd299a71c481a55ac5af55a6506022d3759a0de45b9adb68366affd1bb",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-21T23:16:59Z",
    "builtBeforeFix": false,
@@ -467,13 +4449,81 @@
    "action": "OK"
   },
   {
+   "ref": "php:8.5.11-fpm-alpine",
+   "platform": "linux/amd64",
+   "kind": "demo",
+   "owner": "php-official",
+   "note": "Exact pre-fix release; kept for comparison",
+   "tagDigest": "sha256:fa01fb1645cd0fc566a5f146b099adace33b906571f972f71f2182a7c12d1cd7",
+   "imageDigest": "sha256:aba7168955e4b1e1f5e61e2e5a0257eff5b1563d3fc4ca272373183b57f53005",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-09-24T19:11:52Z",
+   "builtBeforeFix": true,
+   "distro": "alpine 3.24.2",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.5.11",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.5.11",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "php:8.5.11-fpm-alpine",
+   "platform": "linux/arm64",
+   "kind": "demo",
+   "owner": "php-official",
+   "note": "Exact pre-fix release; kept for comparison",
+   "tagDigest": "sha256:fa01fb1645cd0fc566a5f146b099adace33b906571f972f71f2182a7c12d1cd7",
+   "imageDigest": "sha256:bc7398fb5ae7567d887eedb90c0473ddfe02ff1abd7650f5c7142d4b537d4cef",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-09-24T19:12:40Z",
+   "builtBeforeFix": true,
+   "distro": "alpine 3.24.2",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.5.11",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.5.11",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE",
+    "CVE-2026-109619": "VULNERABLE"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
    "ref": "php:apache",
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "php-official",
    "tagDigest": "sha256:fce5eaf640e8fb620aac9aaf53efebe5584b3f3c1f2033b78b08be252be92adc",
    "imageDigest": "sha256:1d06277360d06c086da17655ae5e30091ff172d2b6d11821f084d5e86248b047",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-28T01:22:05Z",
    "builtBeforeFix": false,
@@ -506,7 +4556,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:fce5eaf640e8fb620aac9aaf53efebe5584b3f3c1f2033b78b08be252be92adc",
    "imageDigest": "sha256:f267256920df8a5f637904c08ca484fe389ee15dccc3de7f6b73833f9a1e846e",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-28T01:23:22Z",
    "builtBeforeFix": false,
@@ -539,7 +4589,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:da5d8e27ec238adc0804fd4194f98e59477db7116690d275b76679c1b84c813f",
    "imageDigest": "sha256:7661f99c3b35f2844849612523dbf4ced35123a98b9f5f475ab382ad03ea4088",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-28T01:22:07Z",
    "builtBeforeFix": false,
@@ -572,7 +4622,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:da5d8e27ec238adc0804fd4194f98e59477db7116690d275b76679c1b84c813f",
    "imageDigest": "sha256:54a33e3abf6658ef2f02751645534b25dd9fc76accfae79b4d16cbb457de8b53",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-28T01:23:03Z",
    "builtBeforeFix": false,
@@ -605,7 +4655,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:4c2818074ec49f6abe46620f3965e0cb75bc3a5f2b417edd1aacaba6f091c40e",
    "imageDigest": "sha256:893a9110988d2846847ccb9323684645f1fdafbf284196e8db380b9788332f3d",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-21T22:51:36Z",
    "builtBeforeFix": false,
@@ -638,7 +4688,7 @@
    "owner": "php-official",
    "tagDigest": "sha256:4c2818074ec49f6abe46620f3965e0cb75bc3a5f2b417edd1aacaba6f091c40e",
    "imageDigest": "sha256:7ce8f4bd299a71c481a55ac5af55a6506022d3759a0de45b9adb68366affd1bb",
-   "checkedAt": "2026-10-30T22:47:59Z",
+   "checkedAt": "2026-10-31T01:35:10Z",
    "scannedAt": "2026-10-30T22:47:59Z",
    "imageCreated": "2026-10-21T23:16:59Z",
    "builtBeforeFix": false,
@@ -654,6 +4704,1438 @@
      "name": "php-fpm",
      "version": "8.5.12",
      "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "phpmyadmin:5.2-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:fb0cb638f7d1c2529407921d86679b2b2faf5bb8542314821e9f16e7e3d2954f",
+   "imageDigest": "sha256:e97b771515ecfb8f23cc6e0e11f4718cb76d7a72df7c414f2c20f92e70ee62ed",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:20:18Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "phpmyadmin:5.2-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:fb0cb638f7d1c2529407921d86679b2b2faf5bb8542314821e9f16e7e3d2954f",
+   "imageDigest": "sha256:1d2ccf3ffdd6f7cb081294e015699365cf818e385ea30724240dc54c6adbcf47",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:31:45Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "phpmyadmin:fpm-alpine",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:74facced4c7f01268e22527a2c87f6a93083ca8b7f57d69e559f3663c190157f",
+   "imageDigest": "sha256:5e26ec1269e74d4f7aa8c5a7da7bcb3ace9818c79457d62a637a8a552cc37631",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-21T23:25:14Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "phpmyadmin:fpm-alpine",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:74facced4c7f01268e22527a2c87f6a93083ca8b7f57d69e559f3663c190157f",
+   "imageDigest": "sha256:0eb8dfe421a527f2ff8509a87a8ecdd526ff01242de67e0a3ec035197cc2ead1",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-22T00:18:32Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "phpmyadmin:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:fb0cb638f7d1c2529407921d86679b2b2faf5bb8542314821e9f16e7e3d2954f",
+   "imageDigest": "sha256:e97b771515ecfb8f23cc6e0e11f4718cb76d7a72df7c414f2c20f92e70ee62ed",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:20:18Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "phpmyadmin:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:fb0cb638f7d1c2529407921d86679b2b2faf5bb8542314821e9f16e7e3d2954f",
+   "imageDigest": "sha256:1d2ccf3ffdd6f7cb081294e015699365cf818e385ea30724240dc54c6adbcf47",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:31:45Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "prestashop/prestashop:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:09c36d25a22fd52f6ab876e8d7564c2b6830ba27236f50ef770dc6a650a3208e",
+   "imageDigest": "sha256:517ea9171e4c54bd58f52181ae52b02e4713b987ebd21a56db300fe54d7659c5",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-23T23:07:54Z",
+   "builtBeforeFix": false,
+   "distro": "debian 12.15",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "prestashop/prestashop:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:09c36d25a22fd52f6ab876e8d7564c2b6830ba27236f50ef770dc6a650a3208e",
+   "imageDigest": "sha256:c089cfc174ffac779d222ab5a437fb3835bc6bb47937ba2b9ab9ea25f0fac9d1",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-23T23:08:11Z",
+   "builtBeforeFix": false,
+   "distro": "debian 12.15",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "roundcube/roundcubemail:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:a6ef4cff166b5e2056238bb400ca84210bd796c83d859495ab67e60101ff2c55",
+   "imageDigest": "sha256:81ad8cd5361d24d3021880f83a32759b4a7d7a52fbcd39628603cde962bd603e",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-27T14:49:31Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "off",
+   "action": "OK"
+  },
+  {
+   "ref": "roundcube/roundcubemail:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:a6ef4cff166b5e2056238bb400ca84210bd796c83d859495ab67e60101ff2c55",
+   "imageDigest": "sha256:4fccde532dfd780ceb59a786a30da619bd32035ba9d46dd7620cef38193c4292",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-27T16:00:53Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "off",
+   "action": "OK"
+  },
+  {
+   "ref": "serversideup/php:8.2-fpm-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "community",
+   "tagDigest": "sha256:a85a110a086435999b2340dfbb52bd0fd9f73d183158f52673286d120290f949",
+   "imageDigest": "sha256:30ea1ef44844d789a5761485ca9a85590eb3e5b20ce8782792765ac3acd2cee1",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-27T16:27:28Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "serversideup/php:8.2-fpm-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "community",
+   "tagDigest": "sha256:a85a110a086435999b2340dfbb52bd0fd9f73d183158f52673286d120290f949",
+   "imageDigest": "sha256:68969c4d5da9f192520c2e153464544079b6d3015388dbe4acdbacdda0287bf4",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-27T16:27:17Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "serversideup/php:8.3-fpm-nginx",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "community",
+   "tagDigest": "sha256:fe53ec3c856da55d86c94044f35326c44525a619931105441fc87aa57471b993",
+   "imageDigest": "sha256:954960fcd9b5c7e4fe97f4261635f09b25884346a7255f54f3a52f4cf48700a5",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-27T16:27:38Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "serversideup/php:8.3-fpm-nginx",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "community",
+   "tagDigest": "sha256:fe53ec3c856da55d86c94044f35326c44525a619931105441fc87aa57471b993",
+   "imageDigest": "sha256:f954f54eef7263821c55129388efa1f7ca82e65f6201ec5c733f112dc79a45b0",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-27T16:27:30Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "serversideup/php:8.4-fpm-nginx",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "community",
+   "tagDigest": "sha256:103ccd4dbbd1362a5accfaffd35d114779949e5ec9e33943bdeed3344839be28",
+   "imageDigest": "sha256:5ffedeab23eb0ae025ad7e131fde827e75d15c8c3d9ad8412d858bd2390e4e66",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-27T16:27:34Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "serversideup/php:8.4-fpm-nginx",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "community",
+   "tagDigest": "sha256:103ccd4dbbd1362a5accfaffd35d114779949e5ec9e33943bdeed3344839be28",
+   "imageDigest": "sha256:23d551b607748c9f099225af80556f2dcbce92c39644604e7e78b3b7a3e8394d",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-27T16:27:22Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "shlinkio/shlink:stable",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "note": "Serves PHP through RoadRunner",
+   "tagDigest": "sha256:68a722f7677008a50ccf3a9e570966bc37d7627fe6a870b86be28c5dcf9085ee",
+   "imageDigest": "sha256:9083dc4ba2b682c43e1a477b69ef451738253fc8ad680db072663ea68530a973",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-22T09:57:16Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "shlinkio/shlink:stable",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "note": "Serves PHP through RoadRunner",
+   "tagDigest": "sha256:68a722f7677008a50ccf3a9e570966bc37d7627fe6a870b86be28c5dcf9085ee",
+   "imageDigest": "sha256:c1b363e945602b51e139ad73baf5d7f01e50bf67b1ecf617045fa98deb04fb48",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-22T10:13:52Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "snipe/snipe-it:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:fcf94eb3f32d3694715f120e2cdb7a45b1ff7bf38e7b3563de4c2fe87d41481b",
+   "imageDigest": "sha256:2eb36ba26384c30481791afee77c12aa3702aef544bccfed357489eec0e8257b",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-29T19:38:56Z",
+   "builtBeforeFix": false,
+   "distro": "ubuntu 24.04",
+   "php": [
+    {
+     "name": "libapache2-mod-php8.3",
+     "version": "8.3.6-0ubuntu0.24.04.13",
+     "source": "distro",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php8.3-cli",
+     "version": "8.3.6-0ubuntu0.24.04.13",
+     "source": "distro",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED_BY_DISTRO_BACKPORT",
+    "CVE-2026-109619": "FIXED_BY_DISTRO_BACKPORT"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "snipe/snipe-it:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:fcf94eb3f32d3694715f120e2cdb7a45b1ff7bf38e7b3563de4c2fe87d41481b",
+   "imageDigest": "sha256:c57ec21142b12ed9786a4f3585ba822583ff836153cf70a2c91044c55363bd49",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-29T19:47:45Z",
+   "builtBeforeFix": false,
+   "distro": "ubuntu 24.04",
+   "php": [
+    {
+     "name": "libapache2-mod-php8.3",
+     "version": "8.3.6-0ubuntu0.24.04.13",
+     "source": "distro",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php8.3-cli",
+     "version": "8.3.6-0ubuntu0.24.04.13",
+     "source": "distro",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED_BY_DISTRO_BACKPORT",
+    "CVE-2026-109619": "FIXED_BY_DISTRO_BACKPORT"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "webdevops/php-apache:8.2",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "community",
+   "tagDigest": "sha256:a1f8599cd30040d9a89b8fc85ce1aac35d291c4361cf1a2e5c3a12a17e4a963b",
+   "imageDigest": "sha256:9b2ac0113fb420b5f6ef61435d2c7adf1640e2964c7e3dcd17ec7e5e13f63723",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T07:55:17Z",
+   "builtBeforeFix": false,
+   "distro": "debian 12.15",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "webdevops/php-apache:8.2",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "community",
+   "tagDigest": "sha256:a1f8599cd30040d9a89b8fc85ce1aac35d291c4361cf1a2e5c3a12a17e4a963b",
+   "imageDigest": "sha256:f7ba097d9bda0f978bc85c96726a71859488b6e0f155fce511eb4c7417f3fcb9",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T07:55:19Z",
+   "builtBeforeFix": false,
+   "distro": "debian 12.15",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "webdevops/php-nginx:8.3",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "community",
+   "tagDigest": "sha256:4c63f5a30511f33783150a4cdf63db4f5b72c57a4094d34a7abd8b26fbc87e6c",
+   "imageDigest": "sha256:b39709cff37fbe341db76a718d9379d1017ab5ca1e66b92adeacb3926da3c807",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T05:30:12Z",
+   "builtBeforeFix": false,
+   "distro": "debian 12.15",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "webdevops/php-nginx:8.3",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "community",
+   "tagDigest": "sha256:4c63f5a30511f33783150a4cdf63db4f5b72c57a4094d34a7abd8b26fbc87e6c",
+   "imageDigest": "sha256:f6a31f03f12d850a19d9c915410224a7f5a905ef6e1d32d988bb8afcc6c6b284",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T05:30:11Z",
+   "builtBeforeFix": false,
+   "distro": "debian 12.15",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "webdevops/php-nginx:8.4",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "community",
+   "tagDigest": "sha256:67e9fda049f4d055747902dafe82e444f966981ec7e33e710a31ba4981fae8e2",
+   "imageDigest": "sha256:f03169d23ae662fecd14e4c65b95cfde56899af4f90a4e670a395dda563c3052",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T05:29:39Z",
+   "builtBeforeFix": false,
+   "distro": "debian 12.15",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "webdevops/php-nginx:8.4",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "community",
+   "tagDigest": "sha256:67e9fda049f4d055747902dafe82e444f966981ec7e33e710a31ba4981fae8e2",
+   "imageDigest": "sha256:277bfb1307793ec150836098efa1a369a751077aa5259851f723e8e607b2b9de",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-30T05:29:34Z",
+   "builtBeforeFix": false,
+   "distro": "debian 12.15",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "wordpress:fpm-alpine",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:7d5d918c89c124486c38119fb1f8b74d190ed75a0cd7dc581037e8a301f8fb23",
+   "imageDigest": "sha256:bd018594b750795ba22974511698112125db645d0868554c329bf73fc06d40b8",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T20:59:09Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "wordpress:fpm-alpine",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:7d5d918c89c124486c38119fb1f8b74d190ed75a0cd7dc581037e8a301f8fb23",
+   "imageDigest": "sha256:62921269c08a19476bb8f641f5b12ad408118c1f2ab49b60623c3b3bdbd97696",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T21:49:31Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "wordpress:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:848b03bb7b4b160e3a670454e8e928e309c9aaeb1c2584e917f42ab5197662e2",
+   "imageDigest": "sha256:fe2f14897f8f46d61d452139aaa5c9359c277256dda69810c96509ad32f273d5",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T20:59:49Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "wordpress:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:848b03bb7b4b160e3a670454e8e928e309c9aaeb1c2584e917f42ab5197662e2",
+   "imageDigest": "sha256:1e051b9befaf8e9f7eb375b3148d70f9d217de6c69ef706bf8df40638a4dfb0a",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T21:50:12Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "wordpress:php8.1-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "PHP 8.1 is end-of-life",
+   "tagDigest": "sha256:f73396626d2f1b89d4c556917c15f55cfcc6b5f80595205516e490f0f04015e4",
+   "imageDigest": "sha256:65fbb9965e7bab9fa7cefd0459d15beb64ead5013190ca2aad98878ff0e4854f",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-12-30T01:17:46Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.2",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.1.34",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.1.34",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "wordpress:php8.1-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "note": "PHP 8.1 is end-of-life",
+   "tagDigest": "sha256:f73396626d2f1b89d4c556917c15f55cfcc6b5f80595205516e490f0f04015e4",
+   "imageDigest": "sha256:16329c82bd5a3210c4146417b8b56d5345c9100d916db2a982108bc060f7c30e",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2025-12-30T01:19:18Z",
+   "builtBeforeFix": true,
+   "distro": "debian 13.2",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.1.34",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.1.34",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "VULNERABLE_EOL",
+    "CVE-2026-109619": "VULNERABLE_EOL"
+   },
+   "uploadProgress": "on",
+   "action": "ACTION_NEEDED"
+  },
+  {
+   "ref": "wordpress:php8.2-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:8ca746c43b29cc29258c2c9e420745daa88417fe5f9232220b69b8b1bbed15a7",
+   "imageDigest": "sha256:d6a47cc86aef7c533cff3602ee20e75dc346031a810b0a9ddd3dd4e47f691e9e",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T20:59:42Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "wordpress:php8.2-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:8ca746c43b29cc29258c2c9e420745daa88417fe5f9232220b69b8b1bbed15a7",
+   "imageDigest": "sha256:b6e55566efb37b56629d9fe1810a34590bbdc2b545a1ff535fba0881cd5cb62d",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T21:46:11Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.2.35",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "wordpress:php8.3-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:848b03bb7b4b160e3a670454e8e928e309c9aaeb1c2584e917f42ab5197662e2",
+   "imageDigest": "sha256:fe2f14897f8f46d61d452139aaa5c9359c277256dda69810c96509ad32f273d5",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T20:59:49Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "wordpress:php8.3-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:848b03bb7b4b160e3a670454e8e928e309c9aaeb1c2584e917f42ab5197662e2",
+   "imageDigest": "sha256:1e051b9befaf8e9f7eb375b3148d70f9d217de6c69ef706bf8df40638a4dfb0a",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T21:50:12Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "wordpress:php8.3-fpm",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:66c003d68752953f9106ac663cf1bcb1505ac0206ba65e6bd3b845349a4c9a5c",
+   "imageDigest": "sha256:d78f762ab914f67003ce94497997cac254932cbf761a4252fd1a638950fc8626",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T20:59:47Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "wordpress:php8.3-fpm",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:66c003d68752953f9106ac663cf1bcb1505ac0206ba65e6bd3b845349a4c9a5c",
+   "imageDigest": "sha256:63c12fa9b9f83c74494d86ccc660e833c694e796dd196e90a85d2a3c8ab8caa5",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T21:50:11Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "php-cli",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "cli"
+    },
+    {
+     "name": "php-fpm",
+     "version": "8.3.36",
+     "source": "upstream-build",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "wordpress:php8.4-apache",
+   "platform": "linux/amd64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:5f90dc7e4ed0222796b8904f9426335b2b316cc258643ea8a2c3abc9f320623d",
+   "imageDigest": "sha256:74987c2fd8f8321d768a8a6d05b05c523f444a44a2d34431f9ef660c60b66da4",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T21:00:00Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "wordpress:php8.4-apache",
+   "platform": "linux/arm64",
+   "kind": "pinned",
+   "owner": "app-official",
+   "tagDigest": "sha256:5f90dc7e4ed0222796b8904f9426335b2b316cc258643ea8a2c3abc9f320623d",
+   "imageDigest": "sha256:fe2e8da798df885a57932a0e434fe6bd95ceac43fc0c1eb18ede95db8bbccfed",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T21:50:18Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.4.27",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "yourls:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:9da74a9e9fa2becdc59f8b2dca57c4f1485b1b999d81975a58171444f2a02489",
+   "imageDigest": "sha256:91a8ede066754cff5eb3cbe9d57ce3dc642fab5e7d1f659ed898d07349f5e4ef",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:22:16Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "yourls:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "app-official",
+   "tagDigest": "sha256:9da74a9e9fa2becdc59f8b2dca57c4f1485b1b999d81975a58171444f2a02489",
+   "imageDigest": "sha256:e8c6b4f71548740ed3b3f251c1486608a8ab494a2dfa64f2fdf0c5245f4594a7",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-28T02:33:18Z",
+   "builtBeforeFix": false,
+   "distro": "debian 13.7",
+   "php": [
+    {
+     "name": "libphp",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "apache-module"
+    },
+    {
+     "name": "php-cli",
+     "version": "8.5.12",
+     "source": "upstream-build",
+     "sapi": "cli"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "zabbix/zabbix-web-nginx-mysql:latest",
+   "platform": "linux/amd64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:adcdbc2ca0bfa8269ee9769e5bd9a85d81adf886403db302d2b0d15fdba50e37",
+   "imageDigest": "sha256:b2da4e2a2925e0882188ec9ec6da49726d5f01de08bf4c962fb84fc4c4868342",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-22T07:08:44Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
+     "sapi": "fpm"
+    }
+   ],
+   "verdicts": {
+    "CVE-2026-109618": "FIXED",
+    "CVE-2026-109619": "FIXED"
+   },
+   "uploadProgress": "on",
+   "action": "OK"
+  },
+  {
+   "ref": "zabbix/zabbix-web-nginx-mysql:latest",
+   "platform": "linux/arm64",
+   "kind": "latest",
+   "owner": "community",
+   "tagDigest": "sha256:adcdbc2ca0bfa8269ee9769e5bd9a85d81adf886403db302d2b0d15fdba50e37",
+   "imageDigest": "sha256:5a8e466bbf21e1bea5536f597d2e99354b0f0a3fb9b8360947eadd9189257cb7",
+   "checkedAt": "2026-10-31T01:35:10Z",
+   "scannedAt": "2026-10-31T01:35:10Z",
+   "imageCreated": "2026-10-22T07:08:50Z",
+   "builtBeforeFix": false,
+   "distro": "alpine 3.24.3",
+   "php": [
+    {
+     "name": "php85-fpm",
+     "version": "8.5.12-r0",
+     "source": "distro",
      "sapi": "fpm"
     }
    ],
