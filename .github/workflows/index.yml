@@ -39,6 +39,14 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      # Image layers need room. Remove preinstalled toolchains this job doesn't use.
+      - name: Free disk space
+        run: |
+          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL
+          sudo docker image prune -af > /dev/null || true
+          df -h /
+
       - uses: actions/setup-go@v7
         with:
           go-version-file: go.mod
@@ -78,6 +86,10 @@ jobs:
         run: |
           whichphp index --images index/images.csv --data data-branch \
             --max-scans "${{ github.event.inputs.max_scans || '0' }}"
+
+      - name: Show disk usage
+        if: ${{ always() }}
+        run: df -h /
 
       - name: Commit the data
         if: ${{ vars.PUBLISH_INDEX == 'true' }}
