@@ -38,7 +38,7 @@ jobs:
     steps:
       - name: Pre-fix image
         id: before
-        uses: yusufyildiz34/whichphp@0778790c7563452d445e92bb5875655b854ee367 # v0.3.0
+        uses: yusufyildiz34/whichphp@4b5070c02d37d9c98f0247eb65e8f3ee9f9fba6c # v0.4.0
         with:
           image: php:8.4.26-apache
           platform: linux/amd64
@@ -47,7 +47,7 @@ jobs:
 
       - name: Fixed image
         id: after
-        uses: yusufyildiz34/whichphp@0778790c7563452d445e92bb5875655b854ee367 # v0.3.0
+        uses: yusufyildiz34/whichphp@4b5070c02d37d9c98f0247eb65e8f3ee9f9fba6c # v0.4.0
         with:
           image: php:8.4.27-apache
           platform: linux/amd64
