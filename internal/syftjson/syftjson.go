@@ -32,6 +32,25 @@ type Artifact struct {
 	PURL      string     `json:"purl"`
 	CPEs      CPEList    `json:"cpes"`
 	Locations []Location `json:"locations"`
+	Metadata  Metadata   `json:"metadata"`
+}
+
+// Metadata is the part of Syft's per-package metadata whichphp reads. Vendor is the
+// rpm Vendor tag, which names the builder when the release string doesn't.
+type Metadata struct {
+	Vendor string
+}
+
+// UnmarshalJSON implements json.Unmarshaler. Each package type has its own metadata
+// shape, so anything that isn't an object with a string vendor reads as empty.
+func (m *Metadata) UnmarshalJSON(b []byte) error {
+	var obj struct {
+		Vendor json.RawMessage `json:"vendor"`
+	}
+	if json.Unmarshal(b, &obj) == nil && len(obj.Vendor) > 0 {
+		_ = json.Unmarshal(obj.Vendor, &m.Vendor)
+	}
+	return nil
 }
 
 // Location is where Syft found evidence for an artifact or file.

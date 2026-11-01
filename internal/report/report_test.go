@@ -286,15 +286,23 @@ func TestOpenVEXOnlyClaimsWhatItCanShow(t *testing.T) {
 			"CVE-2026-109618": {Verdict: verdict.NotAffected, Why: "older than 7.3.0"},
 			"CVE-2026-109619": {Verdict: verdict.VulnerableEOL, Why: "EOL"},
 		}},
+		// A packager's backport rests on its own published release, which is positive
+		// evidence.
+		{Name: "php7.4-fpm", Version: "1:7.4.33-31", Type: "deb", Source: verdict.SourceThirdParty, Provider: "Sury",
+			CVEs: cves(verdict.FixedByVendorBackport, "Sury backported the fix into 1:7.4.33-31")},
+		{Name: "php7.4-cli", Version: "1:7.4.33-20", Type: "deb", Source: verdict.SourceThirdParty, Provider: "Sury",
+			CVEs: cves(verdict.NeedsVendorConfirmation, "no data")},
 	}
 	got := map[string]string{}
 	for _, s := range vexOf(t, r, VEXOptions{}).Statements {
 		got[s.Products[0].Subcomponents[0].ID+" "+s.Vulnerability.Name] = s.Status + "/" + s.Justification
 	}
 	want := map[string]string{
-		"pkg:generic/php8.2-cli@8.2.7-1 CVE-2026-109618": "under_investigation/",
-		"pkg:generic/php@7.2.34 CVE-2026-109618":         "not_affected/vulnerable_code_not_present",
-		"pkg:generic/php@7.2.34 CVE-2026-109619":         "affected/",
+		"pkg:generic/php8.2-cli@8.2.7-1 CVE-2026-109618":       "under_investigation/",
+		"pkg:generic/php@7.2.34 CVE-2026-109618":               "not_affected/vulnerable_code_not_present",
+		"pkg:generic/php@7.2.34 CVE-2026-109619":               "affected/",
+		"pkg:generic/php7.4-fpm@1%3A7.4.33-31 CVE-2026-109619": "fixed/",
+		"pkg:generic/php7.4-cli@1%3A7.4.33-20 CVE-2026-109619": "under_investigation/",
 	}
 	for k, v := range want {
 		if got[k] != v {

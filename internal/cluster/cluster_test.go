@@ -691,3 +691,22 @@ func TestNoRestartCommand(t *testing.T) {
 		t.Errorf("Windows: %q", w.Restart)
 	}
 }
+
+func TestStatusTextNamesTheWorstVerdict(t *testing.T) {
+	cases := []struct {
+		verdicts map[string]string
+		want     string
+	}{
+		{map[string]string{"CVE-2026-109618": "FIXED_BY_VENDOR_BACKPORT", "CVE-2026-109619": "FIXED"}, "fixed by vendor backport"},
+		{map[string]string{"CVE-2026-109618": "FIXED_BY_VENDOR_BACKPORT", "CVE-2026-109619": "NEEDS_VENDOR_CONFIRMATION"}, "ask the vendor"},
+		// A verdict this version doesn't know ranks as unknown, above "ask the vendor".
+		{map[string]string{"CVE-2026-109618": "NEEDS_VENDOR_CONFIRMATION", "CVE-2026-109619": "SOMETHING_NEW"}, "unknown"},
+		{map[string]string{"CVE-2026-109618": "SOMETHING_NEW", "CVE-2026-109619": "VULNERABLE"}, "vulnerable"},
+	}
+	for _, c := range cases {
+		got := statusText(ImageResult{Action: ActionOK, Verdicts: c.verdicts})
+		if got != c.want {
+			t.Errorf("statusText(%v) = %q, want %q", c.verdicts, got, c.want)
+		}
+	}
+}

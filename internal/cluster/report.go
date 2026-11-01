@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"slices"
 	"sort"
 	"strings"
 
@@ -25,6 +26,7 @@ var verdictLabels = map[string]string{
 	"UNKNOWN":                   "unknown",
 	"NEEDS_VENDOR_CONFIRMATION": "ask the vendor",
 	"FIXED_BY_DISTRO_BACKPORT":  "fixed by distro backport",
+	"FIXED_BY_VENDOR_BACKPORT":  "fixed by vendor backport",
 	"FIXED":                     "fixed",
 	"NOT_AFFECTED":              "not affected",
 }
@@ -158,16 +160,11 @@ func statusText(r ImageResult) string {
 		return "couldn't be checked"
 	}
 	worst, w := "", -1
-	order := []string{"FIXED", "NOT_AFFECTED", "FIXED_BY_DISTRO_BACKPORT", "NEEDS_VENDOR_CONFIRMATION", "UNKNOWN", "DATA_STALE", "VULNERABLE", "VULNERABLE_EOL"}
+	order := []string{"FIXED", "NOT_AFFECTED", "FIXED_BY_DISTRO_BACKPORT", "FIXED_BY_VENDOR_BACKPORT", "NEEDS_VENDOR_CONFIRMATION", "UNKNOWN", "DATA_STALE", "VULNERABLE", "VULNERABLE_EOL"}
 	for _, v := range r.Verdicts {
-		i := -1
-		for j, o := range order {
-			if o == v {
-				i = j
-			}
-		}
+		i := slices.Index(order, v)
 		if i < 0 {
-			i = 4 // an unrecognized verdict counts as unknown
+			v, i = "UNKNOWN", slices.Index(order, "UNKNOWN") // an unrecognized verdict counts as unknown
 		}
 		if i > w {
 			worst, w = v, i

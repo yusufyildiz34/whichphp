@@ -14,13 +14,13 @@ body:
     id: builds
     attributes:
       label: Fixed builds
-      description: Package names and exact releases that include the fix, per PHP branch and OS release.
+      description: Package names and the first release that includes the fix, per PHP branch and OS release, with the epoch where the package has one, as `dpkg-query -W` or `rpm -q --qf '%{EPOCH}:%{VERSION}-%{RELEASE}'` shows it (leave out the epoch where rpm prints `(none)`).
     validations:
       required: true
   - type: textarea
     id: source
     attributes:
       label: Source
-      description: Link to the packager's advisory, changelog or tracker for each entry.
+      description: Link to the packager's own advisory, changelog, tracker or repository for each entry, showing the version and the CVE IDs. Blog and forum posts can't be the only source.
     validations:
       required: true

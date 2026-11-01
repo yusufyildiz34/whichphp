@@ -1,0 +1,161 @@
+packager,branch,distro,fixed,cves,source
+# The first package release from each packager that carries the fixes, per PHP branch, for
+# packagers that backport into an older upstream version. "none" means the packager's own
+# statement or repository shows no fixed build for the branch. Branches a packager ships
+# as upstream releases (8.2 to 8.5 from Sury, Remi, cPanel and GetPageSpeed) need no row:
+# their version settles it.
+#
+# Every source is the packager's own statement: an advisory, a changelog, a tracker or
+# its repository. Blog and forum posts are pointers, never a source here.
+# Checked November 1, 2026.
+
+# cPanel EasyApache 4 (ea-phpNN-php-cli, -fpm, -litespeed; ea-phpNN-php is the Apache
+# module on 5.x and 7.x). Releases look like 8.1.34-5.12.1.cpanel (rpm) and
+# 8.1.34-5+12.1.cpanel (deb). cPanel's GitHub has unreleased fixes for ea-php54 to 73
+# (EA-13619, with made-up versions such as 7.3.34); replace the "none" rows when they ship.
+cPanel,8.1,,8.1.34-5,CVE-2026-109618 CVE-2026-109619,https://support.cpanel.net/hc/en-us/articles/44397389677335-Critical-PHP-Security-Release-CVE-2026-109618-and-CVE-2026-109619
+cPanel,8.0,,8.0.30-12,CVE-2026-109618 CVE-2026-109619,https://support.cpanel.net/hc/en-us/articles/44397389677335-Critical-PHP-Security-Release-CVE-2026-109618-and-CVE-2026-109619
+cPanel,7.4,,7.4.33-19,CVE-2026-109618 CVE-2026-109619,https://support.cpanel.net/hc/en-us/articles/44397389677335-Critical-PHP-Security-Release-CVE-2026-109618-and-CVE-2026-109619
+cPanel,7.3,,none,,https://support.cpanel.net/hc/en-us/articles/44397389677335-Critical-PHP-Security-Release-CVE-2026-109618-and-CVE-2026-109619
+cPanel,7.2,,none,,https://support.cpanel.net/hc/en-us/articles/44397389677335-Critical-PHP-Security-Release-CVE-2026-109618-and-CVE-2026-109619
+cPanel,7.1,,none,,https://support.cpanel.net/hc/en-us/articles/44397389677335-Critical-PHP-Security-Release-CVE-2026-109618-and-CVE-2026-109619
+cPanel,7.0,,none,,https://support.cpanel.net/hc/en-us/articles/44397389677335-Critical-PHP-Security-Release-CVE-2026-109618-and-CVE-2026-109619
+cPanel,5.6,,none,,https://support.cpanel.net/hc/en-us/articles/44397389677335-Critical-PHP-Security-Release-CVE-2026-109618-and-CVE-2026-109619
+cPanel,5.5,,none,,https://support.cpanel.net/hc/en-us/articles/44397389677335-Critical-PHP-Security-Release-CVE-2026-109618-and-CVE-2026-109619
+cPanel,5.4,,none,,https://support.cpanel.net/hc/en-us/articles/44397389677335-Critical-PHP-Security-Release-CVE-2026-109618-and-CVE-2026-109619
+
+# Freexian Extended LTS for Debian releases past Debian's own LTS. Its builds continue
+# Debian's numbering (+debNNuM) and carry no marker, so each row is scoped to its release.
+# Debian 8 (php5) left ELTS on June 30, 2025 and got no fix.
+Freexian ELTS,7.4,debian 11,7.4.33-1+deb11u14,CVE-2026-109618 CVE-2026-109619,https://www.freexian.com/lts/extended/updates/ela-1853-1-php7.4/
+Freexian ELTS,7.3,debian 10,7.3.31-1~deb10u16,CVE-2026-109618 CVE-2026-109619,https://www.freexian.com/lts/extended/updates/ela-1854-1-php7.3/
+Freexian ELTS,7.0,debian 9,7.0.33-0+deb9u26,CVE-2026-109618 CVE-2026-109619,https://www.freexian.com/lts/extended/updates/ela-1855-1-php7.0/
+
+# Ondřej Surý: ppa:ondrej/php (+ubuntuNN.NN.1+deb.sury.org+1) and packages.sury.org
+# (+0~DATE.N+debianNN~1.gbpHASH). Sources are the packaging changelogs at the commit
+# each build came from. The first 7.1, 7.0 and 5.6 builds (-80, -92, -104) left out
+# part of the fix (the multipart limit, CVE-2023-0662); Sury named -81, -93 and -105 as
+# fixed. Launchpad never got 7.1 -81 or 7.0 -93.
+Sury,8.1,,8.1.34-9,CVE-2026-109618 CVE-2026-109619,https://salsa.debian.org/php-team/php/-/raw/4e430a/debian/changelog
+Sury,8.0,,1:8.0.30-25,CVE-2026-109618 CVE-2026-109619,https://salsa.debian.org/php-team/php/-/raw/abebea/debian/changelog
+Sury,7.4,,1:7.4.33-31,CVE-2026-109618 CVE-2026-109619,https://salsa.debian.org/php-team/php/-/raw/e9c428/debian/changelog
+Sury,7.3,,7.3.33-35,CVE-2026-109618 CVE-2026-109619,https://salsa.debian.org/php-team/php/-/raw/ecf76f/debian/changelog
+Sury,7.2,,7.2.34-66,CVE-2026-109618 CVE-2026-109619,https://salsa.debian.org/php-team/php/-/raw/e0bcd4/debian/changelog
+Sury,7.1,,7.1.33-81,CVE-2026-109618 CVE-2026-109619,https://codeberg.org/oerdnj/deb.sury.org/issues/146
+Sury,7.0,,7.0.33-93,CVE-2026-109618 CVE-2026-109619,https://codeberg.org/oerdnj/deb.sury.org/issues/146
+Sury,5.6,,5.6.40-105,CVE-2026-109618 CVE-2026-109619,https://codeberg.org/oerdnj/deb.sury.org/issues/146
+
+# Remi Collet (rpms.remirepo.net): base and module packages (php-cli, php-fpm, php) and
+# Software Collections (php74-php-cli under /opt/remi/php74), all with ".remi" releases
+# such as 7.4.33-31.module_php.7.4.el9.remi. 7.4, 8.0 and 8.1 on EL8 to EL10 and Fedora;
+# 7.2 and 7.3 on EL8 only, where the first builds (-30, -23) missed part of the patch and
+# were rebuilt "with proper patch". EL7 has been frozen since June 2024. Sources are the
+# package specs, whose changelogs name the CVEs.
+Remi,8.1,,8.1.34-6,CVE-2026-109618 CVE-2026-109619,https://git.remirepo.net/cgit/rpms/scl-php81/php.git/plain/php.spec
+Remi,8.0,,8.0.30-21,CVE-2026-109618 CVE-2026-109619,https://git.remirepo.net/cgit/rpms/scl-php80/php.git/plain/php.spec
+Remi,7.4,,7.4.33-31,CVE-2026-109618 CVE-2026-109619,https://git.remirepo.net/cgit/rpms/scl-php74/php.git/plain/php.spec
+Remi,7.3,,7.3.33-24,CVE-2026-109618 CVE-2026-109619,https://git.remirepo.net/cgit/rpms/scl-php73/php.git/plain/php.spec
+Remi,7.2,,7.2.34-31,CVE-2026-109618 CVE-2026-109619,https://git.remirepo.net/cgit/rpms/scl-php72/php.git/plain/php.spec
+Remi,7.1,,none,,https://git.remirepo.net/cgit/rpms/scl-php71/php.git/plain/php.spec
+Remi,7.0,,none,,https://git.remirepo.net/cgit/rpms/scl-php70/php.git/plain/php.spec
+Remi,5.6,,none,,https://git.remirepo.net/cgit/rpms/scl-php56/php.git/plain/php.spec
+
+# GetPageSpeed (extras.getpagespeed.com) has no rows yet. Its builds carry no release
+# marker (only the rpm Vendor "GetPageSpeed LLC"), its base, SCL, EL6 and Amazon Linux 2
+# lines number their releases differently, its own pages give conflicting first fixed
+# releases, and its changelogs aren't public. Until it publishes one table, its builds
+# of end-of-life branches get NEEDS_VENDOR_CONFIRMATION.
+
+# CloudLinux alt-php (alt-phpNN-cli, alt-phpNN-php-fpm; /opt/alt/phpNN), the same release
+# on CloudLinux 7, 8 and 9 and, from TuxCare's ELS repository, on 10 and EL6. CloudLinux
+# backported into supported branches too, so 8.2 to 8.5 have rows; its later rebuilds as
+# 8.2.35 and up go by version. alt-php55 and alt-php73 carry epoch 1, which CloudLinux's
+# pages don't print; the epochs are from its repository metadata. CloudLinux also fixed
+# 5.2 and 5.3, which predate both CVEs' affected ranges in NVD, so whichphp reports them
+# as NOT_AFFECTED, as it does alt-php44 and alt-php51, which got no build.
+CloudLinux alt-php,5.4,,5.4.45-203,CVE-2026-109618 CVE-2026-109619,https://cloudlinux.zendesk.com/hc/en-us/articles/31194180517916
+CloudLinux alt-php,5.5,,1:5.5.38-183,CVE-2026-109618 CVE-2026-109619,https://cloudlinux.zendesk.com/hc/en-us/articles/31194180517916
+CloudLinux alt-php,5.6,,5.6.40-147,CVE-2026-109618 CVE-2026-109619,https://cloudlinux.zendesk.com/hc/en-us/articles/31194180517916
+CloudLinux alt-php,7.0,,7.0.33-148,CVE-2026-109618 CVE-2026-109619,https://cloudlinux.zendesk.com/hc/en-us/articles/31194180517916
+CloudLinux alt-php,7.1,,7.1.33-114,CVE-2026-109618 CVE-2026-109619,https://cloudlinux.zendesk.com/hc/en-us/articles/31194180517916
+CloudLinux alt-php,7.2,,7.2.34-97,CVE-2026-109618 CVE-2026-109619,https://cloudlinux.zendesk.com/hc/en-us/articles/31194180517916
+CloudLinux alt-php,7.3,,1:7.3.33-82,CVE-2026-109618 CVE-2026-109619,https://cloudlinux.zendesk.com/hc/en-us/articles/31194180517916
+CloudLinux alt-php,7.4,,7.4.33-81,CVE-2026-109618 CVE-2026-109619,https://cloudlinux.zendesk.com/hc/en-us/articles/31194180517916
+CloudLinux alt-php,8.0,,8.0.30-69,CVE-2026-109618 CVE-2026-109619,https://cloudlinux.zendesk.com/hc/en-us/articles/31194180517916
+CloudLinux alt-php,8.1,,8.1.34-39,CVE-2026-109618 CVE-2026-109619,https://cloudlinux.zendesk.com/hc/en-us/articles/31194180517916
+CloudLinux alt-php,8.2,,8.2.34-7,CVE-2026-109618 CVE-2026-109619,https://cloudlinux.zendesk.com/hc/en-us/articles/31194180517916
+CloudLinux alt-php,8.3,,8.3.35-6,CVE-2026-109618 CVE-2026-109619,https://cloudlinux.zendesk.com/hc/en-us/articles/31194180517916
+CloudLinux alt-php,8.4,,8.4.26-5,CVE-2026-109618 CVE-2026-109619,https://cloudlinux.zendesk.com/hc/en-us/articles/31194180517916
+CloudLinux alt-php,8.5,,8.5.11-5,CVE-2026-109618 CVE-2026-109619,https://cloudlinux.zendesk.com/hc/en-us/articles/31194180517916
+
+# CloudLinux's own builds of cPanel's ea-php packages: epoch 1, releases such as
+# 1:8.2.34-2.el8.cloudlinux.1. The fix shows only after the EL dist tag, which "{el}"
+# stands for: 1:8.2.34-2.el8.cloudlinux (October 20) is unfixed. ea-php52 to 55 are
+# built for EL7 and EL8 only, ea-php84 and 85 for EL8 to EL10. The source is the
+# changelogs in the EA4 repository metadata ("EA4D-1101: CVE-2026-109618,
+# CVE-2026-109619"), the same on every EL; EL8's is linked.
+CloudLinux ea-php,5.4,,1:5.4.45-82.{el}.cloudlinux.9,CVE-2026-109618 CVE-2026-109619,https://repo.cloudlinux.com/cloudlinux/EA4/8/updates/x86_64/repodata/
+CloudLinux ea-php,5.5,,1:5.5.38-64.{el}.cloudlinux.10,CVE-2026-109618 CVE-2026-109619,https://repo.cloudlinux.com/cloudlinux/EA4/8/updates/x86_64/repodata/
+CloudLinux ea-php,5.6,,1:5.6.40-25.{el}.cloudlinux.18,CVE-2026-109618 CVE-2026-109619,https://repo.cloudlinux.com/cloudlinux/EA4/8/updates/x86_64/repodata/
+CloudLinux ea-php,7.0,,1:7.0.33-29.{el}.cloudlinux.17,CVE-2026-109618 CVE-2026-109619,https://repo.cloudlinux.com/cloudlinux/EA4/8/updates/x86_64/repodata/
+CloudLinux ea-php,7.1,,1:7.1.33-20.{el}.cloudlinux.17,CVE-2026-109618 CVE-2026-109619,https://repo.cloudlinux.com/cloudlinux/EA4/8/updates/x86_64/repodata/
+CloudLinux ea-php,7.2,,1:7.2.34-12.{el}.cloudlinux.18,CVE-2026-109618 CVE-2026-109619,https://repo.cloudlinux.com/cloudlinux/EA4/8/updates/x86_64/repodata/
+CloudLinux ea-php,7.3,,1:7.3.33-15.{el}.cloudlinux.18,CVE-2026-109618 CVE-2026-109619,https://repo.cloudlinux.com/cloudlinux/EA4/8/updates/x86_64/repodata/
+CloudLinux ea-php,7.4,,1:7.4.33-18.{el}.cloudlinux.13,CVE-2026-109618 CVE-2026-109619,https://repo.cloudlinux.com/cloudlinux/EA4/8/updates/x86_64/repodata/
+CloudLinux ea-php,8.0,,1:8.0.30-11.{el}.cloudlinux.1,CVE-2026-109618 CVE-2026-109619,https://repo.cloudlinux.com/cloudlinux/EA4/8/updates/x86_64/repodata/
+CloudLinux ea-php,8.1,,1:8.1.34-4.{el}.cloudlinux.1,CVE-2026-109618 CVE-2026-109619,https://repo.cloudlinux.com/cloudlinux/EA4/8/updates/x86_64/repodata/
+CloudLinux ea-php,8.2,,1:8.2.34-2.{el}.cloudlinux.1,CVE-2026-109618 CVE-2026-109619,https://repo.cloudlinux.com/cloudlinux/EA4/8/updates/x86_64/repodata/
+CloudLinux ea-php,8.3,,1:8.3.35-2.{el}.cloudlinux.2,CVE-2026-109618 CVE-2026-109619,https://repo.cloudlinux.com/cloudlinux/EA4/8/updates/x86_64/repodata/
+CloudLinux ea-php,8.4,,1:8.4.26-2.{el}.cloudlinux.1,CVE-2026-109618 CVE-2026-109619,https://repo.cloudlinux.com/cloudlinux/EA4/8/updates/x86_64/repodata/
+CloudLinux ea-php,8.5,,1:8.5.11-2.{el}.cloudlinux.1,CVE-2026-109618 CVE-2026-109619,https://repo.cloudlinux.com/cloudlinux/EA4/8/updates/x86_64/repodata/
+
+# CloudLinux's own system PHP (php-cli with ".cloudlinux" in a module release) has no rows:
+# its module release strings can't be compared across streams. Its end-of-life branches
+# get NEEDS_VENDOR_CONFIRMATION.
+
+# TuxCare Extended Lifecycle Support rebuilds a distro's own PHP with ".tuxcare.elsN"
+# (rpm) or "+tuxcare.elsN" (deb) after the distro's release. TuxCare numbers each distro
+# on its own (php-5.4.16-48.el7.tuxcare.els21 is the fix on CentOS, RHEL and Oracle
+# Linux 7 but an August build on CloudLinux 7), so every row names its distro, and a row
+# applies only to builds of the same distro release (the part before the marker, less an
+# EL8 module build's "+NNNN+hash"). CentOS 8.4, 8.5 and Stream 8 all report "centos 8";
+# the AlmaLinux 9.2, 9.6 and 9.8 ESU builds are scoped to AlmaLinux, so the same builds
+# on Rocky or a "TuxCare" distro ID get NEEDS_VENDOR_CONFIRMATION. TuxCare also fixed PHP
+# 5.3 on CentOS 6 and Oracle Linux 6, which whichphp reports as NOT_AFFECTED by NVD's
+# ranges, and Alpine 3.18's php82 (8.2.16.tuxcare.els10-r0), which gets
+# NEEDS_VENDOR_CONFIRMATION because whichphp has no apk version order. Sources are
+# TuxCare's errata pages; its VEX lists every earlier build as affected.
+TuxCare,5.4,centos 7,5.4.16-48.el7.tuxcare.els21,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/centos7els/CLSA-2026-1792615126.html
+TuxCare,5.4,rhel 7,5.4.16-48.el7.tuxcare.els21,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/rhel7els/CLSA-2026-1792611997.html
+TuxCare,5.4,ol 7,5.4.16-48.el7.tuxcare.els21,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/oraclelinux7els/CLSA-2026-1792612051.html
+TuxCare,5.4,cloudlinux 7,5.4.16-48.el7.tuxcare.els24,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/cloudlinux7els/CLSA-2026-1792612635.html
+TuxCare,5.4,amzn 2,5.4.16-46.amzn2.0.7.tuxcare.els11,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/amazonlinux2els/CLSA-2026-1792609408.html
+TuxCare,7.4,centos 8,7.4.19-1.module_el8.5.0+2709+673b459a.tuxcare.els32,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/centos8.5els/CLSA-2026-1792598317.html
+TuxCare,7.4,centos 8,7.4.6-4.module_el8.4.0+2710+d5314ff6.tuxcare.els33,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/centos8.4els/CLSA-2026-1792599322.html
+TuxCare,7.2,centos 8,7.2.24-1.module_el8+2711+ca830443.tuxcare.els30,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/centos-stream8els/CLSA-2026-1792611813.html
+TuxCare,8.0,almalinux 9,8.0.30-1.el9_2.tuxcare.els20,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/almalinux9.2esu/CLSA-2026-1792603232.html
+TuxCare,8.0,almalinux 9,8.0.30-3.el9_6.tuxcare.els10,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/almalinux9.6esu/CLSA-2026-1792602059.html
+TuxCare,8.0,almalinux 9,8.0.30-8.el9_8.tuxcare.els4,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/tuxcare9.8esu/CLSA-2026-1792612025.html
+TuxCare,7.3,debian 10,7.3.31-1~deb10u7+tuxcare.els9,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/debian10els/CLSA-2026-1792616775.html
+TuxCare,7.4,debian 11,7.4.33-1+deb11u12+tuxcare.els2,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/debian11els/CLSA-2026-1792612253.html
+TuxCare,7.0,ubuntu 16.04,7.0.33-0ubuntu0.16.04.17+tuxcare.els29,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/ubuntu16.04els/CLSA-2026-1792599451.html
+TuxCare,7.2,ubuntu 18.04,7.2.24-0ubuntu0.18.04.17+tuxcare.els21,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/ubuntu18.04els/CLSA-2026-1792599426.html
+TuxCare,7.4,ubuntu 20.04,7.4.3-4ubuntu2.29+tuxcare.els10,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_os/ubuntu20.04els/CLSA-2026-1792612092.html
+
+# TuxCare's alt-php for Debian and Ubuntu (deb; the rpm builds are CloudLinux's above).
+# The first fixed release is the same on every Debian and Ubuntu release that has the
+# branch; Ubuntu 26.04's alt-php53 5.3.29-220 and alt-php54 5.4.45-204 are unfixed.
+TuxCare alt-php,5.4,,5.4.45-205,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_alt_php/debian13/CLSA-2026-1792692816.html
+TuxCare alt-php,5.5,,5.5.38-185,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_alt_php/debian13/CLSA-2026-1792759053.html
+TuxCare alt-php,5.6,,5.6.40-150,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_alt_php/debian12/CLSA-2026-1792690544.html
+TuxCare alt-php,7.0,,7.0.33-151,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_alt_php/debian12/CLSA-2026-1792683893.html
+TuxCare alt-php,7.1,,7.1.33-116,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_alt_php/debian12/CLSA-2026-1792680919.html
+TuxCare alt-php,7.2,,7.2.34-100,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_alt_php/debian12/CLSA-2026-1792678686.html
+TuxCare alt-php,7.3,,7.3.33-84,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_alt_php/debian12/CLSA-2026-1792676154.html
+TuxCare alt-php,7.4,,7.4.33-81,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_alt_php/debian12/CLSA-2026-1792658458.html
+TuxCare alt-php,8.0,,8.0.30-70,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_alt_php/debian12/CLSA-2026-1792659311.html
+TuxCare alt-php,8.1,,8.1.34-39,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_alt_php/debian12/CLSA-2026-1792659976.html
+TuxCare alt-php,8.2,,8.2.34-6,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_alt_php/debian12/CLSA-2026-1792660655.html
+TuxCare alt-php,8.3,,8.3.35-5,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_alt_php/debian12/CLSA-2026-1792661301.html
+TuxCare alt-php,8.4,,8.4.26-4,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_alt_php/debian12/CLSA-2026-1792639695.html
+TuxCare alt-php,8.5,,8.5.11-4,CVE-2026-109618 CVE-2026-109619,https://security.tuxcare.com/errata/els_alt_php/debian12/CLSA-2026-1792671253.html

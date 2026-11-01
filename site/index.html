@@ -332,10 +332,11 @@
   "use strict";
   var CVES = ["CVE-2026-109618", "CVE-2026-109619"];
   var FIX_DATE = Date.UTC(2026, 9, 21);
-  var SEV = { VULNERABLE_EOL: 7, VULNERABLE: 6, DATA_STALE: 5, UNKNOWN: 5, NEEDS_VENDOR_CONFIRMATION: 4, FIXED_BY_DISTRO_BACKPORT: 1, FIXED: 0, NOT_AFFECTED: 0 };
+  var SEV = { VULNERABLE_EOL: 7, VULNERABLE: 6, DATA_STALE: 5, UNKNOWN: 5, NEEDS_VENDOR_CONFIRMATION: 4, FIXED_BY_DISTRO_BACKPORT: 1, FIXED_BY_VENDOR_BACKPORT: 1, FIXED: 0, NOT_AFFECTED: 0 };
   var LABEL = {
     VULNERABLE_EOL: "End-of-life PHP", VULNERABLE: "Vulnerable", DATA_STALE: "Data out of date", UNKNOWN: "Unknown",
-    NEEDS_VENDOR_CONFIRMATION: "Ask the vendor", FIXED_BY_DISTRO_BACKPORT: "Fixed by distro backport", FIXED: "Fixed", NOT_AFFECTED: "Not affected"
+    NEEDS_VENDOR_CONFIRMATION: "Ask the vendor", FIXED_BY_DISTRO_BACKPORT: "Fixed by distro backport",
+    FIXED_BY_VENDOR_BACKPORT: "Fixed by vendor backport", FIXED: "Fixed", NOT_AFFECTED: "Not affected"
   };
   var SAPI = { cli: "CLI", fpm: "FPM", "apache-module": "Apache module", cgi: "CGI", litespeed: "LiteSpeed", embedded: "embedded" };
   var STATUS_RANK = { vuln: 3, unknown: 2, fixed: 1, none: 0 };

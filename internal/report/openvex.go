@@ -125,7 +125,8 @@ func OpenVEX(w io.Writer, r verdict.Report, opt VEXOptions) error {
 				StatusNotes: fmt.Sprintf("%s %s (%s, %s): %s: %s", p.Name, p.Version, p.Source, p.SAPI, res.Verdict, res.Why),
 			}
 			switch {
-			case res.Verdict == verdict.Fixed, res.Verdict == verdict.FixedByDistroBackport && !res.Unconfirmed:
+			case res.Verdict == verdict.Fixed, res.Verdict == verdict.FixedByVendorBackport,
+				res.Verdict == verdict.FixedByDistroBackport && !res.Unconfirmed:
 				st.Status = "fixed"
 			case res.Verdict == verdict.NotAffected:
 				st.Status, st.Justification = "not_affected", "vulnerable_code_not_present"

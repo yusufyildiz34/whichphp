@@ -64,6 +64,7 @@ var DistroFeeds = map[string]bool{
 // October 30, 2026. Releases not listed for a known distro are treated as end-of-life.
 var supportedReleases = map[string]map[string]bool{
 	"debian":    {"12": true, "13": true},
+	"centos":    {"9": true, "10": true}, // Stream 9 and 10; CentOS 7, 8 and Stream 8 have ended
 	"ubuntu":    {"22.04": true, "24.04": true, "26.04": true},
 	"alpine":    {"3.21": true, "3.22": true, "3.23": true, "3.24": true},
 	"rhel":      {"8": true, "9": true, "10": true},
@@ -105,7 +106,7 @@ func NormalizeRelease(id, versionID string) string {
 	switch id {
 	case "alpine":
 		return firstN(versionID, 2)
-	case "debian", "rhel", "almalinux", "rocky", "ol", "centos":
+	case "debian", "rhel", "almalinux", "rocky", "ol", "centos", "cloudlinux":
 		return firstN(versionID, 1)
 	}
 	return versionID

@@ -12,9 +12,19 @@ Thank you for helping. whichphp is only useful if its verdicts can be trusted, s
 ## Good first contributions
 
 - **Test cases** from real reports (see [testdata/cases](testdata/cases/README.md)).
-- **Fixed-build data** for a packager whose fixes aren't in machine-readable feeds (Sury, Remi, GetPageSpeed, TuxCare, Freexian, CloudLinux, cPanel). Include the source for each entry.
+- **Fixed-build data** for a packager whose fixes aren't in machine-readable feeds (see [Adding packager data](#adding-packager-data)). Include the source for each entry.
 - **Images for the index.** Popular PHP images or tags that people pin.
 - **Translations** of the [host page](docs/ask-your-host.md).
+
+## Adding packager data
+
+Packagers that backport fixes keep the old PHP version, so whichphp judges their builds by [`internal/advisory/packagers.csv`](internal/advisory/packagers.csv): per packager and PHP branch, the first package release with the fixes, or `none` where the packager said it published no fix. Without a row, a backporting packager's build of an end-of-life branch gets `NEEDS_VENDOR_CONFIRMATION` (or `VULNERABLE_EOL` when the image was created before the fix).
+
+- **One row per packager, branch and distro release.** Leave `distro` empty unless the packager's releases differ by distro release (then write it as `debian 10`, `ubuntu 22.04`).
+- **The first fixed release, exactly as the package manager reports it,** with the epoch if the package has one (`1:7.4.33-31`, not `7.4.33-31`). A version without its epoch sorts below every version with one. Leave out the dist tag (`7.4.33-81`, not `7.4.33-81.el8`) unless the fix shows only after it; then write the tag as `{el}` (`1:8.2.34-2.{el}.cloudlinux.1`), and whichphp fills in the installed build's own.
+- **The source is the packager's own statement:** an advisory, a changelog, a tracker entry or its repository metadata, and it must show the version and the CVE IDs. A pinned URL (a commit, an advisory ID) is better than a page that changes.
+- **Name the build, not the meta package.** Packages that only pull PHP in can carry the CVE line in their changelog without containing PHP.
+- **Add a test** in `internal/verdict/packager_test.go` with a real version string from the packager: one just below the row and one at it.
 
 ## Reporting a wrong verdict
 

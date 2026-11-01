@@ -240,7 +240,7 @@ Recreating a pod deletes its logs and writable layer, so save them first if you 
 | "`php -v` says 8.3.6. Am I patched?" | The version number alone can't tell you. Distros backport fixes without changing it. | [Why `php -v` lies](#why-php--v-lies), `whichphp image` |
 | "Is the image tag I pull fixed yet?" | Floating tags were rebuilt within days. Pinned and end-of-life tags often never are. | [The live index](https://yusufyildiz34.github.io/whichphp/), `whichphp image <ref>` |
 | "Which PHP actually serves my site?" | Often not the one `php -v` shows. Images and hosts can carry several builds. | `whichphp image` lists every binary and SAPI |
-| "I'm on PHP 8.1 or older." | There is no upstream fix. Treat it as vulnerable unless your vendor proves a backport. | [Verdicts](#verdicts) |
+| "I'm on PHP 8.1 or older." | There is no upstream fix. Treat it as vulnerable unless your vendor proves a backport. | [Packagers that backport](#packagers-that-backport), [Verdicts](#verdicts) |
 | "Is the CVE-2026-115560 mitigation on?" | In most images it isn't. Official images ship no `php.ini`, so the compiled default (on) applies. | `whichphp image` reports the effective value |
 | "My scanner says the image is clean." | Package-based scanners can't see PHP compiled from source. | [Why your scanner says clean](#why-your-scanner-says-clean) |
 | "Do I need to restart or redeploy?" | Yes. A running container keeps the old image until it is recreated. Save logs first. | [`whichphp cluster`](#check-a-kubernetes-cluster) |
@@ -256,9 +256,10 @@ whichphp gives one verdict per CVE.
 |---|---|
 | `FIXED` | The PHP version includes the upstream fix |
 | `FIXED_BY_DISTRO_BACKPORT` | The version looks old, but the distro's package release includes the fix |
+| `FIXED_BY_VENDOR_BACKPORT` | The version looks old, but the packager's own release includes the fix (see [Packagers that backport](#packagers-that-backport)) |
 | `VULNERABLE` | The fix exists upstream, but this build doesn't have it |
 | `VULNERABLE_EOL` | The branch or base OS is end-of-life and no fix is proven |
-| `NEEDS_VENDOR_CONFIRMATION` | A third-party build whose fix status only the vendor can confirm |
+| `NEEDS_VENDOR_CONFIRMATION` | A distro or third-party build whose fix status only the vendor can confirm, such as a packager's backport whichphp has no data for |
 | `UNKNOWN` | Not enough evidence; the output says what is missing |
 | `DATA_STALE` | The vulnerability data is too old to trust |
 | `NOT_AFFECTED` | The version is older than the first affected release for this CVE |
@@ -280,14 +281,14 @@ An `UNKNOWN` is an honest answer, not a failure, and whichphp never turns it int
 flowchart LR
     A["Image reference<br>or archive"] --> B["Syft<br>reads the layers:<br>packages, PHP binaries,<br>php.ini contents"]
     B --> C["Grype<br>distro security data"]
-    B --> D["whichphp rules<br>fixed releases, EOL,<br>backports, Sury and Remi"]
+    B --> D["whichphp rules<br>fixed releases, EOL,<br>packager backports"]
     C --> D
     D --> E["Verdict per CVE<br>with evidence<br>and an exit code"]
 ```
 
 1. **Syft reads the image layers.** whichphp asks it to catalog packages and binaries and to capture the contents of PHP configuration files. Nothing in the image runs.
 2. **Grype checks distro packages** against the distros' own security data, which is where backports show up.
-3. **whichphp applies the PHP-specific rules:** fixed releases per branch, end-of-life branches and distros, third-party repositories that ship upstream releases (Sury, Remi), pre-release builds, and the effective `php.ini` settings.
+3. **whichphp applies the PHP-specific rules:** fixed releases per branch, end-of-life branches and distros, packagers' own backports (Sury, Remi, cPanel, CloudLinux, TuxCare and Freexian ELTS, from a [sourced table](internal/advisory/packagers.csv)), pre-release builds, and the effective `php.ini` settings.
 
 **How we checked it**
 
@@ -329,7 +330,7 @@ Missing an image? [Suggest it](https://github.com/yusufyildiz34/whichphp/issues/
 
 ### Why `php -v` lies
 
-1. **Distros backport fixes without changing the version.** Ubuntu 24.04 ships PHP 8.3.6. Its security fixes show up in the package release (`8.3.6-0ubuntu0.24.04.N`), not in the version number. A checker that compares `8.3.6` with `8.3.36` gets it wrong.
+1. **Distros backport fixes without changing the version.** Ubuntu 24.04 ships PHP 8.3.6. Its security fixes show up in the package release (`8.3.6-0ubuntu0.24.04.N`), not in the version number. A checker that compares `8.3.6` with `8.3.36` gets it wrong. Packagers did the same for the end-of-life branches: Sury's fixed PHP 7.4 is still `7.4.33`, only its release went from `-30` to `-31`.
 2. **The CLI is not what serves your site.** `php -v` runs the command-line binary. Your site runs on PHP-FPM or Apache's `mod_php`, which can be a different build.
 3. **Containers keep the image they started with.** A tag can be rebuilt with a fixed PHP while your running container still uses the old one.
 
@@ -342,6 +343,34 @@ The official `php` images compile PHP from source. No package manager knows abou
 
 whichphp builds on Syft and Grype rather than replacing them. It adds the backport logic, the settings and the explanation.
 
+### Packagers that backport
+
+PHP 8.1 and older got no upstream fix, but several packagers backported it, and some did so for supported branches too. Their builds keep the old version, so no scanner can judge them by version. whichphp recognizes each packager's builds in the package database and compares the package release with the first fixed release that the packager itself published. The table of releases is [`internal/advisory/packagers.csv`](internal/advisory/packagers.csv), with a source for every row.
+
+| Packager | Recognized by | Backported fix (first fixed release) | No fix |
+|---|---|---|---|
+| [Ondřej Surý](https://deb.sury.org/) (ppa:ondrej/php, packages.sury.org) | `+deb.sury.org+1`, `+0~DATE.N+debianNN~1.gbpHASH` | 8.1 `8.1.34-9`, 8.0 `1:8.0.30-25`, 7.4 `1:7.4.33-31`, 7.3 `7.3.33-35`, 7.2 `7.2.34-66`, 7.1 `7.1.33-81`, 7.0 `7.0.33-93`, 5.6 `5.6.40-105` | Ubuntu 20.04 and older |
+| [Remi](https://rpms.remirepo.net/) | `.remi` | 8.1 `8.1.34-6`, 8.0 `8.0.30-21`, 7.4 `7.4.33-31` (EL8–10, Fedora); 7.3 `7.3.33-24`, 7.2 `7.2.34-31` (EL8) | 7.1, 7.0, 5.6; anything on EL7 |
+| [cPanel](https://support.cpanel.net/hc/en-us/articles/44397389677335-Critical-PHP-Security-Release-CVE-2026-109618-and-CVE-2026-109619) (EasyApache 4) | `ea-phpNN-php-*` with `.cpanel` | ea-php81 `8.1.34-5`, ea-php80 `8.0.30-12`, ea-php74 `7.4.33-19` | ea-php73 and older |
+| [CloudLinux](https://blog.cloudlinux.com/php-cve-2026-109618-and-cve-2026-109619) alt-php | `alt-phpNN-cli`, `alt-phpNN-php-fpm` | Every branch from 5.4 to 8.5, for example 7.4 `7.4.33-81`, 7.3 `1:7.3.33-82`, 8.5 `8.5.11-5` (CloudLinux 7–10) | CloudLinux 6 from CloudLinux's own repository |
+| CloudLinux ea-php | cPanel's package names with `.elN.cloudlinux` | Every branch from 5.4 to 8.5, for example ea-php74 `1:7.4.33-18.elN.cloudlinux.13` | |
+| [TuxCare](https://tuxcare.com/blog/php2shell-cve/) ELS | `.tuxcare.elsN`, `+tuxcare.elsN` | The distro's own PHP on CentOS, RHEL and Oracle Linux 7, CloudLinux 7, Amazon Linux 2, CentOS 8.4, 8.5 and Stream 8, AlmaLinux 9.2, 9.6 and 9.8 ESU, Debian 10 and 11, Ubuntu 16.04 to 20.04; alt-php 5.4 to 8.5 as deb on Debian and Ubuntu | Alpine builds are fixed but get `NEEDS_VENDOR_CONFIRMATION` (no apk version order yet) |
+| [Freexian ELTS](https://www.freexian.com/lts/extended/) | Debian 9–11 versions above Debian's last update | Debian 11 `7.4.33-1+deb11u14`, Debian 10 `7.3.31-1~deb10u16`, Debian 9 `7.0.33-0+deb9u26` | Debian 8 |
+| [GetPageSpeed](https://www.getpagespeed.com/) | rpm Vendor `GetPageSpeed LLC` | No data yet: end-of-life branches get `NEEDS_VENDOR_CONFIRMATION` | |
+| CloudLinux system PHP | `.cloudlinux` in a module release | No data yet: end-of-life branches get `NEEDS_VENDOR_CONFIRMATION` | |
+| Another builder of `ea-php` | `ea-phpNN-php-*` without a known marker | No data: end-of-life branches get `NEEDS_VENDOR_CONFIRMATION` | |
+
+Branches a packager ships as upstream releases (8.2 to 8.5) are judged by their version. Without data for a backporting packager's build, whichphp says `NEEDS_VENDOR_CONFIRMATION`; for an end-of-life branch in an image created before the fix, where no backport can be, it says `VULNERABLE_EOL`. Some choices are deliberately strict:
+
+- **The first builds that missed part of the patch count as unfixed.** Sury's 7.1 `-80`, 7.0 `-92` and 5.6 `-104`, and Remi's 7.3 `-23` and 7.2 `-30`, named the CVEs, but their packagers rebuilt them with the rest of the fix.
+- **A packager's table only applies to its own builds.** CloudLinux builds cPanel's packages under the same names with epoch 1, which sorts above every cPanel build, and Sury's `1:7.4.33-30` (unfixed) sorts above Freexian's fixed `7.4.33-1+deb11u14`, so a build is matched to its packager first.
+- **Epochs count.** CloudLinux's alt-php55 and alt-php73, and Sury's 7.4 and 8.0, carry epoch 1, which the packagers' announcements don't print. Compared without it, every unfixed build would look fixed. A build with a higher epoch than the packager's fixed release is never counted as fixed.
+- **The same release can mean different things on different systems.** TuxCare's `php-5.4.16-48.el7.tuxcare.els21` is the fix on CentOS 7 but an unfixed August build on CloudLinux 7, and TuxCare numbers each distro build it extends on its own, so its rows apply only to builds of the same distro release.
+- **A build after the advisory doesn't prove a fix.** cPanel rebuilt ea-php73 and older after the advisory with no code change. (The reverse holds: an image created before the fix can't hold one, unless its date is a reproducible build's placeholder, such as 1970.)
+- **Meta packages aren't PHP.** `ea-php81` and similar carry the CVE line in their changelog but contain no PHP.
+
+Know a packager's fixed builds? [Send them](https://github.com/yusufyildiz34/whichphp/issues/new?template=packager-data.yml) with the packager's own source.
+
 ## Limits
 
 **What a verdict does not prove**
@@ -349,6 +378,7 @@ whichphp builds on Syft and Grype rather than replacing them. It adds the backpo
 - **Runtime overrides are invisible.** Environment variables, mounted ConfigMaps or pool files can change settings after the image is built.
 - **Distro data can lag.** A backport may exist before the vulnerability feed knows about it.
 - **Private backports can't be recognized.** A source build patched by hand looks like the unpatched version.
+- **Packager data is only as current as [`packagers.csv`](internal/advisory/packagers.csv).** A packager that ships a fix for a branch listed as "no fix" shows up as vulnerable until the table is updated, and a packager whichphp doesn't know is judged as the distro's own package (except `ea-php`, which no distro ships).
 - **"Fixed" says nothing about earlier compromise.**
 - **CVE-2026-115560 stays open everywhere** until PHP's next regular release.
 
@@ -400,7 +430,8 @@ No. The old version is vulnerable. Known regressions in 8.4.27 and 8.5.12 are be
 - [x] Release binaries with checksums and signed build provenance (v0.1.0)
 - [x] `whichphp cluster`: what each pod actually runs and what to redeploy (v0.2.0)
 - [x] Per-tag "tell me when it's fixed" feeds (v0.2.0)
-- [ ] Fixed-build data for third-party packagers: Sury, Remi, GetPageSpeed, TuxCare, Freexian, CloudLinux, cPanel
+- [x] Fixed-build data for packagers that backport: Sury, Remi, cPanel, CloudLinux, TuxCare, Freexian ELTS
+- [ ] Fixed-build data for GetPageSpeed (its builds are recognized; the data has to come from one consistent table)
 - [ ] CycloneDX export, a diff mode, and base-image lineage
 
 ## Related tools

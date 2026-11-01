@@ -212,6 +212,19 @@ func TestSuryBuildFollowsUpstream(t *testing.T) {
 	}
 }
 
+// packages.sury.org's own builds carry no "deb.sury.org". Taken for Debian's package,
+// an unfixed 8.3.35 got FIXED_BY_DISTRO_BACKPORT: Debian 12 ships no php8.3, so its
+// security data, which does list the CVEs, had no match for it.
+func TestSuryDebianRepositoryBuild(t *testing.T) {
+	a := art{"php8.3-fpm", "8.3.35-1+0~20261001.55+debian12~1.gbp1a2b3c", "deb", "", "", "/var/lib/dpkg/status"}
+	d := doc(t, "debian", "12.12", "2026-10-15T00:00:00Z", nil, a)
+	feed := map[string]grypejson.FeedStatus{cve18: {Listed: true}, cve19: {Listed: true}}
+	r := Evaluate(Inputs{Doc: d, GrypeRan: true, Feed: feed, Now: now})
+	if r.PHP[0].Provider != "Sury" || r.Verdicts[cve18] != Vulnerable || r.Action != ActionNeeded {
+		t.Fatalf("got %+v / %v / %s", r.PHP[0], r.Verdicts, r.Action)
+	}
+}
+
 func TestMultiSAPI(t *testing.T) {
 	fpm := art{"php-fpm", "8.4.26", "binary", "pkg:generic/php-fpm@8.4.26", "cpe:2.3:a:php:php:8.4.26:*:*:*:*:*:*:*", "/usr/local/sbin/php-fpm"}
 	d := doc(t, "debian", "13.7", "2026-10-25T00:00:00Z", nil, official("8.4.27"), fpm)
