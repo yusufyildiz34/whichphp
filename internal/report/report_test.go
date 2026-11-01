@@ -4,7 +4,10 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
+	"io"
 	"net/url"
+	"regexp"
 	"strings"
 	"testing"
 	"time"
@@ -204,6 +207,12 @@ func TestReportsNeverShowLocalPaths(t *testing.T) {
 	if err := OpenVEX(&v, r, VEXOptions{}); err == nil {
 		t.Error("want an error for an image with no name")
 	}
+	// CycloneDX doesn't need a purl: the archive's base name names it.
+	bom, raw := cdxOf(t, r)
+	if strings.Contains(raw, "/Users/someone") || bom.Metadata.Component.Name != "php_8.4.26-apache.tar" ||
+		bom.Metadata.Component.Type != "container" || bom.Metadata.Component.PURL != "" {
+		t.Errorf("CycloneDX leaks the path or misnames the image: %+v", bom.Metadata.Component)
+	}
 }
 
 func vexOf(t *testing.T, r verdict.Report, opt VEXOptions) vexDoc {
@@ -332,6 +341,347 @@ func TestOpenVEXErrors(t *testing.T) {
 	}
 }
 
+const testSerial = "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79"
+
+// cdxOf returns the CycloneDX BOM for r, parsed and as written, with a fixed clock
+// and serial number.
+func cdxOf(t *testing.T, r verdict.Report) (cdxBOM, string) {
+	t.Helper()
+	oldNow, oldID := now, newID
+	now = func() time.Time { return time.Date(2026, 10, 31, 12, 0, 0, 0, time.UTC) }
+	newID = func() (string, error) { return testSerial, nil }
+	defer func() { now, newID = oldNow, oldID }()
+	var buf bytes.Buffer
+	if err := CycloneDX(&buf, r, VEXOptions{}); err != nil {
+		t.Fatal(err)
+	}
+	if !json.Valid(buf.Bytes()) {
+		t.Fatalf("not valid JSON:\n%s", buf.String())
+	}
+	var bom cdxBOM
+	if err := json.Unmarshal(buf.Bytes(), &bom); err != nil {
+		t.Fatal(err)
+	}
+	if err := checkRefs(bom); err != nil {
+		t.Fatal(err)
+	}
+	return bom, buf.String()
+}
+
+// checkRefs reports a bom-ref that is empty or used twice, and an affects ref that
+// names nothing in the BOM.
+func checkRefs(bom cdxBOM) error {
+	seen := map[string]bool{}
+	targets := map[string]bool{}
+	add := func(ref string, target bool) error {
+		if ref == "" || seen[ref] {
+			return fmt.Errorf("bom-ref %q is empty or used twice", ref)
+		}
+		seen[ref], targets[ref] = true, target
+		return nil
+	}
+	if err := add(bom.Metadata.Component.BOMRef, true); err != nil {
+		return err
+	}
+	for _, c := range bom.Components {
+		if err := add(c.BOMRef, true); err != nil {
+			return err
+		}
+	}
+	for _, v := range bom.Vulnerabilities {
+		if err := add(v.BOMRef, false); err != nil {
+			return err
+		}
+	}
+	for _, v := range bom.Vulnerabilities {
+		if len(v.Affects) == 0 {
+			return fmt.Errorf("%s affects nothing", v.BOMRef)
+		}
+		for _, a := range v.Affects {
+			if !targets[a.Ref] {
+				return fmt.Errorf("%s affects %q, which isn't a component", v.BOMRef, a.Ref)
+			}
+		}
+	}
+	return nil
+}
+
+func TestCycloneDX(t *testing.T) {
+	bom, raw := cdxOf(t, sample())
+	if bom.BOMFormat != "CycloneDX" || bom.SpecVersion != "1.6" || bom.Version != 1 || bom.SerialNumber != testSerial ||
+		bom.Schema != "http://cyclonedx.org/schema/bom-1.6.schema.json" || bom.Metadata.Timestamp != "2026-10-31T12:00:00Z" {
+		t.Fatalf("bad envelope:\n%s", raw)
+	}
+	if tools := bom.Metadata.Tools.Components; len(tools) != 1 || tools[0].Name != "whichphp" || tools[0].Version != "v0.1.0" {
+		t.Errorf("tools: %+v", tools)
+	}
+	// The image is named by the same purl OpenVEX uses for its product.
+	subject := bom.Metadata.Component
+	want := "pkg:oci/php@" + strings.Replace(index, ":", "%3A", 1) + "?arch=amd64&repository_url=index.docker.io%2Flibrary%2Fphp&tag=8.4.26-apache"
+	if subject.Type != "container" || subject.Name != "php:8.4.26-apache" || subject.PURL != want || subject.BOMRef != want ||
+		len(subject.Hashes) != 1 || subject.Hashes[0] != (cdxHash{Alg: "SHA-256", Content: strings.TrimPrefix(manifest, "sha256:")}) {
+		t.Errorf("subject: %+v", subject)
+	}
+	if vexOf(t, sample(), VEXOptions{}).Statements[0].Products[0].ID != subject.PURL {
+		t.Error("CycloneDX and OpenVEX name the image differently")
+	}
+
+	// Components are sorted by purl, and use the purls OpenVEX uses.
+	var purls []string
+	for _, c := range bom.Components {
+		purls = append(purls, c.PURL)
+		if c.Type != "application" || c.BOMRef != c.PURL {
+			t.Errorf("component: %+v", c)
+		}
+	}
+	if got := strings.Join(purls, " "); got != "pkg:deb/ubuntu/php8.3-cli@8.3.6-0ubuntu0.24.04.13?arch=amd64 pkg:generic/libphp@8.4.26 pkg:generic/php-fpm@8.4.27" {
+		t.Errorf("components: %s", got)
+	}
+	if got := bom.Components[1].Properties; len(got) != 2 || got[0] != (cdxProperty{Name: "whichphp:sapi", Value: "apache-module"}) ||
+		got[1] != (cdxProperty{Name: "whichphp:source", Value: verdict.SourceUpstream}) {
+		t.Errorf("properties: %+v", got)
+	}
+
+	// The three builds are in three states, so each CVE is listed once per build.
+	if len(bom.Vulnerabilities) != 6 {
+		t.Fatalf("got %d vulnerabilities", len(bom.Vulnerabilities))
+	}
+	states := map[string]int{}
+	for i, v := range bom.Vulnerabilities {
+		states[v.Analysis.State]++
+		wantID := "CVE-2026-109618"
+		if i >= 3 {
+			wantID = "CVE-2026-109619"
+		}
+		if v.ID != wantID || v.Source != (cdxSource{Name: "NVD", URL: "https://nvd.nist.gov/vuln/detail/" + wantID}) {
+			t.Errorf("vulnerability %d: %s, %+v", i, v.ID, v.Source)
+		}
+		if len(v.Ratings) != 1 || v.Ratings[0] != (cdxRating{Source: cdxSource{Name: "php.net"}, Score: 9.2, Severity: "critical", Method: "CVSSv4"}) {
+			t.Errorf("ratings: %+v", v.Ratings)
+		}
+		if len(v.Affects) != 1 || v.Affects[0].Ref != bom.Components[i%3].BOMRef || v.BOMRef != v.ID+"/"+bom.Components[i%3].BOMRef {
+			t.Errorf("vulnerability %s: bom-ref %s, affects %+v", v.ID, v.BOMRef, v.Affects)
+		}
+	}
+	if states["exploitable"] != 2 || states["resolved"] != 2 || states["in_triage"] != 2 {
+		t.Errorf("states: %v", states)
+	}
+	if d := bom.Vulnerabilities[1].Analysis.Detail; d != "libphp 8.4.26 (upstream-build, apache-module): VULNERABLE: 8.4.26 is older than 8.4.27" {
+		t.Errorf("detail: %s", d)
+	}
+}
+
+// Every verdict maps to the analysis state its OpenVEX status calls for.
+func TestCycloneDXAnalysis(t *testing.T) {
+	cases := []struct {
+		verdict       verdict.Verdict
+		unconfirmed   bool
+		state, justif string
+		response      []string
+	}{
+		{verdict.Fixed, false, "resolved", "", nil},
+		{verdict.FixedByVendorBackport, false, "resolved", "", nil},
+		{verdict.FixedByDistroBackport, false, "resolved", "", nil},
+		{verdict.FixedByDistroBackport, true, "in_triage", "", nil},
+		{verdict.NotAffected, false, "not_affected", "code_not_present", nil},
+		{verdict.Vulnerable, false, "exploitable", "", []string{"update"}},
+		{verdict.VulnerableEOL, false, "exploitable", "", []string{"update"}},
+		{verdict.NeedsVendorConfirmation, false, "in_triage", "", nil},
+		{verdict.Unknown, false, "in_triage", "", nil},
+		{verdict.DataStale, false, "in_triage", "", nil},
+	}
+	for _, c := range cases {
+		res := cves(c.verdict, "because "+string(c.verdict))
+		for k, v := range res {
+			v.Unconfirmed = c.unconfirmed
+			res[k] = v
+		}
+		r := sample()
+		r.PHP = []verdict.PHP{{Name: "php7.4-fpm", Version: "1:7.4.33-31", Type: "deb", Source: verdict.SourceThirdParty,
+			Provider: "Sury", SAPI: "fpm", CVEs: res}}
+		bom, _ := cdxOf(t, r)
+		if len(bom.Vulnerabilities) != 2 {
+			t.Fatalf("%s: got %d vulnerabilities", c.verdict, len(bom.Vulnerabilities))
+		}
+		for _, v := range bom.Vulnerabilities {
+			a := v.Analysis
+			if a.State != c.state || a.Justification != c.justif || strings.Join(a.Response, ",") != strings.Join(c.response, ",") ||
+				a.Detail != "php7.4-fpm 1:7.4.33-31 (third-party, fpm): "+string(c.verdict)+": because "+string(c.verdict) {
+				t.Errorf("%s (unconfirmed %v): got %+v", c.verdict, c.unconfirmed, a)
+			}
+			if len(v.Affects) != 1 || v.Affects[0].Ref != "pkg:generic/php7.4-fpm@1%3A7.4.33-31" || v.BOMRef != v.ID {
+				t.Errorf("%s: bom-ref %s, affects %+v", c.verdict, v.BOMRef, v.Affects)
+			}
+		}
+		if p := bom.Components[0].Properties; len(p) != 3 || p[0] != (cdxProperty{Name: "whichphp:provider", Value: "Sury"}) {
+			t.Errorf("properties: %+v", p)
+		}
+	}
+}
+
+// Builds in the same state share an entry; builds in different states don't.
+func TestCycloneDXSplitsDifferingStates(t *testing.T) {
+	r := sample()
+	r.PHP = []verdict.PHP{
+		{Name: "php", Version: "8.4.26", CVEs: cves(verdict.Vulnerable, "older than 8.4.27")},
+		{Name: "php", Version: "7.2.34", CVEs: map[string]verdict.CVEResult{
+			"CVE-2026-109618": {Verdict: verdict.NotAffected, Why: "older than 7.3.0"},
+			"CVE-2026-109619": {Verdict: verdict.VulnerableEOL, Why: "EOL"},
+		}},
+	}
+	bom, _ := cdxOf(t, r)
+	var got []string
+	for _, v := range bom.Vulnerabilities {
+		var affects []string
+		for _, a := range v.Affects {
+			affects = append(affects, a.Ref)
+		}
+		got = append(got, v.BOMRef+" "+v.Analysis.State+" "+strings.Join(affects, ","))
+	}
+	want := []string{
+		"CVE-2026-109618/pkg:generic/php@7.2.34 not_affected pkg:generic/php@7.2.34",
+		"CVE-2026-109618/pkg:generic/php@8.4.26 exploitable pkg:generic/php@8.4.26",
+		"CVE-2026-109619 exploitable pkg:generic/php@7.2.34,pkg:generic/php@8.4.26",
+	}
+	if strings.Join(got, "\n") != strings.Join(want, "\n") {
+		t.Fatalf("got\n%s\nwant\n%s", strings.Join(got, "\n"), strings.Join(want, "\n"))
+	}
+	// A shared entry gives each build's reason.
+	if d := bom.Vulnerabilities[2].Analysis.Detail; d != "php 7.2.34 (, ): VULNERABLE_EOL: EOL\nphp 8.4.26 (, ): VULNERABLE: older than 8.4.27" {
+		t.Errorf("detail: %q", d)
+	}
+}
+
+func TestCycloneDXNoPHP(t *testing.T) {
+	r := sample()
+	r.PHP, r.Action = nil, verdict.ActionNoPHP
+	bom, raw := cdxOf(t, r)
+	if !strings.Contains(raw, `"components": []`) || len(bom.Vulnerabilities) != 2 {
+		t.Fatalf("got:\n%s", raw)
+	}
+	// The same words as OpenVEX, and never a state that would hide a finding.
+	note := vexOf(t, r, VEXOptions{}).Statements[0].StatusNotes
+	for _, v := range bom.Vulnerabilities {
+		if v.Analysis.State != "in_triage" || v.Analysis.Detail != note || v.BOMRef != v.ID ||
+			len(v.Affects) != 1 || v.Affects[0].Ref != bom.Metadata.Component.BOMRef {
+			t.Errorf("no PHP found: %+v", v)
+		}
+	}
+}
+
+func TestCycloneDXDirectory(t *testing.T) {
+	r := verdict.Report{
+		Version: "v0.3.0",
+		Image:   verdict.Image{Input: "dir:/home/me/site/", SourceType: "directory"},
+		PHP: []verdict.PHP{{Name: "php", Version: "8.4.27", Source: verdict.SourceUpstream, SAPI: "cli",
+			Paths: []string{"/usr/local/bin/php"}, CVEs: cves(verdict.Fixed, "8.4.27 is fixed")}},
+		Action: verdict.ActionOK,
+	}
+	bom, raw := cdxOf(t, r)
+	if s := bom.Metadata.Component; s.Type != "file" || s.Name != "site" || s.BOMRef != "site" || s.PURL != "" || s.Hashes != nil {
+		t.Errorf("subject: %+v", s)
+	}
+	if strings.Contains(raw, "/home/me") {
+		t.Errorf("the BOM leaks a local path:\n%s", raw)
+	}
+	if len(bom.Vulnerabilities) != 2 || bom.Vulnerabilities[0].Analysis.State != "resolved" {
+		t.Errorf("vulnerabilities: %+v", bom.Vulnerabilities)
+	}
+	r.PHP = nil
+	bom, _ = cdxOf(t, r)
+	if d := bom.Vulnerabilities[0].Analysis.Detail; !strings.HasPrefix(d, "whichphp found no PHP in this directory.") {
+		t.Errorf("detail: %s", d)
+	}
+}
+
+// An image without a digest, such as an archive without one, is named only by its
+// tag. OpenVEX refuses it; CycloneDX describes it, and its analyses keep their states,
+// since they are about the PHP components of this BOM.
+func TestCycloneDXImageWithoutDigest(t *testing.T) {
+	r := sample()
+	r.Image.ManifestDigest, r.Image.RepoDigests = "", nil
+	r.PHP = []verdict.PHP{{Name: "php", Version: "8.4.27", Source: verdict.SourceUpstream, SAPI: "cli", CVEs: cves(verdict.Fixed, "8.4.27 is fixed")}}
+	r.Action = verdict.ActionOK
+	if err := OpenVEX(io.Discard, r, VEXOptions{}); err == nil {
+		t.Error("OpenVEX named an image without a digest")
+	}
+	bom, _ := cdxOf(t, r)
+	if s := bom.Metadata.Component; s.Type != "container" || s.Name != "php:8.4.26-apache" || s.PURL != "" || s.Hashes != nil || s.BOMRef != s.Name {
+		t.Errorf("subject: %+v", s)
+	}
+	for _, v := range bom.Vulnerabilities {
+		if v.Analysis.State != "resolved" || len(v.Affects) != 1 || v.Affects[0].Ref != "pkg:generic/php@8.4.27" {
+			t.Errorf("vulnerability: %+v", v)
+		}
+	}
+}
+
+// purls and names come from the image, so bom-refs built from them can collide.
+func TestCycloneDXBOMRefsStayUnique(t *testing.T) {
+	r := sample()
+	img := imagePURL(r)
+	// Once with every build in one state (an entry per CVE), once in different states
+	// (an entry per build).
+	for _, shared := range []bool{true, false} {
+		v := func(own verdict.Verdict) verdict.Verdict {
+			if shared {
+				return verdict.Vulnerable
+			}
+			return own
+		}
+		r.PHP = []verdict.PHP{
+			{Name: "php", Version: "8.4.26", CVEs: cves(v(verdict.Vulnerable), "a")},
+			{Name: "php", Version: "8.4.26", Type: "binary", CVEs: cves(v(verdict.Fixed), "b")},
+			{Name: "php", PURL: "pkg:generic/php@8.4.26#2", CVEs: cves(v(verdict.Unknown), "c")},
+			{Name: "image", PURL: img, CVEs: cves(v(verdict.NotAffected), "d")},
+			{Name: "cve", PURL: "CVE-2026-109618", CVEs: cves(v(verdict.DataStale), "e")},
+			{Name: "cve", PURL: "CVE-2026-109619/pkg:generic/php@8.4.26", CVEs: cves(v(verdict.Vulnerable), "f")},
+			// Different here, but both written as U+FFFD.
+			{Name: "bad", PURL: "\xc1", CVEs: cves(v(verdict.Unknown), "g")},
+			{Name: "bad", PURL: "\xd5", CVEs: cves(v(verdict.Unknown), "h")},
+		}
+		bom, _ := cdxOf(t, r) // checks that every bom-ref is unique
+		if len(bom.Components) != len(r.PHP) || bom.Metadata.Component.BOMRef != img {
+			t.Errorf("got %d components, subject %s", len(bom.Components), bom.Metadata.Component.BOMRef)
+		}
+	}
+}
+
+func TestCycloneDXIsDeterministic(t *testing.T) {
+	r := sample()
+	_, a := cdxOf(t, r)
+	for i, j := 0, len(r.PHP)-1; i < j; i, j = i+1, j-1 {
+		r.PHP[i], r.PHP[j] = r.PHP[j], r.PHP[i]
+	}
+	if _, b := cdxOf(t, r); a != b {
+		t.Errorf("the order of PHP builds changed the BOM:\n%s\n---\n%s", a, b)
+	}
+}
+
+func TestCycloneDXErrors(t *testing.T) {
+	// The real serial number is a random (version 4) UUID, as CycloneDX requires.
+	var buf bytes.Buffer
+	if err := CycloneDX(&buf, sample(), VEXOptions{}); err != nil {
+		t.Fatal(err)
+	}
+	var bom cdxBOM
+	if err := json.Unmarshal(buf.Bytes(), &bom); err != nil {
+		t.Fatal(err)
+	}
+	if !regexp.MustCompile(`^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$`).MatchString(bom.SerialNumber) {
+		t.Errorf("serial number %q", bom.SerialNumber)
+	}
+	if err := CycloneDX(failWriter{}, sample(), VEXOptions{}); err == nil {
+		t.Error("want the write error")
+	}
+	old := newID
+	newID = func() (string, error) { return "", errors.New("no entropy") }
+	defer func() { newID = old }()
+	if err := CycloneDX(&bytes.Buffer{}, sample(), VEXOptions{}); err == nil {
+		t.Error("want the serial number error")
+	}
+}
+
 func TestImagePURL(t *testing.T) {
 	img := func(input string, tags, repoDigests []string) verdict.Report {
 		return verdict.Report{Image: verdict.Image{Input: input, SourceType: "image", Tags: tags, RepoDigests: repoDigests, ManifestDigest: manifest}}
@@ -427,5 +777,53 @@ func (failWriter) Write([]byte) (int, error) { return 0, errors.New("disk full")
 func TestTableReportsWriteErrors(t *testing.T) {
 	if err := Table(failWriter{}, sample()); err == nil {
 		t.Fatal("want the write error")
+	}
+}
+
+func TestTableShowsTheBaseImage(t *testing.T) {
+	r := sample()
+	var out strings.Builder
+	if err := Table(&out, r); err != nil {
+		t.Fatal(err)
+	}
+	if strings.Contains(out.String(), "Base:") {
+		t.Fatal("no base, but a Base line")
+	}
+	for base, want := range map[*verdict.BaseImage]string{
+		{Image: "php", Tag: "8.4.26-apache-trixie", PHPVersion: "8.4.26"}: "Base:    php:8.4.26-apache-trixie (from the image's environment)",
+		{Image: "php", PHPVersion: "8.4.26"}:                              "Base:    php with PHP 8.4.26 (from the image's environment)",
+	} {
+		r.Image.Base = base
+		out.Reset()
+		if err := Table(&out, r); err != nil {
+			t.Fatal(err)
+		}
+		if !strings.Contains(out.String(), want) {
+			t.Errorf("want %q in:\n%s", want, out.String())
+		}
+	}
+}
+
+func TestCycloneDXAuthor(t *testing.T) {
+	for author, want := range map[string]string{"": "", "  ": "", "Acme Security": "Acme Security"} {
+		var buf bytes.Buffer
+		if err := CycloneDX(&buf, sample(), VEXOptions{Author: author}); err != nil {
+			t.Fatal(err)
+		}
+		var doc struct {
+			Metadata struct {
+				Authors []struct{ Name string } `json:"authors"`
+			} `json:"metadata"`
+		}
+		if err := json.Unmarshal(buf.Bytes(), &doc); err != nil {
+			t.Fatal(err)
+		}
+		got := ""
+		if len(doc.Metadata.Authors) == 1 {
+			got = doc.Metadata.Authors[0].Name
+		}
+		if got != want || len(doc.Metadata.Authors) > 1 {
+			t.Errorf("author %q: got %+v", author, doc.Metadata.Authors)
+		}
 	}
 }

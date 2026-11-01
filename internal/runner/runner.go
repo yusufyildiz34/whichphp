@@ -24,6 +24,8 @@ type Tools struct {
 	Grype string
 	// Verbose streams the tools' progress output to stderr.
 	Verbose bool
+	// Retrying, when set, is told why Syft runs a second time.
+	Retrying func(cause string)
 }
 
 // Find locates syft and grype, honoring WHICHPHP_SYFT and WHICHPHP_GRYPE.
@@ -61,11 +63,13 @@ func syftConfig() string {
 	return b.String()
 }
 
-// SBOM runs Syft on the source and writes Syft JSON to out.
-func (t Tools) SBOM(ctx context.Context, source, platform, dir string) (string, error) {
+// SBOM runs Syft on the source and returns the path of the Syft JSON it wrote in dir.
+// When the run fails because a download was cut off (see CutOff), Syft runs once
+// more, after t.Retrying is told why; retried is then that cause.
+func (t Tools) SBOM(ctx context.Context, source, platform, dir string) (sbom, retried string, err error) {
 	cfg := filepath.Join(dir, "syft.yaml")
 	if err := os.WriteFile(cfg, []byte(syftConfig()), 0o600); err != nil {
-		return "", err
+		return "", "", err
 	}
 	out := filepath.Join(dir, "sbom.syft.json")
 	args := []string{"scan", "-c", cfg, "-o", "json=" + out}
@@ -75,10 +79,91 @@ func (t Tools) SBOM(ctx context.Context, source, platform, dir string) (string, 
 	// "--" so a source can never be read as a Syft flag.
 	args = append(args, "--", source)
 	// No -q: quiet mode also hides the error message. Output is captured either way.
-	if _, err := t.run(ctx, t.Syft, args...); err != nil {
-		return "", fmt.Errorf("syft failed: %w", err)
+	_, err = t.run(ctx, t.Syft, args...)
+	if err == nil {
+		return out, "", nil
 	}
-	return out, nil
+	cause := CutOff(source, err)
+	if cause == "" || ctx.Err() != nil {
+		return "", "", fmt.Errorf("syft failed: %w", err)
+	}
+	if t.Retrying != nil {
+		t.Retrying(cause)
+	}
+	if _, err := t.run(ctx, t.Syft, args...); err != nil {
+		return "", cause, fmt.Errorf("syft failed again after its first download was cut off (%s): %w", cause, err)
+	}
+	return out, cause, nil
+}
+
+// cutOffCauses are the errors of a transfer that stopped partway, which a second try
+// often gets past: a proxy or registry that drops long downloads (unexpected EOF), a
+// reset connection, or a handshake or read that timed out. Anything else, such as a
+// missing image, a refused login or a full disk, fails the same way again.
+var cutOffCauses = []string{"unexpected EOF", "connection reset by peer", "TLS handshake timeout", "i/o timeout"}
+
+// localSources are Syft sources read from local files, which no download can cut off.
+var localSources = []string{"docker-archive:", "oci-archive:", "oci-dir:", "dir:", "file:", "singularity:"}
+
+// LocalPath returns the file or directory a Syft source for local files reads, without
+// its scheme ("old.tar" for "docker-archive:old.tar"), or the source as it is.
+func LocalPath(source string) string {
+	for _, p := range localSources {
+		if rest, ok := strings.CutPrefix(source, p); ok {
+			return rest
+		}
+	}
+	return source
+}
+
+// CutOff returns the cause when Syft's error for this source says that a download
+// was cut off or reset, and "" otherwise. Only the error Syft ends with counts: its
+// warnings about files inside the image, logged before it, can say "unexpected EOF"
+// too. A source that names an existing path is a local file, whichever scheme Syft
+// reads it with, and no download can cut that off.
+func CutOff(source string, err error) string {
+	if err == nil {
+		return ""
+	}
+	for _, p := range localSources {
+		if strings.HasPrefix(source, p) {
+			return ""
+		}
+	}
+	if _, statErr := os.Stat(source); statErr == nil {
+		return ""
+	}
+	msg := err.Error()
+	var te *toolError
+	if errors.As(err, &te) {
+		msg = te.msg
+	}
+	msg = finalError(msg)
+	for _, c := range cutOffCauses {
+		if strings.Contains(msg, c) {
+			return c
+		}
+	}
+	return ""
+}
+
+// logLineRE matches a line Syft logs, such as "[0012]  WARN ...", and its level.
+var logLineRE = regexp.MustCompile(`^\s*\[\d+\]\s+([A-Z]+)\b`)
+
+// finalError returns the end of a tool's output that holds its error: from the last
+// line it logs, if that is an error, or else from the line after it. Syft logs its
+// warnings and progress first and its error last.
+func finalError(msg string) string {
+	lines := strings.Split(msg, "\n")
+	for i := len(lines) - 1; i >= 0; i-- {
+		if m := logLineRE.FindStringSubmatch(lines[i]); m != nil {
+			if m[1] == "ERROR" {
+				return strings.Join(lines[i:], "\n")
+			}
+			return strings.Join(lines[i+1:], "\n")
+		}
+	}
+	return msg
 }
 
 // Match runs Grype on a Syft JSON SBOM and writes Grype JSON to out.
@@ -151,6 +236,15 @@ func (t *tail) Write(p []byte) (int, error) {
 	return len(p), nil
 }
 
+// toolError is a tool's failure with the end of its output, the message.
+type toolError struct {
+	err error
+	msg string
+}
+
+func (e *toolError) Error() string { return e.err.Error() + ": " + e.msg }
+func (e *toolError) Unwrap() error { return e.err }
+
 func (t Tools) run(ctx context.Context, bin string, args ...string) ([]byte, error) {
 	cmd := exec.CommandContext(ctx, bin, args...)
 	cmd.Env = append(os.Environ(), "SYFT_CHECK_FOR_APP_UPDATE=false", "GRYPE_CHECK_FOR_APP_UPDATE=false", "NO_COLOR=1")
@@ -172,7 +266,7 @@ func (t Tools) run(ctx context.Context, bin string, args ...string) ([]byte, err
 			msg = msg[len(msg)-2000:]
 		}
 		if msg != "" {
-			return stdout.Bytes(), fmt.Errorf("%w: %s", err, msg)
+			return stdout.Bytes(), &toolError{err: err, msg: msg}
 		}
 		return stdout.Bytes(), err
 	}

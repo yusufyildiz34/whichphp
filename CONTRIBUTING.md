@@ -20,8 +20,8 @@ Thank you for helping. whichphp is only useful if its verdicts can be trusted, s
 
 Packagers that backport fixes keep the old PHP version, so whichphp judges their builds by [`internal/advisory/packagers.csv`](internal/advisory/packagers.csv): per packager and PHP branch, the first package release with the fixes, or `none` where the packager said it published no fix. Without a row, a backporting packager's build of an end-of-life branch gets `NEEDS_VENDOR_CONFIRMATION` (or `VULNERABLE_EOL` when the image was created before the fix).
 
-- **One row per packager, branch and distro release.** Leave `distro` empty unless the packager's releases differ by distro release (then write it as `debian 10`, `ubuntu 22.04`).
-- **The first fixed release, exactly as the package manager reports it,** with the epoch if the package has one (`1:7.4.33-31`, not `7.4.33-31`). A version without its epoch sorts below every version with one. Leave out the dist tag (`7.4.33-81`, not `7.4.33-81.el8`) unless the fix shows only after it; then write the tag as `{el}` (`1:8.2.34-2.{el}.cloudlinux.1`), and whichphp fills in the installed build's own.
+- **One row per packager, branch and distro release.** Leave `distro` empty unless the packager's releases differ by distro release (then write it as `debian 10`, `ubuntu 22.04`). Rows for apk builds always name their Alpine release (`alpine 3.23`), and only they are written as apk versions (`7.4.33-r13`).
+- **The first fixed release, exactly as the package manager reports it,** with the epoch if the package has one (`1:7.4.33-31`, not `7.4.33-31`). A version without its epoch sorts below every version with one. Leave out the dist tag (`7.4.33-81`, not `7.4.33-81.el8`) unless the fix shows only after it; then write the tag as `{el}` (`1:8.2.34-2.{el}.cloudlinux.1`), and whichphp fills in the installed build's own. A packager that numbers each distro release apart and has no marker of its own, such as GetPageSpeed, is the exception: keep the dist tag (`7.0.33-43.el7`, `7.0.33-49.el6`), and the row applies only to builds that carry it.
 - **The source is the packager's own statement:** an advisory, a changelog, a tracker entry or its repository metadata, and it must show the version and the CVE IDs. A pinned URL (a commit, an advisory ID) is better than a page that changes.
 - **Name the build, not the meta package.** Packages that only pull PHP in can carry the CVE line in their changelog without containing PHP.
 - **Add a test** in `internal/verdict/packager_test.go` with a real version string from the packager: one just below the row and one at it.
@@ -44,7 +44,7 @@ go vet ./...
 go test ./...     # CI adds -race, which on Linux and Windows needs cgo and a C compiler
 ```
 
-On every pull request, CI also runs staticcheck, govulncheck, CodeQL, actionlint, shellcheck, zizmor and a short fuzzing pass over the parsers of untrusted input (Syft and Grype JSON, image references, registry headers, version strings, `php.ini` files and Kubernetes pod lists). Please get them all green. To fuzz a parser locally, for example: `go test ./internal/registry -run='^$' -fuzz=FuzzParseRef -fuzztime=1m`.
+On every pull request, CI also runs staticcheck, govulncheck, CodeQL, actionlint, shellcheck, zizmor and a short fuzzing pass over the parsers of untrusted input (Syft and Grype JSON, image references, registry headers, version strings, `php.ini` files, Kubernetes pod lists and ConfigMaps, `docker image inspect` output and the report files `whichphp diff` reads). Please get them all green. To fuzz a parser locally, for example: `go test ./internal/registry -run='^$' -fuzz=FuzzParseRef -fuzztime=1m`.
 
 **Test policy:**
 

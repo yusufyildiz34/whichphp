@@ -350,6 +350,10 @@
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
+  // Reproducible builds date images 1970 or 1980; whichphp treats dates before 2013 as none.
+  var PLACEHOLDER_BEFORE = Date.UTC(2013, 0, 1);
+  function realDate(s) { var t = Date.parse(s || ""); return !isNaN(t) && t >= PLACEHOLDER_BEFORE ? t : NaN; }
+
   function fmtDate(s) {
     if (!s) return "";
     var d = new Date(s);
@@ -400,7 +404,7 @@
           var k = p.version + "|" + p.source;
           if (!seen[k]) { seen[k] = 1; versions.push(p); }
         });
-        var t = Date.parse(e.imageCreated || "");
+        var t = realDate(e.imageCreated);
         if (!isNaN(t) && t > built) built = t;
         if (e.builtBeforeFix && s.key === "vuln") { stale = true; stalePlats.push(e.platform.replace(/^linux\//, "")); }
         // The tag is fixed everywhere only once its last fixed platform is.
@@ -494,7 +498,7 @@
     if (e.firstFixedSeen) rows.push("<dt>First seen fixed</dt><dd>" + esc(fmtDate(e.firstFixedSeen)) + "</dd>");
     if (s.detail) rows.push("<dt>Last scan</dt><dd>Failed, so there is no verdict yet. We retry it in the next daily run." +
       '<div class="err mono" title="' + esc(s.detail) + '">' + esc(s.detail.length > 240 ? s.detail.slice(0, 240) + "…" : s.detail) + "</div></dd>");
-    return '<div class="plat"><h3>' + esc(e.platform) + "<span>" + esc(e.imageCreated ? "built " + fmtDate(e.imageCreated) : "") +
+    return '<div class="plat"><h3>' + esc(e.platform) + "<span>" + esc(!isNaN(realDate(e.imageCreated)) ? "built " + fmtDate(e.imageCreated) : "") +
       "</span></h3><dl>" + rows.join("") + "</dl></div>";
   }
 

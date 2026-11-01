@@ -51,14 +51,15 @@ func TestImageWritesEveryFormat(t *testing.T) {
 	dir := t.TempDir()
 	code, stdout, stderr := runCLI("image", "--sbom", sbom, "--grype-json", grype, "-o", "table",
 		"-o", "json="+filepath.Join(dir, "r.json"), "-o", "sarif="+filepath.Join(dir, "r.sarif"),
-		"-o", "openvex="+filepath.Join(dir, "r.vex.json"), "--vex-author", "Acme")
+		"-o", "openvex="+filepath.Join(dir, "r.vex.json"), "--vex-author", "Acme",
+		"-o", "cyclonedx="+filepath.Join(dir, "r.cdx.json"))
 	if code != 1 {
 		t.Fatalf("exit %d, want 1 (action needed); stderr: %s", code, stderr)
 	}
 	if !strings.Contains(stdout, "ACTION NEEDED") || !strings.Contains(stdout, "Image:   php:8.4.26-apache") {
 		t.Errorf("table:\n%s", stdout)
 	}
-	for _, name := range []string{"r.json", "r.sarif", "r.vex.json"} {
+	for _, name := range []string{"r.json", "r.sarif", "r.vex.json", "r.cdx.json"} {
 		b, err := os.ReadFile(filepath.Join(dir, name))
 		if err != nil || !json.Valid(b) {
 			t.Errorf("%s: %v, valid JSON %v", name, err, json.Valid(b))
@@ -124,6 +125,15 @@ func TestFailedOutputLeavesNoFiles(t *testing.T) {
 	assertNoTempFiles(t, dir)
 }
 
+func TestCycloneDXNeedsNoImageName(t *testing.T) {
+	// Unlike OpenVEX, CycloneDX can describe an archive with no tag.
+	sbom, grype := fixture(t, "/tmp/build/app.tar", nil)
+	code, stdout, stderr := runCLI("image", "--sbom", sbom, "--grype-json", grype, "-o", "cyclonedx")
+	if code != 1 || !json.Valid([]byte(stdout)) || !strings.Contains(stdout, `"name": "app.tar"`) || strings.Contains(stdout, "/tmp/build") {
+		t.Fatalf("exit %d, stderr %q, stdout:\n%s", code, stderr, stdout)
+	}
+}
+
 func TestOutputFilesAreReadableAndSymlinksKept(t *testing.T) {
 	sbom, grype := fixture(t, "php:8.4.26-apache", []string{"php:8.4.26-apache"})
 	dir := t.TempDir()
@@ -150,6 +160,65 @@ func TestOutputFilesAreReadableAndSymlinksKept(t *testing.T) {
 	}
 }
 
+// An output never truncates or replaces an input, under any name, and a symlinked
+// output is replaced only once every output is complete.
+func TestOutputsNeverOverwriteInputs(t *testing.T) {
+	sbom, grype := fixture(t, "php:8.4.26-apache", []string{"php:8.4.26-apache"})
+	dir := t.TempDir()
+	symlink, hardlink := filepath.Join(dir, "latest.json"), filepath.Join(dir, "hard.json")
+	if err := os.Symlink(sbom, symlink); err != nil {
+		t.Skip("symlinks not supported:", err)
+	}
+	if err := os.Link(sbom, hardlink); err != nil {
+		t.Skip("hard links not supported:", err)
+	}
+	for _, out := range []string{symlink, hardlink} {
+		code, stdout, stderr := runCLI("image", "--sbom", sbom, "--grype-json", grype, "-o", "json="+out)
+		if code != 3 || stdout != "" || !strings.Contains(stderr, "is used twice") {
+			t.Errorf("%s: exit %d, stdout %q, stderr %q", filepath.Base(out), code, stdout, stderr)
+		}
+	}
+	if b, _ := os.ReadFile(sbom); !json.Valid(b) || !strings.Contains(string(b), `"artifacts"`) {
+		t.Error("the SBOM was overwritten")
+	}
+
+	// An archive given with its scheme is an input too.
+	t.Chdir(dir)
+	// Should the run get past its outputs, it finds no tools to run.
+	t.Setenv("WHICHPHP_SYFT", filepath.Join(dir, "no-such-syft"))
+	t.Setenv("WHICHPHP_GRYPE", filepath.Join(dir, "no-such-grype"))
+	if err := os.WriteFile("old.tar", []byte("app/"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	for _, source := range []string{"docker-archive:old.tar", "oci-archive:old.tar", "file:old.tar", "old.tar"} {
+		code, stdout, stderr := runCLI("image", source, "-o", "json=old.tar")
+		if code != 3 || stdout != "" || !strings.Contains(stderr, "is used twice") {
+			t.Errorf("%s: exit %d, stdout %q, stderr %q", source, code, stdout, stderr)
+		}
+	}
+	if b, _ := os.ReadFile("old.tar"); string(b) != "app/" {
+		t.Errorf("the archive was overwritten: %q", b)
+	}
+
+	// A run that fails leaves what a symlinked output points to as it was.
+	archive, archiveGrype := fixture(t, "/tmp/build/app.tar", nil)
+	target := filepath.Join(dir, "target.json")
+	if err := os.WriteFile(target, []byte(`{"kept":true}`), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	link := filepath.Join(dir, "link.json")
+	if err := os.Symlink(target, link); err != nil {
+		t.Fatal(err)
+	}
+	if code, _, _ := runCLI("image", "--sbom", archive, "--grype-json", archiveGrype, "-o", "json="+link, "-o", "openvex="+filepath.Join(dir, "r.vex")); code != 3 {
+		t.Fatalf("exit %d, want 3: OpenVEX can't name an archive without a tag", code)
+	}
+	if b, _ := os.ReadFile(target); string(b) != `{"kept":true}` {
+		t.Errorf("the symlink's target was changed by a failed run: %q", b)
+	}
+	assertNoTempFiles(t, dir)
+}
+
 func TestMachineOutputOnStdoutHasNoProgress(t *testing.T) {
 	sbom, grype := fixture(t, "php:8.4.26-apache", []string{"php:8.4.26-apache"})
 	_, stdout, stderr := runCLI("image", "--sbom", sbom, "--grype-json", grype, "-o", "sarif")
@@ -172,6 +241,48 @@ func TestOutputList(t *testing.T) {
 		if err := o.Set(bad); err == nil {
 			t.Errorf("%q: want an error", bad)
 		}
+	}
+}
+
+// fakeTools puts in place a Syft that fails its first run as a cut-off download does
+// and then writes the given SBOM, and a Grype that finds nothing.
+func fakeTools(t *testing.T, sbom string) {
+	t.Helper()
+	dir := t.TempDir()
+	count, syft, grype := filepath.Join(dir, "runs"), filepath.Join(dir, "syft"), filepath.Join(dir, "grype")
+	syftBody := "#!/bin/sh\n" +
+		"n=$(cat '" + count + "' 2>/dev/null || echo 0); echo $((n+1)) > '" + count + "'\n" +
+		"if [ \"$n\" = 0 ]; then echo 'could not fetch image: read tcp 10.0.0.2:1->1.2.3.4:443: unexpected EOF' >&2; exit 1; fi\n" +
+		"for a; do case \"$a\" in json=*) cp '" + sbom + "' \"${a#json=}\";; esac; done\n"
+	grypeBody := "#!/bin/sh\nprev=\nfor a; do if [ \"$prev\" = --file ]; then echo '{\"matches\":[]}' > \"$a\"; fi; prev=$a; done\n" +
+		"[ \"$1\" = db ] && echo '{}'\nexit 0\n"
+	for p, body := range map[string]string{syft: syftBody, grype: grypeBody} {
+		if err := os.WriteFile(p, []byte(body), 0o755); err != nil {
+			t.Fatal(err)
+		}
+	}
+	t.Setenv("WHICHPHP_SYFT", syft)
+	t.Setenv("WHICHPHP_GRYPE", grype)
+}
+
+// A download that is cut off is read once more, and the report says so.
+func TestImageRetriesCutOffDownload(t *testing.T) {
+	sbom, _ := fixture(t, "php:8.4.26-apache", []string{"php:8.4.26-apache"})
+	fakeTools(t, sbom)
+	code, stdout, stderr := runCLI("image", "--no-grype", "-o", "json", "registry:php:8.4.26-apache")
+	if code != 1 {
+		t.Fatalf("exit %d, want 1; stderr: %s", code, stderr)
+	}
+	var rep struct {
+		Image struct{ ReadRetried string }
+		Notes []string
+	}
+	if err := json.Unmarshal([]byte(stdout), &rep); err != nil || rep.Image.ReadRetried != "unexpected EOF" ||
+		!strings.Contains(strings.Join(rep.Notes, " "), "Syft's first download of the image was cut off (unexpected EOF), so it was read a second time.") {
+		t.Errorf("report: %+v, %v", rep, err)
+	}
+	if !strings.Contains(stderr, "Syft's download of registry:php:8.4.26-apache was cut off (unexpected EOF); reading it once more") {
+		t.Errorf("stderr: %q", stderr)
 	}
 }
 

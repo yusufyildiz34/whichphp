@@ -3,8 +3,10 @@
 // each: redeploy to pick up a fixed image the tag already points to, or rebuild the
 // image because the tag itself is still vulnerable.
 //
-// It only reads: the pod and node lists come from "kubectl get", and images are
-// read from their registries. Nothing in the cluster is changed or run.
+// It only reads: the pod and node lists, and the ConfigMaps mounted at PHP
+// configuration paths, come from "kubectl get", and images are read from their
+// registries or, when asked, from the local Docker daemon. Nothing in the cluster is
+// changed or run.
 package cluster
 
 import (
@@ -13,6 +15,7 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+	"time"
 )
 
 // The subset of the Kubernetes API that whichphp reads.
@@ -35,24 +38,59 @@ type pod struct {
 		NodeName       string         `json:"nodeName"`
 		Containers     []podContainer `json:"containers"`
 		InitContainers []podContainer `json:"initContainers"`
+		// Each volume has a name and one source, such as configMap or secret.
+		Volumes []map[string]json.RawMessage `json:"volumes"`
 	} `json:"spec"`
 	Status struct {
 		Phase                 string            `json:"phase"`
+		StartTime             string            `json:"startTime"`
 		ContainerStatuses     []containerStatus `json:"containerStatuses"`
 		InitContainerStatuses []containerStatus `json:"initContainerStatuses"`
 	} `json:"status"`
 }
 
 type podContainer struct {
-	Name            string `json:"name"`
-	Image           string `json:"image"`
-	ImagePullPolicy string `json:"imagePullPolicy"`
+	Name            string   `json:"name"`
+	Image           string   `json:"image"`
+	ImagePullPolicy string   `json:"imagePullPolicy"`
+	Command         []string `json:"command"`
+	Args            []string `json:"args"`
+	VolumeMounts    []struct {
+		Name        string `json:"name"`
+		MountPath   string `json:"mountPath"`
+		SubPath     string `json:"subPath"`
+		SubPathExpr string `json:"subPathExpr"`
+	} `json:"volumeMounts"`
+	Env []struct {
+		Name      string          `json:"name"`
+		Value     string          `json:"value"`
+		ValueFrom json.RawMessage `json:"valueFrom"`
+	} `json:"env"`
+	EnvFrom []envFromSource `json:"envFrom"`
+}
+
+// envFromSource is one entry of a container's envFrom list: every key of a ConfigMap
+// or Secret becomes a variable, its name prefixed.
+type envFromSource struct {
+	Prefix       string     `json:"prefix"`
+	ConfigMapRef *objectRef `json:"configMapRef"`
+	SecretRef    *objectRef `json:"secretRef"`
+}
+
+type objectRef struct {
+	Name     string `json:"name"`
+	Optional *bool  `json:"optional"`
 }
 
 type containerStatus struct {
 	Name    string `json:"name"`
 	Image   string `json:"image"`
 	ImageID string `json:"imageID"`
+	State   struct {
+		Running *struct {
+			StartedAt string `json:"startedAt"`
+		} `json:"running"`
+	} `json:"state"`
 }
 
 type nodeList struct {
@@ -87,6 +125,12 @@ type Container struct {
 	LocalID  string   `json:"localID,omitempty"`
 	Platform string   `json:"platform"`
 	Pods     []string `json:"pods"`
+	// Started is the earliest start of this container's pods, in RFC 3339, or of the
+	// running container in a pod whose status has no start time.
+	Started string `json:"started,omitempty"`
+	started time.Time
+	// spec is what the pod spec says about the container's volumes and environment.
+	spec containerSpec
 }
 
 // SystemNamespaces are skipped unless asked for: they run the cluster's own
@@ -146,23 +190,53 @@ func Inventory(podsJSON, nodesJSON []byte, opt InventoryOptions) ([]Container, [
 			continue
 		}
 		kind, workload := owner(p)
+		volumes := volumeSpecs(p.Spec.Volumes)
+		podStart := parseTime(p.Status.StartTime)
 		add := func(c podContainer, statuses []containerStatus, init bool) {
 			running, local := "", ""
+			isRunning := false
+			var containerStart time.Time
 			for _, s := range statuses {
 				if s.Name == c.Name {
 					running, local = RunningRef(s.ImageID), LocalID(s.ImageID)
+					isRunning = s.State.Running != nil
+					if isRunning {
+						containerStart = parseTime(s.State.Running.StartedAt)
+					}
 				}
 			}
+			// Workloads change an image by replacing the pod, so a container that
+			// restarted since, or isn't running now (restarting, say), has run its
+			// image since the pod started; its own start would make the window look
+			// shorter than it is. Only without the pod's start time does the running
+			// container's own start count. An init container that isn't running has
+			// finished.
+			var started time.Time
+			switch {
+			case init && !isRunning:
+			case !podStart.IsZero():
+				started = podStart
+			default:
+				started = containerStart
+			}
+			spec := specOf(c, volumes)
+			// Pods of one workload can mount different ConfigMaps (during a rollout,
+			// say), which can change the settings.
+			specKey, _ := json.Marshal(spec)
 			// The same image can be reported as php@sha256:... on one node and
 			// docker.io/library/php@sha256:... on another, so merge by digest.
-			key := strings.Join([]string{md.Namespace, kind, workload, c.Name, Digest(running), local, c.Image, platform}, "\x00")
+			key := strings.Join([]string{md.Namespace, kind, workload, c.Name, Digest(running), local, c.Image, platform, string(specKey)}, "\x00")
 			m := merged[key]
 			if m == nil {
 				m = &Container{Namespace: md.Namespace, Kind: kind, Workload: workload, Name: c.Name, Init: init,
-					Image: c.Image, PullPolicy: c.ImagePullPolicy, Running: running, LocalID: local, Platform: platform}
+					Image: c.Image, PullPolicy: c.ImagePullPolicy, Running: running, LocalID: local, Platform: platform, spec: spec}
 				merged[key] = m
 			}
 			m.Pods = append(m.Pods, md.Name)
+			if !started.IsZero() && (m.started.IsZero() || started.Before(m.started)) {
+				m.started = started
+				m.Started = started.UTC().Format(time.RFC3339)
+			}
 		}
 		for _, c := range p.Spec.Containers {
 			add(c, p.Status.ContainerStatuses, false)
@@ -273,6 +347,15 @@ func Repository(ref string) string {
 // Tagged reports whether a spec image is a tag (explicit or the implicit "latest")
 // rather than a digest pin, so the tag can have moved since the pod pulled it.
 func Tagged(ref string) bool { return Digest(ref) == "" }
+
+// parseTime reads a Kubernetes timestamp, or returns the zero time.
+func parseTime(s string) time.Time {
+	t, err := time.Parse(time.RFC3339, s)
+	if err != nil {
+		return time.Time{}
+	}
+	return t
+}
 
 func plural(n int, one, many string) string {
 	if n == 1 {

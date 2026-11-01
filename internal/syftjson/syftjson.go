@@ -102,7 +102,23 @@ type ImageConfig struct {
 	Config       struct {
 		Entrypoint []string `json:"Entrypoint"`
 		Cmd        []string `json:"Cmd"`
+		Env        []string `json:"Env"`
 	} `json:"config"`
+}
+
+// EnvValue returns the value of an environment variable set in the image config, the
+// last one when it is set more than once.
+func (c *ImageConfig) EnvValue(name string) (string, bool) {
+	if c == nil {
+		return "", false
+	}
+	val, found := "", false
+	for _, kv := range c.Config.Env {
+		if k, v, ok := strings.Cut(kv, "="); ok && k == name {
+			val, found = v, true
+		}
+	}
+	return val, found
 }
 
 // CPEList accepts both the old (strings) and current (objects) Syft CPE encodings.

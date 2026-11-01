@@ -109,7 +109,7 @@ func OpenVEX(w io.Writer, r verdict.Report, opt VEXOptions) error {
 				Vulnerability: vexVuln{Name: cve},
 				Products:      []vexProduct{{ID: product, Identifiers: map[string]string{"purl": product}}},
 				Status:        "under_investigation",
-				StatusNotes:   "whichphp found no PHP in this image. That is not proof the image is unaffected: a PHP build whichphp doesn't recognize would be missed.",
+				StatusNotes:   noPHPNote("image"),
 			})
 			continue
 		}
@@ -122,20 +122,15 @@ func OpenVEX(w io.Writer, r verdict.Report, opt VEXOptions) error {
 					ID: product, Identifiers: map[string]string{"purl": product},
 					Subcomponents: []vexComponent{{ID: sub, Identifiers: map[string]string{"purl": sub}}},
 				}},
-				StatusNotes: fmt.Sprintf("%s %s (%s, %s): %s: %s", p.Name, p.Version, p.Source, p.SAPI, res.Verdict, res.Why),
+				Status:      vexStatus(res),
+				StatusNotes: phpNote(p, res),
 			}
-			switch {
-			case res.Verdict == verdict.Fixed, res.Verdict == verdict.FixedByVendorBackport,
-				res.Verdict == verdict.FixedByDistroBackport && !res.Unconfirmed:
-				st.Status = "fixed"
-			case res.Verdict == verdict.NotAffected:
-				st.Status, st.Justification = "not_affected", "vulnerable_code_not_present"
-			case res.Verdict.IsVulnerable():
-				st.Status = "affected"
+			switch st.Status {
+			case "not_affected":
+				st.Justification = "vulnerable_code_not_present"
+			case "affected":
 				st.ActionStatement = "Rebuild or replace the image with PHP " + fixedReleases() +
 					", or a distro package that carries the backport. PHP 8.1 and older get no upstream fix."
-			default:
-				st.Status = "under_investigation"
 			}
 			doc.Statements = append(doc.Statements, st)
 		}
@@ -144,4 +139,33 @@ func OpenVEX(w io.Writer, r verdict.Report, opt VEXOptions) error {
 	enc.SetIndent("", "  ")
 	enc.SetEscapeHTML(false)
 	return enc.Encode(doc)
+}
+
+// vexStatus is the OpenVEX status of one CVE result: "fixed" and "not_affected" only
+// on positive evidence, "affected" for vulnerable PHP, and "under_investigation" for
+// everything else. CycloneDX output maps its analysis states from it, so both VEX
+// formats follow the same rules.
+func vexStatus(res verdict.CVEResult) string {
+	switch {
+	case res.Verdict == verdict.Fixed, res.Verdict == verdict.FixedByVendorBackport,
+		res.Verdict == verdict.FixedByDistroBackport && !res.Unconfirmed:
+		return "fixed"
+	case res.Verdict == verdict.NotAffected:
+		return "not_affected"
+	case res.Verdict.IsVulnerable():
+		return "affected"
+	}
+	return "under_investigation"
+}
+
+// phpNote says which PHP a VEX statement is about, its verdict and why.
+func phpNote(p verdict.PHP, res verdict.CVEResult) string {
+	return fmt.Sprintf("%s %s (%s, %s): %s: %s", p.Name, p.Version, p.Source, p.SAPI, res.Verdict, res.Why)
+}
+
+// noPHPNote explains why a source with no PHP found is still under investigation.
+// what is "image", "directory", "file" or "source".
+func noPHPNote(what string) string {
+	return "whichphp found no PHP in this " + what + ". That is not proof the " + what +
+		" is unaffected: a PHP build whichphp doesn't recognize would be missed."
 }

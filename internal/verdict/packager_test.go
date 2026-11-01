@@ -6,6 +6,7 @@ import (
 
 	"github.com/yusufyildiz34/whichphp/internal/advisory"
 	"github.com/yusufyildiz34/whichphp/internal/grypejson"
+	"github.com/yusufyildiz34/whichphp/internal/pkgver"
 )
 
 // withBackports swaps in synthetic packagers.csv rows, so these tests check the rules
@@ -155,6 +156,19 @@ func TestCPanelBuilds(t *testing.T) {
 	}
 }
 
+// cPanel's unreleased fixes for ea-php54 to 73 (EA-13619) carry made-up upstream
+// versions such as 7.3.34. No PHP 7.3.34 exists, so the version alone must never read as
+// fixed, and until a row says otherwise the "none" row decides.
+func TestCPanelMadeUpVersion(t *testing.T) {
+	if v, why := ByVersion("7.3.34", cve19); v != VulnerableEOL {
+		t.Errorf("ByVersion(7.3.34) = %s (%s), want %s", v, why, VulnerableEOL)
+	}
+	d := doc(t, "almalinux", "9.6", "2026-10-25T00:00:00Z", nil, art{"ea-php73-php-fpm", "7.3.34-1.1.1.cpanel", "rpm", "", "", "/var/lib/rpm/rpmdb.sqlite"})
+	if res := Evaluate(Inputs{Doc: d, GrypeRan: true, Now: now}).PHP[0].CVEs[cve19]; res.Verdict != VulnerableEOL || !strings.Contains(res.Why, "published no fix") {
+		t.Errorf("ea-php73 7.3.34: %s (%s), want %s from the \"none\" row", res.Verdict, res.Why, VulnerableEOL)
+	}
+}
+
 // Packages that only pull PHP in or dispatch to it, and ea-phpNN-php on 8.x, which is
 // empty, aren't PHP builds.
 func TestCPanelMetaPackagesAreNotPHP(t *testing.T) {
@@ -258,27 +272,52 @@ func TestRemiBuilds(t *testing.T) {
 	}
 }
 
-// GetPageSpeed's builds look like CentOS's own but for the rpm Vendor tag. With no rows
-// for it, an end-of-life branch needs the vendor's confirmation, and its upstream
-// rebuilds of 8.2 and later go by version.
+// GetPageSpeed's builds look like the distro's own but for the rpm Vendor tag, and its
+// base packages, Software Collections and distro releases each number their own. Versions
+// are from GetPageSpeed's repository metadata (October 2026).
 func TestGetPageSpeedBuilds(t *testing.T) {
+	rpm := func(name, v string) art { return art{name, v, "rpm", "", "", "/var/lib/rpm/Packages"} }
 	cases := []struct {
-		a    art
-		want Verdict
+		name     string
+		distro   string
+		a        art
+		want     Verdict
+		provider string
 	}{
-		{art{"php-fpm", "7.4.33-33.el7", "rpm", "", "", "/var/lib/rpm/Packages"}, NeedsVendorConfirmation},
-		{art{"php81-php-cli", "8.1.34-7.el7", "rpm", "", "", "/var/lib/rpm/Packages"}, NeedsVendorConfirmation},
-		{art{"php-cli", "8.3.36-2.el7", "rpm", "", "", "/var/lib/rpm/Packages"}, Fixed},
-		{art{"php-cli", "8.3.35-1.el7", "rpm", "", "", "/var/lib/rpm/Packages"}, Vulnerable},
+		{"EL7 base 7.4", "centos 7.9", rpm("php-fpm", "7.4.33-33.el7"), FixedByVendorBackport, "GetPageSpeed"},
+		{"EL7 base 7.4, later", "centos 7.9", rpm("php-fpm", "7.4.33-38.el7"), FixedByVendorBackport, "GetPageSpeed"},
+		// The base 7.4 fix is in the changelog at -32, but no base -32 was ever published.
+		{"EL7 base 7.4, below the advisory", "centos 7.9", rpm("php-cli", "7.4.33-32.el7"), Vulnerable, "GetPageSpeed"},
+		{"EL7 collection 7.4", "centos 7.9", rpm("php74-php-cli", "7.4.33-32.el7"), FixedByVendorBackport, "GetPageSpeed SCL"},
+		{"EL7 collection 7.4 below", "centos 7.9", rpm("php74-php-fpm", "7.4.33-31.el7"), Vulnerable, "GetPageSpeed SCL"},
+		{"EL7 collection 8.1", "centos 7.9", rpm("php81-php-cli", "8.1.34-7.el7"), FixedByVendorBackport, "GetPageSpeed SCL"},
+		// EL6 builds start at -49, above EL7's first fix (-43), and only EL6's row decides.
+		{"EL6 base 7.0", "centos 6.10", rpm("php-cli", "7.0.33-49.el6"), FixedByVendorBackport, "GetPageSpeed"},
+		{"EL6 build below EL6's fix", "centos 6.10", rpm("php-cli", "7.0.33-45.el6"), Vulnerable, "GetPageSpeed"},
+		{"Amazon Linux 2 7.4", "amzn 2", rpm("php-fpm", "7.4.33-40.amzn2"), FixedByVendorBackport, "GetPageSpeed"},
+		{"Amazon Linux 2 below its fix", "amzn 2", rpm("php-fpm", "7.4.33-38.amzn2"), Vulnerable, "GetPageSpeed"},
+		{"EL9 collection 5.6", "almalinux 9.6", rpm("php56-php-cli", "5.6.40-49.el9"), FixedByVendorBackport, "GetPageSpeed SCL"},
+		// Above EL7's first fixed collection build (-43); only EL9's row decides.
+		{"EL9 collection 5.6 below EL9's fix", "almalinux 9.6", rpm("php56-php-cli", "5.6.40-45.el9"), Vulnerable, "GetPageSpeed SCL"},
+		// No row for an EL8 build: nothing to order it by.
+		{"a release with no row", "almalinux 8.10", rpm("php-fpm", "7.4.33-33.el8"), NeedsVendorConfirmation, "GetPageSpeed"},
+		{"8.3 ships upstream", "centos 7.9", rpm("php-cli", "8.3.36-2.el7"), Fixed, "GetPageSpeed"},
+		{"8.4 before the upstream fix", "centos 7.9", rpm("php-cli", "8.4.24-6.el7"), Vulnerable, "GetPageSpeed"},
 	}
 	for _, c := range cases {
-		d := doc(t, "centos", "7.9", "2026-10-25T00:00:00Z", nil, c.a)
+		id, ver, _ := strings.Cut(c.distro, " ")
+		d := doc(t, id, ver, "2026-10-25T00:00:00Z", nil, c.a)
 		d.Artifacts[0].Metadata.Vendor = "GetPageSpeed LLC"
-		r := Evaluate(Inputs{Doc: d, GrypeRan: true, Now: now})
-		p := r.PHP[0]
-		if p.Provider != "GetPageSpeed" || p.CVEs[cve19].Verdict != c.want {
-			t.Errorf("%s %s: %s %s = %s (%s), want GetPageSpeed %s", c.a.name, c.a.version, p.Provider, cve19, p.CVEs[cve19].Verdict, p.CVEs[cve19].Why, c.want)
+		p := Evaluate(Inputs{Doc: d, GrypeRan: true, Now: now}).PHP[0]
+		if p.Provider != c.provider || p.CVEs[cve19].Verdict != c.want {
+			t.Errorf("%s: %s %s = %s (%s), want %s %s", c.name, p.Provider, cve19, p.CVEs[cve19].Verdict, p.CVEs[cve19].Why, c.provider, c.want)
 		}
+	}
+	// Without the Vendor tag, an early fixed build is the distro's as far as whichphp can
+	// tell, and isn't credited with GetPageSpeed's fix.
+	d := doc(t, "centos", "7.9", "2026-10-25T00:00:00Z", nil, rpm("php74-php-cli", "7.4.33-32.el7"))
+	if p := Evaluate(Inputs{Doc: d, GrypeRan: true, Now: now}).PHP[0]; p.Provider != "" || p.CVEs[cve19].Verdict == FixedByVendorBackport {
+		t.Errorf("no Vendor tag: %s %s", p.Provider, p.CVEs[cve19].Verdict)
 	}
 }
 
@@ -307,7 +346,7 @@ func TestCloudLinuxBuilds(t *testing.T) {
 		{"ea-php74 on EL10", "10.0", rpm("ea-php74-php-cli", "1:7.4.33-18.el10.cloudlinux.13"), FixedByVendorBackport, "CloudLinux ea-php"},
 		{"ea-php74 one build earlier", "10.0", rpm("ea-php74-php-cli", "1:7.4.33-18.el10.cloudlinux.12"), Vulnerable, "CloudLinux ea-php"},
 		{"ea-php without a dist tag", "9.6", rpm("ea-php80-php-cli", "1:8.0.30-11.cloudlinux.1"), NeedsVendorConfirmation, "CloudLinux ea-php"},
-		{"system PHP", "9.6", rpm("php-cli", "1:8.1.32-1.module_el9.8.0+406+aadb97d2.cloudlinux.2"), NeedsVendorConfirmation, "CloudLinux"},
+		{"system PHP", "9.6", rpm("php-cli", "1:8.1.32-1.module_el9.8.0+406+aadb97d2.cloudlinux.2"), FixedByVendorBackport, "CloudLinux"},
 		{"system PHP rebased", "9.6", rpm("php-fpm", "1:8.3.36-1.module_el9.8.0+410+17f8e765.cloudlinux.1"), Fixed, "CloudLinux"},
 	}
 	for _, c := range cases {
@@ -329,11 +368,63 @@ func TestCloudLinuxBuilds(t *testing.T) {
 	}
 }
 
+// CloudLinux's own system PHP, against the rows in packagers.csv. Versions are from
+// CloudLinux's repository metadata (October 2026).
+func TestCloudLinuxSystemPHP(t *testing.T) {
+	rpm := func(name, v string) art { return art{name, v, "rpm", "", "", "/var/lib/rpm/rpmdb.sqlite"} }
+	cases := []struct {
+		name    string
+		release string
+		a       art
+		want    Verdict
+	}{
+		{"8: 7.2 backport", "8.10", rpm("php-fpm", "1:7.2.24-1.module_el8.10.0+7268+7c76a223.cloudlinux.2"), FixedByVendorBackport},
+		// Built for 8.4 in 2021 and current until the fix: the same line, an earlier counter.
+		{"8: 7.2 before the backport", "8.10", rpm("php-fpm", "1:7.2.24-1.module_el8.4.0+6493+7c76a223.cloudlinux.1"), Vulnerable},
+		{"8: 7.3 backport", "8.10", rpm("php-cli", "1:7.3.20-1.module_el8.10.0+7269+b272fdef.cloudlinux.2"), FixedByVendorBackport},
+		{"8: 7.3 before the backport", "8.10", rpm("php-cli", "1:7.3.20-1.module_el8.4.0+6494+b272fdef.cloudlinux.1"), Vulnerable},
+		{"8: 7.4 with Red Hat's backport", "8.10", rpm("php-fpm", "1:7.4.33-8.module_el8.10.0+7273+5caacdec.cloudlinux.1"), FixedByVendorBackport},
+		// The build before is another distro build, which no row orders.
+		{"8: 7.4 one distro build earlier", "8.10", rpm("php-fpm", "1:7.4.33-6.module_el8.10.0+7204+5caacdec.cloudlinux.1"), NeedsVendorConfirmation},
+		{"8: 8.0 backport", "8.10", rpm("php-fpm", "1:8.0.30-1.module_el8.10.0+7271+42d2b711.cloudlinux.2"), FixedByVendorBackport},
+		{"8: 8.0 first build, without a counter", "8.10", rpm("php-fpm", "1:8.0.30-1.module_el8.8.0+6722+42d2b711.cloudlinux"), Vulnerable},
+		{"9: 8.0 backport", "9.8", rpm("php-cli", "1:8.0.30-8.el9_8.cloudlinux.2"), FixedByVendorBackport},
+		{"9: 8.0 before the backport", "9.8", rpm("php-cli", "1:8.0.30-8.el9_8.cloudlinux.1"), Vulnerable},
+		// Sorts above the backport, but is another distro build with its own row.
+		{"9: 8.0 with Red Hat's backport", "9.8", rpm("php-fpm", "1:8.0.30-8.el9_8.1.cloudlinux.1"), FixedByVendorBackport},
+		{"9: 8.0 older distro build", "9.8", rpm("php-fpm", "1:8.0.30-6.el9_8.cloudlinux.1"), NeedsVendorConfirmation},
+		{"9: 8.1 backport", "9.8", rpm("php-fpm", "1:8.1.32-1.module_el9.8.0+406+aadb97d2.cloudlinux.2"), FixedByVendorBackport},
+		{"9: 8.1 built for 9.6", "9.8", rpm("php-fpm", "1:8.1.32-1.module_el9.6.0+258+aadb97d2.cloudlinux.1"), Vulnerable},
+		{"9: 8.1 older version", "9.4", rpm("php-cli", "1:8.1.27-1.module_el9.4.0+175+f4ccb976.cloudlinux.1"), NeedsVendorConfirmation},
+		{"10: 8.3 complete backport", "10.2", rpm("php-fpm", "1:8.3.33-1.el10_2.cloudlinux.3"), FixedByVendorBackport},
+		// Named the CVEs but missed part of the patch.
+		{"10: 8.3 first backport", "10.2", rpm("php-fpm", "1:8.3.33-1.el10_2.cloudlinux.2"), Vulnerable},
+		{"10: 8.3 before the backport", "10.2", rpm("php-fpm", "1:8.3.33-1.el10_2.cloudlinux.1"), Vulnerable},
+		{"10: 8.3 rebased", "10.2", rpm("php-fpm", "1:8.3.36-1.el10_2.cloudlinux.1"), Fixed},
+		{"10: 8.3 older build", "10.2", rpm("php-fpm", "1:8.3.32-1.el10_2.cloudlinux.1"), NeedsVendorConfirmation},
+		// Unrelated lines: another release's build, a later module build of the stream and
+		// a build whose epoch the SBOM left out.
+		{"9's 8.0 backport on 8", "8.10", rpm("php-cli", "1:8.0.30-8.el9_8.cloudlinux.2"), NeedsVendorConfirmation},
+		{"8's 7.2 backport on 9", "9.8", rpm("php-cli", "1:7.2.24-1.module_el8.10.0+7268+7c76a223.cloudlinux.2"), NeedsVendorConfirmation},
+		{"later module build", "8.10", rpm("php-cli", "1:7.2.24-1.module_el8.10.0+7300+7c76a223.cloudlinux.3"), NeedsVendorConfirmation},
+		{"without its epoch", "9.8", rpm("php-cli", "8.0.30-8.el9_8.cloudlinux.2"), NeedsVendorConfirmation},
+	}
+	for _, c := range cases {
+		d := doc(t, "cloudlinux", c.release, "2026-10-25T00:00:00Z", nil, c.a)
+		r := Evaluate(Inputs{Doc: d, GrypeRan: true, Now: now})
+		p := r.PHP[0]
+		if p.Provider != "CloudLinux" || p.CVEs[cve19].Verdict != c.want {
+			t.Errorf("%s: %s %s = %s (%s), want CloudLinux %s", c.name, p.Provider, cve19, p.CVEs[cve19].Verdict, p.CVEs[cve19].Why, c.want)
+		}
+	}
+}
+
 // TuxCare's builds, against the rows in packagers.csv. Versions are from TuxCare's errata
 // (October 2026).
 func TestTuxCareBuilds(t *testing.T) {
 	rpm := func(name, v string) art { return art{name, v, "rpm", "", "", "/var/lib/rpm/Packages"} }
 	deb := func(name, v string) art { return art{name, v, "deb", "", "", "/var/lib/dpkg/status"} }
+	apk := func(name, v string) art { return art{name, v, "apk", "", "", "/lib/apk/db/installed"} }
 	cases := []struct {
 		name     string
 		distro   string
@@ -358,10 +449,23 @@ func TestTuxCareBuilds(t *testing.T) {
 		{"Debian 11", "debian 11.11", deb("libapache2-mod-php7.4", "7.4.33-1+deb11u12+tuxcare.els2"), FixedByVendorBackport, "TuxCare"},
 		{"Debian 11 one build earlier", "debian 11.11", deb("php7.4-fpm", "7.4.33-1+deb11u12+tuxcare.els1"), Vulnerable, "TuxCare"},
 		{"Ubuntu 20.04", "ubuntu 20.04", deb("php7.4-cli", "7.4.3-4ubuntu2.29+tuxcare.els10"), FixedByVendorBackport, "TuxCare"},
-		{"Alpine has no version order", "alpine 3.18.12", art{"php82-fpm", "8.2.16.tuxcare.els10-r0", "apk", "", "", "/lib/apk/db/installed"}, NeedsVendorConfirmation, "TuxCare"},
+		{"Alpine 3.18", "alpine 3.18.12", apk("php82-fpm", "8.2.16.tuxcare.els10-r0"), FixedByVendorBackport, "TuxCare"},
+		// TuxCare published no els9.
+		{"Alpine 3.18 one build earlier", "alpine 3.18.12", apk("php82", "8.2.16.tuxcare.els8-r0"), Vulnerable, "TuxCare"},
+		{"Alpine 3.18's build on 3.19", "alpine 3.19.9", apk("php82-fpm", "8.2.16.tuxcare.els10-r0"), NeedsVendorConfirmation, "TuxCare"},
 		{"alt-php on Ubuntu", "ubuntu 24.04", deb("alt-php74-cli", "7.4.33-81"), FixedByVendorBackport, "TuxCare alt-php"},
 		{"alt-php on Ubuntu before the fix", "ubuntu 24.04", deb("alt-php74-php-fpm", "7.4.33-80"), Vulnerable, "TuxCare alt-php"},
 		{"alt-php85 on Debian", "debian 12.12", deb("alt-php85-cli", "8.5.11-4"), FixedByVendorBackport, "TuxCare alt-php"},
+		{"alt-php74 on Alpine 3.23", "alpine 3.23.1", apk("alt-php74-cli", "7.4.33-r13"), FixedByVendorBackport, "TuxCare alt-php"},
+		{"alt-php74 on Alpine 3.23 before the fix", "alpine 3.23.1", apk("alt-php74-fpm", "7.4.33-r12"), Vulnerable, "TuxCare alt-php"},
+		{"alt-php80 on Alpine 3.23", "alpine 3.23.1", apk("alt-php80-fpm", "8.0.30-r11"), FixedByVendorBackport, "TuxCare alt-php"},
+		{"alt-php80 on Alpine 3.23 before the fix", "alpine 3.23.1", apk("alt-php80-cli", "8.0.30-r10"), Vulnerable, "TuxCare alt-php"},
+		{"alt-php73 on Alpine 3.24", "alpine 3.24.0", apk("alt-php73-cli", "7.3.33-r12"), FixedByVendorBackport, "TuxCare alt-php"},
+		{"alt-php73 on Alpine 3.24 before the fix", "alpine 3.24.0", apk("alt-php73-cli", "7.3.33-r11"), Vulnerable, "TuxCare alt-php"},
+		{"alt-php81 on Alpine 3.24", "alpine 3.24.0", apk("alt-php81-fpm", "8.1.34-r11"), FixedByVendorBackport, "TuxCare alt-php"},
+		{"alt-php81 on Alpine 3.24 before the fix", "alpine 3.24.0", apk("alt-php81-fpm", "8.1.34-r10"), Vulnerable, "TuxCare alt-php"},
+		// No rows for 3.22, and the deb rows ("7.4.33-81") never order an apk build.
+		{"alt-php74 on Alpine 3.22", "alpine 3.22.2", apk("alt-php74-cli", "7.4.33-r13"), NeedsVendorConfirmation, "TuxCare alt-php"},
 	}
 	for _, c := range cases {
 		id, ver, _ := strings.Cut(c.distro, " ")
@@ -374,6 +478,41 @@ func TestTuxCareBuilds(t *testing.T) {
 		p := r.PHP[0]
 		if p.Provider != c.provider || p.CVEs[cve19].Verdict != c.want {
 			t.Errorf("%s: %s %s = %s (%s), want %s %s", c.name, p.Provider, cve19, p.CVEs[cve19].Verdict, p.CVEs[cve19].Why, c.provider, c.want)
+		}
+	}
+}
+
+// Alpine's own PHP goes through Grype, never packagers.csv, so an apk version order must
+// leave its verdicts as they were: these are the verdicts from before whichphp had one.
+func TestAlpineDistroBuildsUnchanged(t *testing.T) {
+	apk := func(name, v string) art { return art{name, v, "apk", "", "", "/lib/apk/db/installed"} }
+	listed := map[string]grypejson.FeedStatus{cve18: {Listed: true}, cve19: {Listed: true}}
+	unlisted := map[string]grypejson.FeedStatus{cve18: {Listed: false}, cve19: {Listed: false}}
+	cases := []struct {
+		name, release, created string
+		a                      art
+		hit                    bool
+		feed                   map[string]grypejson.FeedStatus
+		want                   Verdict
+	}{
+		// The build TuxCare's 8.2.16.tuxcare.els10-r0 rebuilt, on an end-of-life release.
+		{"3.18 after the fix", "3.18.12", "2026-10-25T00:00:00Z", apk("php82-fpm", "8.2.16-r0"), false, nil, Unknown},
+		{"3.18 before the fix", "3.18.12", "2026-09-01T00:00:00Z", apk("php82", "8.2.16-r0"), false, nil, VulnerableEOL},
+		{"3.22 with a match", "3.22.2", "2026-10-25T00:00:00Z", apk("php83-fpm", "8.3.24-r0"), true, listed, Vulnerable},
+		{"3.22 backport", "3.22.2", "2026-10-25T00:00:00Z", apk("php83-fpm", "8.3.24-r1"), false, listed, FixedByDistroBackport},
+		{"3.23 feed without the CVE", "3.23.1", "2026-10-25T00:00:00Z", apk("php85", "8.5.11-r0"), false, unlisted, NeedsVendorConfirmation},
+		{"3.24 upstream fix", "3.24.0", "2026-10-25T00:00:00Z", apk("php84-fpm", "8.4.27-r0"), false, listed, Fixed},
+	}
+	for _, c := range cases {
+		d := doc(t, "alpine", c.release, c.created, nil, c.a)
+		hits := map[grypejson.Key][]grypejson.Hit{}
+		if c.hit {
+			hits[grypejson.Key{Name: c.a.name, Version: c.a.version}] = []grypejson.Hit{{CVE: cve19, FixVersions: []string{"8.3.24-r2"}}}
+		}
+		r := Evaluate(Inputs{Doc: d, GrypeRan: true, Hits: hits, Feed: c.feed, Now: now})
+		p := r.PHP[0]
+		if p.Source != SourceDistro || p.Provider != "" || p.CVEs[cve19].Verdict != c.want {
+			t.Errorf("%s: %s %q %s = %s (%s), want a distro build, %s", c.name, p.Source, p.Provider, cve19, p.CVEs[cve19].Verdict, p.CVEs[cve19].Why, c.want)
 		}
 	}
 }
@@ -429,7 +568,7 @@ func TestUnknownEaPHPBuilder(t *testing.T) {
 // An image created before the fix can't hold a backport, so a build whichphp has no data
 // for is vulnerable there, not a question for the vendor.
 func TestNoBackportInAnImageOlderThanTheFix(t *testing.T) {
-	d := doc(t, "centos", "7.9", "2026-09-01T00:00:00Z", nil, art{"php-fpm", "7.4.33-20.el7", "rpm", "", "", "/var/lib/rpm/Packages"})
+	d := doc(t, "almalinux", "8.10", "2026-09-01T00:00:00Z", nil, art{"php-fpm", "7.4.33-20.el8", "rpm", "", "", "/var/lib/rpm/Packages"})
 	d.Artifacts[0].Metadata.Vendor = "GetPageSpeed LLC"
 	res := Evaluate(Inputs{Doc: d, GrypeRan: true, Now: now}).PHP[0].CVEs[cve19]
 	if res.Verdict != VulnerableEOL || !strings.Contains(res.Why, "predates the fix") {
@@ -441,6 +580,7 @@ func TestNoBackportInAnImageOlderThanTheFix(t *testing.T) {
 // not the module build, decides.
 func TestTuxCareLines(t *testing.T) {
 	rpm := func(name, v string) art { return art{name, v, "rpm", "", "", "/var/lib/rpm/Packages"} }
+	apk := func(name, v string) art { return art{name, v, "apk", "", "", "/lib/apk/db/installed"} }
 	cases := []struct {
 		name   string
 		distro string
@@ -459,6 +599,11 @@ func TestTuxCareLines(t *testing.T) {
 		{"counter with a leading zero", "centos 7", rpm("php-fpm", "5.4.16-48.el7.tuxcare.els021"), FixedByVendorBackport},
 		{"counter with a suffix", "centos 7", rpm("php-fpm", "5.4.16-48.el7.tuxcare.els21.1"), NeedsVendorConfirmation},
 		{"CentOS 8's build on AlmaLinux 8", "almalinux 8.10", rpm("php-fpm", "7.4.19-1.module_el8.5.0+2709+673b459a.tuxcare.els32"), NeedsVendorConfirmation},
+		// On Alpine the apk revision orders builds with the same counter, and a revision
+		// on one side only means another package format.
+		{"apk rebuild of the fixed counter", "alpine 3.18", apk("php82-fpm", "8.2.16.tuxcare.els10-r1"), FixedByVendorBackport},
+		{"apk build without a revision", "alpine 3.18", apk("php82-fpm", "8.2.16.tuxcare.els10"), NeedsVendorConfirmation},
+		{"apk revision on an rpm row", "centos 7", rpm("php-fpm", "5.4.16-48.el7.tuxcare.els21-r0"), NeedsVendorConfirmation},
 	}
 	for _, c := range cases {
 		id, ver, _ := strings.Cut(c.distro, " ")
@@ -481,9 +626,16 @@ func TestPackagersInTheTableAreRecognized(t *testing.T) {
 		{"php-cli", "1:8.1.32-1.module_el9.8.0+406+aadb97d2.cloudlinux.2", "rpm", "", "", ""},
 		{"alt-php81-cli", "8.1.34-39.el8", "rpm", "", "", ""},
 		{"alt-php81-cli", "8.1.34-39", "deb", "", "", ""},
+		{"alt-php81-fpm", "8.1.34-r11", "apk", "", "", ""},
 		{"php-cli", "5.4.16-48.el7.tuxcare.els21", "rpm", "", "", ""},
+		{"php82-fpm", "8.2.16.tuxcare.els10-r0", "apk", "", "", ""},
 	} {
 		d := doc(t, "centos", "7", "", nil, a)
+		known[thirdParty(d.Artifacts[0])] = true
+	}
+	for _, name := range []string{"php-cli", "php74-php-cli"} {
+		d := doc(t, "centos", "7", "", nil, art{name, "7.4.33-33.el7", "rpm", "", "", ""})
+		d.Artifacts[0].Metadata.Vendor = "GetPageSpeed LLC"
 		known[thirdParty(d.Artifacts[0])] = true
 	}
 	for _, b := range advisory.Backports {
@@ -522,7 +674,7 @@ Remi,8.1,rhel 9,8.1.34-40,CVE-2026-109618 CVE-2026-109619,https://example.org/rh
 // packages went in, so it can't rule a backport out, here or for an end-of-life distro.
 func TestPlaceholderCreationDate(t *testing.T) {
 	for _, created := range []string{"1970-01-01T00:00:00Z", "1980-01-01T00:00:01Z"} {
-		d := doc(t, "centos", "7.9", created, nil, art{"php-fpm", "7.4.33-33.el7", "rpm", "", "", "/var/lib/rpm/Packages"})
+		d := doc(t, "almalinux", "8.10", created, nil, art{"php-fpm", "7.4.33-33.el8", "rpm", "", "", "/var/lib/rpm/Packages"})
 		d.Artifacts[0].Metadata.Vendor = "GetPageSpeed LLC"
 		r := Evaluate(Inputs{Doc: d, GrypeRan: true, Now: now})
 		if res := r.PHP[0].CVEs[cve19]; res.Verdict != NeedsVendorConfirmation || r.Image.BuiltBeforeFix != nil {
@@ -545,15 +697,29 @@ func TestExtendedLTSRowsHaveAnUpdateCounter(t *testing.T) {
 	}
 }
 
-// Every TuxCare row must be a build whose counter whichphp can read, or no build could
-// ever be ordered against it.
-func TestTuxCareRowsParse(t *testing.T) {
+// Every row of a packager that marks its rebuilds must be a build whose counter whichphp
+// can read, or no build could ever be ordered against it, and must name its distro.
+func TestMarkedLineRowsParse(t *testing.T) {
 	for _, b := range advisory.Backports {
-		if b.Packager != "TuxCare" {
+		l, ok := markedLines[b.Packager]
+		if !ok || b.Fixed == "" {
 			continue
 		}
-		if _, ok := parseTuxCare(b.Fixed); !ok {
-			t.Errorf("TuxCare PHP %d.%d %s: can't read %q", b.Branch[0], b.Branch[1], b.Distro, b.Fixed)
+		if _, ok := l.parse(b.Fixed); !ok || b.Distro == "" {
+			t.Errorf("%s PHP %d.%d %q: can't read %q", b.Packager, b.Branch[0], b.Branch[1], b.Distro, b.Fixed)
+		}
+	}
+}
+
+// Every row of another packager must be a version in the format of the builds it is for:
+// rows for Alpine releases are apk versions, the others aren't.
+func TestRowsMatchTheirPackageFormat(t *testing.T) {
+	for _, b := range advisory.Backports {
+		if _, marked := markedLines[b.Packager]; marked || b.Fixed == "" {
+			continue
+		}
+		if alpine := strings.HasPrefix(b.Distro, "alpine "); pkgver.ValidAPK(b.Fixed) != alpine {
+			t.Errorf("%s PHP %d.%d %q: %q is an apk version: %v", b.Packager, b.Branch[0], b.Branch[1], b.Distro, b.Fixed, !alpine)
 		}
 	}
 }
@@ -581,6 +747,17 @@ TuxCare,7.4,centos 8,7.4.19-1.module_el8.5.0+2600+bbbbbbbb.tuxcare.els20,CVE-202
 		d := doc(t, "centos", "8", "2026-10-25T00:00:00Z", nil, art{"php-fpm", v, "rpm", "", "", "/var/lib/rpm/Packages"})
 		if res := Evaluate(Inputs{Doc: d, GrypeRan: true, Now: now}).PHP[0].CVEs[cve19]; res.Verdict != want {
 			t.Errorf("%s: %s (%s), want %s", v, res.Verdict, res.Why, want)
+		}
+	}
+}
+
+// GetPageSpeed numbers each distro release apart, and its builds carry no marker, so
+// only the dist tag in a row keeps EL7's row off EL6's builds. A row without one would
+// apply everywhere.
+func TestGetPageSpeedRowsNameTheirDist(t *testing.T) {
+	for _, b := range advisory.Backports {
+		if strings.HasPrefix(b.Packager, "GetPageSpeed") && !distTagRE.MatchString(b.Fixed[strings.LastIndexByte(b.Fixed, '-')+1:]) {
+			t.Errorf("%s PHP %d.%d: %q has no dist tag", b.Packager, b.Branch[0], b.Branch[1], b.Fixed)
 		}
 	}
 }

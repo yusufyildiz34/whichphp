@@ -3,7 +3,7 @@ package pkgver
 import "testing"
 
 // FuzzCompare feeds arbitrary version pairs, as they come from package databases in
-// images, to both comparisons. They must never panic, every version must equal itself,
+// images, to every comparison. They must never panic, every version must equal itself,
 // and swapping the arguments must flip the result.
 func FuzzCompare(f *testing.F) {
 	for _, p := range [][2]string{
@@ -14,11 +14,15 @@ func FuzzCompare(f *testing.F) {
 		{"1:", ":1"},
 		{"-", "--"},
 		{"99999999999999999999999:1", "0:1"},
+		{"8.2.16-r0", "8.2.16.tuxcare.els10-r0"},
+		{"0.1.0_alpha_pre2~1234abcd-r1", "0.1_p1"},
+		{"7.4.33-r13", "7.4.33-81"},
 	} {
 		f.Add(p[0], p[1])
 	}
 	f.Fuzz(func(t *testing.T, a, b string) {
-		for name, cmp := range map[string]func(string, string) int{"CompareRPM": CompareRPM, "CompareDeb": CompareDeb} {
+		ValidAPK(a)
+		for name, cmp := range map[string]func(string, string) int{"CompareRPM": CompareRPM, "CompareDeb": CompareDeb, "CompareAPK": CompareAPK} {
 			if got := cmp(a, a); got != 0 {
 				t.Fatalf("%s(%q, %q) = %d, want 0", name, a, a, got)
 			}

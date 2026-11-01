@@ -32,6 +32,7 @@ Usage:
   whichphp image [flags] <image>
   whichphp image --sbom <syft.json> [--grype-json <grype.json>] [flags]
   whichphp cluster --context <name> [-n namespace] [-l selector] [flags]
+  whichphp diff <before> <after> [flags]
   whichphp index [--images index/images.csv] [--data data] [flags]
   whichphp version
 
@@ -42,7 +43,7 @@ whichphp never runs the image. It needs syft and grype on PATH
 (or WHICHPHP_SYFT / WHICHPHP_GRYPE).
 
 Output formats (-o, repeatable; add =<file> to write to a file):
-  table (default), json, sarif (GitHub code scanning), openvex
+  table (default), json, sarif (GitHub code scanning), openvex, cyclonedx
   e.g. whichphp image -o table -o sarif=whichphp.sarif php:8.4-apache
 
 Exit codes: 0 fixed or no PHP, 1 action needed, 2 unknown, 3 error.
@@ -50,6 +51,9 @@ Exit codes: 0 fixed or no PHP, 1 action needed, 2 unknown, 3 error.
 "whichphp cluster" reads which images a cluster's pods actually run (kubectl get,
 nothing else) and says which workloads to redeploy and which images to rebuild.
 Run "whichphp cluster -h" for its flags.
+
+"whichphp diff" compares two images, or saved JSON reports of them, and says
+what changed in PHP and whether the change fixed it. Run "whichphp diff -h".
 
 Flags for "image":
 `
@@ -79,6 +83,8 @@ func run(args []string, stdout, stderr io.Writer) int {
 		return runIndex(args[1:], stdout, stderr)
 	case "cluster":
 		return runCluster(args[1:], stdout, stderr)
+	case "diff":
+		return runDiff(args[1:], stdout, stderr)
 	case "help", "-h", "--help":
 		fmt.Fprint(stdout, usage)
 		newImageFlags(stdout).fs.PrintDefaults()
@@ -94,7 +100,7 @@ type output struct{ format, file string }
 // outputList collects repeated -o flags.
 type outputList []output
 
-var outputFormats = []string{"table", "json", "sarif", "openvex"}
+var outputFormats = []string{"table", "json", "sarif", "openvex", "cyclonedx"}
 
 func (o *outputList) String() string {
 	var parts []string
@@ -135,25 +141,60 @@ func (o outputList) toStdout() (output, bool) {
 }
 
 // destination is an output whose file, if any, was opened before the scan, so a bad
-// path fails at once instead of after a long scan. A regular file is written to a
-// temporary file next to it and renamed into place only when every output is
-// complete. Anything else that already exists (a symlink, a pipe, /dev/stdout) is
-// written directly.
+// path fails at once instead of after a long scan. A regular file, or a symlink to
+// one, is written to a temporary file next to it and renamed into place only when
+// every output is complete, so nothing is truncated before the inputs are read.
+// Anything else that already exists (a pipe, /dev/stdout) is written directly.
 type destination struct {
 	output
-	path   string   // absolute path of the final file; "" for stdout
+	path   string   // absolute path of the final file, past any symlink; "" for stdout
 	file   *os.File // where the output is written
 	direct bool     // file is the destination itself, not a temporary file
 }
 
+// files tells whether two names mean the same file: the same absolute path, the same
+// path once symlinks are resolved, or, for existing regular files, the same file under
+// another name, such as a hard link or another case on a case-insensitive disk.
+type files struct {
+	paths   map[string]bool
+	regular []os.FileInfo
+}
+
+// claim records a file the run reads or writes, and reports false when another one
+// already named the same file.
+func (f *files) claim(abs string) bool {
+	names := []string{abs}
+	if real, err := filepath.EvalSymlinks(abs); err == nil && real != abs {
+		names = append(names, real)
+	}
+	for _, n := range names {
+		if f.paths[n] {
+			return false
+		}
+	}
+	fi, err := os.Stat(abs)
+	if err == nil && fi.Mode().IsRegular() {
+		for _, other := range f.regular {
+			if os.SameFile(fi, other) {
+				return false
+			}
+		}
+		f.regular = append(f.regular, fi)
+	}
+	for _, n := range names {
+		f.paths[n] = true
+	}
+	return true
+}
+
 // prepareOutputs checks the outputs and opens a temporary file for each file output.
-// inputs are files the run reads, which an output must not overwrite.
+// inputs are files the run reads, which an output must not overwrite, under any name.
 func prepareOutputs(outs outputList, inputs ...string) ([]destination, error) {
-	seen := map[string]bool{}
+	seen := &files{paths: map[string]bool{}}
 	for _, in := range inputs {
 		if in != "" {
 			if abs, err := filepath.Abs(in); err == nil {
-				seen[abs] = true
+				seen.claim(abs)
 			}
 		}
 	}
@@ -173,25 +214,43 @@ func prepareOutputs(outs outputList, inputs ...string) ([]destination, error) {
 			abort(dests)
 			return nil, err
 		}
-		if seen[abs] {
+		if !seen.claim(abs) {
 			abort(dests)
 			return nil, fmt.Errorf("%s is used twice: as an input or by another -o", o.file)
 		}
-		seen[abs] = true
 		d := destination{output: o, path: abs}
-		if fi, err := os.Lstat(abs); err == nil && !fi.Mode().IsRegular() {
+		fi, err := os.Lstat(abs)
+		if err == nil && fi.Mode()&os.ModeSymlink != 0 {
+			// Write past the link to what it points to, which stays a link to it. A
+			// link the system resolves to no path, as /dev/stdout can to a pipe, is
+			// written directly.
+			fi, err = os.Stat(abs)
+			if err == nil {
+				if real, rerr := filepath.EvalSymlinks(abs); rerr == nil {
+					d.path = real
+				} else if fi.Mode().IsRegular() {
+					err = rerr
+				}
+			}
+			if err != nil {
+				abort(dests)
+				return nil, fmt.Errorf("can't write %s: %w", o.file, err)
+			}
+		}
+		if err == nil && !fi.Mode().IsRegular() {
 			if fi.IsDir() {
 				abort(dests)
 				return nil, fmt.Errorf("%s is a directory; give a file name", o.file)
 			}
+			// A pipe or a device: nothing to truncate, and nothing to rename into place.
 			d.direct = true
-			d.file, err = os.OpenFile(abs, os.O_WRONLY|os.O_TRUNC, 0)
+			d.file, err = os.OpenFile(d.path, os.O_WRONLY, 0)
 			if err != nil {
 				abort(dests)
 				return nil, fmt.Errorf("can't write %s: %w", o.file, err)
 			}
 		} else {
-			d.file, err = os.CreateTemp(filepath.Dir(abs), "."+filepath.Base(abs)+".*.tmp")
+			d.file, err = os.CreateTemp(filepath.Dir(d.path), "."+filepath.Base(d.path)+".*.tmp")
 			if err == nil {
 				// CreateTemp makes the file private; reports are meant to be read.
 				err = d.file.Chmod(0o644)
@@ -245,7 +304,7 @@ func newImageFlags(out io.Writer) *imageFlags {
 	if out != nil {
 		f.fs.SetOutput(out)
 	}
-	f.fs.Var(&f.outputs, "o", "output to write, as `format[=file]`: table, json, sarif or openvex; repeatable (default table)")
+	f.fs.Var(&f.outputs, "o", "output to write, as `format[=file]`: table, json, sarif, openvex or cyclonedx; repeatable (default table)")
 	f.fs.StringVar(&f.platform, "platform", "", "image platform, e.g. linux/arm64")
 	f.fs.StringVar(&f.sbom, "sbom", "", "use an existing Syft JSON SBOM instead of scanning")
 	f.fs.StringVar(&f.grypeJSON, "grype-json", "", "use existing Grype JSON output instead of running grype")
@@ -255,7 +314,7 @@ func newImageFlags(out io.Writer) *imageFlags {
 	f.fs.BoolVar(&f.skipFeedCheck, "skip-feed-check", false, "don't ask Grype's database whether distro feeds list the CVEs")
 	f.fs.StringVar(&f.keep, "keep", "", "directory to keep the SBOM and Grype output in")
 	f.fs.BoolVar(&f.verbose, "verbose", false, "show Syft and Grype progress")
-	f.fs.StringVar(&f.vexAuthor, "vex-author", "", "author named in OpenVEX output (default \"whichphp automated scan\")")
+	f.fs.StringVar(&f.vexAuthor, "vex-author", "", "author named in OpenVEX and CycloneDX output (OpenVEX default \"whichphp automated scan\")")
 	return f
 }
 
@@ -300,7 +359,13 @@ func runImage(args []string, stdout, stderr io.Writer) int {
 		return 3
 	}
 
-	dests, err := prepareOutputs(f.outputs, f.sbom, f.grypeJSON)
+	// An output must not overwrite what the run reads: an archive or directory given as
+	// the image, or the SBOM and Grype output given instead of running the tools.
+	inputs := []string{f.sbom, f.grypeJSON}
+	if input != "" {
+		inputs = append(inputs, runner.LocalPath(input))
+	}
+	dests, err := prepareOutputs(f.outputs, inputs...)
 	if err != nil {
 		fmt.Fprintf(stderr, "whichphp: %v\n", err)
 		return 3
@@ -317,21 +382,29 @@ func runImage(args []string, stdout, stderr io.Writer) int {
 		fmt.Fprintf(stderr, "whichphp: %s\n", report.Clean(err.Error()))
 		return 3
 	}
-	// Write every file, then move them all into place, then print to stdout: a run
-	// that fails on one output leaves none of its files behind.
 	vex := report.VEXOptions{Author: f.vexAuthor}
+	write := func(w io.Writer, format string) error { return writeOutput(w, format, rep, vex) }
+	if err := writeAll(dests, stdout, write); err != nil {
+		fmt.Fprintf(stderr, "whichphp: %s\n", report.Clean(err.Error()))
+		return 3
+	}
+	return rep.Action.ExitCode()
+}
+
+// writeAll writes every file output, then moves them all into place, then writes to
+// stdout: a run that fails on one output leaves none of its files behind.
+func writeAll(dests []destination, stdout io.Writer, write func(w io.Writer, format string) error) error {
 	for i := range dests {
 		d := &dests[i]
 		if d.file == nil {
 			continue
 		}
-		err := writeOutput(d.file, d.format, rep, vex)
+		err := write(d.file, d.format)
 		if cerr := d.file.Close(); err == nil {
 			err = cerr
 		}
 		if err != nil {
-			fmt.Fprintf(stderr, "whichphp: writing %s: %v\n", d.output.file, err)
-			return 3
+			return fmt.Errorf("writing %s: %w", d.output.file, err)
 		}
 		if d.direct {
 			d.file = nil
@@ -343,20 +416,18 @@ func runImage(args []string, stdout, stderr io.Writer) int {
 			continue
 		}
 		if err := os.Rename(d.file.Name(), d.path); err != nil {
-			fmt.Fprintf(stderr, "whichphp: writing %s: %v\n", d.output.file, err)
-			return 3
+			return fmt.Errorf("writing %s: %w", d.output.file, err)
 		}
 		d.file = nil
 	}
 	for _, d := range dests {
 		if d.path == "" {
-			if err := writeOutput(stdout, d.format, rep, vex); err != nil {
-				fmt.Fprintf(stderr, "whichphp: %v\n", err)
-				return 3
+			if err := write(stdout, d.format); err != nil {
+				return err
 			}
 		}
 	}
-	return rep.Action.ExitCode()
+	return nil
 }
 
 func writeOutput(w io.Writer, format string, rep verdict.Report, vex report.VEXOptions) error {
@@ -369,6 +440,8 @@ func writeOutput(w io.Writer, format string, rep verdict.Report, vex report.VEXO
 		return report.SARIF(w, rep)
 	case "openvex":
 		return report.OpenVEX(w, rep, vex)
+	case "cyclonedx":
+		return report.CycloneDX(w, rep, vex)
 	}
 	return fmt.Errorf("unknown output format %q", format)
 }
@@ -406,13 +479,18 @@ func scan(ctx context.Context, f *imageFlags, input string, stderr io.Writer, ca
 	// 1. SBOM.
 	sbomPath := f.sbom
 	captured := false
+	retried := ""
 	if sbomPath == "" {
 		progress(stderr, f, "Cataloging %s with Syft (the image is read, never run)...", input)
-		p, err := tools.SBOM(ctx, input, f.platform, dir)
+		// Shown even when progress is quiet: the run takes twice as long.
+		tools.Retrying = func(cause string) {
+			fmt.Fprintln(stderr, report.Clean(fmt.Sprintf("whichphp: Syft's download of %s was cut off (%s); reading it once more...", input, cause)))
+		}
+		p, why, err := tools.SBOM(ctx, input, f.platform, dir)
 		if err != nil {
 			return verdict.Report{}, err
 		}
-		sbomPath, captured = p, true
+		sbomPath, captured, retried = p, true, why
 	}
 	doc, err := syftjson.Load(sbomPath)
 	if err != nil {
@@ -462,7 +540,12 @@ func scan(ctx context.Context, f *imageFlags, input string, stderr io.Writer, ca
 		}
 	}
 
-	return verdict.Evaluate(in), nil
+	rep := verdict.Evaluate(in)
+	if retried != "" {
+		rep.Image.ReadRetried = retried
+		rep.Notes = append(rep.Notes, fmt.Sprintf("Syft's first download of the image was cut off (%s), so it was read a second time.", retried))
+	}
+	return rep, nil
 }
 
 // feedCoverage asks Grype's database whether the image's distro security data lists

@@ -105,6 +105,11 @@ type Image struct {
 	// BuiltBeforeFix is true when the image was created before the fixed releases.
 	BuiltBeforeFix *bool  `json:"builtBeforeFix,omitempty"`
 	ServingHint    string `json:"servingHint,omitempty"`
+	// Base is the image this one was built on, when its configuration shows it.
+	Base *BaseImage `json:"base,omitempty"`
+	// ReadRetried is the cause when Syft's first download of the image was cut off
+	// and the image was read a second time.
+	ReadRetried string `json:"readRetried,omitempty"`
 }
 
 // Action is the overall outcome, which also sets the exit code.
@@ -140,6 +145,10 @@ type Report struct {
 	Data     DataInfo                  `json:"data"`
 	Action   Action                    `json:"action"`
 	Notes    []string                  `json:"notes,omitempty"`
+	// ConfigFiles are the PHP configuration files read from the image, by path, so
+	// whichphp cluster can work the settings out again with the files a pod mounts
+	// over them. Nil when the SBOM has no file contents.
+	ConfigFiles map[string]string `json:"-"`
 }
 
 // DataInfo records where the vulnerability data came from.
@@ -176,9 +185,9 @@ var (
 	// "ea-phpNN-php" holds the Apache module on 5.x and 7.x and is empty on 8.x;
 	// "ea-phpNN" and "ea-php-cli" carry no PHP.
 	eaRE = regexp.MustCompile(`^ea-php\d{2}-php-(cli|fpm|litespeed)$|^ea-php[57]\d-php$`)
-	// CloudLinux's alt-php (PHP Selector, /opt/alt/phpNN), also built as deb by TuxCare.
-	// FPM was "alt-phpNN-fpm" before 2025 and is "alt-phpNN-php-fpm" since; every
-	// subpackage of a build shares its release.
+	// CloudLinux's alt-php (PHP Selector, /opt/alt/phpNN), also built as deb and apk by
+	// TuxCare. FPM was "alt-phpNN-fpm" before 2025 and is "alt-phpNN-php-fpm" since (it
+	// is still "alt-phpNN-fpm" on Alpine); every subpackage of a build shares its release.
 	altRE = regexp.MustCompile(`^alt-php\d{2}-(cli|fpm|php-fpm)$`)
 )
 
@@ -227,7 +236,7 @@ func classify(a syftjson.Artifact) string {
 		}
 		return ""
 	case "apk":
-		if apkRE.MatchString(a.Name) {
+		if apkRE.MatchString(a.Name) || altRE.MatchString(a.Name) {
 			return SourceDistro
 		}
 		return ""
@@ -269,17 +278,20 @@ func thirdParty(a syftjson.Artifact) string {
 	// for releases past their end of life.
 	case tuxcareRE.MatchString(v):
 		return "TuxCare"
-	case a.Type == "deb" && strings.HasPrefix(a.Name, "alt-php"):
+	case (a.Type == "deb" || a.Type == "apk") && strings.HasPrefix(a.Name, "alt-php"):
 		return "TuxCare alt-php"
 	case strings.Contains(v, ".remi"):
 		return "Remi"
 	// GetPageSpeed's releases end in a plain ".el7", like the distro's own; only the
 	// rpm Vendor tag tells them apart.
+	// Its base packages and its Software Collections number their releases apart.
+	case a.Type == "rpm" && strings.HasPrefix(a.Metadata.Vendor, "GetPageSpeed") && sclRE.MatchString(a.Name):
+		return "GetPageSpeed SCL"
 	case a.Type == "rpm" && strings.HasPrefix(a.Metadata.Vendor, "GetPageSpeed"):
 		return "GetPageSpeed"
 	// CloudLinux builds cPanel's packages under the same names, with epoch 1 and
 	// ".elN.cloudlinux" releases that sort above every cPanel build. Its own system PHP
-	// carries the same marker in a module release and is numbered differently again.
+	// carries the same marker after the release of the distro build it rebuilt.
 	case strings.Contains(v, ".cloudlinux") && strings.HasPrefix(a.Name, "ea-php"):
 		return "CloudLinux ea-php"
 	case strings.Contains(v, ".cloudlinux"):
@@ -425,10 +437,18 @@ func Evaluate(in Inputs) Report {
 		}
 	}
 
+	r.Image.Base = findBase(cfg, doc.Distro, r.PHP)
+	if note := baseAdvice(r.Image.Base, r.PHP); note != "" {
+		r.Notes = append(r.Notes, note)
+	}
+
 	// Settings.
 	files := doc.FileContents()
 	ini := phpini.Evaluate(files, in.ContentCaptured || len(files) > 0)
 	r.Settings = ini.Settings
+	if ini.ContentSeen {
+		r.ConfigFiles = files
+	}
 	is85 := false
 	for _, p := range r.PHP {
 		if v, ok := phpver.Parse(p.Version); ok && v.Branch() == [2]int{8, 5} {
@@ -558,8 +578,18 @@ func pkgCompare(typ string) func(a, b string) int {
 		return pkgver.CompareDeb
 	case "rpm":
 		return pkgver.CompareRPM
+	case "apk":
+		return pkgver.CompareAPK
 	}
 	return nil
+}
+
+// pkgValid reports whether v is written in the package format's own syntax. Only apk
+// rejects anything: apk-tools can't read a deb release such as "7.4.33-81" and compares
+// two versions equal from the first character it can't read, so "7.4.33-1" would equal
+// it. rpm and dpkg order every string.
+func pkgValid(typ, v string) bool {
+	return typ != "apk" || pkgver.ValidAPK(v)
 }
 
 // Packagers that extend a distro release's support after the distro's own ends, with
@@ -582,8 +612,8 @@ func sameDebianLine(installed, fixed string) bool {
 
 // extendedBackport finds the first fixed build of a distro package from a packager that
 // extends the distro's support. A row applies only to versions in the same numbering
-// as its own: another repository's build of the branch, if it went unrecognized, could
-// sort above the row and look fixed.
+// and package format as its own: another repository's build of the branch, if it went
+// unrecognized, could sort above the row and look fixed.
 func extendedBackport(p PHP, cve, distro string) (advisory.Backport, bool) {
 	v, ok := phpver.Parse(p.Version)
 	cmp := pkgCompare(p.Type)
@@ -596,7 +626,7 @@ func extendedBackport(p PHP, cve, distro string) (advisory.Backport, bool) {
 		if !distroExtenders[b.Packager] || b.Distro != distro || b.Branch != v.Branch() || b.Fixed == "" || !b.Fixes(cve) {
 			continue
 		}
-		if !sameDebianLine(p.Version, b.Fixed) || pkgver.CompareEpoch(p.Version, b.Fixed) > 0 {
+		if !sameDebianLine(p.Version, b.Fixed) || pkgver.CompareEpoch(p.Version, b.Fixed) > 0 || !pkgValid(p.Type, b.Fixed) {
 			continue
 		}
 		if !found || cmp(b.Fixed, first.Fixed) < 0 {
@@ -627,7 +657,7 @@ func fixedFor(row advisory.Backport, version string) (string, bool) {
 // Packagers whose builds of branches PHP still supports are upstream releases. The
 // others, and all of them on end-of-life branches, backport fixes without changing the
 // PHP version.
-var rebasesSupported = map[string]bool{"Sury": true, "Remi": true, "cPanel": true, "GetPageSpeed": true}
+var rebasesSupported = map[string]bool{"Sury": true, "Remi": true, "cPanel": true, "GetPageSpeed": true, "GetPageSpeed SCL": true}
 
 // byPackager judges a third-party build: by its upstream version where that settles it,
 // otherwise by the packager's first fixed build in packagers.csv. builtBeforeFix says
@@ -648,9 +678,9 @@ func byPackager(p PHP, cve, distro string, builtBeforeFix bool) (Verdict, string
 			continue
 		}
 		fixed, ok := fixedFor(row, p.Version)
-		same, sameBuild := sameLine(p.Provider, p.Version, fixed)
+		same, sameBuild := sameLine(p, fixed)
 		switch {
-		case !ok || cmp == nil || !row.Fixes(cve) || !same:
+		case !ok || cmp == nil || !row.Fixes(cve) || !same || !sameDist(p.Version, fixed):
 		// A build with a higher epoch than the row's comes from another line, or the row
 		// lacks the epoch; either way the row doesn't order it.
 		case pkgver.CompareEpoch(p.Version, fixed) > 0:
@@ -680,6 +710,31 @@ func byPackager(p PHP, cve, distro string, builtBeforeFix bool) (Verdict, string
 	return base, fmt.Sprintf("%s ships upstream PHP %d.%d releases: %s", p.Provider, b[0], b[1], why)
 }
 
+// sclRE matches a Software Collection's package name, "php74-php-cli".
+var sclRE = regexp.MustCompile(`^php\d+-php`)
+
+// distTagRE finds the dist tag in a package release: "el7" in "33.el7", "el9" in
+// "8.el9_8.cloudlinux.2", "amzn2" in "40.amzn2". An EL8 module's "module_el8" isn't one.
+var distTagRE = regexp.MustCompile(`(?:^|\.)(el\d+|amzn\d+|fc\d+)(?:[._]|$)`)
+
+// sameDist reports whether a build has the dist tag of a row's fixed build, when the row
+// names one. A packager that builds a branch for several distro releases numbers each
+// on its own (GetPageSpeed's 7.0 is fixed from -43 on EL7 and from -49 on EL6), so its
+// row for one release says nothing about another's builds.
+func sameDist(installed, fixed string) bool {
+	release := func(v string) string { return v[strings.LastIndexByte(v, '-')+1:] }
+	m := distTagRE.FindStringSubmatch(release(fixed))
+	if m == nil {
+		return true
+	}
+	for _, t := range distTagRE.FindAllStringSubmatch(release(installed), -1) {
+		if t[1] == m[1] {
+			return true
+		}
+	}
+	return false
+}
+
 // rowsFor returns the rows for a packager's build. Rows for the build's distro release,
 // "none" rows included, replace the general ones: the general rows describe other
 // releases' builds.
@@ -697,16 +752,21 @@ func rowsFor(packager string, branch [2]int, distro string) []advisory.Backport 
 	return rows
 }
 
-// packagerOrder returns how a packager's builds sort. TuxCare's builds of one line differ
-// in its own counter after the marker, which alone orders them.
+// packagerOrder returns how a packager's builds sort. The builds of one line of a
+// packager that marks its rebuilds differ in its own counter after the marker (then, on
+// Alpine, in the apk revision), which alone orders them in any package format.
 func packagerOrder(provider string, cmp func(a, b string) int) func(a, b string) int {
-	if provider != "TuxCare" || cmp == nil {
+	l, ok := markedLines[provider]
+	if !ok || cmp == nil {
 		return cmp
 	}
 	return func(a, b string) int {
-		ta, _ := parseTuxCare(a)
-		tb, _ := parseTuxCare(b)
-		return pkgver.CompareRPM(ta.counter, tb.counter)
+		ba, _ := l.parse(a)
+		bb, _ := l.parse(b)
+		if c := pkgver.CompareRPM(ba.counter, bb.counter); c != 0 {
+			return c
+		}
+		return pkgver.CompareRPM(ba.revision, bb.revision)
 	}
 }
 
@@ -714,44 +774,81 @@ func packagerOrder(provider string, cmp func(a, b string) int) func(a, b string)
 // rebuilt: "5.4.16-48.el7.tuxcare.els21", "7.4.33-1+deb11u12+tuxcare.els2".
 var tuxcareRE = regexp.MustCompile(`[.+]tuxcare\.`)
 
-// tuxcareBuildRE splits a TuxCare build into the distro build it rebuilt, the counter's
-// scheme ("els", or "ol.els" for Oracle Linux) and the counter.
-var tuxcareBuildRE = regexp.MustCompile(`^(?:0:)?(.+)[.+]tuxcare\.((?:ol\.)?els)(\d+)$`)
+// A markedLine describes a packager that rebuilds a distro's own package and marks the
+// build: the distro build it rebuilt comes before the marker, its own counter after it.
+// Such a packager numbers the builds of each distro build on its own.
+type markedLine struct {
+	// build splits a version into the distro build ("base"), the counter's scheme
+	// ("scheme"), the counter ("counter") and an apk revision ("rev"); a packager without
+	// schemes or apk builds leaves those groups out.
+	build *regexp.Regexp
+	// rebuild finds what a rebuild of the same line changes in the distro build, and keep
+	// is what of it stays: an EL8 module build, "+2709+673b459a" in
+	// "1.module_el8.5.0+2709+673b459a".
+	rebuild *regexp.Regexp
+	keep    string
+}
 
-// moduleBuildRE finds an EL8 module build's counter and hash, which every rebuild of a
-// module stream changes: "+2709+673b459a" in "1.module_el8.5.0+2709+673b459a".
-var moduleBuildRE = regexp.MustCompile(`\+\d+\+[0-9a-f]+`)
+var markedLines = map[string]markedLine{
+	// TuxCare: "5.4.16-48.el7.tuxcare.els21", "7.4.33-1+deb11u12+tuxcare.els2" and, on
+	// Alpine, "8.2.16.tuxcare.els10-r0"; "ol.els" for Oracle Linux. It numbers each distro
+	// release it extends on its own (CentOS 8.4 and 8.5, AlmaLinux 9.2 and 9.6), so a line
+	// keeps its EL minor release and only an EL8 module build's "+2709+673b459a" changes.
+	"TuxCare": {
+		regexp.MustCompile(`^(?:0:)?(?P<base>.+)[.+]tuxcare\.(?P<scheme>(?:ol\.)?els)(?P<counter>\d+)(?:-r(?P<rev>\d+))?$`),
+		regexp.MustCompile(`\+\d+\+[0-9a-f]+`), "",
+	},
+	// CloudLinux's system PHP: "1:8.0.30-8.el9_8.cloudlinux.2"; its first build of a
+	// distro build has no counter, "1:8.0.30-1.module_el8.8.0+6722+42d2b711.cloudlinux".
+	// It rebuilds a module stream for each new EL minor release and carries on the
+	// counter (8.1.32-1's .cloudlinux.1 on el9.6.0, .cloudlinux.2 on el9.8.0), so the
+	// minor release is part of the module build.
+	"CloudLinux": {
+		regexp.MustCompile(`^(?:0:)?(?P<base>.+)\.cloudlinux(?:\.(?P<counter>\d+))?$`),
+		regexp.MustCompile(`(\.module_el\d+)[.\d]*\+\d+\+[0-9a-f]+`), "$1",
+	},
+}
 
-type tuxcareBuild struct{ base, scheme, counter string }
+// A lineBuild is a marked build split into its parts.
+type lineBuild struct{ base, scheme, counter, revision string }
 
-func parseTuxCare(v string) (tuxcareBuild, bool) {
-	m := tuxcareBuildRE.FindStringSubmatch(v)
+func (l markedLine) parse(v string) (lineBuild, bool) {
+	m := l.build.FindStringSubmatch(v)
 	if m == nil {
-		return tuxcareBuild{}, false
+		return lineBuild{}, false
 	}
-	return tuxcareBuild{m[1], m[2], m[3]}, true
+	group := func(name string) string {
+		if i := l.build.SubexpIndex(name); i >= 0 {
+			return m[i]
+		}
+		return ""
+	}
+	return lineBuild{group("base"), group("scheme"), group("counter"), group("rev")}, true
 }
 
 // sameLine reports whether an installed build is on the line of a row's fixed build, and
-// whether it is the same distro build. TuxCare numbers each distro build it extends on
-// its own, and one distro key can cover several (CentOS 8.4 and 8.5, AlmaLinux 9.2 and
-// 9.6), so its rows apply only to builds of the same distro release. An EL8 module
-// stream changes its module build with every rebuild: a build of the same stream with
-// another module build is on the line, but only the same distro build can show it fixed,
-// in case two lines differ only there. A counter in any other scheme can't be ordered.
-func sameLine(provider, installed, fixed string) (same, sameBuild bool) {
-	if provider != "TuxCare" {
-		return true, true
+// whether it is the same distro build. A packager that marks its rebuilds numbers each
+// distro build on its own, and one distro key can cover several (CentOS 8.4 and 8.5,
+// AlmaLinux 9.2 and 9.6), so its rows apply only to builds of the same distro build,
+// less what a rebuild of the line changes. Such a build is on the line, but only the
+// same distro build can show it fixed, in case two lines differ only there. A counter in
+// another scheme, or with an apk revision where the row has none, can't be ordered. Any
+// other packager's row must be written in the build's own package format.
+func sameLine(p PHP, fixed string) (same, sameBuild bool) {
+	l, marked := markedLines[p.Provider]
+	if !marked {
+		ok := pkgValid(p.Type, p.Version) && pkgValid(p.Type, fixed)
+		return ok, ok
 	}
-	i, ok1 := parseTuxCare(installed)
-	f, ok2 := parseTuxCare(fixed)
-	if !ok1 || !ok2 || i.scheme != f.scheme {
+	i, ok1 := l.parse(p.Version)
+	f, ok2 := l.parse(fixed)
+	if !ok1 || !ok2 || i.scheme != f.scheme || (i.revision == "") != (f.revision == "") {
 		return false, false
 	}
 	if i.base == f.base {
 		return true, true
 	}
-	return moduleBuildRE.ReplaceAllString(i.base, "") == moduleBuildRE.ReplaceAllString(f.base, ""), false
+	return l.rebuild.ReplaceAllString(i.base, l.keep) == l.rebuild.ReplaceAllString(f.base, l.keep), false
 }
 
 func servingHint(entrypoint, cmd []string) string {

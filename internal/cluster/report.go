@@ -7,7 +7,9 @@ import (
 	"slices"
 	"sort"
 	"strings"
+	"time"
 
+	"github.com/yusufyildiz34/whichphp/internal/phpini"
 	"github.com/yusufyildiz34/whichphp/internal/report"
 )
 
@@ -34,8 +36,66 @@ var verdictLabels = map[string]string{
 // The reminders every report ends with.
 var (
 	evidenceNote = "Before you redeploy: recreating a pod deletes its logs and writable layer. If you need to check whether it was compromised, save them first."
-	settingsNote = "Settings come from the images; a php.ini mounted from a ConfigMap or set through the environment isn't read."
+	settingsNote = "Settings come from the images and from the ConfigMaps mounted at PHP configuration paths; Secrets, other volumes and environment variables aren't read."
 )
+
+// uploadText says what session.upload_progress.enabled is for a container and where
+// that comes from.
+func uploadText(cr ContainerResult) string {
+	value := cr.UploadProgress
+	switch value {
+	case "off-in-fpm-pool":
+		value = "off in an FPM pool file only"
+	case "unknown":
+		return "unknown"
+	}
+	// A ConfigMap whose files were all left out is named apart.
+	var setBy, mountedAt, leftOut []string
+	for _, m := range cr.ConfigMaps {
+		switch {
+		case m.Error != "":
+			continue
+		case len(m.Files) == 0 && len(m.LeftOut) > 0:
+			leftOut = append(leftOut, "ConfigMap "+m.Name+" at "+m.MountPath)
+			continue
+		}
+		mountedAt = append(mountedAt, "ConfigMap "+m.Name+" at "+m.MountPath)
+		for _, f := range m.Files {
+			if slices.Contains(cr.UploadProgressSetIn, f) {
+				setBy = append(setBy, "ConfigMap "+m.Name+" ("+f+")")
+			}
+		}
+	}
+	var text string
+	switch {
+	case len(setBy) > 0:
+		text = value + ", set in " + strings.Join(setBy, ", ")
+	case len(mountedAt) > 0:
+		text = value + ", with " + strings.Join(mountedAt, ", ") + " mounted"
+	default:
+		text = value + ", from the image"
+	}
+	if len(leftOut) > 0 {
+		text += "; left out: " + strings.Join(leftOut, ", ")
+	}
+	return text
+}
+
+// exposureLine says since when a workload's pods have run vulnerable PHP.
+func exposureLine(e *Exposure) string {
+	if e == nil {
+		return ""
+	}
+	t, err := time.Parse(time.RFC3339, e.Since)
+	if err != nil {
+		return ""
+	}
+	days := "less than a day"
+	if e.Days > 0 {
+		days = fmt.Sprintf("%d %s", e.Days, plural(e.Days, "day", "days"))
+	}
+	return "running vulnerable PHP since " + t.UTC().Format("Jan 2, 2006") + ", " + days
+}
 
 // errWriter remembers the first write error, so a report can be written with many
 // Fprintf calls and checked once.
@@ -72,6 +132,9 @@ func Table(out io.Writer, r Result) error {
 			continue
 		}
 		fmt.Fprintf(w, "\n%-14s %s\n", actionTitles[wl.Action], name)
+		if line := exposureLine(wl.Exposure); line != "" {
+			fmt.Fprintf(w, "  %s\n", line)
+		}
 		for _, cr := range wl.Containers {
 			// An OK workload shows only containers with something to say.
 			if cr.Result.Action == ActionNoPHP && len(cr.Notes) == 0 || wl.Action == ActionOK && len(cr.Notes) == 0 {
@@ -86,9 +149,13 @@ func Table(out io.Writer, r Result) error {
 				fmt.Fprintf(w, " on %s", c(cr.Platform))
 			}
 			fmt.Fprintf(w, ", %d %s\n", len(cr.Pods), plural(len(cr.Pods), "pod", "pods"))
+			from := ""
+			if cr.FromDocker {
+				from = ", read from the local Docker daemon"
+			}
 			switch {
 			case cr.Running != "":
-				fmt.Fprintf(w, "    running %s\n", c(shortDigest(Digest(cr.Running))))
+				fmt.Fprintf(w, "    running %s%s\n", c(shortDigest(Digest(cr.Running))), from)
 			case cr.RunningUnverified && cr.LocalID != "" && cr.Result.ImageID != "":
 				fmt.Fprintf(w, "    running image ID %s, not the tag's image now; checked the tag as it is now\n", c(shortDigest(cr.LocalID)))
 			case cr.RunningUnverified && cr.LocalID != "":
@@ -96,10 +163,13 @@ func Table(out io.Writer, r Result) error {
 			case cr.RunningUnverified:
 				fmt.Fprintf(w, "    running an image the runtime didn't name; checked the tag as it is now\n")
 			case cr.LocalID != "":
-				fmt.Fprintf(w, "    running image ID %s\n", c(shortDigest(cr.LocalID)))
+				fmt.Fprintf(w, "    running image ID %s%s\n", c(shortDigest(cr.LocalID)), from)
 			}
 			if line := phpLine(cr.Result); line != "" {
 				fmt.Fprintf(w, "    %s\n", line)
+				if cr.UploadProgress != "" {
+					fmt.Fprintf(w, "    %s: %s\n", phpini.UploadProgress, c(uploadText(cr)))
+				}
 			}
 			if cr.TagMoved && cr.TagResult != nil {
 				fmt.Fprintf(w, "    the tag now points to %s: %s\n", c(shortDigest(cr.TagDigest)), c(statusText(*cr.TagResult)))

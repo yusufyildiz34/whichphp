@@ -1,6 +1,6 @@
-// Package pkgver compares package versions the way rpm and dpkg do. Packagers that
-// backport fixes keep the upstream PHP version and change only the package release, so
-// whether a build is fixed depends on this order, not on the PHP version.
+// Package pkgver compares package versions the way rpm, dpkg and apk-tools do. Packagers
+// that backport fixes keep the upstream PHP version and change only the package release,
+// so whether a build is fixed depends on this order, not on the PHP version.
 package pkgver
 
 import "strings"
@@ -187,6 +187,150 @@ func order(c byte) int {
 		return -1
 	}
 	return int(c) + 256
+}
+
+// CompareAPK compares two Alpine package versions as apk-tools does (src/version.c) and
+// returns -1, 0 or 1. A version is numbers separated by dots, an optional letter,
+// suffixes (_alpha, _beta, _pre and _rc sort before none; _cvs, _svn, _git, _hg and _p
+// after it), an optional "~" commit hash and the "-rN" revision: "1.2.3a_rc1_p2-r4". Like
+// apk-tools, it stops at the first character that doesn't fit, so two versions that go
+// wrong at the same place compare equal; ValidAPK tells whether a version fits. Numbers
+// are compared by value at any length, where apk-tools would wrap at 2^64.
+func CompareAPK(a, b string) int {
+	ta, tb := apkFirst(a), apkFirst(b)
+	for ta.kind == tb.kind && ta.kind < apkEnd {
+		if c := apkCompareToken(ta, tb); c != 0 {
+			return c
+		}
+		ta.next()
+		tb.next()
+	}
+	// The versions agree up to here. The one that goes on is greater, unless it goes on
+	// with a pre-release suffix; an invalid token sorts below the end.
+	switch {
+	case ta.kind == tb.kind:
+		return 0
+	case ta.kind == apkSuffix && ta.suffix < apkNoSuffix:
+		return -1
+	case tb.kind == apkSuffix && tb.suffix < apkNoSuffix:
+		return 1
+	case ta.kind > tb.kind:
+		return -1
+	}
+	return 1
+}
+
+// ValidAPK reports whether v is a version apk-tools accepts (apk_version_validate).
+func ValidAPK(v string) bool {
+	t := apkFirst(v)
+	for t.kind < apkEnd {
+		t.next()
+	}
+	return t.kind == apkEnd
+}
+
+// apk-tools' token kinds, in the order a version may use them.
+const (
+	apkInitialDigit = iota
+	apkDigit
+	apkLetter
+	apkSuffix
+	apkSuffixNo
+	apkCommitHash
+	apkRevisionNo
+	apkEnd
+	apkInvalid
+)
+
+// apkSuffixes rank the suffixes apk-tools knows; apkNoSuffix is a version without one.
+var apkSuffixes = map[string]int{"alpha": 1, "beta": 2, "pre": 3, "rc": 4, "cvs": 6, "svn": 7, "git": 8, "hg": 9, "p": 10}
+
+const apkNoSuffix = 5
+
+// apkToken is the current token of a version and what follows it.
+type apkToken struct {
+	kind, suffix int
+	// value is the token's text: digits, a letter, a suffix's name or a commit hash.
+	value, rest string
+}
+
+func apkFirst(v string) apkToken {
+	t := apkToken{kind: apkInitialDigit, rest: v}
+	t.digits()
+	return t
+}
+
+// digits takes the run of digits that the token's kind calls for; there must be one.
+func (t *apkToken) digits() {
+	n := 0
+	for n < len(t.rest) && isDigit(t.rest[n]) {
+		n++
+	}
+	t.value, t.rest = t.rest[:n], t.rest[n:]
+	if n == 0 {
+		t.kind = apkInvalid
+	}
+}
+
+// next moves to the following token, which must be one the current token allows.
+func (t *apkToken) next() {
+	if t.rest == "" {
+		t.kind = apkEnd
+		return
+	}
+	switch c := t.rest[0]; {
+	case 'a' <= c && c <= 'z' && t.kind <= apkDigit:
+		t.kind, t.value, t.rest = apkLetter, t.rest[:1], t.rest[1:]
+	case c == '.' && t.kind <= apkDigit:
+		t.kind, t.rest = apkDigit, t.rest[1:]
+		t.digits()
+	case isDigit(c) && t.kind == apkSuffix:
+		t.kind = apkSuffixNo
+		t.digits()
+	case c == '_' && t.kind <= apkSuffixNo:
+		n := 1
+		for n < len(t.rest) && 'a' <= t.rest[n] && t.rest[n] <= 'z' {
+			n++
+		}
+		s, ok := apkSuffixes[t.rest[1:n]]
+		if !ok {
+			t.kind = apkInvalid
+			return
+		}
+		t.kind, t.suffix, t.value, t.rest = apkSuffix, s, t.rest[1:n], t.rest[n:]
+	case c == '~' && t.kind < apkCommitHash:
+		n := 1
+		for n < len(t.rest) && (isDigit(t.rest[n]) || 'a' <= t.rest[n] && t.rest[n] <= 'f') {
+			n++
+		}
+		if n == 1 {
+			t.kind = apkInvalid
+			return
+		}
+		t.kind, t.value, t.rest = apkCommitHash, t.rest[1:n], t.rest[n:]
+	case strings.HasPrefix(t.rest, "-r") && t.kind < apkRevisionNo:
+		t.kind, t.rest = apkRevisionNo, t.rest[2:]
+		t.digits()
+	default:
+		t.kind = apkInvalid
+	}
+}
+
+// apkCompareToken compares two tokens of the same kind. A number after a dot with a
+// leading zero is compared as a string, as Gentoo does, so 1.01 sorts below 1.1.
+func apkCompareToken(a, b apkToken) int {
+	switch a.kind {
+	case apkDigit:
+		if a.value[0] == '0' || b.value[0] == '0' {
+			return strings.Compare(a.value, b.value)
+		}
+		return compareNumeric(a.value, b.value)
+	case apkInitialDigit, apkSuffixNo, apkRevisionNo:
+		return compareNumeric(a.value, b.value)
+	case apkSuffix:
+		return sign(a.suffix - b.suffix)
+	}
+	return strings.Compare(a.value, b.value)
 }
 
 // CompareEpoch compares the epochs of two rpm or Debian versions; a version without one

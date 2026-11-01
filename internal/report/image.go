@@ -10,7 +10,7 @@ import (
 	"github.com/yusufyildiz34/whichphp/internal/verdict"
 )
 
-// repoURL is where whichphp lives; SARIF and OpenVEX output link to it.
+// repoURL is where whichphp lives; SARIF, OpenVEX and CycloneDX output link to it.
 const repoURL = "https://github.com/yusufyildiz34/whichphp"
 
 // Source schemes Syft accepts. The first group names an image in a registry or a
@@ -75,6 +75,9 @@ func imageLabel(r verdict.Report) string {
 	}
 	return "image"
 }
+
+// ImageLabel is imageLabel for other packages that name the image in a report.
+func ImageLabel(r verdict.Report) string { return imageLabel(r) }
 
 // imageRepo names the image without its tag or digest (registry/repository), so
 // rebuilds and per-commit tags of the same image are recognized as one. Archives and

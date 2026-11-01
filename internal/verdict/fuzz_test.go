@@ -18,6 +18,10 @@ func FuzzPackagerVerdict(f *testing.F) {
 		{"php-fpm", "7.4.33-33.el7", "rpm", "centos", "7.9", "GetPageSpeed LLC", "2026-09-01T00:00:00Z"},
 		{"alt-php73-cli", "1:7.3.33-82.el9", "rpm", "cloudlinux", "9.6", "", "2026-10-25T00:00:00Z"},
 		{"php82-fpm", "8.2.16.tuxcare.els10-r0", "apk", "alpine", "3.18", "", ""},
+		{"alt-php74-fpm", "7.4.33-r13", "apk", "alpine", "3.23.1", "", "2026-10-25T00:00:00Z"},
+		{"alt-php74-cli", "7.4.33-81", "apk", "alpine", "3.22", "", ""},
+		{"php-fpm", "1:7.2.24-1.module_el8.4.0+6493+7c76a223.cloudlinux.1", "rpm", "cloudlinux", "8.10", "", "2026-10-25T00:00:00Z"},
+		{"php-cli", "1:8.0.30-1.module_el8.8.0+6722+42d2b711.cloudlinux", "rpm", "cloudlinux", "8", "", ""},
 		{"ea-php81-php-cli", "1:", "deb", "", "", "", "not a date"},
 	} {
 		f.Add(s[0], s[1], s[2], s[3], s[4], s[5], s[6])

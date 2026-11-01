@@ -1,4 +1,4 @@
-// Package report renders a verdict report as a table, JSON, SARIF or OpenVEX.
+// Package report renders a verdict report as a table, JSON, SARIF, OpenVEX or CycloneDX.
 package report
 
 import (
@@ -85,6 +85,13 @@ func Table(out io.Writer, r verdict.Report) error {
 	}
 	if r.Image.ServingHint != "" {
 		fmt.Fprintf(w, "Serves:  %s\n", clean(r.Image.ServingHint))
+	}
+	if b := r.Image.Base; b != nil {
+		name := b.Image + ":" + b.Tag
+		if b.Tag == "" {
+			name = fmt.Sprintf("%s with PHP %s", b.Image, b.PHPVersion)
+		}
+		fmt.Fprintf(w, "Base:    %s (from the image's environment)\n", clean(name))
 	}
 	fmt.Fprintln(w)
 

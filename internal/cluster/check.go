@@ -2,11 +2,13 @@ package cluster
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"io"
 	"runtime"
 	"sort"
 	"strings"
+	"time"
 	"unicode"
 	"unicode/utf8"
 
@@ -54,7 +56,14 @@ type ImageResult struct {
 	// ImageID is the sha256 of the image config, which identifies the content
 	// whatever manifest or index digest it was reached through.
 	ImageID string `json:"imageID,omitempty"`
+	// Retried is the cause when Syft's first download was cut off and the image was
+	// read a second time.
+	Retried string `json:"retried,omitempty"`
 	Error   string `json:"error,omitempty"`
+	// files are the image's PHP configuration files, by path.
+	files map[string]string
+	// arch is the architecture of the image Syft read, as its report says.
+	arch string
 }
 
 // ContainerResult is a Container with its verdict and, for a tag, what the tag points
@@ -74,21 +83,41 @@ type ContainerResult struct {
 	TagResult *ImageResult `json:"tagResult,omitempty"`
 	// TagLookupError is set when what the tag points to now couldn't be found out,
 	// for example for a private registry.
-	TagLookupError string   `json:"tagLookupError,omitempty"`
-	Advice         string   `json:"advice,omitempty"`
-	Notes          []string `json:"notes,omitempty"`
+	TagLookupError string `json:"tagLookupError,omitempty"`
+	// FromDocker is set when the running image was read from the local Docker daemon
+	// rather than from its registry.
+	FromDocker bool `json:"fromDocker,omitempty"`
+	// UploadProgress is session.upload_progress.enabled as this container's PHP sees
+	// it: the image's files with the ConfigMaps mounted over them. UploadProgressSetIn
+	// lists the files that set it, and ConfigMaps the ConfigMaps mounted at PHP
+	// configuration paths.
+	UploadProgress      string        `json:"uploadProgress,omitempty"`
+	UploadProgressSetIn []string      `json:"uploadProgressSetIn,omitempty"`
+	ConfigMaps          []ConfigMount `json:"configMaps,omitempty"`
+	Advice              string        `json:"advice,omitempty"`
+	Notes               []string      `json:"notes,omitempty"`
 }
 
 // Workload groups the containers of one Deployment, StatefulSet, DaemonSet, Job or
 // bare pod.
 type Workload struct {
-	Namespace  string            `json:"namespace"`
-	Kind       string            `json:"kind"`
-	Name       string            `json:"name"`
-	Action     string            `json:"action"`
-	Redeploy   bool              `json:"redeploy,omitempty"`
-	Restart    string            `json:"restart,omitempty"`
+	Namespace string `json:"namespace"`
+	Kind      string `json:"kind"`
+	Name      string `json:"name"`
+	Action    string `json:"action"`
+	Redeploy  bool   `json:"redeploy,omitempty"`
+	Restart   string `json:"restart,omitempty"`
+	// Exposure says since when the workload's pods have run a vulnerable image.
+	Exposure   *Exposure         `json:"exposure,omitempty"`
 	Containers []ContainerResult `json:"containers"`
+	since      time.Time
+}
+
+// Exposure is how long pods have been running an image whose PHP is vulnerable or
+// end-of-life: since the earliest start of a pod running it.
+type Exposure struct {
+	Since string `json:"since"` // RFC 3339
+	Days  int    `json:"days"`  // whole days from then until the check
 }
 
 // Result is the whole cluster report.
@@ -113,6 +142,14 @@ type CheckOptions struct {
 	Context, Kubeconfig, KubeconfigEnv string
 	NoRestart                          bool
 	Log                                io.Writer
+	// ReadConfigMap reads the ConfigMaps mounted at PHP configuration paths; nil
+	// leaves the images' files in place, with a note.
+	ReadConfigMap ConfigMapReader
+	// Docker, when set, looks each running image up in the local Docker daemon, and
+	// an image found there is read from it rather than from its registry.
+	Docker DockerInspector
+	// Now is the clock for exposure windows; nil means time.Now.
+	Now func() time.Time
 }
 
 // Check scans every running image once, resolves every tag once, and builds the
@@ -173,6 +210,48 @@ func Check(ctx context.Context, containers []Container, scan Scanner, resolve Re
 		}{d, err}
 		return d, err
 	}
+	type dockerImage struct {
+		id, platform string
+		err          error
+	}
+	inDocker := map[string]dockerImage{}
+	// fromDocker returns the Syft source for the running image in the local Docker
+	// daemon and the platform Docker gives for it, or a note that says why the
+	// registry is used instead.
+	fromDocker := func(c Container) (source, platform, note string) {
+		ref := c.LocalID
+		if ref == "" {
+			ref = c.Running
+		}
+		if ref == "" {
+			return "", "", "The runtime reported no image digest or ID to look up in the local Docker daemon, so the image was read from its registry."
+		}
+		img, ok := inDocker[ref]
+		if !ok {
+			b, err := opt.Docker(ctx, ref)
+			if err == nil {
+				img.id, img.platform, err = MatchDockerImage(b, c.Running, c.LocalID)
+			}
+			img.err = err
+			inDocker[ref] = img
+		}
+		switch {
+		case errors.Is(img.err, ErrNotFound), img.err == nil && img.id == "":
+			return "", "", "The image isn't in the local Docker daemon, so it was read from its registry."
+		case img.err != nil:
+			return "", "", "Couldn't ask the local Docker daemon (" + oneLine(img.err.Error()) + "), so the image was read from its registry."
+		case c.Platform != "" && img.platform != "" && img.platform != c.Platform:
+			return "", "", "The local Docker daemon has this image for " + img.platform + ", not for the node's " + c.Platform + ", so it was read from its registry."
+		}
+		// Without --platform, Syft reads the daemon's image as it is and never pulls.
+		return "docker:" + img.id, img.platform, ""
+	}
+	cms := &configMaps{read: opt.ReadConfigMap, cache: map[string]configMapData{}}
+	now := time.Now
+	if opt.Now != nil {
+		now = opt.Now
+	}
+	checked := now()
 
 	byWorkload := map[string]*Workload{}
 	pods := map[string]bool{}
@@ -181,7 +260,29 @@ func Check(ctx context.Context, containers []Container, scan Scanner, resolve Re
 			pods[c.Namespace+"/"+p] = true
 		}
 		cr := ContainerResult{Container: c}
+		if opt.Docker != nil {
+			local, platform, note := fromDocker(c)
+			if note != "" {
+				cr.Notes = append(cr.Notes, note)
+			}
+			if local != "" {
+				// Docker can hand Syft another platform's image than the one it
+				// described (an index with several), so the architecture Syft read must
+				// be the node's, or, when the node's isn't known, Docker's.
+				r := doScan(local, "")
+				want := archOf(c.Platform)
+				if want == "" {
+					want = archOf(platform)
+				}
+				if r.Action == ActionError || want == "" || r.arch == want {
+					cr.FromDocker, cr.Result = true, r
+				} else {
+					cr.Notes = append(cr.Notes, "Syft read the local Docker daemon's image for "+nonEmpty(r.arch, "an unknown architecture")+", not for "+want+", so it was read from its registry.")
+				}
+			}
+		}
 		switch {
+		case cr.FromDocker:
 		case c.Running != "":
 			cr.Result = doScan("registry:"+c.Running, c.Platform)
 		case Digest(c.Image) != "":
@@ -230,6 +331,10 @@ func Check(ctx context.Context, containers []Container, scan Scanner, resolve Re
 				cr.TagDigest = d
 			}
 		}
+		if cr.Result.Retried != "" {
+			cr.Notes = append(cr.Notes, "Syft's first download of this image was cut off ("+cr.Result.Retried+"), so it was read a second time.")
+		}
+		cms.applyConfig(ctx, &cr)
 		cr.Advice = advice(cr)
 
 		key := c.Namespace + "\x00" + c.Kind + "\x00" + c.Workload
@@ -242,6 +347,10 @@ func Check(ctx context.Context, containers []Container, scan Scanner, resolve Re
 		if rank[cr.Result.Action] > rank[w.Action] {
 			w.Action = cr.Result.Action
 		}
+		// The exposure window counts only pods known to run the vulnerable image.
+		if vulnerable(cr.Result) && !cr.RunningUnverified && !c.started.IsZero() && (w.since.IsZero() || c.started.Before(w.since)) {
+			w.since = c.started
+		}
 	}
 
 	res := Result{Tool: "whichphp", Context: opt.Context, Pods: len(pods), Images: scanned, Action: ActionNoPHP}
@@ -252,6 +361,13 @@ func Check(ctx context.Context, containers []Container, scan Scanner, resolve Re
 		opt.NoRestart = true
 	}
 	for _, w := range byWorkload {
+		if !w.since.IsZero() {
+			days := 0
+			if d := checked.Sub(w.since); d > 0 {
+				days = int(d / (24 * time.Hour))
+			}
+			w.Exposure = &Exposure{Since: w.since.UTC().Format(time.RFC3339), Days: days}
+		}
 		// Redeploying helps only when every container that needs action would get a
 		// fixed image from its tag, and nodes pull the tag again.
 		needs, fixedByTag := 0, 0
@@ -304,6 +420,9 @@ func summarize(input, platform string, rep verdict.Report, err error) ImageResul
 	r.Action = string(rep.Action)
 	r.Created = rep.Image.Created
 	r.ImageID = rep.Image.ImageID
+	r.arch = rep.Image.Architecture
+	r.Retried = rep.Image.ReadRetried
+	r.files = rep.ConfigFiles
 	if len(rep.Verdicts) > 0 {
 		r.Verdicts = map[string]string{}
 		for k, v := range rep.Verdicts {
@@ -317,6 +436,17 @@ func summarize(input, platform string, rep verdict.Report, err error) ImageResul
 		r.UploadProgress = s.Effective
 	}
 	return r
+}
+
+// vulnerable reports whether an image's PHP is vulnerable or end-of-life for one of
+// the CVEs.
+func vulnerable(r ImageResult) bool {
+	for _, v := range r.Verdicts {
+		if verdict.Verdict(v).IsVulnerable() {
+			return true
+		}
+	}
+	return false
 }
 
 // advice says what to do about one container, in a sentence or two.
@@ -365,6 +495,9 @@ func advice(c ContainerResult) string {
 		return "The tag now points to a new image, but whichphp couldn't prove that one fixed: run whichphp image on the tag. If it isn't fixed, rebuild the image on a fixed PHP or move to a fixed tag."
 	case c.TagResult != nil:
 		return "The tag now points to a new image, which couldn't be checked: run whichphp image on the tag. If it isn't fixed, rebuild the image on a fixed PHP or move to a fixed tag."
+	case c.FromDocker && c.Running == "":
+		// Known only by its image ID, so what its tag points to wasn't looked up.
+		return "The pods run an image that was built or loaded locally: rebuild it on a fixed PHP, then redeploy."
 	case Digest(c.Image) != "":
 		return "The pod spec pins this digest: move the pin to a fixed image."
 	case c.TagLookupError != "":
@@ -442,6 +575,23 @@ func shellQuote(s string) string {
 		return `"` + strings.ReplaceAll(s, `"`, `""`) + `"`
 	}
 	return "'" + strings.ReplaceAll(s, "'", `'\''`) + "'"
+}
+
+// archOf is the architecture in a platform: "arm64" in "linux/arm64" or
+// "linux/arm64/v8".
+func archOf(platform string) string {
+	parts := strings.Split(platform, "/")
+	if len(parts) < 2 {
+		return ""
+	}
+	return parts[1]
+}
+
+func nonEmpty(s, otherwise string) string {
+	if s == "" {
+		return otherwise
+	}
+	return s
 }
 
 func platformSuffix(p string) string {

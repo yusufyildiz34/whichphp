@@ -403,11 +403,12 @@ func TestRedeployRules(t *testing.T) {
 func TestHostileText(t *testing.T) {
 	bad := "x\n::warning::pwned ##[group]y"
 	r := Result{Context: bad, Action: ActionNeeded, Notes: []string{bad}, Workloads: []Workload{{
-		Namespace: bad, Kind: bad, Name: bad, Action: ActionNeeded, Redeploy: true, Restart: bad,
+		Namespace: bad, Kind: bad, Name: bad, Action: ActionNeeded, Redeploy: true, Restart: bad, Exposure: &Exposure{Since: bad},
 		Containers: []ContainerResult{{
 			Container: Container{Name: bad, Image: bad, Platform: bad, Running: "r@" + d('a'), Pods: []string{bad}},
 			Result:    ImageResult{Action: ActionNeeded, PHP: []PHP{{Version: bad}}, Verdicts: map[string]string{"c": bad}, Error: bad},
 			TagMoved:  true, TagDigest: bad, TagResult: &ImageResult{Action: ActionOK},
+			UploadProgress: bad, UploadProgressSetIn: []string{bad}, ConfigMaps: []ConfigMount{{Name: bad, MountPath: bad, Files: []string{bad}}},
 			Advice: bad, Notes: []string{bad},
 		}, {
 			Container: Container{Name: bad, Image: bad, LocalID: bad},

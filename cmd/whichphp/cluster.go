@@ -22,16 +22,28 @@ import (
 	"github.com/yusufyildiz34/whichphp/internal/verdict"
 )
 
-// kubectl runs a read-only kubectl command and returns its standard output. Tests
-// replace it.
+// kubectl runs a read-only kubectl command ("get") and returns its standard output.
+// Tests replace it.
 var kubectl = func(ctx context.Context, args ...string) ([]byte, error) {
-	bin := os.Getenv("WHICHPHP_KUBECTL")
+	return command(ctx, "kubectl", "WHICHPHP_KUBECTL", args...)
+}
+
+// docker runs a read-only docker command ("version" or "image inspect") and returns
+// its standard output. whichphp never runs or execs anything in a container. Tests
+// replace it.
+var docker = func(ctx context.Context, args ...string) ([]byte, error) {
+	return command(ctx, "docker", "WHICHPHP_DOCKER", args...)
+}
+
+// command runs a tool, found on PATH or through the variable env, without a shell.
+func command(ctx context.Context, name, env string, args ...string) ([]byte, error) {
+	bin := os.Getenv(env)
 	if bin == "" {
-		bin = "kubectl"
+		bin = name
 	}
 	path, err := exec.LookPath(bin)
 	if err != nil {
-		return nil, fmt.Errorf("kubectl not found (install it or set WHICHPHP_KUBECTL): %w", err)
+		return nil, fmt.Errorf("%s not found (install it or set %s): %w", name, env, err)
 	}
 	var out, errOut bytes.Buffer
 	cmd := exec.CommandContext(ctx, path, args...)
@@ -41,7 +53,7 @@ var kubectl = func(ctx context.Context, args ...string) ([]byte, error) {
 		if msg == "" {
 			msg = err.Error()
 		}
-		return nil, fmt.Errorf("kubectl %s: %s", strings.Join(args, " "), msg)
+		return nil, fmt.Errorf("%s %s: %s", name, strings.Join(args, " "), msg)
 	}
 	return out.Bytes(), nil
 }
@@ -54,6 +66,7 @@ var (
 	}
 	clusterScan    func(ctx context.Context, f *imageFlags, input, platform string, stderr io.Writer, cache feedCache) (verdict.Report, error)
 	clusterResolve func(ctx context.Context, ref string) (string, error)
+	clusterNow     = time.Now
 )
 
 func init() {
@@ -84,6 +97,7 @@ func runCluster(args []string, stdout, stderr io.Writer) int {
 	includeSystem := fs.Bool("include-system", false, "also check kube-system, kube-public and kube-node-lease")
 	maxDBAge := fs.Int("max-db-age", 7, "days after which Grype's database counts as stale (0 to disable)")
 	verbose := fs.Bool("verbose", false, "show Syft and Grype progress")
+	fromDocker := fs.Bool("from-docker", false, "read each running image from the local Docker daemon when it's there (Docker Desktop's Kubernetes), else from its registry")
 	if err := fs.Parse(args); err != nil {
 		if errors.Is(err, flag.ErrHelp) {
 			return 0
@@ -166,6 +180,14 @@ func runCluster(args []string, stdout, stderr io.Writer) int {
 	ctx, stop := clusterContext()
 	defer stop()
 
+	if *fromDocker {
+		// Fail now rather than fall back to the registry for every image.
+		if _, err := docker(ctx, "version", "--format", "{{.Server.Version}}"); err != nil {
+			fmt.Fprintf(stderr, "whichphp: --from-docker needs a running Docker daemon: %s\n", report.Clean(lastLine(err.Error())))
+			return 3
+		}
+	}
+
 	base := []string{"--context", *kubeContext}
 	if *kubeconfig != "" {
 		base = append(base, "--kubeconfig", *kubeconfig)
@@ -216,13 +238,49 @@ func runCluster(args []string, stdout, stderr io.Writer) int {
 	scanner := func(ctx context.Context, input, platform string) (verdict.Report, error) {
 		return clusterScan(ctx, f, input, platform, stderr, cache)
 	}
-	res := cluster.Check(ctx, containers, scanner, clusterResolve, cluster.CheckOptions{Context: *kubeContext, Kubeconfig: restartKubeconfig, KubeconfigEnv: restartEnv, NoRestart: noRestart, Log: stderr})
+	// ConfigMaps are read with the same context and kubeconfig as the pods. The
+	// report says only why one couldn't be read; kubectl's message, which can name
+	// local paths and the server, goes to stderr.
+	readConfigMap := func(ctx context.Context, namespace, name string) ([]byte, error) {
+		b, err := kubectl(ctx, append(append([]string{}, base...), "get", "configmap", name, "-n", namespace, "-o", "json")...)
+		if err == nil {
+			return b, nil
+		}
+		msg := err.Error()
+		if strings.Contains(msg, "(NotFound)") {
+			return nil, cluster.ErrNotFound
+		}
+		fmt.Fprintf(stderr, "whichphp: couldn't read ConfigMap %s/%s: %s\n", report.Clean(namespace), report.Clean(name), report.Clean(lastLine(msg)))
+		switch {
+		case strings.Contains(msg, "(Forbidden)"):
+			return nil, errors.New("forbidden")
+		case strings.Contains(msg, "(Unauthorized)"):
+			return nil, errors.New("unauthorized")
+		}
+		return nil, errors.New("kubectl failed; its message is on stderr")
+	}
+	opts := cluster.CheckOptions{Context: *kubeContext, Kubeconfig: restartKubeconfig, KubeconfigEnv: restartEnv, NoRestart: noRestart, Log: stderr,
+		ReadConfigMap: readConfigMap, Now: clusterNow}
+	if *fromDocker {
+		opts.Docker = func(ctx context.Context, ref string) ([]byte, error) {
+			b, err := docker(ctx, "image", "inspect", "--", ref)
+			if err == nil {
+				return b, nil
+			}
+			if strings.Contains(err.Error(), "No such image") {
+				return nil, cluster.ErrNotFound
+			}
+			fmt.Fprintf(stderr, "whichphp: docker image inspect %s: %s\n", report.Clean(ref), report.Clean(lastLine(err.Error())))
+			return nil, errors.New("docker image inspect failed; its message is on stderr")
+		}
+	}
+	res := cluster.Check(ctx, containers, scanner, clusterResolve, opts)
 	if ctx.Err() != nil {
 		fmt.Fprintln(stderr, "whichphp: interrupted")
 		return 3
 	}
 	res.Version = version
-	res.Generated = time.Now().UTC().Format(time.RFC3339)
+	res.Generated = clusterNow().UTC().Format(time.RFC3339)
 	res.Notes = append(invNotes, res.Notes...)
 
 	write := func(w io.Writer, format string) error {
@@ -231,41 +289,9 @@ func runCluster(args []string, stdout, stderr io.Writer) int {
 		}
 		return cluster.Table(w, res)
 	}
-	for i := range dests {
-		d := &dests[i]
-		if d.file == nil {
-			continue
-		}
-		err := write(d.file, d.format)
-		if cerr := d.file.Close(); err == nil {
-			err = cerr
-		}
-		if err != nil {
-			fmt.Fprintf(stderr, "whichphp: writing %s: %v\n", d.output.file, err)
-			return 3
-		}
-		if d.direct {
-			d.file = nil
-		}
-	}
-	for i := range dests {
-		d := &dests[i]
-		if d.file == nil {
-			continue
-		}
-		if err := os.Rename(d.file.Name(), d.path); err != nil {
-			fmt.Fprintf(stderr, "whichphp: writing %s: %v\n", d.output.file, err)
-			return 3
-		}
-		d.file = nil
-	}
-	for _, d := range dests {
-		if d.path == "" {
-			if err := write(stdout, d.format); err != nil {
-				fmt.Fprintf(stderr, "whichphp: %s\n", report.Clean(err.Error()))
-				return 3
-			}
-		}
+	if err := writeAll(dests, stdout, write); err != nil {
+		fmt.Fprintf(stderr, "whichphp: %s\n", report.Clean(err.Error()))
+		return 3
 	}
 	switch res.Action {
 	case cluster.ActionNeeded:

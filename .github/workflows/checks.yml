@@ -111,8 +111,9 @@ jobs:
           go-version: stable
           cache: false
 
-      # Everything these parse comes from images, SBOMs, Grype, registries or clusters. A short run on
-      # every change; a failing input is saved under testdata/fuzz and uploaded below.
+      # Everything these parse comes from images, SBOMs, Grype, registries, clusters or report
+      # files. A short run on every change; a failing input is saved under testdata/fuzz and
+      # uploaded below.
       - name: Fuzz
         run: |
           set -euo pipefail
@@ -134,6 +135,9 @@ jobs:
           internal/report FuzzReports
           internal/index FuzzFeeds
           internal/cluster FuzzInventory
+          internal/diff FuzzParseReport
+          internal/cluster FuzzConfigMap
+          internal/cluster FuzzDockerInspect
           TARGETS
 
       - name: Upload the failing inputs
