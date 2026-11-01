@@ -6,7 +6,7 @@ This page is for you if your site runs on shared or managed hosting and you have
 
 - **CVE-2026-109618 and CVE-2026-109619 ("PHP2Shell")** let an attacker run code on a server through PHP. PHP fixed them on October 21, 2026 in 8.5.12, 8.4.27, 8.3.36 and 8.2.35.
 - **CVE-2026-115560** has no fix yet. The mitigation is to turn off `session.upload_progress.enabled` on the server.
-- **PHP 8.1 and older get no upstream fix.** Only a host or vendor backport can protect them.
+- **PHP 8.1 and older get no upstream release with the fix.** Only a host or vendor backport can protect them.
 - **Hosts often apply fixes without changing the version number,** so the version shown in your panel can look old even when it is fixed, or new when the running process is still old.
 
 ## Copy and send this

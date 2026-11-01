@@ -51,7 +51,7 @@ whether CVE-2026-109618 and CVE-2026-109619 are fixed, and why.</p>
 <br>
 
 > [!IMPORTANT]
-> **The fixed releases are 8.5.12, 8.4.27, 8.3.36 and 8.2.35** (October 21, 2026). PHP 8.1 and older get no upstream fix.
+> **The fixed releases are 8.5.12, 8.4.27, 8.3.36 and 8.2.35** (October 21, 2026). PHP 8.1 and older get no upstream release with the fix.
 >
 > **CVE-2026-115560 is still unfixed.** Until PHP's next regular release, set `session.upload_progress.enabled = 0` server-wide.
 
@@ -347,7 +347,7 @@ A verdict covers the PHP in these images only. It says nothing about earlier com
 | "Is the image tag I pull fixed yet?" | Floating tags were rebuilt within days. Pinned and end-of-life tags often never are. | [The live index](https://yusufyildiz34.github.io/whichphp/), `whichphp image <ref>` |
 | "I rebuilt the image. Did that fix it?" | Compare the old image, or a saved report of it, with the new one. | [`whichphp diff`](#compare-two-images) |
 | "Which PHP actually serves my site?" | Often not the one `php -v` shows. Images and hosts can carry several builds. | `whichphp image` lists every binary and SAPI |
-| "I'm on PHP 8.1 or older." | There is no upstream fix. Treat it as vulnerable unless your vendor proves a backport. | [Packagers that backport](#packagers-that-backport), [Verdicts](#verdicts) |
+| "I'm on PHP 8.1 or older." | There is no upstream release with the fix. Treat it as vulnerable unless your vendor proves a backport. | [Packagers that backport](#packagers-that-backport), [Verdicts](#verdicts) |
 | "Is the CVE-2026-115560 mitigation on?" | In most images it isn't. Official images ship no `php.ini`, so the compiled default (on) applies. | `whichphp image` reports the effective value |
 | "My scanner says the image is clean." | Package-based scanners can't see PHP compiled from source. | [Why your scanner says clean](#why-your-scanner-says-clean) |
 | "Do I need to restart or redeploy?" | Yes. A running container keeps the old image until it is recreated. Save logs first. | [`whichphp cluster`](#check-a-kubernetes-cluster) |
@@ -395,7 +395,7 @@ flowchart LR
 
 1. **Syft reads the image layers.** whichphp asks it to catalog packages and binaries and to capture the contents of PHP configuration files. Nothing in the image runs. A download that is cut off partway is read once more, and the report says so.
 2. **Grype checks distro packages** against the distros' own security data, which is where backports show up.
-3. **whichphp applies the PHP-specific rules:** fixed releases per branch, end-of-life branches and distros, packagers' own backports (Sury, Remi, cPanel, CloudLinux, TuxCare and Freexian ELTS, from a [sourced table](internal/advisory/packagers.csv)), pre-release builds, and the effective `php.ini` settings.
+3. **whichphp applies the PHP-specific rules:** fixed releases per branch, end-of-life branches and distros, packagers' own backports (Sury, Remi, cPanel, CloudLinux, TuxCare, Freexian ELTS and GetPageSpeed, from a [sourced table](internal/advisory/packagers.csv)), pre-release builds, and the effective `php.ini` settings.
 
 **How we checked it**
 
@@ -430,7 +430,7 @@ Missing an image? [Suggest it](https://github.com/yusufyildiz34/whichphp/issues/
 | 8.4 | 8.4.27 |
 | 8.3 | 8.3.36 |
 | 8.2 | 8.2.35 (the branch reaches end of life on Dec 31, 2026) |
-| 8.1 and older | No upstream fix |
+| 8.1 and older | No upstream release (see [Packagers that backport](#packagers-that-backport)) |
 
 - **Affected versions.** NVD lists CVE-2026-109618 as affecting PHP from 7.3.0 and CVE-2026-109619 from 5.4.0.
 - **CVE-2026-115560 has no fix yet.** Until PHP's next regular release, the mitigation is `session.upload_progress.enabled = 0`, set server-wide.
@@ -452,7 +452,7 @@ whichphp builds on Syft and Grype rather than replacing them. It adds the backpo
 
 ### Packagers that backport
 
-PHP 8.1 and older got no upstream fix, but several packagers backported it, and some did so for supported branches too. Their builds keep the old version, so no scanner can judge them by version. whichphp recognizes each packager's builds in the package database and compares the package release with the first fixed release that the packager itself published. The table of releases is [`internal/advisory/packagers.csv`](internal/advisory/packagers.csv), with a source for every row.
+PHP 8.1 and older got no upstream release with the fix, but several packagers backported the fix, and some did so for supported branches too. Their builds keep the old version, so no scanner can judge them by version. whichphp recognizes each packager's builds in the package database and compares the package release with the first fixed release that the packager itself published. The table of releases is [`internal/advisory/packagers.csv`](internal/advisory/packagers.csv), with a source for every row.
 
 | Packager | Recognized by | Backported fix (first fixed release) | No fix |
 |---|---|---|---|
