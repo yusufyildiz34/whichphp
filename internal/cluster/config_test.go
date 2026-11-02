@@ -122,6 +122,9 @@ func TestConfigMaps(t *testing.T) {
 		// An FPM pool file through subPath, with conf.d emptied: on, but off in the pool.
 		configPod("a", "pool", []m{{"name": "ext", "mountPath": confD}, {"name": "pool", "mountPath": "/usr/local/etc/php-fpm.d/www.conf", "subPath": "www.conf"}},
 			[]m{cmVolume("ext", "ext", nil), cmVolume("pool", "pool", nil)}, nil),
+		// An FPM pool file through subPath turns it back on over the image's conf.d off.
+		configPod("a", "pool-on", []m{{"name": "pool", "mountPath": "/usr/local/etc/php-fpm.d/www.conf", "subPath": "www.conf"}},
+			[]m{cmVolume("pool", "pool-on", nil)}, nil),
 		// Mounts elsewhere aren't read.
 		configPod("a", "elsewhere", []m{{"name": "site", "mountPath": "/var/www/html"}, tokenMount}, []m{cmVolume("site", "site", nil), tokenVolume}, nil),
 		// Other volume kinds at a PHP path are named, not read, and so the image's off
@@ -143,6 +146,7 @@ func TestConfigMaps(t *testing.T) {
 		"a/ext":        cmJSON(map[string]string{"20-gd.ini": "extension=gd\n", "../evil.ini": "session.upload_progress.enabled = Off\n"}),
 		"a/mitigation": cmJSON(map[string]string{"mitigation": "session.upload_progress.enabled=0\n"}),
 		"a/pool":       cmJSON(map[string]string{"www.conf": "[www]\nphp_admin_flag[session.upload_progress.enabled] = off\n"}),
+		"a/pool-on":    cmJSON(map[string]string{"www.conf": "[www]\nphp_admin_flag[session.upload_progress.enabled] = on\n"}),
 		"a/site":       cmJSON(map[string]string{"php.ini": "session.upload_progress.enabled = On\n"}),
 	}
 	got, reads, res := checkConfig(t, pods, fpmFiles, configMaps, map[string]error{"a/locked": errors.New("forbidden")})
@@ -158,6 +162,7 @@ func TestConfigMaps(t *testing.T) {
 		"deleted":   {"unknown", "unknown", 1},
 		"items":     {"off", "off, set in ConfigMap mitigation (/usr/local/etc/php/conf.d/zz-mitigation.ini)", 1},
 		"pool":      {"off-in-fpm-pool", "off in an FPM pool file only, set in ConfigMap pool (/usr/local/etc/php-fpm.d/www.conf)", 2},
+		"pool-on":   {"on", "on, set in ConfigMap pool-on (/usr/local/etc/php-fpm.d/www.conf)", 1},
 		"elsewhere": {"off", "off, from the image", 0},
 		"secret":    {"unknown", "unknown", 0},
 		"emptydir":  {"unknown", "unknown", 0},
@@ -173,12 +178,12 @@ func TestConfigMaps(t *testing.T) {
 	}
 	// One read per ConfigMap, however many pods mount it; none for mounts elsewhere,
 	// for the service account token, or for a name that isn't valid.
-	for cm, want := range map[string]int{"a/php-ini": 1, "a/ext": 1, "a/locked": 1, "a/gone": 1, "a/mitigation": 1, "a/pool": 1} {
+	for cm, want := range map[string]int{"a/php-ini": 1, "a/ext": 1, "a/locked": 1, "a/gone": 1, "a/mitigation": 1, "a/pool": 1, "a/pool-on": 1} {
 		if reads[cm] != want {
 			t.Errorf("%s read %d times, want %d", cm, reads[cm], want)
 		}
 	}
-	if len(reads) != 6 {
+	if len(reads) != 7 {
 		t.Errorf("reads: %v", reads)
 	}
 	// Keys that aren't file names are left out, as the kubelet leaves them out.

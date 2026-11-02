@@ -51,6 +51,47 @@ func TestOffOnlyInFPMPool(t *testing.T) {
 	}
 }
 
+func TestOnInFPMPool(t *testing.T) {
+	cases := map[string]map[string]string{
+		"pool on overrides php.ini off": {
+			"/usr/local/etc/php/php.ini":        "session.upload_progress.enabled=0\n",
+			"/usr/local/etc/php-fpm.d/www.conf": "[www]\nphp_admin_flag[session.upload_progress.enabled]=on\n",
+		},
+		"one pool on, another off": {
+			"/usr/local/etc/php-fpm.d/a.conf": "[a]\nphp_admin_flag[session.upload_progress.enabled]=off\n",
+			"/usr/local/etc/php-fpm.d/b.conf": "[b]\nphp_value[session.upload_progress.enabled]=1\n",
+		},
+		"pool turns it off, then on again": {
+			"/usr/local/etc/php/conf.d/off.ini": "session.upload_progress.enabled=Off\n",
+			"/usr/local/etc/php-fpm.d/www.conf": "[www]\nphp_admin_flag[session.upload_progress.enabled]=off\nphp_admin_flag[session.upload_progress.enabled]=on\n",
+		},
+		"pool value from the environment": {
+			"/usr/local/etc/php/php.ini":        "session.upload_progress.enabled=0\n",
+			"/usr/local/etc/php-fpm.d/www.conf": "[www]\nphp_value[session.upload_progress.enabled]=${UPLOAD_PROGRESS}\n",
+		},
+	}
+	for name, files := range cases {
+		s := Evaluate(files, true).Settings[UploadProgress]
+		if s.Effective != "on" {
+			t.Errorf("%s: upload_progress = %q (%s), want on", name, s.Effective, s.Why)
+		}
+	}
+	s := Evaluate(cases["pool turns it off, then on again"], true).Settings[UploadProgress]
+	if s.Why != "turned both on and off in FPM pool files" || len(s.SetIn) != 2 {
+		t.Errorf("why %q, set in %v: want both, and each file once", s.Why, s.SetIn)
+	}
+}
+
+func TestOffInPhpIniAndFPMPool(t *testing.T) {
+	files := map[string]string{
+		"/usr/local/etc/php/php.ini":        "session.upload_progress.enabled=0\n",
+		"/usr/local/etc/php-fpm.d/www.conf": "[www]\nphp_admin_flag[session.upload_progress.enabled]=off\n",
+	}
+	if s := Evaluate(files, true).Settings[UploadProgress]; s.Effective != "off" {
+		t.Fatalf("upload_progress = %q (%s), want off", s.Effective, s.Why)
+	}
+}
+
 func TestCommentedLineIgnored(t *testing.T) {
 	files := map[string]string{
 		"/etc/php/8.3/apache2/php.ini": ";session.upload_progress.enabled = Off\n",

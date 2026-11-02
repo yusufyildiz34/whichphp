@@ -5,6 +5,7 @@ package phpini
 import (
 	"path"
 	"regexp"
+	"slices"
 	"sort"
 	"strings"
 )
@@ -201,14 +202,30 @@ func Evaluate(files map[string]string, contentSeen bool) Result {
 				s.Why = "turned off in every php.ini/conf.d tree that serves web traffic"
 			}
 		}
-		poolOff := false
+		// A pool that turns the directive on serves with it on, whatever the
+		// php.ini/conf.d files say. A value that can't be read counts as on, as it
+		// does in php.ini.
+		poolOff, poolOn := false, false
 		for _, p := range pools {
-			if p.directive == d && p.value != nil && !*p.value {
+			if p.directive != d {
+				continue
+			}
+			if p.value == nil || *p.value {
+				poolOn = true
+			} else {
 				poolOff = true
+			}
+			if !slices.Contains(s.SetIn, p.file) {
 				s.SetIn = append(s.SetIn, p.file)
 			}
 		}
 		switch {
+		case poolOn && poolOff:
+			s.Effective = "on"
+			s.Why = "turned both on and off in FPM pool files"
+		case poolOn && !on:
+			s.Effective = "on"
+			s.Why = "off in php.ini/conf.d, but an FPM pool file turns it on or sets a value whichphp can't read"
 		case on && poolOff:
 			s.Effective = "off-in-fpm-pool"
 			s.Why = "on in php.ini/conf.d, but turned off in an FPM pool file"

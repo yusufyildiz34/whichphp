@@ -56,10 +56,15 @@ func LoadMatches(path string, cves []string) (map[Key][]Hit, error) {
 }
 
 // ParseMatches decodes Grype JSON and returns hits for the given CVEs, keyed by artifact.
+// Grype writes the matches array even when it matches nothing, so JSON without one
+// is an error, not a scan with no matches.
 func ParseMatches(b []byte, cves []string) (map[Key][]Hit, error) {
 	var d matchDoc
 	if err := json.Unmarshal(b, &d); err != nil {
 		return nil, fmt.Errorf("not Grype JSON output: %w", err)
+	}
+	if d.Matches == nil {
+		return nil, fmt.Errorf("not Grype JSON output: no matches array")
 	}
 	want := map[string]bool{}
 	for _, c := range cves {

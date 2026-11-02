@@ -85,7 +85,7 @@ func doc(t *testing.T, distro, distroVer, created string, files map[string]strin
 		"distro":     map[string]string{"id": distro, "versionID": distroVer},
 		"source":     map[string]any{"type": "image", "metadata": json.RawMessage(md)},
 	}
-	var as []a
+	as := []a{} // Syft writes an empty array, not null, when it finds nothing
 	for _, x := range arts {
 		item := a{Name: x.name, Version: x.version, Type: x.typ, PURL: x.purl, Locations: []loc{{x.path}}}
 		if x.cpe != "" {

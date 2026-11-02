@@ -22,6 +22,18 @@ func TestMetadataVendor(t *testing.T) {
 	}
 }
 
+func TestParseNeedsArtifacts(t *testing.T) {
+	for _, bad := range []string{`{"unrelated":true}`, `null`, `{"artifacts":null}`, `{"artifacts":{}}`, `{"descriptor":{"name":"syft"}}`} {
+		if _, err := Parse([]byte(bad)); err == nil {
+			t.Errorf("%s: accepted as a Syft document", bad)
+		}
+	}
+	d, err := Parse([]byte(`{"descriptor":{"name":"syft"},"artifacts":[]}`))
+	if err != nil || len(d.Artifacts) != 0 {
+		t.Fatalf("an empty scan must parse: %v", err)
+	}
+}
+
 func TestEnvValue(t *testing.T) {
 	c := &ImageConfig{}
 	c.Config.Env = []string{"PHP_VERSION=8.4.26", "EMPTY=", "NOVALUE", "PHP_VERSION=8.4.27", "A=b=c"}

@@ -157,7 +157,8 @@ func Load(path string) (*Document, error) {
 	return Parse(b)
 }
 
-// Parse decodes a Syft JSON document.
+// Parse decodes a Syft JSON document. Syft writes the artifacts array even when it
+// finds nothing, so a JSON file without one is some other file, not an empty scan.
 func Parse(b []byte) (*Document, error) {
 	var d Document
 	if err := json.Unmarshal(b, &d); err != nil {
@@ -165,6 +166,9 @@ func Parse(b []byte) (*Document, error) {
 	}
 	if d.Descriptor.Name != "" && d.Descriptor.Name != "syft" {
 		return nil, fmt.Errorf("SBOM was produced by %q; whichphp needs Syft JSON", d.Descriptor.Name)
+	}
+	if d.Artifacts == nil {
+		return nil, fmt.Errorf("not a Syft JSON document: no artifacts array")
 	}
 	return &d, nil
 }

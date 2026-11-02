@@ -125,6 +125,27 @@ func TestFailedOutputLeavesNoFiles(t *testing.T) {
 	assertNoTempFiles(t, dir)
 }
 
+func TestUnrelatedJSONIsNotAScan(t *testing.T) {
+	// A wrong file given as the SBOM or the Grype output must fail, not pass as an
+	// image with no PHP or a scan with no matches.
+	sbom, grype := fixture(t, "php:8.4.26-apache", []string{"php:8.4.26-apache"})
+	other := filepath.Join(t.TempDir(), "other.json")
+	if err := os.WriteFile(other, []byte(`{"unrelated":true}`), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	for _, args := range [][]string{
+		{"image", "--sbom", other, "--no-grype", "-o", "json"},
+		{"image", "--sbom", sbom, "--grype-json", other, "-o", "json"},
+	} {
+		if code, stdout, stderr := runCLI(args...); code != 3 || stdout != "" || stderr == "" {
+			t.Errorf("%v: exit %d, stdout %q, stderr %q", args, code, stdout, stderr)
+		}
+	}
+	if code, _, stderr := runCLI("image", "--sbom", sbom, "--grype-json", grype, "-o", "json"); code != 1 {
+		t.Fatalf("the real fixture must still scan: exit %d, stderr %q", code, stderr)
+	}
+}
+
 func TestCycloneDXNeedsNoImageName(t *testing.T) {
 	// Unlike OpenVEX, CycloneDX can describe an archive with no tag.
 	sbom, grype := fixture(t, "/tmp/build/app.tar", nil)

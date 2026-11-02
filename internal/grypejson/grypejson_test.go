@@ -22,6 +22,19 @@ func TestParseMatchesUsesRelatedIDs(t *testing.T) {
 	}
 }
 
+func TestParseMatchesNeedsMatches(t *testing.T) {
+	tracked := []string{"CVE-2026-109618"}
+	for _, bad := range []string{`{"unrelated":true}`, `null`, `{"matches":null}`, `{"matches":{}}`} {
+		if _, err := ParseMatches([]byte(bad), tracked); err == nil {
+			t.Errorf("%s: accepted as a completed scan", bad)
+		}
+	}
+	hits, err := ParseMatches([]byte(`{"matches":[]}`), tracked)
+	if err != nil || len(hits) != 0 {
+		t.Fatalf("a scan with no matches must parse: %v", err)
+	}
+}
+
 func TestParseSearchLoose(t *testing.T) {
 	b := []byte(`[{"vulnerability":{"id":"CVE-2026-109618"},"packages":[
 	  {"os":{"name":"ubuntu","version":"24.04"},"package":{"name":"php8.3","ecosystem":"deb"},"namespace":"ubuntu:distro:ubuntu:24.04",
