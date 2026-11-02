@@ -45,7 +45,7 @@ func uploadText(cr ContainerResult) string {
 	value := cr.UploadProgress
 	switch value {
 	case "off-in-fpm-pool":
-		value = "off in an FPM pool file only"
+		value = "off in every FPM pool (on in php.ini/conf.d)"
 	case "unknown":
 		return "unknown"
 	}

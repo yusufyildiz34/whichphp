@@ -32,8 +32,9 @@ var Globs = []string{
 var configPath = regexp.MustCompile(`(?i)(^|/)(etc|usr/local/etc|opt)/.*(php|fpm).*\.(ini|conf)$`)
 
 var (
-	iniLine  = regexp.MustCompile(`^\s*([A-Za-z0-9_.]+)\s*=\s*(.*)$`)
-	poolLine = regexp.MustCompile(`^\s*php_(admin_)?(value|flag)\[([A-Za-z0-9_.]+)\]\s*=\s*(.*)$`)
+	iniLine     = regexp.MustCompile(`^\s*([A-Za-z0-9_.]+)\s*=\s*(.*)$`)
+	poolLine    = regexp.MustCompile(`^\s*php_(admin_)?(value|flag)\[([A-Za-z0-9_.]+)\]\s*=\s*(.*)$`)
+	sectionLine = regexp.MustCompile(`^\s*\[\s*([^\]]*?)\s*\]\s*([;#].*)?$`)
 )
 
 // Setting is the effective image default for one directive.
@@ -67,8 +68,8 @@ type entry struct {
 }
 
 type poolOverride struct {
-	file, directive string
-	value           *bool
+	file, pool, directive string
+	value                 *bool
 }
 
 // Evaluate computes effective settings from file contents keyed by path. contentSeen
@@ -101,6 +102,7 @@ func Evaluate(files map[string]string, contentSeen bool) Result {
 
 	trees := map[string]*tree{}
 	var pools []poolOverride
+	poolNames := map[string]bool{}
 	for _, p := range paths {
 		content := byPath[p]
 		if !configPath.MatchString(p) {
@@ -117,14 +119,25 @@ func Evaluate(files map[string]string, contentSeen bool) Result {
 			}
 			t.entries = append(t.entries, entry{order: order, name: path.Base(p), path: p, lines: lines})
 		case poolFile:
+			// A directive belongs to the pool whose [section] it sits in. FPM joins
+			// sections of the same name into one pool, and [global] isn't a pool.
+			pool := ""
 			for _, l := range lines {
+				if m := sectionLine.FindStringSubmatch(l); m != nil {
+					pool = ""
+					if name := strings.ToLower(m[1]); name != "global" {
+						pool = "[" + name + "]"
+						poolNames[pool] = true
+					}
+					continue
+				}
 				m := poolLine.FindStringSubmatch(l)
 				if m == nil {
 					continue
 				}
 				d := strings.ToLower(m[3])
 				if directives[d] {
-					pools = append(pools, poolOverride{file: p, directive: d, value: parseBool(m[4])})
+					pools = append(pools, poolOverride{file: p, pool: pool, directive: d, value: parseBool(m[4])})
 				}
 			}
 		}
@@ -202,33 +215,45 @@ func Evaluate(files map[string]string, contentSeen bool) Result {
 				s.Why = "turned off in every php.ini/conf.d tree that serves web traffic"
 			}
 		}
-		// A pool that turns the directive on serves with it on, whatever the
-		// php.ini/conf.d files say. A value that can't be read counts as on, as it
-		// does in php.ini.
-		poolOff, poolOn := false, false
+		// Each FPM pool serves with its own value, or with the php.ini/conf.d value
+		// when it sets none. A pool that turns the directive on serves with it on,
+		// and so does one that sets a value that can't be read, as in php.ini.
+		byPool := map[string][]*bool{}
 		for _, p := range pools {
 			if p.directive != d {
 				continue
 			}
-			if p.value == nil || *p.value {
+			byPool[p.pool] = append(byPool[p.pool], p.value)
+			if !slices.Contains(s.SetIn, p.file) {
+				s.SetIn = append(s.SetIn, p.file)
+			}
+		}
+		poolOff, poolOn, inherits := false, false, false
+		for _, values := range byPool {
+			if slices.ContainsFunc(values, func(v *bool) bool { return v == nil || *v }) {
 				poolOn = true
 			} else {
 				poolOff = true
 			}
-			if !slices.Contains(s.SetIn, p.file) {
-				s.SetIn = append(s.SetIn, p.file)
+		}
+		for name := range poolNames {
+			if _, set := byPool[name]; !set {
+				inherits = true
 			}
 		}
 		switch {
 		case poolOn && poolOff:
 			s.Effective = "on"
-			s.Why = "turned both on and off in FPM pool files"
+			s.Why = "turned on in one FPM pool and off in another"
 		case poolOn && !on:
 			s.Effective = "on"
-			s.Why = "off in php.ini/conf.d, but an FPM pool file turns it on or sets a value whichphp can't read"
+			s.Why = "off in php.ini/conf.d, but an FPM pool turns it on or sets a value whichphp can't read"
+		case on && poolOff && inherits:
+			s.Effective = "on"
+			s.Why = "on in php.ini/conf.d; an FPM pool turns it off, but another pool doesn't"
 		case on && poolOff:
 			s.Effective = "off-in-fpm-pool"
-			s.Why = "on in php.ini/conf.d, but turned off in an FPM pool file"
+			s.Why = "on in php.ini/conf.d, but turned off in every FPM pool"
 		case on:
 			s.Effective = "on"
 		default:

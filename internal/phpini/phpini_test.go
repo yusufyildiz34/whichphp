@@ -76,9 +76,46 @@ func TestOnInFPMPool(t *testing.T) {
 			t.Errorf("%s: upload_progress = %q (%s), want on", name, s.Effective, s.Why)
 		}
 	}
-	s := Evaluate(cases["pool turns it off, then on again"], true).Settings[UploadProgress]
-	if s.Why != "turned both on and off in FPM pool files" || len(s.SetIn) != 2 {
-		t.Errorf("why %q, set in %v: want both, and each file once", s.Why, s.SetIn)
+	if s := Evaluate(cases["one pool on, another off"], true).Settings[UploadProgress]; s.Why != "turned on in one FPM pool and off in another" {
+		t.Errorf("why %q", s.Why)
+	}
+	if s := Evaluate(cases["pool turns it off, then on again"], true).Settings[UploadProgress]; len(s.SetIn) != 2 {
+		t.Errorf("set in %v: want each file once", s.SetIn)
+	}
+}
+
+// Each FPM pool serves with its own value, or with php.ini's when it sets none.
+func TestFPMPoolsEach(t *testing.T) {
+	ini := map[string]string{"/usr/local/etc/php/php.ini": "session.upload_progress.enabled=on\n"}
+	for name, c := range map[string]struct{ pools, want string }{
+		"one pool off, one inherits on": {"[a]\nlisten=9000\nphp_admin_flag[session.upload_progress.enabled]=off\n[b]\nlisten=9001\n", "on"},
+		"every pool off":                {"[a]\nphp_admin_flag[session.upload_progress.enabled]=off\n[b]\nphp_value[session.upload_progress.enabled]=0\n", "off-in-fpm-pool"},
+		"same pool in two sections":     {"[www]\nlisten=9000\n[global]\nerror_log=/proc/self/fd/2\n[WWW]\nphp_admin_flag[session.upload_progress.enabled]=off\n", "off-in-fpm-pool"},
+		"no pool overrides":             {"[www]\nlisten=9000\n", "on"},
+		"header with a comment":         {"[a]\nphp_admin_flag[session.upload_progress.enabled]=off\n[b] ; second pool\nlisten=9001\n", "on"},
+		"override before any section":   {"php_admin_flag[session.upload_progress.enabled]=off\n[www]\nlisten=9000\n", "on"},
+	} {
+		files := map[string]string{"/usr/local/etc/php-fpm.d/www.conf": c.pools}
+		for k, v := range ini {
+			files[k] = v
+		}
+		s := Evaluate(files, true).Settings[UploadProgress]
+		if s.Effective != c.want {
+			t.Errorf("%s: upload_progress = %q (%s), want %s", name, s.Effective, s.Why, c.want)
+		}
+		if name == "one pool off, one inherits on" && s.Why != "on in php.ini/conf.d; an FPM pool turns it off, but another pool doesn't" {
+			t.Errorf("%s: why %q", name, s.Why)
+		}
+	}
+	// Pools in different files are still one pool when they share a name, as in the
+	// official image's www.conf and zz-docker.conf.
+	files := map[string]string{
+		"/usr/local/etc/php/php.ini":              "session.upload_progress.enabled=on\n",
+		"/usr/local/etc/php-fpm.d/www.conf":       "[www]\nphp_admin_flag[session.upload_progress.enabled]=off\n",
+		"/usr/local/etc/php-fpm.d/zz-docker.conf": "[global]\ndaemonize = no\n[www]\nlisten = 9000\n",
+	}
+	if s := Evaluate(files, true).Settings[UploadProgress]; s.Effective != "off-in-fpm-pool" {
+		t.Errorf("www across two files: %q (%s)", s.Effective, s.Why)
 	}
 }
 

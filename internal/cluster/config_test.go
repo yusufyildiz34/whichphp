@@ -161,7 +161,7 @@ func TestConfigMaps(t *testing.T) {
 		"optional":  {"on", "on, with ConfigMap gone at /usr/local/etc/php/conf.d mounted", 1},
 		"deleted":   {"unknown", "unknown", 1},
 		"items":     {"off", "off, set in ConfigMap mitigation (/usr/local/etc/php/conf.d/zz-mitigation.ini)", 1},
-		"pool":      {"off-in-fpm-pool", "off in an FPM pool file only, set in ConfigMap pool (/usr/local/etc/php-fpm.d/www.conf)", 2},
+		"pool":      {"off-in-fpm-pool", "off in every FPM pool (on in php.ini/conf.d), set in ConfigMap pool (/usr/local/etc/php-fpm.d/www.conf)", 2},
 		"pool-on":   {"on", "on, set in ConfigMap pool-on (/usr/local/etc/php-fpm.d/www.conf)", 1},
 		"elsewhere": {"off", "off, from the image", 0},
 		"secret":    {"unknown", "unknown", 0},
@@ -272,7 +272,7 @@ func TestConfigMapsWherePHPReads(t *testing.T) {
 		"php.ini":        {"off", "off, set in ConfigMap etc (/usr/local/etc/php/php.ini)", ""},
 		"conf.d":         {"off", "off, set in ConfigMap off (/usr/local/etc/php/conf.d/zz-off.ini)", ""},
 		"harmless":       {"on", "on, from the image; left out: ConfigMap gd at /usr/local/etc/php/php.d/20-gd.ini", "ConfigMap gd puts /usr/local/etc/php/php.d/20-gd.ini outside the places this image's PHP reads its configuration from, so it was left out."},
-		"pool":           {"off-in-fpm-pool", "off in an FPM pool file only, set in ConfigMap pool (/usr/local/etc/php-fpm.d/zz-off.conf)", ""},
+		"pool":           {"off-in-fpm-pool", "off in every FPM pool (on in php.ini/conf.d), set in ConfigMap pool (/usr/local/etc/php-fpm.d/zz-off.conf)", ""},
 		"pool-elsewhere": {"unknown", "unknown", "ConfigMap pool puts /etc/php-fpm.d/zz-off.conf outside the places"},
 		"secret":         {"on", "on, from the image", "A Secret is mounted at /usr/local/etc/php/conf.d"},
 	} {
