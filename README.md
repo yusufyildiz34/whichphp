@@ -19,7 +19,7 @@ whether CVE-2026-109618 and CVE-2026-109619 are fixed, and why.</p>
 <a href="https://scorecard.dev/viewer/?uri=github.com/yusufyildiz34/whichphp"><img alt="OpenSSF Scorecard" src="https://api.scorecard.dev/projects/github.com/yusufyildiz34/whichphp/badge"></a>
 <a href="https://www.bestpractices.dev/projects/16111"><img alt="OpenSSF Best Practices" src="https://www.bestpractices.dev/projects/16111/badge"></a>
 <a href="https://github.com/yusufyildiz34/whichphp/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/yusufyildiz34/whichphp"></a>
-<a href="https://github.com/yusufyildiz34/whichphp/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/yusufyildiz34/whichphp?style=flat"></a>
+<a href="https://github.com/yusufyildiz34/whichphp"><img alt="GitHub stars" src="https://img.shields.io/github/stars/yusufyildiz34/whichphp?style=flat"></a>
 </p>
 
 <p>
