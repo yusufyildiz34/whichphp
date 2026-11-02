@@ -3,7 +3,7 @@
   <title>whichphp: webdevops/php-apache:8.2</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of webdevops/php-apache:8.2, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:ac51bf5bcf7e3529a5c98028e7a468fd</id>
-  <updated>2026-10-31T05:22:44Z</updated>
+  <updated>2026-11-02T11:53:57Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/webdevops-php-apache-8.2-808cb146.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>webdevops/php-apache:8.2 (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c9e9aac6cc0d73c472b105d20138e772</id>
+    <updated>2026-11-02T11:53:57Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:d8784745e1d4632b7070a93e4737084655eeaa36ba0573fd09273bc85b668c5b (was sha256:01d95d41cfbdaaf260e9faa56a30fc483c139e34e6cd3078a9a5690ff3719820)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-02T11:53:57Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2&#xA;</content>
+  </entry>
+  <entry>
+    <title>webdevops/php-apache:8.2 (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:5887357fde6339ffb38d0d981b510a3a</id>
+    <updated>2026-11-02T11:53:57Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:fac1510491ffe77ce6f00702e2c0ec5ebd1ae23be8b127815677744c0caedc97 (was sha256:f3bf3b1d3f38cf29775c2165fdfa13ffbd25fd9e89514a8ca39529b30e18989f)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-02T11:53:57Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2&#xA;</content>
+  </entry>
   <entry>
     <title>webdevops/php-apache:8.2 (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:b6ccfc56eeec8559a51ddfac1934c30e</id>

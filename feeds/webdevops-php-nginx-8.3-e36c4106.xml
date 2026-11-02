@@ -3,7 +3,7 @@
   <title>whichphp: webdevops/php-nginx:8.3</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of webdevops/php-nginx:8.3, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:80c562c32b039e2334db486818efcb88</id>
-  <updated>2026-11-02T05:23:43Z</updated>
+  <updated>2026-11-02T11:53:57Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/webdevops-php-nginx-8.3-e36c4106.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>webdevops/php-nginx:8.3 (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:a4e1f23377069021742d9f343e41a1b4</id>
+    <updated>2026-11-02T11:53:57Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:9023ad112fa41079a81dd6d4e2681fe84c1fd9d5690154ab37034a017d816aec (was sha256:e63c0c7643753434145dc7369d6fd6c90f487c2925081137a911ab257d038c69)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-02T11:53:57Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3&#xA;</content>
+  </entry>
+  <entry>
+    <title>webdevops/php-nginx:8.3 (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:0f061d16bf30346b9c98f171aae94941</id>
+    <updated>2026-11-02T11:53:57Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:30ffc790bfb511421302f64ecd29eb0d8b877b1cb26d28056b9f519de054a3b1 (was sha256:517bdead8319c0d2222d558e1861edbaee7249aa87fe37f6ca7d425e9a7d9d63)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-02T11:53:57Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3&#xA;</content>
+  </entry>
   <entry>
     <title>webdevops/php-nginx:8.3 (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:88163ba43f9484b34dbbf4e07efed467</id>
