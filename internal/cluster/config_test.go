@@ -268,12 +268,14 @@ func TestConfigMapsWherePHPReads(t *testing.T) {
 	for name, want := range map[string]struct{ value, text, note string }{
 		"php.d": {"unknown", "unknown",
 			"ConfigMap off puts /usr/local/etc/php/php.d/zz-off.ini outside the places this image's PHP reads its configuration from, so it was left out; PHP may still read it, and it would change the setting, so the setting is unknown."},
-		"etc":            {"unknown", "unknown", "ConfigMap etc puts /usr/local/etc/php.ini outside the places"},
-		"php.ini":        {"off", "off, set in ConfigMap etc (/usr/local/etc/php/php.ini)", ""},
-		"conf.d":         {"off", "off, set in ConfigMap off (/usr/local/etc/php/conf.d/zz-off.ini)", ""},
-		"harmless":       {"on", "on, from the image; left out: ConfigMap gd at /usr/local/etc/php/php.d/20-gd.ini", "ConfigMap gd puts /usr/local/etc/php/php.d/20-gd.ini outside the places this image's PHP reads its configuration from, so it was left out."},
-		"pool":           {"off-in-fpm-pool", "off in every FPM pool (on in php.ini/conf.d), set in ConfigMap pool (/usr/local/etc/php-fpm.d/zz-off.conf)", ""},
-		"pool-elsewhere": {"unknown", "unknown", "ConfigMap pool puts /etc/php-fpm.d/zz-off.conf outside the places"},
+		"etc":      {"unknown", "unknown", "ConfigMap etc puts /usr/local/etc/php.ini outside the places"},
+		"php.ini":  {"off", "off, set in ConfigMap etc (/usr/local/etc/php/php.ini)", ""},
+		"conf.d":   {"off", "off, set in ConfigMap off (/usr/local/etc/php/conf.d/zz-off.ini)", ""},
+		"harmless": {"on", "on, from the image; left out: ConfigMap gd at /usr/local/etc/php/php.d/20-gd.ini", "ConfigMap gd puts /usr/local/etc/php/php.d/20-gd.ini outside the places this image's PHP reads its configuration from, so it was left out."},
+		"pool":     {"off-in-fpm-pool", "off in every FPM pool (on in php.ini/conf.d), set in ConfigMap pool (/usr/local/etc/php-fpm.d/zz-off.conf)", ""},
+		// The image's php-fpm.conf includes only its own php-fpm.d, so FPM can't read
+		// a pool file elsewhere and its off changes nothing.
+		"pool-elsewhere": {"on", "on, from the image; left out: ConfigMap pool at /etc/php-fpm.d/zz-off.conf", "ConfigMap pool puts /etc/php-fpm.d/zz-off.conf outside the places"},
 		"secret":         {"on", "on, from the image", "A Secret is mounted at /usr/local/etc/php/conf.d"},
 	} {
 		c := got["a/"+name]

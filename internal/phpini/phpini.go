@@ -35,6 +35,7 @@ var (
 	iniLine     = regexp.MustCompile(`^\s*([A-Za-z0-9_.]+)\s*=\s*(.*)$`)
 	poolLine    = regexp.MustCompile(`^\s*php_(admin_)?(value|flag)\[([A-Za-z0-9_.]+)\]\s*=\s*(.*)$`)
 	sectionLine = regexp.MustCompile(`^\s*\[\s*([^\]]*?)\s*\]\s*([;#].*)?$`)
+	includeLine = regexp.MustCompile(`^\s*include\s*=\s*(.*?)\s*(;.*)?$`)
 )
 
 // Setting is the effective image default for one directive.
@@ -103,6 +104,12 @@ func Evaluate(files map[string]string, contentSeen bool) Result {
 	trees := map[string]*tree{}
 	var pools []poolOverride
 	poolNames := map[string]bool{}
+	included := includedPoolFiles(byPath, paths)
+	// FPM reads the files an include matches in name order, and a file without a
+	// [section] of its own continues the one the file before it ended in. That is
+	// only followed between included files in the same directory; anywhere else a
+	// file starts outside any pool.
+	pool, prev := "", ""
 	for _, p := range paths {
 		content := byPath[p]
 		if !configPath.MatchString(p) {
@@ -120,14 +127,20 @@ func Evaluate(files map[string]string, contentSeen bool) Result {
 			t.entries = append(t.entries, entry{order: order, name: path.Base(p), path: p, lines: lines})
 		case poolFile:
 			// A directive belongs to the pool whose [section] it sits in. FPM joins
-			// sections of the same name into one pool, and [global] isn't a pool.
-			pool := ""
+			// sections of the same name into one pool, and [global] isn't a pool. A
+			// section serves only from a file FPM includes.
+			if included == nil || !included[p] || !included[prev] || path.Dir(p) != path.Dir(prev) {
+				pool = ""
+			}
+			prev = p
 			for _, l := range lines {
 				if m := sectionLine.FindStringSubmatch(l); m != nil {
 					pool = ""
-					if name := strings.ToLower(m[1]); name != "global" {
+					if name := strings.ToLower(unquote(m[1])); name != "global" {
 						pool = "[" + name + "]"
-						poolNames[pool] = true
+						if included == nil || included[p] {
+							poolNames[pool] = true
+						}
 					}
 					continue
 				}
@@ -136,8 +149,11 @@ func Evaluate(files map[string]string, contentSeen bool) Result {
 					continue
 				}
 				d := strings.ToLower(m[3])
-				if directives[d] {
-					pools = append(pools, poolOverride{file: p, pool: pool, directive: d, value: parseBool(m[4])})
+				v := parseBool(m[4])
+				// An off in a file FPM doesn't include turns nothing off; an on there
+				// still counts, in case FPM reads the file after all.
+				if directives[d] && (included == nil || included[p] || v == nil || *v) {
+					pools = append(pools, poolOverride{file: p, pool: pool, directive: d, value: v})
 				}
 			}
 		}
@@ -393,6 +409,79 @@ func cleanLines(content string) []string {
 		out = append(out, l)
 	}
 	return out
+}
+
+// includedPoolFiles follows the include lines of each php-fpm.conf among paths, as FPM
+// does, and returns the FPM files it reaches. It returns nil, so that every FPM file
+// counts, when there's no php-fpm.conf, or when an include uses a variable or matches
+// none of the files, since the pools FPM reads are then unknown. A relative include is
+// tried against the directory above php-fpm.conf's, the usual prefix, and its own.
+func includedPoolFiles(byPath map[string]string, paths []string) map[string]bool {
+	var conf []string
+	for _, p := range paths {
+		if kind, _, _ := classify(p); kind == poolFile {
+			conf = append(conf, p)
+		}
+	}
+	included := map[string]bool{}
+	var queue []string
+	for _, p := range conf {
+		if path.Base(p) == "php-fpm.conf" {
+			included[p] = true
+			queue = append(queue, p)
+		}
+	}
+	if len(queue) == 0 {
+		return nil
+	}
+	for len(queue) > 0 {
+		p := queue[0]
+		queue = queue[1:]
+		for _, l := range cleanLines(byPath[p]) {
+			m := includeLine.FindStringSubmatch(l)
+			if m == nil {
+				continue
+			}
+			// FPM expands includes with glob(3), which negates a class with [!...]
+			// where path.Match uses [^...].
+			pattern := strings.ReplaceAll(unquote(m[1]), "[!", "[^")
+			if strings.Contains(pattern, "$") {
+				return nil
+			}
+			var candidates []string
+			if path.IsAbs(pattern) {
+				candidates = []string{pattern}
+			} else {
+				candidates = []string{path.Join(path.Dir(path.Dir(p)), pattern), path.Join(path.Dir(p), pattern)}
+			}
+			matched := false
+			for _, c := range conf {
+				for _, pat := range candidates {
+					if ok, _ := path.Match(pat, c); ok {
+						matched = true
+						if !included[c] {
+							included[c] = true
+							queue = append(queue, c)
+						}
+					}
+				}
+			}
+			if !matched {
+				return nil
+			}
+		}
+	}
+	return included
+}
+
+// unquote removes the double or single quotes around a value, as PHP's ini parser
+// does in section names and values.
+func unquote(s string) string {
+	s = strings.TrimSpace(s)
+	if len(s) >= 2 && (s[0] == '"' && s[len(s)-1] == '"' || s[0] == '\'' && s[len(s)-1] == '\'') {
+		return s[1 : len(s)-1]
+	}
+	return s
 }
 
 func treeLabel(root string) string {

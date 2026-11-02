@@ -119,6 +119,87 @@ func TestFPMPoolsEach(t *testing.T) {
 	}
 }
 
+// A pool serves only from a file php-fpm.conf includes, and a quoted section name is
+// the same pool as the plain one.
+func TestFPMPoolsIncludedAndQuoted(t *testing.T) {
+	off := "[www]\nlisten=9000\nphp_admin_flag[session.upload_progress.enabled]=off\n"
+	for name, c := range map[string]struct {
+		files map[string]string
+		want  string
+	}{
+		"spare file not included": {map[string]string{
+			"/usr/local/etc/php-fpm.conf":         "[global]\ninclude=/usr/local/etc/php-fpm.d/www.conf\n",
+			"/usr/local/etc/php-fpm.d/www.conf":   off,
+			"/usr/local/etc/php-fpm.d/spare.conf": "[spare]\nlisten=9001\n",
+		}, "off-in-fpm-pool"},
+		"spare file not included, relative path": {map[string]string{
+			"/usr/local/etc/php-fpm.conf":         "[global]\ninclude=etc/php-fpm.d/www.conf\n",
+			"/usr/local/etc/php-fpm.d/www.conf":   off,
+			"/usr/local/etc/php-fpm.d/spare.conf": "[spare]\nlisten=9001\n",
+		}, "off-in-fpm-pool"},
+		"spare file included by a relative glob": {map[string]string{
+			"/usr/local/etc/php-fpm.conf":         "[global]\ninclude=etc/php-fpm.d/*.conf ; the official image's line\n",
+			"/usr/local/etc/php-fpm.d/www.conf":   off,
+			"/usr/local/etc/php-fpm.d/spare.conf": "[spare]\nlisten=9001\n",
+		}, "on"},
+		"include through an included file": {map[string]string{
+			"/etc/php/8.3/fpm/php-fpm.conf":       "include=\"/etc/php/8.3/fpm/pool.d/www.conf\"\n",
+			"/etc/php/8.3/fpm/pool.d/www.conf":    off + "include=/etc/php/8.3/fpm/pool.d/z*.conf\n",
+			"/etc/php/8.3/fpm/pool.d/zspare.conf": "[spare]\nlisten=9001\n",
+		}, "on"},
+		"include with a variable": {map[string]string{
+			"/usr/local/etc/php-fpm.conf":         "[global]\ninclude=${prefix}/etc/php-fpm.d/www.conf\n",
+			"/usr/local/etc/php-fpm.d/www.conf":   off,
+			"/usr/local/etc/php-fpm.d/spare.conf": "[spare]\nlisten=9001\n",
+		}, "on"},
+		"include that matches nothing": {map[string]string{
+			"/usr/local/etc/php-fpm.conf":         "[global]\ninclude=/srv/fpm/*.conf\n",
+			"/usr/local/etc/php-fpm.d/www.conf":   off,
+			"/usr/local/etc/php-fpm.d/spare.conf": "[spare]\nlisten=9001\n",
+		}, "on"},
+		"glob negation": {map[string]string{
+			"/usr/local/etc/php-fpm.conf":             "[global]\ninclude=\"/usr/local/etc/php-fpm.d/[!_]*.conf\"\n",
+			"/usr/local/etc/php-fpm.d/zz-upload.conf": off,
+			"/usr/local/etc/php-fpm.d/zz-app.conf":    "[app]\nlisten=9001\n",
+			"/usr/local/etc/php-fpm.d/_old.conf":      "[www]\nlisten=9000\n",
+		}, "on"},
+		// A file with only the override line continues the section the file before
+		// it ended in: zz-docker.conf's [www].
+		"override in a file without a section": {map[string]string{
+			"/usr/local/etc/php-fpm.conf":             "[global]\ninclude=etc/php-fpm.d/*.conf\n",
+			"/usr/local/etc/php-fpm.d/www.conf":       "[www]\nuser = www-data\n",
+			"/usr/local/etc/php-fpm.d/zz-docker.conf": "[global]\ndaemonize = no\n[www]\nlisten = 9000\n",
+			"/usr/local/etc/php-fpm.d/zz-upload.conf": "php_admin_flag[session.upload_progress.enabled] = off\n",
+		}, "off-in-fpm-pool"},
+		// ... but not into a file FPM doesn't include, or when there's no php-fpm.conf
+		// to show what it includes.
+		"override in a stray file": {map[string]string{
+			"/usr/local/etc/php-fpm.conf":                 "[global]\ninclude=/usr/local/etc/php-fpm.d/*.conf\n",
+			"/usr/local/etc/php-fpm.d/www.conf":           "[www]\nlisten = 9000\n",
+			"/usr/local/etc/php-fpm.d.bak/zz-upload.conf": "php_admin_flag[session.upload_progress.enabled] = off\n",
+		}, "on"},
+		"off in a pool file FPM doesn't include": {map[string]string{
+			"/usr/local/etc/php-fpm.conf":         "[global]\ninclude=/usr/local/etc/php-fpm.d/www.conf\n",
+			"/usr/local/etc/php-fpm.d/www.conf":   "[www]\nlisten = 9000\n",
+			"/usr/local/etc/php-fpm.d/spare.conf": off,
+		}, "on"},
+		"override with no php-fpm.conf": {map[string]string{
+			"/etc/php/8.3/fpm/pool.d/www.conf":      "[www]\nlisten = 9000\n",
+			"/opt/app/docker/php-fpm.d/upload.conf": "php_admin_flag[session.upload_progress.enabled] = off\n",
+		}, "on"},
+		"quoted names": {map[string]string{
+			"/usr/local/etc/php-fpm.conf":             "[global]\ninclude=etc/php-fpm.d/*.conf\n",
+			"/usr/local/etc/php-fpm.d/www.conf":       off,
+			"/usr/local/etc/php-fpm.d/zz-docker.conf": "[\"www\"]\nlisten=9000\n['WWW']\nlisten.mode=0660\n",
+		}, "off-in-fpm-pool"},
+	} {
+		c.files["/usr/local/etc/php/php.ini"] = "session.upload_progress.enabled=on\n"
+		if s := Evaluate(c.files, true).Settings[UploadProgress]; s.Effective != c.want {
+			t.Errorf("%s: upload_progress = %q (%s), want %s", name, s.Effective, s.Why, c.want)
+		}
+	}
+}
+
 func TestOffInPhpIniAndFPMPool(t *testing.T) {
 	files := map[string]string{
 		"/usr/local/etc/php/php.ini":        "session.upload_progress.enabled=0\n",
