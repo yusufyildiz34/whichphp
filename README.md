@@ -7,7 +7,7 @@
 
 <h3>Is the PHP in your container image really fixed for PHP2Shell?</h3>
 
-<p>whichphp finds every PHP build inside an image, without running it, and tells you<br>
+<p>whichphp finds PHP builds inside an image, without running it, and tells you<br>
 whether CVE-2026-109618 and CVE-2026-109619 are fixed, and why.</p>
 
 <p>
@@ -64,7 +64,7 @@ The usual checks give confident answers that are often wrong for PHP2Shell.
 
 | The usual check | What it misses | What whichphp does |
 |---|---|---|
-| `php -v` | Distro backports keep the old version number, and the CLI isn't what serves your site | Reads the package release and every PHP binary: CLI, FPM, `mod_php`, CGI, embedded |
+| `php -v` | Distro backports keep the old version number, and the CLI isn't what serves your site | Reads the package release and each PHP build it finds: CLI, FPM and `mod_php`, plus CGI, LiteSpeed and embed builds from packages ([what it misses](#limits)) |
 | A package-based scanner | The official `php` images compile PHP from source, so no package manager knows about it | Uses Syft's PHP interpreter cataloger and Grype, then adds the backport rules |
 | The image tag | A rebuilt tag doesn't change a container that is already running | Shows when each tag was built and the first digest that carried the fix |
 
@@ -346,7 +346,7 @@ A verdict covers the PHP in these images only. It says nothing about earlier com
 | "`php -v` says 8.3.6. Am I patched?" | The version number alone can't tell you. Distros backport fixes without changing it. | [Why `php -v` lies](#why-php--v-lies), `whichphp image` |
 | "Is the image tag I pull fixed yet?" | Floating tags were rebuilt within days. Pinned and end-of-life tags often never are. | [The live index](https://yusufyildiz34.github.io/whichphp/), `whichphp image <ref>` |
 | "I rebuilt the image. Did that fix it?" | Compare the old image, or a saved report of it, with the new one. | [`whichphp diff`](#compare-two-images) |
-| "Which PHP actually serves my site?" | Often not the one `php -v` shows. Images and hosts can carry several builds. | `whichphp image` lists every binary and SAPI |
+| "Which PHP actually serves my site?" | Often not the one `php -v` shows. Images and hosts can carry several builds. | `whichphp image` lists each PHP build it finds, with its SAPI |
 | "I'm on PHP 8.1 or older." | There is no upstream release with the fix. Treat it as vulnerable unless your vendor proves a backport. | [Packagers that backport](#packagers-that-backport), [Verdicts](#verdicts) |
 | "Is the CVE-2026-115560 mitigation on?" | In most images it isn't. Official images ship no `php.ini`, so the compiled default (on) applies. | `whichphp image` reports the effective value |
 | "My scanner says the image is clean." | Package-based scanners can't see PHP compiled from source. | [Why your scanner says clean](#why-your-scanner-says-clean) |
@@ -445,7 +445,7 @@ Missing an image? [Suggest it](https://github.com/yusufyildiz34/whichphp/issues/
 
 The official `php` images compile PHP from source. No package manager knows about it, so package-based scanners don't see it.
 
-- **Trivy, and tools built on it, don't detect it.** Trivy's maintainers closed a pull request for PHP binary detection and said compiled-binary detection belongs to Aqua's commercial scanner ([aquasecurity/trivy#6524](https://github.com/aquasecurity/trivy/pull/6524)).
+- **Trivy, and tools built on it, don't detect it.** On a pull request that added PHP binary detection, Trivy's team replied that binary identification is part of Aqua's commercial scanner, and the pull request was later closed as stale, unmerged ([aquasecurity/trivy#6524](https://github.com/aquasecurity/trivy/pull/6524)).
 - **Syft and Grype do.** Syft has a PHP interpreter cataloger ([source](https://github.com/anchore/syft/blob/main/syft/pkg/cataloger/php/interpreter_cataloger.go)), and Grype matches what it finds.
 
 whichphp builds on Syft and Grype rather than replacing them. It adds the backport logic, the settings and the explanation.
@@ -484,6 +484,7 @@ Know a packager's fixed builds? [Send them](https://github.com/yusufyildiz34/whi
 
 **What a verdict does not prove**
 
+- **Some PHP builds aren't found.** In a source build, Syft finds the `php` and `php-fpm` binaries and an Apache `libphp` module, but not `php-cgi` or PHP embedded in another program, such as the `libphp.so` FrankenPHP loads. In FrankenPHP's Debian image, the verdict comes from the PHP CLI that ships next to it. An image whose only PHP is a build whichphp misses gets `NO_PHP` and exit code 0, which doesn't prove it has no PHP.
 - **Runtime overrides are only partly visible.** Environment variables, Secrets and mounted files can change settings after the image is built. Of these, `whichphp cluster` reads only the ConfigMaps mounted at PHP configuration paths.
 - **Distro data can lag.** A backport may exist before the vulnerability feed knows about it.
 - **Private backports can't be recognized.** A source build patched by hand looks like the unpatched version.
