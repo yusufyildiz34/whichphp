@@ -3,7 +3,7 @@
   <title>whichphp: nextcloud:fpm-alpine</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of nextcloud:fpm-alpine, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:2f07b672bc1e85dba404fd2011304943</id>
-  <updated>2026-10-31T01:35:10Z</updated>
+  <updated>2026-11-06T05:22:01Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/nextcloud-fpm-alpine-4ccba43f.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3Afpm-alpine"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>nextcloud:fpm-alpine (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c3773f0f5108b7e6cf0f902d3f42355d</id>
+    <updated>2026-11-06T05:22:01Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3Afpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:c62a2489d9e814ece03bd0c8ea5989e5084971daa5b79dca87f6ca872281026f (was sha256:3328c38bcdb667e0ef436f7be3fd85de7386dcf23fb176b0eb70e259927e6c48)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-06T05:22:01Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3Afpm-alpine&#xA;</content>
+  </entry>
+  <entry>
+    <title>nextcloud:fpm-alpine (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:10c436499b5514b2e199dd4510a50068</id>
+    <updated>2026-11-06T05:22:01Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3Afpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:5709c19f5cc5d83571a5c02c457f1e2576756e24748025a99037f4ac834ee5bf (was sha256:904e8916f3b7ea1e21f18800b9fcb4e173557bebac2d88df40de58ebb60a1395)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-06T05:22:01Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3Afpm-alpine&#xA;</content>
+  </entry>
   <entry>
     <title>nextcloud:fpm-alpine (linux/amd64): first checked, no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:172d3b807d08f3402c1b734aa51c0c80</id>

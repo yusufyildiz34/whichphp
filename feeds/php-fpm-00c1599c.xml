@@ -3,7 +3,7 @@
   <title>whichphp: php:fpm</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of php:fpm, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:f5542a191c7cb31f93b7284c4f2ebe50</id>
-  <updated>2026-10-31T15:13:07Z</updated>
+  <updated>2026-11-06T05:22:01Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/php-fpm-00c1599c.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3Afpm"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>php:fpm (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:0ca5c42777fa6e94605dfbb03b0c4285</id>
+    <updated>2026-11-06T05:22:01Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3Afpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:128f02f6ea8cd5d272fcbcefe1abbc8ae444469debd47c1b6c10507d018ed64e (was sha256:577eb9a9da4163301dcea396a7bac4ef356cc3218500b8cc139ece38a27ec201)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-06T05:22:01Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3Afpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:fpm (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6d4febbb2fea2523f68cc2de589c57a6</id>
+    <updated>2026-11-06T05:22:01Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3Afpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:64f0f8ab8245047483ff1e9b977cbd6ab6d4db0a239f175f06dddeacb10825b2 (was sha256:5461ffc177038aaa18bf033fc9be151dc4b257798554613eb473b1d222931c20)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-06T05:22:01Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3Afpm&#xA;</content>
+  </entry>
   <entry>
     <title>php:fpm (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:7dc3c95aae80f63e1bad0ed38ae53d2c</id>

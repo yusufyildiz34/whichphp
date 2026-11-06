@@ -3,7 +3,7 @@
   <title>whichphp: php:8.3-fpm</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of php:8.3-fpm, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:3d555de35542c78c35b391838d348676</id>
-  <updated>2026-11-01T05:22:10Z</updated>
+  <updated>2026-11-06T05:22:01Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/php-8.3-fpm-8d10705b.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-fpm"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>php:8.3-fpm (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e9a5f0d683383c790e4fe11920857c3e</id>
+    <updated>2026-11-06T05:22:01Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-fpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:41b7a66da97a4f067b6ab9e4f62293e3020ecd89c39397f49fa534457a4c2a6e (was sha256:aeed6dd89b430b758b8a834d8b787cc363ec410c805ae3e1e09d5f692a248f5a)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-06T05:22:01Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-fpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.3-fpm (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:4ceedd096d557bfaf40fca0f58477029</id>
+    <updated>2026-11-06T05:22:01Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-fpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:b9daaa9733d248da1c01a908c7d07a8de0fce2630128ff0d5df79f82bb28e810 (was sha256:48acea348982eb0fc2e552ed60eb7601a534610ee6a05826fdf0e42504e64397)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-06T05:22:01Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-fpm&#xA;</content>
+  </entry>
   <entry>
     <title>php:8.3-fpm (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:14d731dc66bdd33ed0b2f6f536e910db</id>

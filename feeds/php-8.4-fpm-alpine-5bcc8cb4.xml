@@ -3,7 +3,7 @@
   <title>whichphp: php:8.4-fpm-alpine</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of php:8.4-fpm-alpine, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:6c6f73b97b95bdc0a4f989275e701c49</id>
-  <updated>2026-10-30T22:47:59Z</updated>
+  <updated>2026-11-06T05:22:01Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/php-8.4-fpm-alpine-5bcc8cb4.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-fpm-alpine"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>php:8.4-fpm-alpine (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:164455bba5853adfb9d2a4c63be9484c</id>
+    <updated>2026-11-06T05:22:01Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-fpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:3732a6a35ba4a393cfbcbced6188f833420e21af1e8d8476d3c9a9f8e880e699 (was sha256:dffc90c2fb171a84f8e7de217437878b9787e34d3e8ba47e0f673f34b247ccaa)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-06T05:22:01Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-fpm-alpine&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.4-fpm-alpine (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:59fc49c18cea814dac0d3474b20f317f</id>
+    <updated>2026-11-06T05:22:01Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-fpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:031a675b1d2fadf6c7e6be10ccd26cb20bcc922c2dde57b96a0938418a20e862 (was sha256:72049cd3bc03ccd933decba6c888c560b6549879b54ba0aa5cb0a91ddd45ca6c)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-06T05:22:01Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-fpm-alpine&#xA;</content>
+  </entry>
   <entry>
     <title>php:8.4-fpm-alpine (linux/amd64): first checked, no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:bf30067ef525386321d31bead7c390a1</id>
