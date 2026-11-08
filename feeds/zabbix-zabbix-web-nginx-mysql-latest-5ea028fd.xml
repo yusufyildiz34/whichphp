@@ -3,7 +3,7 @@
   <title>whichphp: zabbix/zabbix-web-nginx-mysql:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of zabbix/zabbix-web-nginx-mysql:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:1fd9ee928be483f93d1adeba0a98d61f</id>
-  <updated>2026-11-06T05:22:01Z</updated>
+  <updated>2026-11-08T05:22:44Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/zabbix-zabbix-web-nginx-mysql-latest-5ea028fd.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=zabbix%2Fzabbix-web-nginx-mysql%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>zabbix/zabbix-web-nginx-mysql:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:f244226db303e5315ddf1d7031d999b3</id>
+    <updated>2026-11-08T05:22:44Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=zabbix%2Fzabbix-web-nginx-mysql%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:99de24c53c8f705fb96aaa260721820b7a76a3233043121a51940849f17a7157 (was sha256:b854043545f3cce51a0b3b6d2d6d332722e3c45bad6b8a467ac48a9542a7fffb)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-08T05:22:44Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=zabbix%2Fzabbix-web-nginx-mysql%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>zabbix/zabbix-web-nginx-mysql:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:00993df987f269675f8a44f5b396aa0e</id>
+    <updated>2026-11-08T05:22:44Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=zabbix%2Fzabbix-web-nginx-mysql%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:09510cb65c5bea4e9cb69e9ef68a5674003b89fc23800fc3fc82459bfaa03ad7 (was sha256:eb27f6787ededc21b5c9af88734c9c7727fdf620c5f0306a51761cadc81d1dc1)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-08T05:22:44Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=zabbix%2Fzabbix-web-nginx-mysql%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>zabbix/zabbix-web-nginx-mysql:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e32d3ca39742804b8d94c8705cf01307</id>
