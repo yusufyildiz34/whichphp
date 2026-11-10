@@ -3,7 +3,7 @@
   <title>whichphp: snipe/snipe-it:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of snipe/snipe-it:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:3005dd7148de4c795170d43d54197c71</id>
-  <updated>2026-11-07T05:22:04Z</updated>
+  <updated>2026-11-10T05:23:37Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/snipe-snipe-it-latest-deda9c73.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>snipe/snipe-it:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c00b2e3c3ad18517626e70b5d4ecf579</id>
+    <updated>2026-11-10T05:23:37Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:72fe7153b5b740c6c940fc7490c211559e990972b06542d329cba58935bc8be5 (was sha256:8006f27b1e17bd535c239bc4de2045fedba2ca36a41253bf5a72568955e3be2c)&#xA;CVE-2026-109618: FIXED_BY_DISTRO_BACKPORT&#xA;CVE-2026-109619: FIXED_BY_DISTRO_BACKPORT&#xA;Checked by the whichphp index at 2026-11-10T05:23:37Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>snipe/snipe-it:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:ad51f78e98d46e72d9b71085a24ef985</id>
+    <updated>2026-11-10T05:23:37Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0149cdda1d1e10a7f8ab5567ed8d45eaa53fdf8cb0729985bbc857dee52d69f7 (was sha256:080d6200ac41d88286f9e8115686ce74d1ca5306299a1f949891e9c24e4cb7a1)&#xA;CVE-2026-109618: FIXED_BY_DISTRO_BACKPORT&#xA;CVE-2026-109619: FIXED_BY_DISTRO_BACKPORT&#xA;Checked by the whichphp index at 2026-11-10T05:23:37Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>snipe/snipe-it:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:fd96680527859dcb505d52a04752ac57</id>
