@@ -3,7 +3,7 @@
   <title>whichphp: serversideup/php:8.3-fpm-nginx</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of serversideup/php:8.3-fpm-nginx, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:918b546a60ba755c4c381e71f9744d5e</id>
-  <updated>2026-11-06T05:22:01Z</updated>
+  <updated>2026-11-11T05:23:06Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/serversideup-php-8.3-fpm-nginx-7b2249d0.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>serversideup/php:8.3-fpm-nginx (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:dfc2d7a53629065a0d9b74713b22ec13</id>
+    <updated>2026-11-11T05:23:06Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:49c585d5bffa4e70fd709e46c058f5412f1b549c569839eeb4c67365ec85b5d8 (was sha256:9661921483c2f7a01df6b1a151ef85716814f42c47efb605e6052405d4a3c6ea)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-11T05:23:06Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx&#xA;</content>
+  </entry>
+  <entry>
+    <title>serversideup/php:8.3-fpm-nginx (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:ef5444403eeb51a4f2e1a7310e09fa44</id>
+    <updated>2026-11-11T05:23:06Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:82ab2b61ed25c11ed554571029e4318d360f10155a155bad636e60425638f19c (was sha256:396be6863e01d95c51d9471c83c3dfb2c7d4b62c6aa97684ce5b781387c2a46c)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-11T05:23:06Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx&#xA;</content>
+  </entry>
   <entry>
     <title>serversideup/php:8.3-fpm-nginx (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:b280cde8fe5cea4cab0ad3fa5c13f827</id>

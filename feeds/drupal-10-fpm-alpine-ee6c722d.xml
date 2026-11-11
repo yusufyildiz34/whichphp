@@ -3,7 +3,7 @@
   <title>whichphp: drupal:10-fpm-alpine</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of drupal:10-fpm-alpine, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:cfbb8d369ad217d4f07ce80e7a19f51f</id>
-  <updated>2026-11-06T05:22:01Z</updated>
+  <updated>2026-11-11T05:23:06Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/drupal-10-fpm-alpine-ee6c722d.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>drupal:10-fpm-alpine (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3221c06ed4fd3df1b197320e7de529fd</id>
+    <updated>2026-11-11T05:23:06Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:71b6eda57d3d602be84d153088bdd7ebc7aae458f66781fcd29f1f1fc567ca62 (was sha256:64aa27b928b98442c939e2626411d1b766c38db4c150535463d1733fc73d9307)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-11T05:23:06Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine&#xA;</content>
+  </entry>
+  <entry>
+    <title>drupal:10-fpm-alpine (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:cc43e0699d0a301d5ad7304bbe885985</id>
+    <updated>2026-11-11T05:23:06Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:166c27cd0f2b601f73d1621aa475154b14b1b437cd09f0a037986c25f66549f9 (was sha256:ba86c889d007cc7801d6d397736a14fb94765bb6e08f09557d53d73101ab1d8c)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-11T05:23:06Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine&#xA;</content>
+  </entry>
   <entry>
     <title>drupal:10-fpm-alpine (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:95371891aa6a98c432c81dbdd004802f</id>
