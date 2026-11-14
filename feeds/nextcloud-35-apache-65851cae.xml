@@ -3,7 +3,7 @@
   <title>whichphp: nextcloud:35-apache</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of nextcloud:35-apache, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:9de58deabed2305f091316e58c3f3657</id>
-  <updated>2026-11-06T05:22:01Z</updated>
+  <updated>2026-11-14T05:22:41Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/nextcloud-35-apache-65851cae.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A35-apache"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>nextcloud:35-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:7528853b9f3bd4aaf14247f25fb9bf26</id>
+    <updated>2026-11-14T05:22:41Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A35-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:f5a6d4827685268dcd5935e0dcc69b03939fc70525ef747b1beb723daba64ef9 (was sha256:3139d734aa878e9da89b610112734056c0df55279dd6a4578573c0803c293ef3)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-14T05:22:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A35-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>nextcloud:35-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3669dadecc0c121d667a25c6a41f5290</id>
+    <updated>2026-11-14T05:22:41Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A35-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:1059f89e8a1a78fbce4f88d358b6eaf20c32d3a47f67b049ec53fe588ab4be6d (was sha256:babf90e613bad7d7d7399d2646fce36a303f6c74aa9bf7f5c1ec816b03ad9d1a)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-14T05:22:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A35-apache&#xA;</content>
+  </entry>
   <entry>
     <title>nextcloud:35-apache (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:02a74183e3cb593d27429526c05693f2</id>

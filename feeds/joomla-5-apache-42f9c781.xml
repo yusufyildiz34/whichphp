@@ -3,7 +3,7 @@
   <title>whichphp: joomla:5-apache</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of joomla:5-apache, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:125be6863e58f0b43a96be1cc9b06e78</id>
-  <updated>2026-11-06T05:22:01Z</updated>
+  <updated>2026-11-14T05:22:41Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/joomla-5-apache-42f9c781.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=joomla%3A5-apache"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>joomla:5-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:966201be9f4b76a17dd11facd0a59eb2</id>
+    <updated>2026-11-14T05:22:41Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=joomla%3A5-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:21e0c78ace844ddc7ce8fba44f37bb9d501663b7378eeb57bd39491addc5e5e8 (was sha256:10330f7ce8d2a375578beb1886edcbc520eb015e7a8c640421f70350f70e62c2)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-14T05:22:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=joomla%3A5-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>joomla:5-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:2e21b60d4e8f84ab4bf706b3d5343172</id>
+    <updated>2026-11-14T05:22:41Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=joomla%3A5-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:741161737c6c6c9f345eca4010f7c08f228c80dfc8eea937f51427fb90dec07e (was sha256:9fea503f1e07f0cbc3b4f4cd0affe1c0a9cacc5a4d3b35d9111f750f375080fe)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-14T05:22:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=joomla%3A5-apache&#xA;</content>
+  </entry>
   <entry>
     <title>joomla:5-apache (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:56769ecdf7a82f470ef0b6f8a0d4f3f2</id>

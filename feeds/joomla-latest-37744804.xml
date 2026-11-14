@@ -3,7 +3,7 @@
   <title>whichphp: joomla:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of joomla:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:27e5e9ec1615e02268c6b5d11efeeb68</id>
-  <updated>2026-11-06T05:22:01Z</updated>
+  <updated>2026-11-14T05:22:41Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/joomla-latest-37744804.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=joomla%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>joomla:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3d27f8878a34e756900b7fbedb5f5949</id>
+    <updated>2026-11-14T05:22:41Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=joomla%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:ade87f8dec0da02a8ea8c52088fa28bb41dc1d7c6b6f7560452fbb6b38a72e2c (was sha256:717d948bf220ff07984d840a09b2108ad2806a1ba9cb76ce0570cfa0db539229)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-14T05:22:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=joomla%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>joomla:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:1b2e2a6ee4b3304b3d50a53b5f609bfa</id>
+    <updated>2026-11-14T05:22:41Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=joomla%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:672207297021f739660ed2347c05132e9a468a8f9e91d746de3d97de5746ee44 (was sha256:922f9a6b65fdc747c1dd2d4f8672f8f9b94bb5c49fc7e22d072e4df248779b59)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-14T05:22:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=joomla%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>joomla:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:1156c9427bf363d1b23f7273d9de872a</id>
