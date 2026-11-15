@@ -3,7 +3,7 @@
   <title>whichphp: linuxserver/piwigo:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of linuxserver/piwigo:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:9e81509659a076cb8e97e7fa57fc1de5</id>
-  <updated>2026-11-10T05:23:37Z</updated>
+  <updated>2026-11-15T05:23:08Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/linuxserver-piwigo-latest-e570cf55.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fpiwigo%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>linuxserver/piwigo:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:128ecf23d01229ad77e36a8aeb4b1639</id>
+    <updated>2026-11-15T05:23:08Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fpiwigo%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a2c1dfaf06776bbe13701eed687f47f3d047a432de398525bee5d8d42f25ccfb (was sha256:779d29bd011a1520cec50222728fbb01f2aa0f37079740894dc3e85e2f8e7d3c)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-15T05:23:08Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fpiwigo%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>linuxserver/piwigo:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:7d3ba3a5d509a6788fb43ef41e43aa81</id>
+    <updated>2026-11-15T05:23:08Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fpiwigo%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:cf7c0ccddb304b52272ee345c105b08d337ed167c0aaf1177ecc49a5e129c97f (was sha256:356374b1652156b8de883892e6499dff0a7a0e1975d792ea0affd4e095f4b1bf)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-15T05:23:08Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fpiwigo%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>linuxserver/piwigo:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:8801f0b8860612a92ce017bde4372e7f</id>
