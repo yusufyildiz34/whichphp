@@ -3,7 +3,7 @@
   <title>whichphp: wordpress:php8.4-apache</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of wordpress:php8.4-apache, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:92e54d06206751625c337c72b8741880</id>
-  <updated>2026-11-12T05:23:11Z</updated>
+  <updated>2026-11-19T05:25:07Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/wordpress-php8.4-apache-6cf9d84a.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.4-apache"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>wordpress:php8.4-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:92d12beeef3ec67eacd036ddd9ae48db</id>
+    <updated>2026-11-19T05:25:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.4-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:cd188690f261018a3f2c2763898172bf0748167e55a709d0e217921f711dbbf7 (was sha256:479eb234282ea1cd2bec5d2f7973bb62a715f5122d3fa48440a27451f82518a2)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-19T05:25:07Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.4-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>wordpress:php8.4-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:7f881abd134668cf2e885bcdc9cc0c89</id>
+    <updated>2026-11-19T05:25:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.4-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:831c9910122cc47cfbab13286e5167fd9f4e2e9c3d4a4b9b2a8ea173ccf52f12 (was sha256:3b54f1b0609c529a40f68eaf89874cae21d43e34d692ce1e0fbaf83ddb049e67)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-19T05:25:07Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.4-apache&#xA;</content>
+  </entry>
   <entry>
     <title>wordpress:php8.4-apache (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:7206f12ee9fa64b93132d3191d2aa864</id>

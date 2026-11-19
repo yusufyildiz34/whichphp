@@ -3,7 +3,7 @@
   <title>whichphp: wordpress:fpm-alpine</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of wordpress:fpm-alpine, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:b3be6dfd6b3582170d591f14ef3e982e</id>
-  <updated>2026-11-12T05:23:11Z</updated>
+  <updated>2026-11-19T05:25:07Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/wordpress-fpm-alpine-d2f803e6.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Afpm-alpine"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>wordpress:fpm-alpine (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e594a6ebbfe79b3ec70c6f94da104034</id>
+    <updated>2026-11-19T05:25:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Afpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:d0a81bc468aabf52977017ec08222b675d99a30565330517b8453889f30426e9 (was sha256:e7620e85240e5fef56529e1afe63259d09e2100ae29b314cf9218aa07f960164)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-19T05:25:07Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Afpm-alpine&#xA;</content>
+  </entry>
+  <entry>
+    <title>wordpress:fpm-alpine (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:a05e0b860743431b2b14be9d9c8652b8</id>
+    <updated>2026-11-19T05:25:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Afpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:b7d7999a707460f8ee565928d3849ebec2c1f7e05b7082055f8929df8f586c25 (was sha256:42cbd6cae17ff3623bc5e46d5c80a055a77ac3da7712260e163d20cc7896812c)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-19T05:25:07Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Afpm-alpine&#xA;</content>
+  </entry>
   <entry>
     <title>wordpress:fpm-alpine (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:8464d956600cd47764005102eff687c5</id>

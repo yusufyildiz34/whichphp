@@ -3,7 +3,7 @@
   <title>whichphp: linuxserver/grocy:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of linuxserver/grocy:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:d546acc1a213e0640c90d95bee3f8d89</id>
-  <updated>2026-11-16T05:23:50Z</updated>
+  <updated>2026-11-19T05:25:07Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/linuxserver-grocy-latest-c8c56b67.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fgrocy%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>linuxserver/grocy:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:feb2fc277d9fb65436f51bfe53f19c7b</id>
+    <updated>2026-11-19T05:25:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fgrocy%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:862e44326e03bf5a64951cc8ec2416c5c8021edc6d4237ec73026a3deae09e0f (was sha256:6821d58a2a4eadfbb2ca1f51a47f8ce30dc82840751120ce550a0fc87b03c3e3)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-19T05:25:07Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fgrocy%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>linuxserver/grocy:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:bc5541c34a99b5e0b6e71fc99660bb0c</id>
+    <updated>2026-11-19T05:25:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fgrocy%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:54e2f2b3e4b66d0373f642a57469de68a4f3b4e73b9c90bfe545b60358fbccc2 (was sha256:0cc7c6f24792bbdca2dc0d2077617316e71ac4a0dba5230b616681142d3e5303)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-19T05:25:07Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fgrocy%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>linuxserver/grocy:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:37bdd1788badb44ef2a3d28a6097d998</id>

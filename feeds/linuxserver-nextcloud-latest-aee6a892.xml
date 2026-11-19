@@ -3,7 +3,7 @@
   <title>whichphp: linuxserver/nextcloud:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of linuxserver/nextcloud:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:d031399e66978bb52d7b63b1576ae5c5</id>
-  <updated>2026-11-18T05:22:43Z</updated>
+  <updated>2026-11-19T05:25:07Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/linuxserver-nextcloud-latest-aee6a892.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fnextcloud%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>linuxserver/nextcloud:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:fb517547c5f3259fba9ee6b2f6887d2c</id>
+    <updated>2026-11-19T05:25:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fnextcloud%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:6f7a8ca8334aa2fac224b3e9950153234cd58f1396f6a28b6bf29d98c3b69409 (was sha256:f4231b66b7c1101032b508c7b7e5163f827f98b527b814be03647f89464cfe4d)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-19T05:25:07Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fnextcloud%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>linuxserver/nextcloud:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:b1c1d0c7da5411ece04e546651dd31c1</id>
+    <updated>2026-11-19T05:25:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fnextcloud%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:6cbb10750de7ff18915d5d2dc2586c6f5ec131dd1397ba508dd3757bbc8ba67c (was sha256:4d8170ce5d0d2d80bda74b04dbc6caec106a03626c8f9491ea9f1bc05cde4872)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-19T05:25:07Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fnextcloud%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>linuxserver/nextcloud:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:b35120ce6cc54a57d654816f40d1dd28</id>

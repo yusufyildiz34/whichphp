@@ -3,7 +3,7 @@
   <title>whichphp: wordpress:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of wordpress:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:dfeb55bb53fad3013c620578c797686a</id>
-  <updated>2026-11-12T05:23:11Z</updated>
+  <updated>2026-11-19T05:25:07Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/wordpress-latest-6bac38d6.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>wordpress:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c5fb59a0787a3fd5839e48566861f792</id>
+    <updated>2026-11-19T05:25:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:6f9ba86dd587f89d4095996df1eb698593b9edcceb9df28e55d0029008cc2fb4 (was sha256:e119cb71b4366d0995fb85a532e2e55b52cd9eb31c8520edacd810c910fc0362)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-19T05:25:07Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>wordpress:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:f612001ee85ee55ebbc1ef49126f814d</id>
+    <updated>2026-11-19T05:25:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:78320ac0ef85e4eba118a6a966468c032838d385120d3cf39344548a1c7d41d1 (was sha256:8623cbba6392752a66f5d4b7cd0da06d565cd2fb40e4eb8668493baddccc39cb)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-19T05:25:07Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>wordpress:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e18ac1df3e440bcd2fb8fd26b8fd74b7</id>
