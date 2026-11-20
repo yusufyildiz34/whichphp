@@ -1,25 +1,25 @@
 {
  "schema": 1,
- "generated": "2026-11-19T05:25:07Z",
+ "generated": "2026-11-20T05:22:56Z",
  "tool": "whichphp 53e2b7d",
- "grypeDBBuilt": "2026-11-18T18:19:44Z",
+ "grypeDBBuilt": "2026-11-19T18:41:05Z",
  "entries": [
   {
    "ref": "adminer:latest",
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:7605e298e5a2ac74d806283362fa253a4e0a42cfd881e8fa2c155f0631899f6c",
-   "imageDigest": "sha256:5d2ff3df2a82447c2a9169c48de7b0f70c55ddddacb81058db822c4aae3a9271",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-17T05:22:12Z",
-   "imageCreated": "2026-11-05T19:57:55Z",
+   "tagDigest": "sha256:037125c2bc4836b4917d4fd08a16f817eac2848778c4e9aab87a8340aef08dfd",
+   "imageDigest": "sha256:cf0d9e360da6b8054b6ec71160c5003b8c302f4ce2daf155cb59924bd7f3b13e",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:59:53Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -37,17 +37,17 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:7605e298e5a2ac74d806283362fa253a4e0a42cfd881e8fa2c155f0631899f6c",
-   "imageDigest": "sha256:e3fa100aaf0e0b7d8c9bf06fa46e5bbd16f9fff0aa0e3bed5376a0fe1d7d107f",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-17T05:22:12Z",
-   "imageCreated": "2026-11-05T21:23:19Z",
+   "tagDigest": "sha256:037125c2bc4836b4917d4fd08a16f817eac2848778c4e9aab87a8340aef08dfd",
+   "imageDigest": "sha256:3182e2361ff8e341df8a10bb9196d77d2f2df65607ad1bae43ba9c5afcb54463",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:56:47Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -68,7 +68,7 @@
    "note": "Bitnami legacy catalog; frozen and no longer updated",
    "tagDigest": "sha256:8350b86b970263348e2e5e73f4330db3ade5c6fd6a19cc5615cda01d0083a47a",
    "imageDigest": "sha256:fd6b645656b1fe637e0e9cb46e82666d44290c6ee7e9333f1c55b10a207bceff",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2024-11-24T20:12:56Z",
    "builtBeforeFix": true,
@@ -97,7 +97,7 @@
    "note": "Bitnami legacy catalog; frozen and no longer updated",
    "tagDigest": "sha256:8350b86b970263348e2e5e73f4330db3ade5c6fd6a19cc5615cda01d0083a47a",
    "imageDigest": "sha256:d8fe9758f7be2ac8d1438f4aa9699c6f70bd115a37c9876b387e57d9b564ddaf",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2024-11-24T20:16:28Z",
    "builtBeforeFix": true,
@@ -126,7 +126,7 @@
    "note": "Bitnami legacy catalog; frozen and no longer updated",
    "tagDigest": "sha256:a7bd6bf34b736dad22ee22168d4bfd830b7bedf9e34b89732d92d437317cb1d0",
    "imageDigest": "sha256:ecf3c5f414458e123c72ded6f563b9f3077dda48cb345337adc680b705027397",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-07-17T02:33:20Z",
    "builtBeforeFix": true,
@@ -155,7 +155,7 @@
    "note": "Bitnami legacy catalog; frozen and no longer updated",
    "tagDigest": "sha256:a7bd6bf34b736dad22ee22168d4bfd830b7bedf9e34b89732d92d437317cb1d0",
    "imageDigest": "sha256:62b37360d51f375829b2ce136bea40b54cf6ed7896d6004373d9071856458110",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-07-17T02:36:33Z",
    "builtBeforeFix": true,
@@ -184,7 +184,7 @@
    "note": "Bitnami legacy catalog; frozen and no longer updated",
    "tagDigest": "sha256:26a060ba52320fa2ab32e762dfb88db75e9a1b8cf192ee0a65dbd1eda834bdf3",
    "imageDigest": "sha256:3dd4c574f7dd7cbc236242ec39e98f67c929cad8e7c316c4b6323a5336a06ca5",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2024-11-28T16:07:19Z",
    "builtBeforeFix": true,
@@ -213,7 +213,7 @@
    "note": "Bitnami legacy catalog; frozen and no longer updated",
    "tagDigest": "sha256:26a060ba52320fa2ab32e762dfb88db75e9a1b8cf192ee0a65dbd1eda834bdf3",
    "imageDigest": "sha256:242de751b407c337a22d467626bc6b7dd02a05a2f5a72957fab4b0fe595dff65",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2024-11-28T16:08:55Z",
    "builtBeforeFix": true,
@@ -242,7 +242,7 @@
    "note": "Bitnami legacy catalog; frozen and no longer updated",
    "tagDigest": "sha256:d4e1d1fb4dada0d1d3c19c8836b35fd797654a12efd89978064576cfc2119fe0",
    "imageDigest": "sha256:2bc5bd332a0fc825d153023dd13fc89aaf3b3a439c08840ff33ec6a4905fe670",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-07-17T02:55:21Z",
    "builtBeforeFix": true,
@@ -271,7 +271,7 @@
    "note": "Bitnami legacy catalog; frozen and no longer updated",
    "tagDigest": "sha256:d4e1d1fb4dada0d1d3c19c8836b35fd797654a12efd89978064576cfc2119fe0",
    "imageDigest": "sha256:68584b972c52146ea35ec6fb0a1c52fb2be372c810b34943216eb9f52d321a09",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-07-17T02:56:48Z",
    "builtBeforeFix": true,
@@ -300,7 +300,7 @@
    "note": "Bitnami legacy catalog; frozen and no longer updated",
    "tagDigest": "sha256:1844c2e8ac40d2bce9f64398d6d9d514c6c3840d20a022fe019f27e5109e1557",
    "imageDigest": "sha256:b286bf68a9431fa2551e4718f972612f1052ece7ae5961ed5ff12c46ea796a05",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-07-17T13:19:44Z",
    "builtBeforeFix": true,
@@ -329,7 +329,7 @@
    "note": "Bitnami legacy catalog; frozen and no longer updated",
    "tagDigest": "sha256:1844c2e8ac40d2bce9f64398d6d9d514c6c3840d20a022fe019f27e5109e1557",
    "imageDigest": "sha256:c1452d0e42d0b6942d643a7436002bce8f017a935cf54d7383d6a81e271dbc2d",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-07-17T13:21:33Z",
    "builtBeforeFix": true,
@@ -358,7 +358,7 @@
    "note": "Bitnami legacy catalog; frozen and no longer updated",
    "tagDigest": "sha256:a8cf0d987f218c32458449cf91b43591f4dc77d26d98a3f028fd637bdf6f5ae5",
    "imageDigest": "sha256:eb919e94a449e184894ed206f2258033adb814058cbed4ae23ddd2a803060b0b",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-07-23T12:55:08Z",
    "builtBeforeFix": true,
@@ -387,7 +387,7 @@
    "note": "Bitnami legacy catalog; frozen and no longer updated",
    "tagDigest": "sha256:a8cf0d987f218c32458449cf91b43591f4dc77d26d98a3f028fd637bdf6f5ae5",
    "imageDigest": "sha256:089e9b06702fe0cea4220af10f191b6ace7deaf0e655ccbce06381323a2eaaa3",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-07-23T12:57:04Z",
    "builtBeforeFix": true,
@@ -416,7 +416,7 @@
    "note": "Bitnami legacy catalog; frozen and no longer updated",
    "tagDigest": "sha256:a8cf0d987f218c32458449cf91b43591f4dc77d26d98a3f028fd637bdf6f5ae5",
    "imageDigest": "sha256:eb919e94a449e184894ed206f2258033adb814058cbed4ae23ddd2a803060b0b",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-07-23T12:55:08Z",
    "builtBeforeFix": true,
@@ -445,7 +445,7 @@
    "note": "Bitnami legacy catalog; frozen and no longer updated",
    "tagDigest": "sha256:a8cf0d987f218c32458449cf91b43591f4dc77d26d98a3f028fd637bdf6f5ae5",
    "imageDigest": "sha256:089e9b06702fe0cea4220af10f191b6ace7deaf0e655ccbce06381323a2eaaa3",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-07-23T12:57:04Z",
    "builtBeforeFix": true,
@@ -472,17 +472,17 @@
    "kind": "latest",
    "owner": "app-official",
    "note": "Command-line PHP only; no web server",
-   "tagDigest": "sha256:0c8e663f14c94d07b3c45b175c51f5a14718508f21fe4dd7e54f09488dd0ed71",
-   "imageDigest": "sha256:c4a7ecd02a3469b6ff2b73930d3911831c5095ae760c3d15065df22cdf40e7f0",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-17T05:22:12Z",
-   "imageCreated": "2026-11-10T19:17:32Z",
+   "tagDigest": "sha256:919efe8e62179c71dfd31fad035fd671fe7454211c6b2aa30a10af0ab4acedba",
+   "imageDigest": "sha256:12d3bebef9c7c1b0466978288f5f628312786137398101206121e75cb9dd1198",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:23:51Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.6.0",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -501,17 +501,17 @@
    "kind": "latest",
    "owner": "app-official",
    "note": "Command-line PHP only; no web server",
-   "tagDigest": "sha256:0c8e663f14c94d07b3c45b175c51f5a14718508f21fe4dd7e54f09488dd0ed71",
-   "imageDigest": "sha256:d76824a7c8666ef28306f0264d7214dfd71915c6e6194f75ded62372fa932293",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-17T05:22:12Z",
-   "imageCreated": "2026-11-10T19:17:29Z",
+   "tagDigest": "sha256:919efe8e62179c71dfd31fad035fd671fe7454211c6b2aa30a10af0ab4acedba",
+   "imageDigest": "sha256:311998893feb05dae01f1743aa1c6a75469c24d0856946f5fd2dbbef5ce41077",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:29:13Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.6.0",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -529,23 +529,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:e81953626658fc027dd04b512ff850bcb6db4771c1425a2d59d6ef7c0a65f9d6",
-   "imageDigest": "sha256:22dab9e545fa3efbcdde230ee03182238dbd8c2289a028a05c0c2e2ae1162420",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T18:31:09Z",
+   "tagDigest": "sha256:44e522be9f13fc5872a5d4104b48d943f76f43a36217636ce78927a846966440",
+   "imageDigest": "sha256:02708c2aa20aeea9c7f59c6d7729ddbe66c0e134ad7f2f0cef0b6d29d050c565",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:36:19Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -563,23 +563,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:e81953626658fc027dd04b512ff850bcb6db4771c1425a2d59d6ef7c0a65f9d6",
-   "imageDigest": "sha256:0256a522c5bb3e016985ef649723e076896b97126a5df83cb04566faef33eae8",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T18:31:23Z",
+   "tagDigest": "sha256:44e522be9f13fc5872a5d4104b48d943f76f43a36217636ce78927a846966440",
+   "imageDigest": "sha256:4e597cda581f13eab24b10ca9dbe6d34e00ec45873201735280548dc2fdff7b4",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:45:58Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -597,23 +597,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:1838048c063fb3d893973f5e687a35560f80f867ac648183d79d43f0a6c2de35",
-   "imageDigest": "sha256:8c1374401af349d36002806ffadb61a07ad452111ca70cfbd742d9c9b2d4a948",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T18:31:30Z",
+   "tagDigest": "sha256:a21f34d91c0244ef460d36e8c34b026d3cd0e5dff32ae7ba80a83dd5583412db",
+   "imageDigest": "sha256:e1bdffdc38894b202f6640d7b937b6969bf729b02d4fb4952cb9d325602dff55",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:36:30Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -631,23 +631,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:1838048c063fb3d893973f5e687a35560f80f867ac648183d79d43f0a6c2de35",
-   "imageDigest": "sha256:8e913152f2ee227ecb3324db9f4673b248686e110e42cb904df63d7995527d54",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T18:31:27Z",
+   "tagDigest": "sha256:a21f34d91c0244ef460d36e8c34b026d3cd0e5dff32ae7ba80a83dd5583412db",
+   "imageDigest": "sha256:f9e46a4f6e1e849266298e1afa2ec72ef0544fc16cdcbad39aba6fa2352c5866",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:46:04Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -665,23 +665,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:7784aad7710a1eb78047ec6962f111c7ae65c278f51606bf65cd9976be641ed1",
-   "imageDigest": "sha256:4743ea6cfdb2cd6c0aebb381cfd98b858b8d09225fa11b728662f24d56e52a48",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T18:28:38Z",
+   "tagDigest": "sha256:f31a67bbed9668d7c3d5e2cbdfd3584d4542d29329a1fff90b5c488aa582d097",
+   "imageDigest": "sha256:4960d2c0966eb304a92af94a150b0594bdc6a22c5c8b38f02a6eee31a563cf82",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:32:59Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -699,23 +699,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:7784aad7710a1eb78047ec6962f111c7ae65c278f51606bf65cd9976be641ed1",
-   "imageDigest": "sha256:a6335f92c609795d18a56f8fab2feec8b1f4c34e3aabb8e9ad376f7016438387",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T18:28:50Z",
+   "tagDigest": "sha256:f31a67bbed9668d7c3d5e2cbdfd3584d4542d29329a1fff90b5c488aa582d097",
+   "imageDigest": "sha256:4690ce1ae0200840002da7a2cf75bc68dafcba5c6cc7eb90b418f6b6ee021289",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:42:39Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -736,7 +736,7 @@
    "note": "Drupal 7 is end-of-life (Jan 2025)",
    "tagDigest": "sha256:b2985acdd1770c9bbab262f7b294a322b84aceb0419ab4a9d0f574132ee9554d",
    "imageDigest": "sha256:30caab130589d6f0688400c0f7db280c96e28fcb9df7c28633ebb0e2f1877bfb",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2024-12-04T16:27:27Z",
    "builtBeforeFix": true,
@@ -771,7 +771,7 @@
    "note": "Drupal 7 is end-of-life (Jan 2025)",
    "tagDigest": "sha256:b2985acdd1770c9bbab262f7b294a322b84aceb0419ab4a9d0f574132ee9554d",
    "imageDigest": "sha256:6149bc87180955ff27235859127ca390377c33b3cc3aa24bbdc86d19f1866053",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2024-12-04T16:27:27Z",
    "builtBeforeFix": true,
@@ -803,23 +803,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:7784aad7710a1eb78047ec6962f111c7ae65c278f51606bf65cd9976be641ed1",
-   "imageDigest": "sha256:4743ea6cfdb2cd6c0aebb381cfd98b858b8d09225fa11b728662f24d56e52a48",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T18:28:38Z",
+   "tagDigest": "sha256:f31a67bbed9668d7c3d5e2cbdfd3584d4542d29329a1fff90b5c488aa582d097",
+   "imageDigest": "sha256:4960d2c0966eb304a92af94a150b0594bdc6a22c5c8b38f02a6eee31a563cf82",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:32:59Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -837,23 +837,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:7784aad7710a1eb78047ec6962f111c7ae65c278f51606bf65cd9976be641ed1",
-   "imageDigest": "sha256:a6335f92c609795d18a56f8fab2feec8b1f4c34e3aabb8e9ad376f7016438387",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T18:28:50Z",
+   "tagDigest": "sha256:f31a67bbed9668d7c3d5e2cbdfd3584d4542d29329a1fff90b5c488aa582d097",
+   "imageDigest": "sha256:4690ce1ae0200840002da7a2cf75bc68dafcba5c6cc7eb90b418f6b6ee021289",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:42:39Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -872,17 +872,17 @@
    "kind": "latest",
    "owner": "community",
    "note": "PHP is built into the server binary",
-   "tagDigest": "sha256:667c5fffd348d9c3c260803d75956f1d9aace7e4b7331d8893de6f101d7e0e57",
-   "imageDigest": "sha256:01d1335dbcb07c50d5db9fd8c87d2e598b83a153d46db61822349e65f95cc7c5",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-05T10:35:09Z",
+   "tagDigest": "sha256:17ff6554ba6de527d17aa5ec37e2a3bc3b182d7dbea9362f9a02eb5b4a1c4b95",
+   "imageDigest": "sha256:b3ef4a5b91c5cd95cccf57672a427cea2456555d071adb754447b8c2f2178334",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T16:30:50Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -901,17 +901,17 @@
    "kind": "latest",
    "owner": "community",
    "note": "PHP is built into the server binary",
-   "tagDigest": "sha256:667c5fffd348d9c3c260803d75956f1d9aace7e4b7331d8893de6f101d7e0e57",
-   "imageDigest": "sha256:5c414a313cba9c3a2b168fde7f170ef97fbc5ad7cdecc55fae8a1ee9928a69e4",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-05T10:35:09Z",
+   "tagDigest": "sha256:17ff6554ba6de527d17aa5ec37e2a3bc3b182d7dbea9362f9a02eb5b4a1c4b95",
+   "imageDigest": "sha256:c1f5fcb97758beee1de1bfe21758774e5a7bf6908d10547e196e0e4bd0f7197e",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T16:30:50Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -929,17 +929,17 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "community",
-   "tagDigest": "sha256:5e17d7af9314b54213588803f117a2d482b6ba270b7d41381400ec78db45b36e",
-   "imageDigest": "sha256:54f925790954bd4b25c1cda86d2d6b89762e9fe13fd9aae30b64aa1f6162d091",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-05T10:35:09Z",
+   "tagDigest": "sha256:6706866314b691d6ece0640da211aa7d88d0c4273a589a9763f3d6dd909dbc3a",
+   "imageDigest": "sha256:a3edaf86beff4d8320a240eb6dbebfbfb9124d2331a82f49e19ca61707c48632",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T16:30:50Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -957,17 +957,17 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "community",
-   "tagDigest": "sha256:5e17d7af9314b54213588803f117a2d482b6ba270b7d41381400ec78db45b36e",
-   "imageDigest": "sha256:747bc8686a250f51e55002507b05911e6e2347a00d3fd9fb5bc87f0103da39f7",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-05T10:35:09Z",
+   "tagDigest": "sha256:6706866314b691d6ece0640da211aa7d88d0c4273a589a9763f3d6dd909dbc3a",
+   "imageDigest": "sha256:b97b59c83daccb019313d5c4af25ce38a9d853d2c5759675a81bcd9b99bb8a92",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T16:30:50Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -987,7 +987,7 @@
    "owner": "community",
    "tagDigest": "sha256:af44385229541bee24aa9148d0ff8f3b40e095373c63a2c0f74e09a27d3c59df",
    "imageDigest": "sha256:a003730e81c89abf86c3ca9c8b263c818804734b574469d59586234364f425b0",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-10-21T20:46:47Z",
    "builtBeforeFix": false,
@@ -1021,7 +1021,7 @@
    "owner": "community",
    "tagDigest": "sha256:af44385229541bee24aa9148d0ff8f3b40e095373c63a2c0f74e09a27d3c59df",
    "imageDigest": "sha256:c889a3e8baddfb73dc1cecc553697f250c70cbfc7dbac6212626bf5cbccfc797",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-10-21T20:54:32Z",
    "builtBeforeFix": false,
@@ -1053,23 +1053,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "community",
-   "tagDigest": "sha256:3c30549e7ad364eb479930d9b17fd1830f73820e833e49b3999a4af6e489910f",
-   "imageDigest": "sha256:8a6d590d2c5da84f7129b4f06547c3a68d376e8a83fcbcf5859c32b531eef0ca",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T22:33:51Z",
+   "tagDigest": "sha256:39a2835e53dd19446966be4a99445419c9badfaab6035390cb9ef2a2cb0b654b",
+   "imageDigest": "sha256:991d3d7b4f54fb17669e6cb0198889e0a93aca75cf9801c65c2d1350bef849b8",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-20T02:57:34Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -1087,23 +1087,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "community",
-   "tagDigest": "sha256:3c30549e7ad364eb479930d9b17fd1830f73820e833e49b3999a4af6e489910f",
-   "imageDigest": "sha256:0bf4e70f20071503c506311178c9cecb62d1b644e789f511658abe0e8bc3e057",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T22:54:04Z",
+   "tagDigest": "sha256:39a2835e53dd19446966be4a99445419c9badfaab6035390cb9ef2a2cb0b654b",
+   "imageDigest": "sha256:a898c80d7e7002db797e49be47e8af0de38a6128e116037a2e551b670af6a844",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-20T03:13:52Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -1124,7 +1124,7 @@
    "note": "Joomla 4 is end-of-life (Oct 2025); use joomla:5 or later",
    "tagDigest": "sha256:c6fb65313d8583e3ed19912a1b79f9f2de2c19ecce8cd599963c62a600e315df",
    "imageDigest": "sha256:f0b8a1b1f0a593a02fe799a91c84ea53917269b9e5901d1561a0c86f31dacde1",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-13T05:23:19Z",
    "imageCreated": "2026-11-05T08:41:22Z",
    "builtBeforeFix": false,
@@ -1161,7 +1161,7 @@
    "note": "Joomla 4 is end-of-life (Oct 2025); use joomla:5 or later",
    "tagDigest": "sha256:c6fb65313d8583e3ed19912a1b79f9f2de2c19ecce8cd599963c62a600e315df",
    "imageDigest": "sha256:872d8401429f5237e8aad86167d70e07751db9cd4d397c3dd1bdc2a93931c7a2",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-13T05:23:19Z",
    "imageCreated": "2026-11-05T08:40:30Z",
    "builtBeforeFix": false,
@@ -1195,23 +1195,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:5650f3368c17d4ae6b67f641e1ce9aca8feee0a9727593f5c5675d83a8ae0a52",
-   "imageDigest": "sha256:21e0c78ace844ddc7ce8fba44f37bb9d501663b7378eeb57bd39491addc5e5e8",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-14T00:11:59Z",
+   "tagDigest": "sha256:f842910afa51d612c7ff5575e8a5ca07510a232b24b608bc07a3dab82c973301",
+   "imageDigest": "sha256:05ea47e71a533cfaf137d4ab4e66dfd8b6c7dac8282854ea1e9c1742a39d16fb",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:06:44Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -1229,23 +1229,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:5650f3368c17d4ae6b67f641e1ce9aca8feee0a9727593f5c5675d83a8ae0a52",
-   "imageDigest": "sha256:741161737c6c6c9f345eca4010f7c08f228c80dfc8eea937f51427fb90dec07e",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-14T00:13:13Z",
+   "tagDigest": "sha256:f842910afa51d612c7ff5575e8a5ca07510a232b24b608bc07a3dab82c973301",
+   "imageDigest": "sha256:0e22e6d1b90a39c5c3d7fe5c07c1587549f1f47d6f04080bcaa13700a713cce9",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:06:11Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -1263,23 +1263,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:90860f32e987dd3bace7ad1127f1b80a5b834835f012d598ed96f24308d99883",
-   "imageDigest": "sha256:ade87f8dec0da02a8ea8c52088fa28bb41dc1d7c6b6f7560452fbb6b38a72e2c",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-14T00:10:06Z",
+   "tagDigest": "sha256:0e1d5c2d7902133caa2f0cd05707de82611f07034dc207c9075f7bbb63dc054c",
+   "imageDigest": "sha256:6458e2117b542b1e3a1c8c5e21c224b0f3c8f45c69f499dae6c1e9745a797853",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:04:52Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -1297,23 +1297,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:90860f32e987dd3bace7ad1127f1b80a5b834835f012d598ed96f24308d99883",
-   "imageDigest": "sha256:672207297021f739660ed2347c05132e9a468a8f9e91d746de3d97de5746ee44",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-14T00:10:27Z",
+   "tagDigest": "sha256:0e1d5c2d7902133caa2f0cd05707de82611f07034dc207c9075f7bbb63dc054c",
+   "imageDigest": "sha256:deeac0793783c015ec2cf408f2e4e7b3636571245c4d5e8016561f453f0b3166",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:03:50Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -1333,7 +1333,7 @@
    "owner": "community",
    "tagDigest": "sha256:ee3838cd6841b716cb0992a995a1d3cc60dbd5332bb21946565b31d02aaa4eec",
    "imageDigest": "sha256:c49bc9a9cd4a82a9041f9973bea0227dfffff11b205b268091982f477f4bd0c3",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-11-13T14:17:50Z",
    "builtBeforeFix": false,
@@ -1367,7 +1367,7 @@
    "owner": "community",
    "tagDigest": "sha256:ee3838cd6841b716cb0992a995a1d3cc60dbd5332bb21946565b31d02aaa4eec",
    "imageDigest": "sha256:dcb0761e9cb2eedb7bba71dc2499d4113feba65c9b0b7edc7e18729ea97fd3aa",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-11-13T14:36:48Z",
    "builtBeforeFix": false,
@@ -1401,7 +1401,7 @@
    "owner": "community",
    "tagDigest": "sha256:5c630444fb305d3f45a7855d33c5eb73a61449aed4b6bc6c2dcd99651f727515",
    "imageDigest": "sha256:80d25b6788efa9fe2c1c6eefc57e5d08c1657c940addbcfb5d4a8b91c0144385",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-18T05:22:43Z",
    "imageCreated": "2026-11-17T18:09:14Z",
    "builtBeforeFix": false,
@@ -1435,7 +1435,7 @@
    "owner": "community",
    "tagDigest": "sha256:5c630444fb305d3f45a7855d33c5eb73a61449aed4b6bc6c2dcd99651f727515",
    "imageDigest": "sha256:260b712ac24a4f171ff092c14713aee23b362fc8b38e46adf0197f863aa6b330",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-18T05:22:43Z",
    "imageCreated": "2026-11-17T18:09:13Z",
    "builtBeforeFix": false,
@@ -1469,7 +1469,7 @@
    "owner": "community",
    "tagDigest": "sha256:c741211356966fd38f8fea10483f341ca29c41cdd1b96b5cfcdd4312f26d7f97",
    "imageDigest": "sha256:94b759cc6b471b15aac2e2ac09aacb9032c9d41a1f1a5b95bb5b0e19b9ad3161",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:12:05Z",
    "builtBeforeFix": false,
@@ -1503,7 +1503,7 @@
    "owner": "community",
    "tagDigest": "sha256:c741211356966fd38f8fea10483f341ca29c41cdd1b96b5cfcdd4312f26d7f97",
    "imageDigest": "sha256:c85e53281beee832a77b8e107e33dc486dbdb2abf5668a31c563ebaf1604db2e",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:14:32Z",
    "builtBeforeFix": false,
@@ -1537,7 +1537,7 @@
    "owner": "community",
    "tagDigest": "sha256:666470bff0c5f9cd63d6973ce3e86e5804abc52aab822ff38d8d401df746839b",
    "imageDigest": "sha256:346c7e835988b45a95932bd80b83d32017845de43b31290934524a29ed670fed",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:12:52Z",
    "builtBeforeFix": false,
@@ -1571,7 +1571,7 @@
    "owner": "community",
    "tagDigest": "sha256:666470bff0c5f9cd63d6973ce3e86e5804abc52aab822ff38d8d401df746839b",
    "imageDigest": "sha256:786f2c84290f3ce78891971d67b533ed257c907d212407bab5a4d927a393e306",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:13:23Z",
    "builtBeforeFix": false,
@@ -1605,7 +1605,7 @@
    "owner": "community",
    "tagDigest": "sha256:25ff6be7ba11bc46b4b78913e7ea222fb9da28cb3f0843b305a1cae6dd3e1ba2",
    "imageDigest": "sha256:32204dd0db6e15934177e265d63ef58a5a4391cd32d87532b5bebcad16ea55d7",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:12:34Z",
    "builtBeforeFix": false,
@@ -1639,7 +1639,7 @@
    "owner": "community",
    "tagDigest": "sha256:25ff6be7ba11bc46b4b78913e7ea222fb9da28cb3f0843b305a1cae6dd3e1ba2",
    "imageDigest": "sha256:b0099b283868ced084a7cca95fcfa3b380bdd01cdda3212c99630fd0fd25d08e",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:12:52Z",
    "builtBeforeFix": false,
@@ -1673,7 +1673,7 @@
    "owner": "community",
    "tagDigest": "sha256:94a5a4c3daa3ebe8d4e304a3b6412136cb9501fcf3f228f9c319eae7c27c6328",
    "imageDigest": "sha256:862e44326e03bf5a64951cc8ec2416c5c8021edc6d4237ec73026a3deae09e0f",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:13:46Z",
    "builtBeforeFix": false,
@@ -1707,7 +1707,7 @@
    "owner": "community",
    "tagDigest": "sha256:94a5a4c3daa3ebe8d4e304a3b6412136cb9501fcf3f228f9c319eae7c27c6328",
    "imageDigest": "sha256:54e2f2b3e4b66d0373f642a57469de68a4f3b4e73b9c90bfe545b60358fbccc2",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:14:33Z",
    "builtBeforeFix": false,
@@ -1741,7 +1741,7 @@
    "owner": "community",
    "tagDigest": "sha256:8ae83fb0b097e2281e1cfb304ca3efe9be574ddc31933c93a72dd49174b73b91",
    "imageDigest": "sha256:db5368d9eb72930dfc51ccbc166a339c7691f9167d14eb839df068bc659742e4",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:13:47Z",
    "builtBeforeFix": false,
@@ -1775,7 +1775,7 @@
    "owner": "community",
    "tagDigest": "sha256:8ae83fb0b097e2281e1cfb304ca3efe9be574ddc31933c93a72dd49174b73b91",
    "imageDigest": "sha256:8238341639aceb0b412001af9e8f583bed60cac0ccf763961bf61a7bd80e4537",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:14:12Z",
    "builtBeforeFix": false,
@@ -1809,7 +1809,7 @@
    "owner": "community",
    "tagDigest": "sha256:8c1459b8ccb09f10f28902586ddd322e531b68a3fa5e9a818f20328bc56d872b",
    "imageDigest": "sha256:6f7a8ca8334aa2fac224b3e9950153234cd58f1396f6a28b6bf29d98c3b69409",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:21:23Z",
    "builtBeforeFix": false,
@@ -1843,7 +1843,7 @@
    "owner": "community",
    "tagDigest": "sha256:8c1459b8ccb09f10f28902586ddd322e531b68a3fa5e9a818f20328bc56d872b",
    "imageDigest": "sha256:6cbb10750de7ff18915d5d2dc2586c6f5ec131dd1397ba508dd3757bbc8ba67c",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:22:35Z",
    "builtBeforeFix": false,
@@ -1877,7 +1877,7 @@
    "owner": "community",
    "tagDigest": "sha256:3c503a871c22d1fa9843ef1ad5dc89f02b539d49e1ceceae0b930dfec02737b2",
    "imageDigest": "sha256:8c2413ef777ee31483d784f7db7b4a8f419c0f54a582c8973411aa20c522eeae",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:34:49Z",
    "builtBeforeFix": false,
@@ -1911,7 +1911,7 @@
    "owner": "community",
    "tagDigest": "sha256:3c503a871c22d1fa9843ef1ad5dc89f02b539d49e1ceceae0b930dfec02737b2",
    "imageDigest": "sha256:ab2ce92377e7af32d0d25dbaac2cc9554089e5bbaf7a2f7edf7e9683850f9fb7",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:35:47Z",
    "builtBeforeFix": false,
@@ -1945,7 +1945,7 @@
    "owner": "community",
    "tagDigest": "sha256:ba4d5e0735b59db476b69d0c4d8af2b3291ca58caccfe4db53f1b12a9628753d",
    "imageDigest": "sha256:18de90aac7a594b88cc1a4eba88337e99932829bf4cd06a73ab60c07018b2dae",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:34:49Z",
    "builtBeforeFix": false,
@@ -1985,7 +1985,7 @@
    "owner": "community",
    "tagDigest": "sha256:ba4d5e0735b59db476b69d0c4d8af2b3291ca58caccfe4db53f1b12a9628753d",
    "imageDigest": "sha256:94ed9a2f2b8e01509d7127eb3378ef972ae06412d0d469776ae3756736980b8d",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-18T18:34:50Z",
    "builtBeforeFix": false,
@@ -2023,23 +2023,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:ac870e74a24867aee72cbfe0d09ae3193452ba4ee2a72e99dbac62c47ab5f751",
-   "imageDigest": "sha256:f46a4d605064abe5f4dea2276fef30db967a221a23795ddba0b412908a4ed336",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-18T05:22:43Z",
-   "imageCreated": "2026-11-17T20:09:51Z",
+   "tagDigest": "sha256:ba13c4fc70f67c5b68a441cba06ae12904e58318ba86fcbf6603bd4bf5ee35c6",
+   "imageDigest": "sha256:35e891b002401387ca49f9ae06193611ed160659b0f642efc952e8c9f61d4d94",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:06:00Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2057,23 +2057,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:ac870e74a24867aee72cbfe0d09ae3193452ba4ee2a72e99dbac62c47ab5f751",
-   "imageDigest": "sha256:0531b47ae50dd02f5ce3f2d23683482d4ad2d64739d86c86d4ad9c7d352e8644",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-18T05:22:43Z",
-   "imageCreated": "2026-11-17T20:10:49Z",
+   "tagDigest": "sha256:ba13c4fc70f67c5b68a441cba06ae12904e58318ba86fcbf6603bd4bf5ee35c6",
+   "imageDigest": "sha256:e0f6eb6a0ab0db14acf2cc91acd6c72ad12aba3e89a1a0bea43a218d8e6a4d9f",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:06:02Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2091,23 +2091,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:50aab9b13fb6bbf3f845d3e8ecb7cce4233aeb5755225da0599f84d37020589c",
-   "imageDigest": "sha256:4c8bcb5ddf4522fe77ea129cb7bae90780c0c38008b11ac7e11a90035436612d",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-18T05:22:43Z",
-   "imageCreated": "2026-11-17T20:10:56Z",
+   "tagDigest": "sha256:9dd9e01efee9e6b3790142706404463f3dea32cbca3d3c62ea551ceaa7eab020",
+   "imageDigest": "sha256:e6792f755a0a6d2968f734d9ca3a65eb6fed259de65112ebe6dee9920c1d0db6",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:06:44Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -2125,23 +2125,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:50aab9b13fb6bbf3f845d3e8ecb7cce4233aeb5755225da0599f84d37020589c",
-   "imageDigest": "sha256:ed1631aa5f78f024fdf8ffdd14f3a759e971f20a1c7e4d7a8f7eecf0f617eb84",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-18T05:22:43Z",
-   "imageCreated": "2026-11-17T20:10:47Z",
+   "tagDigest": "sha256:9dd9e01efee9e6b3790142706404463f3dea32cbca3d3c62ea551ceaa7eab020",
+   "imageDigest": "sha256:e5bb78079a0ad24d3535192ba3a946677ee2abd271e71d175f9e237f8efc5e74",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:06:26Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -2159,23 +2159,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:ac870e74a24867aee72cbfe0d09ae3193452ba4ee2a72e99dbac62c47ab5f751",
-   "imageDigest": "sha256:f46a4d605064abe5f4dea2276fef30db967a221a23795ddba0b412908a4ed336",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-18T05:22:43Z",
-   "imageCreated": "2026-11-17T20:09:51Z",
+   "tagDigest": "sha256:ba13c4fc70f67c5b68a441cba06ae12904e58318ba86fcbf6603bd4bf5ee35c6",
+   "imageDigest": "sha256:35e891b002401387ca49f9ae06193611ed160659b0f642efc952e8c9f61d4d94",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:06:00Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2193,23 +2193,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:ac870e74a24867aee72cbfe0d09ae3193452ba4ee2a72e99dbac62c47ab5f751",
-   "imageDigest": "sha256:0531b47ae50dd02f5ce3f2d23683482d4ad2d64739d86c86d4ad9c7d352e8644",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-18T05:22:43Z",
-   "imageCreated": "2026-11-17T20:10:49Z",
+   "tagDigest": "sha256:ba13c4fc70f67c5b68a441cba06ae12904e58318ba86fcbf6603bd4bf5ee35c6",
+   "imageDigest": "sha256:e0f6eb6a0ab0db14acf2cc91acd6c72ad12aba3e89a1a0bea43a218d8e6a4d9f",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:06:02Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2227,23 +2227,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "community",
-   "tagDigest": "sha256:83461b9ec7c109413281490180e1f96c379aa935bd92f80c68294f98487a9015",
-   "imageDigest": "sha256:84ec7fbf7f47e54692dfd5bc788af1ff0be38ef31ac178a554fc5d743a95fdda",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-10-26T13:08:20Z",
+   "tagDigest": "sha256:cb5a72a63c855917c2c6eca65cd368b02d8d491bc135d3834e85ba5d575d789c",
+   "imageDigest": "sha256:54d287de1b1cc405df2c0519c1a0f1126c421ca57ece4669f84d8930af7c0c04",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T16:35:36Z",
    "builtBeforeFix": false,
    "distro": "debian 12.15",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2261,23 +2261,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "community",
-   "tagDigest": "sha256:83461b9ec7c109413281490180e1f96c379aa935bd92f80c68294f98487a9015",
-   "imageDigest": "sha256:5d346bd9baed94dd18749d829df86a067c01f2a8c7da7678c6d4124b73fa3205",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-10-26T13:55:36Z",
+   "tagDigest": "sha256:cb5a72a63c855917c2c6eca65cd368b02d8d491bc135d3834e85ba5d575d789c",
+   "imageDigest": "sha256:58f568f658de0d6b2606bf4868bc5dd303b716d4f15f1d6ead51054d0e38a586",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T17:41:19Z",
    "builtBeforeFix": false,
    "distro": "debian 12.15",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2298,7 +2298,7 @@
    "note": "MediaWiki 1.39 is end-of-life (Dec 31 2025); use 1.43 LTS",
    "tagDigest": "sha256:1e821253cc8845d78e19bc0d57c7a4082fc81c89bb62a2a17e93e6f7e99b49b5",
    "imageDigest": "sha256:51bd691906e6b74860058940ceb14ee69bbc457be20c0a95d93bd9c43935d989",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-12-30T01:39:06Z",
    "builtBeforeFix": true,
@@ -2333,7 +2333,7 @@
    "note": "MediaWiki 1.39 is end-of-life (Dec 31 2025); use 1.43 LTS",
    "tagDigest": "sha256:1e821253cc8845d78e19bc0d57c7a4082fc81c89bb62a2a17e93e6f7e99b49b5",
    "imageDigest": "sha256:ad7b1e177c6062a0ec8610c5cf126ed2a40fd61a436ee552018bc2830a8c202a",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-12-30T01:43:50Z",
    "builtBeforeFix": true,
@@ -2366,23 +2366,23 @@
    "kind": "pinned",
    "owner": "app-official",
    "note": "Long-term support release",
-   "tagDigest": "sha256:324da5c8abe249bf7229ca6a4e0e689fab06b028eaa9f3a3820cce375611cf83",
-   "imageDigest": "sha256:9118f6e0ef4192b87d4bc602818a2812b2f471b5596928f0d1fd8256cde98be1",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-13T05:23:19Z",
-   "imageCreated": "2026-11-05T08:43:13Z",
+   "tagDigest": "sha256:9692cc01b83b4b0f9d775b0ac16ec681578f6c47fb5e67c59e6a9c204442b9f7",
+   "imageDigest": "sha256:3f0ba3d719995e6be7d0903a2d577d2157832bf5f4ea30af1ea814b24c737265",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:08:32Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2401,23 +2401,23 @@
    "kind": "pinned",
    "owner": "app-official",
    "note": "Long-term support release",
-   "tagDigest": "sha256:324da5c8abe249bf7229ca6a4e0e689fab06b028eaa9f3a3820cce375611cf83",
-   "imageDigest": "sha256:5a5b043e0c4a9b90c2e08695cebb421b56473d1834fe133a609ce37c39256b83",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-13T05:23:19Z",
-   "imageCreated": "2026-11-05T08:43:20Z",
+   "tagDigest": "sha256:9692cc01b83b4b0f9d775b0ac16ec681578f6c47fb5e67c59e6a9c204442b9f7",
+   "imageDigest": "sha256:6aa3cf90d8ab36909471bd5bc8205debb27402ddc5abec08f102e13cbae99306",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:08:54Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2435,23 +2435,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:406a08c7f2cf5a9c9cb590bbe27a21b4d3cb3268b0acf327fa7dd2727ff6b0be",
-   "imageDigest": "sha256:dcaa8a29706bf13e75b6019276e88870daae2a8c770fa52d6d46b9d35bbb3fb5",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-13T05:23:19Z",
-   "imageCreated": "2026-11-05T08:42:37Z",
+   "tagDigest": "sha256:0a8ee92de731b38ea6b03699e5d1458342b0a17c8a2adcd2c2306a9273126765",
+   "imageDigest": "sha256:db52f022f5283f3e4d7e4c039e1e81aaac9bb6fc5146ba347f8863fa553060fc",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:07:48Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2469,23 +2469,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:406a08c7f2cf5a9c9cb590bbe27a21b4d3cb3268b0acf327fa7dd2727ff6b0be",
-   "imageDigest": "sha256:e435914efe9d712a767a8a2436990009e1d216c0f369a3d316ce9a28e5e8b7ec",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-13T05:23:19Z",
-   "imageCreated": "2026-11-05T08:42:58Z",
+   "tagDigest": "sha256:0a8ee92de731b38ea6b03699e5d1458342b0a17c8a2adcd2c2306a9273126765",
+   "imageDigest": "sha256:e650674ca4bc9d0a7e457f497c0a0088bf08856c3ca490fce85a8a2fe13f0893",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:08:40Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2503,23 +2503,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:9319157715ef21ce4206b7efcc66a74ce4ae0eed8859905e69e1be6105e4ecef",
-   "imageDigest": "sha256:4768a432b7d943f375d5760d84a4ac2fe33de7506f2c6e0462cbbbdc2075b348",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T08:43:27Z",
+   "tagDigest": "sha256:4e39d3401ebae1bb95393d7d79bbfebade3e2573cda6f86a86fce2c8c5f68053",
+   "imageDigest": "sha256:88e0cef52dee0be5135bfa5152fff68836f4fdf70a557e67ca61c443ae842573",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:08:31Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2537,23 +2537,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:9319157715ef21ce4206b7efcc66a74ce4ae0eed8859905e69e1be6105e4ecef",
-   "imageDigest": "sha256:ca08ab670c3bde3cc0f9ccba78a373ea99ea9c41dbe262367582d2fabe6180d1",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T08:43:43Z",
+   "tagDigest": "sha256:4e39d3401ebae1bb95393d7d79bbfebade3e2573cda6f86a86fce2c8c5f68053",
+   "imageDigest": "sha256:781eace731dc05352a67eb297d0d6de521d8adc1dd7bd163d5d84353543474e8",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:25:39Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2574,7 +2574,7 @@
    "note": "Nextcloud 30 is end-of-life (2025)",
    "tagDigest": "sha256:fb966733647ea03f0446b0c22eac9733c8eb616d37b960caca9d4c3010e14a08",
    "imageDigest": "sha256:4ba4dff13ce3d461180b3b7984207a88ccdd04e9021933ad27336d7427959432",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-11-20T20:55:48Z",
    "builtBeforeFix": true,
@@ -2609,7 +2609,7 @@
    "note": "Nextcloud 30 is end-of-life (2025)",
    "tagDigest": "sha256:fb966733647ea03f0446b0c22eac9733c8eb616d37b960caca9d4c3010e14a08",
    "imageDigest": "sha256:656d012b0a924ed2f3a8ba77a9273e82ff40623f9498589441c5037415220c7e",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-11-20T20:55:50Z",
    "builtBeforeFix": true,
@@ -2644,7 +2644,7 @@
    "note": "Nextcloud 31 is end-of-life (Feb 2026)",
    "tagDigest": "sha256:07ec73cc816e58d6f45a162cd53ef886462c29271a23fc68d0124cec276e3767",
    "imageDigest": "sha256:cbe9aaba3bca1093510ff51b48c84abb412b70fb037c1b77b77e703b1ee63bb7",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-03-16T23:38:16Z",
    "builtBeforeFix": true,
@@ -2679,7 +2679,7 @@
    "note": "Nextcloud 31 is end-of-life (Feb 2026)",
    "tagDigest": "sha256:07ec73cc816e58d6f45a162cd53ef886462c29271a23fc68d0124cec276e3767",
    "imageDigest": "sha256:cfd9217bf40573a3cef513e32be7ac2517b3f57dc597eddbe4d2e81b0271c526",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-03-16T23:45:08Z",
    "builtBeforeFix": true,
@@ -2711,23 +2711,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:db18aaa3a58302d7363dc59905c310f6df5141800bc8f336ab9cdec5577c6211",
-   "imageDigest": "sha256:c5e6c5478ebfc77ab9bc85d01e0b6b5725c7e0e2f1191a735b6b45743e4ee01f",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T08:45:46Z",
+   "tagDigest": "sha256:c6b62c2c908049ae9671b68cf8c8997a11976dd5daad978131744825e8c07fcf",
+   "imageDigest": "sha256:44a104384b4b889703ad306b6c03b1515a06e303c58ade4f414952091eeb066d",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:11:26Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2745,23 +2745,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:db18aaa3a58302d7363dc59905c310f6df5141800bc8f336ab9cdec5577c6211",
-   "imageDigest": "sha256:3c169716aff4acde4f809c0c522d9c0b95c15b86832685614fe7909adbe6c17f",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T08:46:50Z",
+   "tagDigest": "sha256:c6b62c2c908049ae9671b68cf8c8997a11976dd5daad978131744825e8c07fcf",
+   "imageDigest": "sha256:136d662de94c15651db4273dcd064ebc685638694a6b56f8ecad55bc79e7b392",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:12:23Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2779,23 +2779,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:8041f24690c5631da46d2391e1fd7efcde95c6cf08695047f3dd7ce7783934b4",
-   "imageDigest": "sha256:f5a6d4827685268dcd5935e0dcc69b03939fc70525ef747b1beb723daba64ef9",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-13T22:16:34Z",
+   "tagDigest": "sha256:8de31d1ba6d670b1e60052e8a2b4715a3cf5c05fc69baf3786f265703efe285e",
+   "imageDigest": "sha256:e2c42eda8c4a54dd69ebbb6462fa3fb015b3eedc0b65690319096d92d2733d42",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:13:22Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2813,23 +2813,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:8041f24690c5631da46d2391e1fd7efcde95c6cf08695047f3dd7ce7783934b4",
-   "imageDigest": "sha256:1059f89e8a1a78fbce4f88d358b6eaf20c32d3a47f67b049ec53fe588ab4be6d",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-13T22:20:12Z",
+   "tagDigest": "sha256:8de31d1ba6d670b1e60052e8a2b4715a3cf5c05fc69baf3786f265703efe285e",
+   "imageDigest": "sha256:5b255be16c00cd5ab3be71bd7f0e551a956ef4d6f1bce44fd38534a6029ea416",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:14:05Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -2850,7 +2850,7 @@
    "note": "Exact patch tag; newer 35.0.x tags get the rebuilt PHP",
    "tagDigest": "sha256:8f2f0e93aca5e9457019933936dea1f313052e72c696b4aecb31580a208b859f",
    "imageDigest": "sha256:8cfe6765cdfe3fcecbbf25b4140cbf6f77c38a53e8988349a3900be9311ea11b",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-10-06T02:48:01Z",
    "builtBeforeFix": true,
@@ -2885,7 +2885,7 @@
    "note": "Exact patch tag; newer 35.0.x tags get the rebuilt PHP",
    "tagDigest": "sha256:8f2f0e93aca5e9457019933936dea1f313052e72c696b4aecb31580a208b859f",
    "imageDigest": "sha256:3c2ab51814fbd0b24c9646a8b6782e25d41e8f54939b89a254bdc8d9fdd67682",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-10-06T02:42:22Z",
    "builtBeforeFix": true,
@@ -2917,23 +2917,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:0243e0902b4e8213fa3dffdab234f652d3f348661a66dc2996ec66914f066201",
-   "imageDigest": "sha256:3f1713c04b1d5c80179d4de2cc1fcb518b3572c80980dd19e4acf07e0ffae57b",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-13T22:17:48Z",
+   "tagDigest": "sha256:e2500641abcb8423d1a8d2baabf9c00bf195c5ac996ab36a1a59dfe862734777",
+   "imageDigest": "sha256:6243a295dc193791f1e5328d5c3c503ae6d90fb47373dc2dd7d1c3325d1071f2",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:14:27Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -2951,23 +2951,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:0243e0902b4e8213fa3dffdab234f652d3f348661a66dc2996ec66914f066201",
-   "imageDigest": "sha256:b359898458f14b289f3283dfdf1b88a08ab8e09f5e807ba049823d1ab334e14a",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-13T22:19:46Z",
+   "tagDigest": "sha256:e2500641abcb8423d1a8d2baabf9c00bf195c5ac996ab36a1a59dfe862734777",
+   "imageDigest": "sha256:f98ebb05ee0f4f446020f727a598fa98484af13cfbdf560aaf460473a8470abf",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:16:15Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -2985,23 +2985,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:8041f24690c5631da46d2391e1fd7efcde95c6cf08695047f3dd7ce7783934b4",
-   "imageDigest": "sha256:f5a6d4827685268dcd5935e0dcc69b03939fc70525ef747b1beb723daba64ef9",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-13T22:16:34Z",
+   "tagDigest": "sha256:8de31d1ba6d670b1e60052e8a2b4715a3cf5c05fc69baf3786f265703efe285e",
+   "imageDigest": "sha256:e2c42eda8c4a54dd69ebbb6462fa3fb015b3eedc0b65690319096d92d2733d42",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:13:22Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -3019,23 +3019,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:8041f24690c5631da46d2391e1fd7efcde95c6cf08695047f3dd7ce7783934b4",
-   "imageDigest": "sha256:1059f89e8a1a78fbce4f88d358b6eaf20c32d3a47f67b049ec53fe588ab4be6d",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-13T22:20:12Z",
+   "tagDigest": "sha256:8de31d1ba6d670b1e60052e8a2b4715a3cf5c05fc69baf3786f265703efe285e",
+   "imageDigest": "sha256:5b255be16c00cd5ab3be71bd7f0e551a956ef4d6f1bce44fd38534a6029ea416",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:14:05Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -3056,7 +3056,7 @@
    "note": "Repository archived on Oct 28 2026 and not updated since 2021; Debian 10 and PHP 7.3 are end-of-life",
    "tagDigest": "sha256:9831569a2f3d1d764aabcb5abe6e463771b9595f1565fe3007fe77c4c3979043",
    "imageDigest": "sha256:79ab716881d78192442873d7c64034d849496111d465d1fb1e8c15cc4a3d569a",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2021-02-19T13:51:05Z",
    "builtBeforeFix": true,
@@ -3091,7 +3091,7 @@
    "note": "Repository archived on Oct 28 2026 and not updated since 2021; Debian 10 and PHP 7.3 are end-of-life",
    "tagDigest": "sha256:9831569a2f3d1d764aabcb5abe6e463771b9595f1565fe3007fe77c4c3979043",
    "imageDigest": "sha256:4ff7fa572e055c0fd91cbf067b6534a510e0ab51c06ddd0e83c773cf7a007d3d",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2021-02-19T13:58:30Z",
    "builtBeforeFix": true,
@@ -3126,7 +3126,7 @@
    "note": "PHP 5.6 is end-of-life; CVE-2026-109618 does not reach back this far",
    "tagDigest": "sha256:0a40fd273961b99d8afe69a61a68c73c04bc0caa9de384d3b2dd9e7986eec86d",
    "imageDigest": "sha256:95f5e2cf93f20c1cd5199f9be5e28097c0317086c4f3492bf33a7d0dc4176b94",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2019-01-23T00:10:47Z",
    "builtBeforeFix": true,
@@ -3161,7 +3161,7 @@
    "note": "PHP 5.6 is end-of-life; CVE-2026-109618 does not reach back this far",
    "tagDigest": "sha256:0a40fd273961b99d8afe69a61a68c73c04bc0caa9de384d3b2dd9e7986eec86d",
    "imageDigest": "sha256:c75536b8c2e1f7fe33bf6c841d7152c47eadb842567247a2ce809426e19dac82",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2019-01-25T09:52:07Z",
    "builtBeforeFix": true,
@@ -3196,7 +3196,7 @@
    "note": "PHP 7.4 is end-of-life",
    "tagDigest": "sha256:c9d7e608f73832673479770d66aacc8100011ec751d1905ff63fae3fe2e0ca6d",
    "imageDigest": "sha256:18b3497ee7f2099a90b66c23a0bc3d5261b12bab367263e1b40e9b004c39e882",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2022-11-15T06:04:04Z",
    "builtBeforeFix": true,
@@ -3231,7 +3231,7 @@
    "note": "PHP 7.4 is end-of-life",
    "tagDigest": "sha256:c9d7e608f73832673479770d66aacc8100011ec751d1905ff63fae3fe2e0ca6d",
    "imageDigest": "sha256:cef99caa15fe8fdcd9b6edce648170b984bb470cb4fd7c3470a8677cbf70ccf6",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2022-11-15T03:41:48Z",
    "builtBeforeFix": true,
@@ -3266,7 +3266,7 @@
    "note": "PHP 7.4 is end-of-life",
    "tagDigest": "sha256:3ac7c8c74b2b047c7cb273469d74fc0d59b857aa44043e6ea6a0084372811d5b",
    "imageDigest": "sha256:7c6a2cba718f37c4b3ca3486476c7d3dc68dc3ea9b12bde9c57bd4b8d9479fc0",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2022-11-15T06:06:50Z",
    "builtBeforeFix": true,
@@ -3301,7 +3301,7 @@
    "note": "PHP 7.4 is end-of-life",
    "tagDigest": "sha256:3ac7c8c74b2b047c7cb273469d74fc0d59b857aa44043e6ea6a0084372811d5b",
    "imageDigest": "sha256:9c00954ba8f0286c50a6419334786a86e4c0621ee0e4ee08068bc44c46ffdb78",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2022-11-15T03:43:49Z",
    "builtBeforeFix": true,
@@ -3336,7 +3336,7 @@
    "note": "PHP 8.0 is end-of-life",
    "tagDigest": "sha256:c87b4c94d53b35520467b6d026f38656ab9a6d446fa3a0fbba1bc633125f9ad2",
    "imageDigest": "sha256:862325aee87fc1d9b818bfc96a4412b9cd008a951101913077421d3d86c4cc9d",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2023-11-21T16:14:26Z",
    "builtBeforeFix": true,
@@ -3371,7 +3371,7 @@
    "note": "PHP 8.0 is end-of-life",
    "tagDigest": "sha256:c87b4c94d53b35520467b6d026f38656ab9a6d446fa3a0fbba1bc633125f9ad2",
    "imageDigest": "sha256:bcc4586d30d5e72460e26517f994515042a88367a7c780a42eb2a78f10510e99",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2023-11-21T16:18:34Z",
    "builtBeforeFix": true,
@@ -3406,7 +3406,7 @@
    "note": "PHP 8.1 is end-of-life",
    "tagDigest": "sha256:72f0c0134922985022d55a39b0390d35dc7a10e961aa6c44fa35b4c3102f4268",
    "imageDigest": "sha256:8277f9063e65c061456beef9d8fd5376bc4f59e75c2039d2ab4149006871f8a8",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-12-29T23:36:23Z",
    "builtBeforeFix": true,
@@ -3441,7 +3441,7 @@
    "note": "PHP 8.1 is end-of-life",
    "tagDigest": "sha256:72f0c0134922985022d55a39b0390d35dc7a10e961aa6c44fa35b4c3102f4268",
    "imageDigest": "sha256:7805d08e3de3fead78019894c3e096959d8c0587d08703d6d2b88b1a3feafdaa",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-12-29T23:39:40Z",
    "builtBeforeFix": true,
@@ -3476,7 +3476,7 @@
    "note": "PHP 8.1 is end-of-life",
    "tagDigest": "sha256:a3118db1911fdd3b3ac66605122ddc859286688ced86fc860fec6d19cc2d6c55",
    "imageDigest": "sha256:99290dd99e3de7786de51dbcefbf7b3bfd460ce0723808cea7099d37f281b967",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-12-29T23:36:07Z",
    "builtBeforeFix": true,
@@ -3511,7 +3511,7 @@
    "note": "PHP 8.1 is end-of-life",
    "tagDigest": "sha256:a3118db1911fdd3b3ac66605122ddc859286688ced86fc860fec6d19cc2d6c55",
    "imageDigest": "sha256:6fba1aa9f16ee25ec7c38f05a34404fc69a162338b6b76e1197433b48781d06a",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-12-29T23:39:42Z",
    "builtBeforeFix": true,
@@ -3544,23 +3544,23 @@
    "kind": "pinned",
    "owner": "php-official",
    "note": "PHP 8.2 reaches end-of-life on Dec 31 2026",
-   "tagDigest": "sha256:1bc4115a5528326425f1f59846fc7879d7d3843da9905b42931755ac4d4b29bc",
-   "imageDigest": "sha256:dd632ea1617ff847266b68b917cd8f8b80a087b0a30c51fb8b8f83ee12302f5a",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T07:29:50Z",
+   "tagDigest": "sha256:81af315d350bc9a59794cc3b353b9c772062a34a1300138274532f221f854cc5",
+   "imageDigest": "sha256:87c7f452b14784f8f30fcc167610848a38884fdb5a5e45e692a95dd05ee00758",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:30:44Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -3579,23 +3579,23 @@
    "kind": "pinned",
    "owner": "php-official",
    "note": "PHP 8.2 reaches end-of-life on Dec 31 2026",
-   "tagDigest": "sha256:1bc4115a5528326425f1f59846fc7879d7d3843da9905b42931755ac4d4b29bc",
-   "imageDigest": "sha256:8480c56efa00aa0ac07d0c6d4a89014e899ec9c1e560a4f56fb324bdf93837f7",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T07:32:18Z",
+   "tagDigest": "sha256:81af315d350bc9a59794cc3b353b9c772062a34a1300138274532f221f854cc5",
+   "imageDigest": "sha256:68061a73ca75123021fa5da81f56ae64696b3144134f77c1bdc03ed4227137a8",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:47:19Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -3613,23 +3613,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:8438f8ea8465dda86393dd84f91da5a02cd5555e494a1000a98112c830669299",
-   "imageDigest": "sha256:a271cbab7b007ff0565127180efcf4d85c7bbd8e3ecdfc0c28b92c4a3582de38",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T07:29:57Z",
+   "tagDigest": "sha256:c2611a75021b68286192a0b2ca79fcdec0ccadc2c3f1c77d2ff57b56b9b0ec91",
+   "imageDigest": "sha256:cf0532a9b381216c6291b098edac68d769a3d663f2e8e4a0ecf3f53bb9e06b5e",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:43:22Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -3647,23 +3647,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:8438f8ea8465dda86393dd84f91da5a02cd5555e494a1000a98112c830669299",
-   "imageDigest": "sha256:47d1110e7cb462a964a46d35712e5d48855101cc9ed4d6f09cb64af44d152c86",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T07:33:01Z",
+   "tagDigest": "sha256:c2611a75021b68286192a0b2ca79fcdec0ccadc2c3f1c77d2ff57b56b9b0ec91",
+   "imageDigest": "sha256:615dedc3e65549d0d3b626ecdd0ba4d2df4f65d06b5935566aa1859c2db0d24a",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:47:12Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -3681,23 +3681,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:d17bc39b8ef90e12d598f19cb466f1906c3c214f4bce661dfee49404b42fea09",
-   "imageDigest": "sha256:67787359f296c9b7b2da350d46d99e1c5ccaa6e88aa59a3904f248c0af910cdd",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-05T19:07:09Z",
+   "tagDigest": "sha256:913fab09564477f2d4fee22e6cdb7d9f88a93c6d201f7d728d347489a70581d6",
+   "imageDigest": "sha256:dfffdd1c5b3795bf8bb0cc7bfb0c19f7bef7928c86e5972025509953f8300a90",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:45:50Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -3715,23 +3715,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:d17bc39b8ef90e12d598f19cb466f1906c3c214f4bce661dfee49404b42fea09",
-   "imageDigest": "sha256:7d206759349fbf58775367578a560bba14035b736af3b118447518b2b1a169a4",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-05T19:02:40Z",
+   "tagDigest": "sha256:913fab09564477f2d4fee22e6cdb7d9f88a93c6d201f7d728d347489a70581d6",
+   "imageDigest": "sha256:2d87202024cf0f31925f0bd44a9f0dde1a08c3c3e3952cc5e7237543d53f9603",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:51:06Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -3752,7 +3752,7 @@
    "note": "Exact pre-fix release; kept for comparison",
    "tagDigest": "sha256:1650dcb528360aad05d6ed2f83cb403a2a39c31bd14552efd9a747b2207dea86",
    "imageDigest": "sha256:40cb2b25df442bf62b0bd3e77ed7845ca1289249216b617eca7e9694e71ef199",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-10-21T00:36:08Z",
    "builtBeforeFix": true,
@@ -3787,7 +3787,7 @@
    "note": "Exact pre-fix release; kept for comparison",
    "tagDigest": "sha256:1650dcb528360aad05d6ed2f83cb403a2a39c31bd14552efd9a747b2207dea86",
    "imageDigest": "sha256:eff84eded00aede6aa8c695f03800baf0d3233e5bc28ae6fea3bd87214f78a07",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-10-21T00:39:00Z",
    "builtBeforeFix": true,
@@ -3819,23 +3819,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:a800bbd2c0aa322702259ed475556b2cbc311076a8d3c4bba9bfe96838745472",
-   "imageDigest": "sha256:8732e645530351f2f16aa7dd7619a44dad614bcfde6b4eb994f9a228d24f9b98",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T07:27:34Z",
+   "tagDigest": "sha256:3048d9fc5448e49885f0b9c7ab9a6a4ec0f6560c2e83d578b9724f9f92eff48f",
+   "imageDigest": "sha256:1c30149f5c677e734bae11ba53de42d5d2afcb4e0275d4917b912a6897e164c2",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:40:14Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -3853,23 +3853,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:a800bbd2c0aa322702259ed475556b2cbc311076a8d3c4bba9bfe96838745472",
-   "imageDigest": "sha256:ccdca92cf5c884a7d6d8d261d983516bcdbe9bec5055e9be869362a688960c6b",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T07:29:35Z",
+   "tagDigest": "sha256:3048d9fc5448e49885f0b9c7ab9a6a4ec0f6560c2e83d578b9724f9f92eff48f",
+   "imageDigest": "sha256:435e548bbe9d2746530894e93139cf25feef98fee704d50d864f5e99b6fbcd99",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:40:18Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -3887,23 +3887,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:03af352853b05e35ee15ab898a2755532573684c7d1120b246dbd4e3c90f5007",
-   "imageDigest": "sha256:41b7a66da97a4f067b6ab9e4f62293e3020ecd89c39397f49fa534457a4c2a6e",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T07:27:16Z",
+   "tagDigest": "sha256:e66b6a0c593e540ad924d87c84fc1ee1838cc58a32c562a41a5d28000343ea45",
+   "imageDigest": "sha256:52959055fd379f84c4faf56b94f0cc65bbb715c96b2749fc825b6f2c44944354",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:40:05Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -3921,23 +3921,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:03af352853b05e35ee15ab898a2755532573684c7d1120b246dbd4e3c90f5007",
-   "imageDigest": "sha256:b9daaa9733d248da1c01a908c7d07a8de0fce2630128ff0d5df79f82bb28e810",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T07:29:37Z",
+   "tagDigest": "sha256:e66b6a0c593e540ad924d87c84fc1ee1838cc58a32c562a41a5d28000343ea45",
+   "imageDigest": "sha256:98b10f5eb3b86d8ec7e15cae3f9cf9f93dfbaa48bd8f8532ac5314536ede50d0",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:42:38Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -3955,23 +3955,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:f9804e0c991b5b339d6fa4fab9edf3c9c9ae68048fb1017cb6dea6265ccef054",
-   "imageDigest": "sha256:5b37cbe73dbff189331d7fb7d3acbc38cd36e904f3eda4f1de764b7e878ddf8b",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-05T19:04:25Z",
+   "tagDigest": "sha256:30b1b9bfbfce33272aa2821a079e63fcad86b8c070122a798e131d8773524d0d",
+   "imageDigest": "sha256:7c0da9013e4c6374f2547c60ec45154734013b1c33e2197b3141d18ea4cdd50e",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:41:14Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -3989,23 +3989,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:f9804e0c991b5b339d6fa4fab9edf3c9c9ae68048fb1017cb6dea6265ccef054",
-   "imageDigest": "sha256:3e4c873674bcf7f240d430649836b42c8e0c5cc9612be7a0188c61312047392a",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-05T19:00:33Z",
+   "tagDigest": "sha256:30b1b9bfbfce33272aa2821a079e63fcad86b8c070122a798e131d8773524d0d",
+   "imageDigest": "sha256:7e5a620adcbef02d147d3383109bacaf0ebf58720375643f539fa784af87d568",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:52:58Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -4026,7 +4026,7 @@
    "note": "Exact pre-fix release; kept for comparison",
    "tagDigest": "sha256:d39c9597ccbf6dd86be11e933831e37c6f5fd7719a4571c569d7d208e45e73f8",
    "imageDigest": "sha256:76ff8673ad93804ff9e8c2647214e36af7a4439518a267a5769aecf4e93c962e",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-10-21T00:34:11Z",
    "builtBeforeFix": true,
@@ -4061,7 +4061,7 @@
    "note": "Exact pre-fix release; kept for comparison",
    "tagDigest": "sha256:d39c9597ccbf6dd86be11e933831e37c6f5fd7719a4571c569d7d208e45e73f8",
    "imageDigest": "sha256:2205ae45c751f126d879169d8697564f69b20b2e9a021b7a63f2ab1a9aaf8e77",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-10-21T00:38:05Z",
    "builtBeforeFix": true,
@@ -4093,23 +4093,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:884f64b47174de2c0e813270fe7b24a18605729fcebe201302d98c38805530d0",
-   "imageDigest": "sha256:7c3d8b9e579e29cdf2fbce05649f8427840798800d4d7c1528e0bf17dec7354c",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T07:24:36Z",
+   "tagDigest": "sha256:20da4cbf0dbb1b1951a3f88b2fb16a8272dd42c8a02901e7454bfa6151734402",
+   "imageDigest": "sha256:053dffe7c9899af07527d1b31e87e27b0d83cfb7f588eb043499c90a76bcdae2",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:34:23Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -4127,23 +4127,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:884f64b47174de2c0e813270fe7b24a18605729fcebe201302d98c38805530d0",
-   "imageDigest": "sha256:4237dc762831936ffa343f5e5b785b86c4d4b84961e126564374c6e64b0e40e7",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T07:25:27Z",
+   "tagDigest": "sha256:20da4cbf0dbb1b1951a3f88b2fb16a8272dd42c8a02901e7454bfa6151734402",
+   "imageDigest": "sha256:2bc95efc3a01106c416b4ef4a46832d150c486b34d34de5392bc311cf74fbb02",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:35:27Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -4161,23 +4161,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:212c3c9fc09d58f6b1a12b0b4a6a90fd44a209299a67633c2bccbc1dd53c55e0",
-   "imageDigest": "sha256:1faf53e410c5210f0285a2808e1c688e25b4131311d576610f157715274cb6c8",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T07:24:49Z",
+   "tagDigest": "sha256:89aa7c69dedff16e4076f955578547b62566b7f9aa6a0caa6b34b554490be4f0",
+   "imageDigest": "sha256:c72624058fbdb7823171aeda7e36a4b707c3a4f169fa5251ebc14a4bea3d4bea",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:34:10Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -4195,23 +4195,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:212c3c9fc09d58f6b1a12b0b4a6a90fd44a209299a67633c2bccbc1dd53c55e0",
-   "imageDigest": "sha256:3c5db2d71e491978f905961a8dc04201b5a2a5abfc45f57e41100cbb714fa10f",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T07:25:12Z",
+   "tagDigest": "sha256:89aa7c69dedff16e4076f955578547b62566b7f9aa6a0caa6b34b554490be4f0",
+   "imageDigest": "sha256:81708a6907ba9eaf219c89407be8bed8e250abe826cc9d79d41262d01b248f0f",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:35:22Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -4229,23 +4229,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:511af6fa3ef55c4ea0c68bb47096ba4b81771ab4949bde7813807bf177efda11",
-   "imageDigest": "sha256:3732a6a35ba4a393cfbcbced6188f833420e21af1e8d8476d3c9a9f8e880e699",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-05T19:03:36Z",
+   "tagDigest": "sha256:48b0daad6d12699089e45dd5ad2a7620982fa08d18426f94bf83d926e8495f9f",
+   "imageDigest": "sha256:7df18cc4872f95e14adfea5fec7388f58d173daf5bc3c421cda2109c15b75c5e",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:37:36Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -4263,23 +4263,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:511af6fa3ef55c4ea0c68bb47096ba4b81771ab4949bde7813807bf177efda11",
-   "imageDigest": "sha256:031a675b1d2fadf6c7e6be10ccd26cb20bcc922c2dde57b96a0938418a20e862",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-05T18:56:49Z",
+   "tagDigest": "sha256:48b0daad6d12699089e45dd5ad2a7620982fa08d18426f94bf83d926e8495f9f",
+   "imageDigest": "sha256:7da636b364be7d88d39fcbc680596c8c10b8943d3f954bbfbf2d4ddbfc4a2899",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:39:08Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -4300,7 +4300,7 @@
    "note": "Exact pre-fix release; kept for comparison",
    "tagDigest": "sha256:60111400ff77bdc44fa79b4f072afe49a42abba71e0846ad496be4761dc9c11a",
    "imageDigest": "sha256:b0ae0e0d4a3b7f0e800017482752b94f58ab049f2d7fcd108e5452afce3f50d1",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-10-21T00:32:27Z",
    "builtBeforeFix": true,
@@ -4335,7 +4335,7 @@
    "note": "Exact pre-fix release; kept for comparison",
    "tagDigest": "sha256:60111400ff77bdc44fa79b4f072afe49a42abba71e0846ad496be4761dc9c11a",
    "imageDigest": "sha256:ea85eb8ef702cfe8656d4cf38230228ff7a7fa36a153d298be330bd364721929",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-10-21T00:34:11Z",
    "builtBeforeFix": true,
@@ -4370,7 +4370,7 @@
    "note": "Exact post-fix release; kept for comparison",
    "tagDigest": "sha256:884f64b47174de2c0e813270fe7b24a18605729fcebe201302d98c38805530d0",
    "imageDigest": "sha256:7c3d8b9e579e29cdf2fbce05649f8427840798800d4d7c1528e0bf17dec7354c",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-11-05T07:24:36Z",
    "builtBeforeFix": false,
@@ -4405,7 +4405,7 @@
    "note": "Exact post-fix release; kept for comparison",
    "tagDigest": "sha256:884f64b47174de2c0e813270fe7b24a18605729fcebe201302d98c38805530d0",
    "imageDigest": "sha256:4237dc762831936ffa343f5e5b785b86c4d4b84961e126564374c6e64b0e40e7",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-11-05T07:25:27Z",
    "builtBeforeFix": false,
@@ -4437,23 +4437,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:08af36df144462d84c7f16190557eec06cb9f656882685610b712a15eec54d46",
-   "imageDigest": "sha256:e52b6f940dad1ca063538db88815e56f7d86befded190eeda5f88d5113047504",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-13T05:23:19Z",
-   "imageCreated": "2026-11-05T07:21:55Z",
+   "tagDigest": "sha256:0a785eab8b7eb4836f9c6093771c8ea15ff8ba7269444f3da70a1d33d15fe664",
+   "imageDigest": "sha256:d682023211236f5aa2a1c269f27111f83b223d98b7d47ca407bcd130b205b72c",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:30:56Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -4471,23 +4471,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:08af36df144462d84c7f16190557eec06cb9f656882685610b712a15eec54d46",
-   "imageDigest": "sha256:85d5c5a776a11e187b79ba9ea80e22caffd1b757d1d3cf7cf1b6d1987fb52958",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-13T05:23:19Z",
-   "imageCreated": "2026-11-05T07:22:07Z",
+   "tagDigest": "sha256:0a785eab8b7eb4836f9c6093771c8ea15ff8ba7269444f3da70a1d33d15fe664",
+   "imageDigest": "sha256:23c3e2b21eab81db1a856892b95ab6ce55293e66cd347bd49dbe0712fa474cd5",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:31:25Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -4505,23 +4505,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:951fb5b1780219b81d5daffa4cebef8e0077c537f3893d9790a5dfcd66ca334d",
-   "imageDigest": "sha256:1eb4b0a9294a7a8e8a009671d539b5b54bc9858765879fe30031c704d9b28f56",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-05T18:59:48Z",
+   "tagDigest": "sha256:dae9c4dc795324d7ee1122644c870e9c9a3d05a9f52de27fd904cc33af20bae3",
+   "imageDigest": "sha256:087c0ac782305a3a78f6d981d06492a31096317ef60fda5ddc54353708a3d99b",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:34:06Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -4539,23 +4539,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "php-official",
-   "tagDigest": "sha256:951fb5b1780219b81d5daffa4cebef8e0077c537f3893d9790a5dfcd66ca334d",
-   "imageDigest": "sha256:c945daba6feb6b9f8e1d03e31eec63e0bea9e50513ae2dc785d6eaa9db5dcad0",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-05T18:56:07Z",
+   "tagDigest": "sha256:dae9c4dc795324d7ee1122644c870e9c9a3d05a9f52de27fd904cc33af20bae3",
+   "imageDigest": "sha256:8d5614315e3543d6c47e3d76d506e1a929a64a480539330909cf848312db3c1b",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:31:58Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -4576,7 +4576,7 @@
    "note": "Exact pre-fix release; kept for comparison",
    "tagDigest": "sha256:fa01fb1645cd0fc566a5f146b099adace33b906571f972f71f2182a7c12d1cd7",
    "imageDigest": "sha256:aba7168955e4b1e1f5e61e2e5a0257eff5b1563d3fc4ca272373183b57f53005",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-09-24T19:11:52Z",
    "builtBeforeFix": true,
@@ -4611,7 +4611,7 @@
    "note": "Exact pre-fix release; kept for comparison",
    "tagDigest": "sha256:fa01fb1645cd0fc566a5f146b099adace33b906571f972f71f2182a7c12d1cd7",
    "imageDigest": "sha256:bc7398fb5ae7567d887eedb90c0473ddfe02ff1abd7650f5c7142d4b537d4cef",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-09-24T19:12:40Z",
    "builtBeforeFix": true,
@@ -4643,23 +4643,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "php-official",
-   "tagDigest": "sha256:08af36df144462d84c7f16190557eec06cb9f656882685610b712a15eec54d46",
-   "imageDigest": "sha256:e52b6f940dad1ca063538db88815e56f7d86befded190eeda5f88d5113047504",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-13T05:23:19Z",
-   "imageCreated": "2026-11-05T07:21:55Z",
+   "tagDigest": "sha256:e18aff262cfbf174d73fd15fc344bae4ed4e80c74ae22a7cef2abbb9379312a0",
+   "imageDigest": "sha256:585df0f4055430c826edd19c6961e2ce9f9875dd0fe85ab8d49021fb3202d228",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:18:44Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.5.12",
+     "version": "8.6.0",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.6.0",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -4677,23 +4677,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "php-official",
-   "tagDigest": "sha256:08af36df144462d84c7f16190557eec06cb9f656882685610b712a15eec54d46",
-   "imageDigest": "sha256:85d5c5a776a11e187b79ba9ea80e22caffd1b757d1d3cf7cf1b6d1987fb52958",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-13T05:23:19Z",
-   "imageCreated": "2026-11-05T07:22:07Z",
+   "tagDigest": "sha256:e18aff262cfbf174d73fd15fc344bae4ed4e80c74ae22a7cef2abbb9379312a0",
+   "imageDigest": "sha256:43127ff210dcb5724cc82036d99c877611f993f89c230b3d403653e31e47175e",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:20:23Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.5.12",
+     "version": "8.6.0",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.6.0",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -4711,23 +4711,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "php-official",
-   "tagDigest": "sha256:baf3ea13a8207fa18e1011bad1016e8b5e59fc974c6966d0efa6f36a16f875f0",
-   "imageDigest": "sha256:128f02f6ea8cd5d272fcbcefe1abbc8ae444469debd47c1b6c10507d018ed64e",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-13T05:23:19Z",
-   "imageCreated": "2026-11-05T07:21:36Z",
+   "tagDigest": "sha256:8d7a6f776d4dcc0951a2baa2145faa8954ced57a4fe1eb1607224eac00845c4e",
+   "imageDigest": "sha256:6c8ad60f595aa02ec6f69bc3f16e8534fdef8d986a521549c04bc6d391f7e058",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:18:46Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.6.0",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.5.12",
+     "version": "8.6.0",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -4745,23 +4745,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "php-official",
-   "tagDigest": "sha256:baf3ea13a8207fa18e1011bad1016e8b5e59fc974c6966d0efa6f36a16f875f0",
-   "imageDigest": "sha256:64f0f8ab8245047483ff1e9b977cbd6ab6d4db0a239f175f06dddeacb10825b2",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-13T05:23:19Z",
-   "imageCreated": "2026-11-05T07:21:56Z",
+   "tagDigest": "sha256:8d7a6f776d4dcc0951a2baa2145faa8954ced57a4fe1eb1607224eac00845c4e",
+   "imageDigest": "sha256:8fde53ab4683305a8368d2b98a25807aa4b92911e226c0c23ac94bdbf3ca5d8d",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:20:11Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.6.0",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.5.12",
+     "version": "8.6.0",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -4779,23 +4779,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "php-official",
-   "tagDigest": "sha256:951fb5b1780219b81d5daffa4cebef8e0077c537f3893d9790a5dfcd66ca334d",
-   "imageDigest": "sha256:1eb4b0a9294a7a8e8a009671d539b5b54bc9858765879fe30031c704d9b28f56",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-05T18:59:48Z",
+   "tagDigest": "sha256:3acdd3c2f97580d99e19a80946d47ab74170ab53fa2e5b4f08cb869959de12b5",
+   "imageDigest": "sha256:001767ab28523ebf2ff679d6529610be4cccb444e39ff5e0a71c5581636e7c73",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:20:45Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.6.0",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.5.12",
+     "version": "8.6.0",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -4813,23 +4813,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "php-official",
-   "tagDigest": "sha256:951fb5b1780219b81d5daffa4cebef8e0077c537f3893d9790a5dfcd66ca334d",
-   "imageDigest": "sha256:c945daba6feb6b9f8e1d03e31eec63e0bea9e50513ae2dc785d6eaa9db5dcad0",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-05T18:56:07Z",
+   "tagDigest": "sha256:3acdd3c2f97580d99e19a80946d47ab74170ab53fa2e5b4f08cb869959de12b5",
+   "imageDigest": "sha256:a1333f3177687fa73063db09c7873c8dae75d52f1b96c83d8c2e6931b291f447",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:20:38Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.6.0",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.5.12",
+     "version": "8.6.0",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -4848,17 +4848,17 @@
    "kind": "latest",
    "owner": "community",
    "note": "phpLDAPadmin v2; published by the phpLDAPadmin project",
-   "tagDigest": "sha256:5dcb38eb63c2ee6378af94811fc45c38266f56b7155c85eef6e3a2c3f8916450",
-   "imageDigest": "sha256:380c2c401742a14caa66c8e906d262d4dce608ec421a260131661946116e6c5f",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-16T05:23:50Z",
-   "imageCreated": "2026-11-16T02:06:49Z",
+   "tagDigest": "sha256:c29df275d4d4c364a63cb0ae8dacd4ab753dfbd444b2d05eecd05725dbdb9c16",
+   "imageDigest": "sha256:59dc93cc279823117a17d4d471d8c59e1f4a6730914850f3bb4cd324522a5d89",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T21:53:25Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -4877,17 +4877,17 @@
    "kind": "latest",
    "owner": "community",
    "note": "phpLDAPadmin v2; published by the phpLDAPadmin project",
-   "tagDigest": "sha256:5dcb38eb63c2ee6378af94811fc45c38266f56b7155c85eef6e3a2c3f8916450",
-   "imageDigest": "sha256:df118b15724ea477f1ddbb22769feff031fdce779552972ef42451b1c7133b72",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-16T05:23:50Z",
-   "imageCreated": "2026-11-16T02:08:22Z",
+   "tagDigest": "sha256:c29df275d4d4c364a63cb0ae8dacd4ab753dfbd444b2d05eecd05725dbdb9c16",
+   "imageDigest": "sha256:20d63e70696a6fa7b794a983f12a82a27fdf92dd606e52a2309890c55e5ed7fa",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T21:56:38Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -4905,23 +4905,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:e4b3eb5305cd42d21512bb55def2bab52625d56df927ad4ee1864a9354c84d40",
-   "imageDigest": "sha256:4c66b5febde9207f70360fcedf93d58f7050e1f4bfda44398c630e8f14fd6f3f",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T08:24:49Z",
+   "tagDigest": "sha256:7d0b1d9826aa1345a4cab1feded7b19b5f8b1d90579b3180fbc1353157e35c7b",
+   "imageDigest": "sha256:435446c15976ee0567acc3e275a963f6984bc2091f7d7921ef8aacb0c4b84a10",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:52:06Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -4939,23 +4939,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:e4b3eb5305cd42d21512bb55def2bab52625d56df927ad4ee1864a9354c84d40",
-   "imageDigest": "sha256:78ae5b2638bcd1d6f84aee5cbf49fe1fa24475da8b1d45662f99f5863db44249",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T08:25:57Z",
+   "tagDigest": "sha256:7d0b1d9826aa1345a4cab1feded7b19b5f8b1d90579b3180fbc1353157e35c7b",
+   "imageDigest": "sha256:043b6dea27ced8fcabf56e0589c3aa911b9bcef8bbb08a2de598edf72029b6a1",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:54:02Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -4973,23 +4973,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:3c56fa1ed7679a6004981aaa7cf04a59771b67b75af6f9e95fc721af8a51606d",
-   "imageDigest": "sha256:d1c461f1394b685b12af212ecfe0f676b2c20458fe3afbb1a6e35c0c7dd9f99c",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-15T05:23:08Z",
-   "imageCreated": "2026-11-05T19:56:43Z",
+   "tagDigest": "sha256:fa446a5feb58957a15d2cba12b1777db3ffcfc4764f74c7906de75f891f5bf62",
+   "imageDigest": "sha256:e30e96f5cd88fc51640995cafbfc57396ab2dce542ca28e5b5f59b91fc96a1a3",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:52:07Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5007,23 +5007,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:3c56fa1ed7679a6004981aaa7cf04a59771b67b75af6f9e95fc721af8a51606d",
-   "imageDigest": "sha256:7d2779bd91663bffd87b8cb0d126c08462a21afa16f75fad9ef3a4055190c90e",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-15T05:23:08Z",
-   "imageCreated": "2026-11-05T20:14:05Z",
+   "tagDigest": "sha256:fa446a5feb58957a15d2cba12b1777db3ffcfc4764f74c7906de75f891f5bf62",
+   "imageDigest": "sha256:be937dc0485e18ee607eee1e10166d6526a632ccaf6c60bde2f2dc2904e89950",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:22:01Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5041,23 +5041,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:e4b3eb5305cd42d21512bb55def2bab52625d56df927ad4ee1864a9354c84d40",
-   "imageDigest": "sha256:4c66b5febde9207f70360fcedf93d58f7050e1f4bfda44398c630e8f14fd6f3f",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T08:24:49Z",
+   "tagDigest": "sha256:7d0b1d9826aa1345a4cab1feded7b19b5f8b1d90579b3180fbc1353157e35c7b",
+   "imageDigest": "sha256:435446c15976ee0567acc3e275a963f6984bc2091f7d7921ef8aacb0c4b84a10",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:52:06Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -5075,23 +5075,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:e4b3eb5305cd42d21512bb55def2bab52625d56df927ad4ee1864a9354c84d40",
-   "imageDigest": "sha256:78ae5b2638bcd1d6f84aee5cbf49fe1fa24475da8b1d45662f99f5863db44249",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-14T05:22:41Z",
-   "imageCreated": "2026-11-05T08:25:57Z",
+   "tagDigest": "sha256:7d0b1d9826aa1345a4cab1feded7b19b5f8b1d90579b3180fbc1353157e35c7b",
+   "imageDigest": "sha256:043b6dea27ced8fcabf56e0589c3aa911b9bcef8bbb08a2de598edf72029b6a1",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:54:02Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -5111,7 +5111,7 @@
    "owner": "community",
    "tagDigest": "sha256:fb3758bb6d7cb14ff1163029c094af09607ae02727f70dac7eecb4fe0d6f0b01",
    "imageDigest": "sha256:e6ef6beb9c39a98f34eea50f9c4aed89c036f72fb48d316b45e579fd818997a0",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-10T08:36:32Z",
    "builtBeforeFix": false,
@@ -5145,7 +5145,7 @@
    "owner": "community",
    "tagDigest": "sha256:fb3758bb6d7cb14ff1163029c094af09607ae02727f70dac7eecb4fe0d6f0b01",
    "imageDigest": "sha256:d82e02c2a6ae5e5afe5a535728a204ddffd45dfb90b158960bd764216ded2af9",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-19T05:25:07Z",
    "imageCreated": "2026-11-10T08:36:46Z",
    "builtBeforeFix": false,
@@ -5179,7 +5179,7 @@
    "owner": "community",
    "tagDigest": "sha256:37a90cb245228080779462fd120db3d64335e1abbec33bda94ca18c9e163881b",
    "imageDigest": "sha256:6924de9e4874052961fd643c53d7163af62afd4b2e8bec19672243dc802b9c65",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-18T05:22:43Z",
    "imageCreated": "2026-11-17T11:24:53Z",
    "builtBeforeFix": false,
@@ -5213,7 +5213,7 @@
    "owner": "community",
    "tagDigest": "sha256:37a90cb245228080779462fd120db3d64335e1abbec33bda94ca18c9e163881b",
    "imageDigest": "sha256:85cee5f06a6697c0eb3cd9624d839dc2bc04b69dbec2f795a4ea239de187add0",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-18T05:22:43Z",
    "imageCreated": "2026-11-17T12:37:24Z",
    "builtBeforeFix": false,
@@ -5245,23 +5245,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "community",
-   "tagDigest": "sha256:a97e3f9c72721f03a82d031ca37201ba02500f15b49278f6e18756c2e4b7bac8",
-   "imageDigest": "sha256:542a86aee8d2f281b27dd2a3e8794fe12a4893ae7695cda5efa0028489acfbbb",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T16:28:10Z",
+   "tagDigest": "sha256:203ae5aa181f28897de52a29acec1de353e148297672f8630cabbcbd45d73471",
+   "imageDigest": "sha256:02de6f3e947d4092cfd642e8a801d573b67f5779ae47e4113026bab9bf2de1a5",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T17:27:15Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5279,23 +5279,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "community",
-   "tagDigest": "sha256:a97e3f9c72721f03a82d031ca37201ba02500f15b49278f6e18756c2e4b7bac8",
-   "imageDigest": "sha256:c12825efb129c1f40770969d4fdd1f93246af76ce436dad188fb4de149b1a76a",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T16:28:09Z",
+   "tagDigest": "sha256:203ae5aa181f28897de52a29acec1de353e148297672f8630cabbcbd45d73471",
+   "imageDigest": "sha256:19b296a9c2bc331c1835f25606e6d5d5df9f5fdd076f6697c4371f2ffbc6a02c",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T17:27:30Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5313,23 +5313,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "community",
-   "tagDigest": "sha256:4316d28d9bc89cddcab97af5a8cd8c82f0f175da0bc23defdb496a6c4ed47b08",
-   "imageDigest": "sha256:2df021c895665a3d27358af8a38d8569eb6f965ed44303b6abfd5b2557b8d79c",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T16:28:55Z",
+   "tagDigest": "sha256:8d4adf1fb19ece80511bfdc8c5f54da98d59acd2967dc87b6b17afcfd60e4eda",
+   "imageDigest": "sha256:66d49573fbaca5e9036619662274f594cf09e82c5f98c3fc9ad78bdddff4dec7",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T17:27:29Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5347,23 +5347,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "community",
-   "tagDigest": "sha256:4316d28d9bc89cddcab97af5a8cd8c82f0f175da0bc23defdb496a6c4ed47b08",
-   "imageDigest": "sha256:457ad061245fa5d6a61be69c50b8ab9d1617deb9bfd2294eb2f27efc5451e084",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T16:28:46Z",
+   "tagDigest": "sha256:8d4adf1fb19ece80511bfdc8c5f54da98d59acd2967dc87b6b17afcfd60e4eda",
+   "imageDigest": "sha256:d303a059e45b0aae5a699bb81f3f91ededdf8ccde8914fce09c02be8856598ea",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T17:27:38Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5381,23 +5381,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "community",
-   "tagDigest": "sha256:8fd9da030f78d98147490efdc93ca39de6ea69b48e16a1a0694d2c9d716501c8",
-   "imageDigest": "sha256:d88945e79ef5dda84a4c5e598291c8523e56def3f68018b30db2cfa7b937d09b",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T16:28:49Z",
+   "tagDigest": "sha256:a9152816e2a652b75bd68c3ed3621d2b6188d82d4d7ecae93660a3057136ba24",
+   "imageDigest": "sha256:ffbe14d6dc8c86c5fa2b6f495937f5accd0db46f4ad1a233c325ee4a8641ff76",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T17:27:25Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5415,23 +5415,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "community",
-   "tagDigest": "sha256:8fd9da030f78d98147490efdc93ca39de6ea69b48e16a1a0694d2c9d716501c8",
-   "imageDigest": "sha256:071c4122c12fe06db3bd6eeb7e56e7b956cecdac71cc3066a979c2d77dd785bc",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T16:28:49Z",
+   "tagDigest": "sha256:a9152816e2a652b75bd68c3ed3621d2b6188d82d4d7ecae93660a3057136ba24",
+   "imageDigest": "sha256:39df87d6fb701e4ab9665f653e6e9e1bfc05d388ed470f39514d6bb236e86633",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T17:27:29Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5452,7 +5452,7 @@
    "note": "Serves PHP through RoadRunner",
    "tagDigest": "sha256:68a722f7677008a50ccf3a9e570966bc37d7627fe6a870b86be28c5dcf9085ee",
    "imageDigest": "sha256:9083dc4ba2b682c43e1a477b69ef451738253fc8ad680db072663ea68530a973",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-10-22T09:57:16Z",
    "builtBeforeFix": false,
@@ -5481,7 +5481,7 @@
    "note": "Serves PHP through RoadRunner",
    "tagDigest": "sha256:68a722f7677008a50ccf3a9e570966bc37d7627fe6a870b86be28c5dcf9085ee",
    "imageDigest": "sha256:c1b363e945602b51e139ad73baf5d7f01e50bf67b1ecf617045fa98deb04fb48",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2026-10-22T10:13:52Z",
    "builtBeforeFix": false,
@@ -5507,11 +5507,11 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "community",
-   "tagDigest": "sha256:b406117e64fe377db1801784b92cc380d26d53990e4a14d6e9da9f0514e62c15",
-   "imageDigest": "sha256:c97fdf1583f4081e385a621facf4cfc3c2d48e6d705f69db1e5129c3a96d9c9b",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T14:07:19Z",
+   "tagDigest": "sha256:91d3fbc7cbc1888591ca555b9c52531daed98cc5aa975f9b6e21738f2dba6343",
+   "imageDigest": "sha256:e3c062471aee8d440bbc557e84368a3b7ee073848d3e5969f3677c6645f06259",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T18:30:27Z",
    "builtBeforeFix": false,
    "distro": "ubuntu 24.04",
    "php": [
@@ -5541,11 +5541,11 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "community",
-   "tagDigest": "sha256:b406117e64fe377db1801784b92cc380d26d53990e4a14d6e9da9f0514e62c15",
-   "imageDigest": "sha256:851b165072b9d12bf8132886fd4ab762630e8fa076a03d91e4939cd0152e0166",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T14:16:08Z",
+   "tagDigest": "sha256:91d3fbc7cbc1888591ca555b9c52531daed98cc5aa975f9b6e21738f2dba6343",
+   "imageDigest": "sha256:e31d00015ee6447f4a5bdfb49620852f382a44074f7a1514694c5fa8b810b38c",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T18:36:58Z",
    "builtBeforeFix": false,
    "distro": "ubuntu 24.04",
    "php": [
@@ -5575,23 +5575,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "community",
-   "tagDigest": "sha256:1235922174a4f387ff9b4f453871e4098c3cac592e46e8228391fc96edae8162",
-   "imageDigest": "sha256:7d097d76973cbd38558f28eebb60885c270bddc644601d199e84241ad8ce41fa",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-19T00:06:48Z",
+   "tagDigest": "sha256:60e2a3529dcffdaa6e8fad262af64ae684042f10f6d4817150023fd86dbfdca8",
+   "imageDigest": "sha256:7a8872d6906ba3d5a1300f2e18906dcaf608e2948bfdbe383a53334dae350e2a",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-20T02:37:24Z",
    "builtBeforeFix": false,
    "distro": "debian 12.15",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5609,23 +5609,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "community",
-   "tagDigest": "sha256:1235922174a4f387ff9b4f453871e4098c3cac592e46e8228391fc96edae8162",
-   "imageDigest": "sha256:049b078ddf1130858501f57fbbf1c93a9729289dfa9814966f6c70cc8761e1db",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-19T00:07:40Z",
+   "tagDigest": "sha256:60e2a3529dcffdaa6e8fad262af64ae684042f10f6d4817150023fd86dbfdca8",
+   "imageDigest": "sha256:da456bd170afea86bd987a8fd60c3ab0ea455148e6e831afbfe1a9991c650955",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-20T02:38:55Z",
    "builtBeforeFix": false,
    "distro": "debian 12.15",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5643,23 +5643,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "community",
-   "tagDigest": "sha256:a396ce6cab9405140039a562506d7d35cebfab6988ac0e698bf7f6ac2eec504d",
-   "imageDigest": "sha256:22191fd5e3a1785c625d1f4b05966ac875e92bb26b789049a370438e87703d49",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-19T00:09:36Z",
+   "tagDigest": "sha256:7e5494564bbf7880d3bbbcb4c2310b9f4f18e8ec6222ef90cd087fc8d2599890",
+   "imageDigest": "sha256:dc290984cbbb44dbe0abddf178c4d29c986cfb3f234dafb5f57492b6a2e4e3d6",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-20T02:37:02Z",
    "builtBeforeFix": false,
    "distro": "debian 12.15",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5677,23 +5677,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "community",
-   "tagDigest": "sha256:a396ce6cab9405140039a562506d7d35cebfab6988ac0e698bf7f6ac2eec504d",
-   "imageDigest": "sha256:86ccd7c0500a9f29c4f9b563311d4ca1284008e605bd2bded8143dd44830f53d",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-19T00:08:50Z",
+   "tagDigest": "sha256:7e5494564bbf7880d3bbbcb4c2310b9f4f18e8ec6222ef90cd087fc8d2599890",
+   "imageDigest": "sha256:051c706cce02255ecaf3d4647a7415e64e53fc23aada47e01b9b2428a088c4da",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-20T02:37:14Z",
    "builtBeforeFix": false,
    "distro": "debian 12.15",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5711,23 +5711,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "community",
-   "tagDigest": "sha256:54b8cf6600f0248f71f481f9ccb9b9309557b9c20ecd3163934653f7e8219f77",
-   "imageDigest": "sha256:63fd271a55630d24cb4a16d61d6586bef95628db835143f20a7dd8af57767e55",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-19T00:11:54Z",
+   "tagDigest": "sha256:da5f2da12fc08d5666db812b19faf57e0d893c03bc047981b5e360801b15c9dd",
+   "imageDigest": "sha256:b10dd0b6aadea8f7aafd19082590f6e956aeaebea47651aa63b02f7ac6b5e607",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-20T02:45:48Z",
    "builtBeforeFix": false,
    "distro": "debian 12.15",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5745,23 +5745,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "community",
-   "tagDigest": "sha256:54b8cf6600f0248f71f481f9ccb9b9309557b9c20ecd3163934653f7e8219f77",
-   "imageDigest": "sha256:fa30b97913e1fca2cffe8ff1142c49b30636927f5eaf724d2e09cba31899c5f9",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-19T00:11:27Z",
+   "tagDigest": "sha256:da5f2da12fc08d5666db812b19faf57e0d893c03bc047981b5e360801b15c9dd",
+   "imageDigest": "sha256:305a471ecb827ac64027fb857969f45008dc27d4dfd9c31a7637e5f980dd57f0",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-20T02:45:45Z",
    "builtBeforeFix": false,
    "distro": "debian 12.15",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5779,23 +5779,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:74fd3fffc4b3b0c40d4cc0803ec40fe1a7febf0437e96d55b9cbc9a4e54a1aae",
-   "imageDigest": "sha256:d0a81bc468aabf52977017ec08222b675d99a30565330517b8453889f30426e9",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T20:07:45Z",
+   "tagDigest": "sha256:0f2df943d2bdc43ebd4a0198c1674a1b082ba4a9d3fc5f5cf359a248014211f1",
+   "imageDigest": "sha256:80d188cafbbd2ed3f20696a7aa6b3cbaa51639f14050a069ce8913522b74640a",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:53:08Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5813,23 +5813,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:74fd3fffc4b3b0c40d4cc0803ec40fe1a7febf0437e96d55b9cbc9a4e54a1aae",
-   "imageDigest": "sha256:b7d7999a707460f8ee565928d3849ebec2c1f7e05b7082055f8929df8f586c25",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T20:07:41Z",
+   "tagDigest": "sha256:0f2df943d2bdc43ebd4a0198c1674a1b082ba4a9d3fc5f5cf359a248014211f1",
+   "imageDigest": "sha256:1bf273b33fda3e13a2eaf20964704cd576bb82ebb48605ee4f376088954d9d52",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:21:36Z",
    "builtBeforeFix": false,
    "distro": "alpine 3.24.4",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -5847,23 +5847,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
-   "imageDigest": "sha256:6f9ba86dd587f89d4095996df1eb698593b9edcceb9df28e55d0029008cc2fb4",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T20:08:35Z",
+   "tagDigest": "sha256:344ca7cf3566d266d5dacdd71e3dd4fe9781b0063097fbb9972fe823412ae9e0",
+   "imageDigest": "sha256:abe34a6e9d4436ca0e1649c4babbe1f1b6cc4a86364acd98707d97a5e89139e4",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:53:40Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -5881,23 +5881,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
-   "imageDigest": "sha256:78320ac0ef85e4eba118a6a966468c032838d385120d3cf39344548a1c7d41d1",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T20:08:30Z",
+   "tagDigest": "sha256:344ca7cf3566d266d5dacdd71e3dd4fe9781b0063097fbb9972fe823412ae9e0",
+   "imageDigest": "sha256:3631244cbc110221e5c53791cb1df6b8647d00e070ce61567261d772d0b92210",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:54:14Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -5918,7 +5918,7 @@
    "note": "PHP 8.1 is end-of-life",
    "tagDigest": "sha256:f73396626d2f1b89d4c556917c15f55cfcc6b5f80595205516e490f0f04015e4",
    "imageDigest": "sha256:65fbb9965e7bab9fa7cefd0459d15beb64ead5013190ca2aad98878ff0e4854f",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-12-30T01:17:46Z",
    "builtBeforeFix": true,
@@ -5953,7 +5953,7 @@
    "note": "PHP 8.1 is end-of-life",
    "tagDigest": "sha256:f73396626d2f1b89d4c556917c15f55cfcc6b5f80595205516e490f0f04015e4",
    "imageDigest": "sha256:16329c82bd5a3210c4146417b8b56d5345c9100d916db2a982108bc060f7c30e",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-14T05:22:41Z",
    "imageCreated": "2025-12-30T01:19:18Z",
    "builtBeforeFix": true,
@@ -5985,23 +5985,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
-   "imageDigest": "sha256:8af3d2b6e23dbac72dfa56279d2e07f1548279c4271414b508f3b5987ee4ba3e",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T20:06:18Z",
+   "tagDigest": "sha256:f69d8073ec668d5dce8b3015db515126090d7be563a16d58b22ddf75d7b76348",
+   "imageDigest": "sha256:e3b6d256eafd6f7b97d7169a48b8d9f39eff618b80fe62167186004f39a9bbd4",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:52:53Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -6019,23 +6019,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:711d21577e92006780f6c370993795af0170238a0f1ffc028ea69bd2c2565ec7",
-   "imageDigest": "sha256:eccfca271d8e9fbda6e3032d8dedc2837c04819bd523e8f6f37294b40f87b5b0",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T20:06:28Z",
+   "tagDigest": "sha256:f69d8073ec668d5dce8b3015db515126090d7be563a16d58b22ddf75d7b76348",
+   "imageDigest": "sha256:f0cca10b439e1f9cdaec6717d61eb525bd5dd2f0d3ad726319c02198402223f6",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T15:22:19Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.2.35",
+     "version": "8.2.36",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -6053,23 +6053,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
-   "imageDigest": "sha256:6f9ba86dd587f89d4095996df1eb698593b9edcceb9df28e55d0029008cc2fb4",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T20:08:35Z",
+   "tagDigest": "sha256:344ca7cf3566d266d5dacdd71e3dd4fe9781b0063097fbb9972fe823412ae9e0",
+   "imageDigest": "sha256:abe34a6e9d4436ca0e1649c4babbe1f1b6cc4a86364acd98707d97a5e89139e4",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:53:40Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -6087,23 +6087,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:15195799455c0440e34e4890478c0f1af26350ce166df93a402c1affb4fa0695",
-   "imageDigest": "sha256:78320ac0ef85e4eba118a6a966468c032838d385120d3cf39344548a1c7d41d1",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T20:08:30Z",
+   "tagDigest": "sha256:344ca7cf3566d266d5dacdd71e3dd4fe9781b0063097fbb9972fe823412ae9e0",
+   "imageDigest": "sha256:3631244cbc110221e5c53791cb1df6b8647d00e070ce61567261d772d0b92210",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:54:14Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -6121,23 +6121,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:58a0b512f34297cee709a4ae41defc3ac56902f36247b64ef171fd57b0a0e013",
-   "imageDigest": "sha256:e9fdf2c4b633ca340cc39ed2dfbfd6bb92e00bf6256acf7e74c24e739dad23c7",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T20:08:34Z",
+   "tagDigest": "sha256:0ce653645d27301bbcb4ef4c08330096be5b88a5db5ca9f347431b0168fba452",
+   "imageDigest": "sha256:cc1fcbb7dcec472cc57bef184ab6e490a9d5a1f9f11dbb03a018a1cbb0a92eae",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:53:58Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -6155,23 +6155,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:58a0b512f34297cee709a4ae41defc3ac56902f36247b64ef171fd57b0a0e013",
-   "imageDigest": "sha256:95c67e8760cfec47bb2f2bec89bd682f3d06c4b30e502ba1bcee8a8909242e60",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T20:08:33Z",
+   "tagDigest": "sha256:0ce653645d27301bbcb4ef4c08330096be5b88a5db5ca9f347431b0168fba452",
+   "imageDigest": "sha256:58fe47cafd38791c63e34627561f325e5af2433f5f435682f2f923765a0989d1",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:54:17Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "php-cli",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "cli"
     },
     {
      "name": "php-fpm",
-     "version": "8.3.36",
+     "version": "8.3.37",
      "source": "upstream-build",
      "sapi": "fpm"
     }
@@ -6189,23 +6189,23 @@
    "platform": "linux/amd64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:d863d10ba598fd1a793ab25740516a15e41add6c333bcaae1f36bc645a6b1971",
-   "imageDigest": "sha256:cd188690f261018a3f2c2763898172bf0748167e55a709d0e217921f711dbbf7",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T20:08:27Z",
+   "tagDigest": "sha256:05f383d5dad5b65b47a12306821744f169c40982e92ac4bd64601d4caff9ade7",
+   "imageDigest": "sha256:719892229371bfab374bfd9580cf01a91d789149706eccbcd8b8ffc0b6a635de",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:54:10Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -6223,23 +6223,23 @@
    "platform": "linux/arm64",
    "kind": "pinned",
    "owner": "app-official",
-   "tagDigest": "sha256:d863d10ba598fd1a793ab25740516a15e41add6c333bcaae1f36bc645a6b1971",
-   "imageDigest": "sha256:831c9910122cc47cfbab13286e5167fd9f4e2e9c3d4a4b9b2a8ea173ccf52f12",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-19T05:25:07Z",
-   "imageCreated": "2026-11-18T20:08:33Z",
+   "tagDigest": "sha256:05f383d5dad5b65b47a12306821744f169c40982e92ac4bd64601d4caff9ade7",
+   "imageDigest": "sha256:4341b33b327c4595e0c1d9f9770b599b04ea54bfb755f018f5e09fb1bcfb6b70",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:54:23Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.4.27",
+     "version": "8.4.28",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -6257,23 +6257,23 @@
    "platform": "linux/amd64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:3631239a8cc0f3911f0cdae00f5475f48a65b9f2c9f120ba137766bba28c945c",
-   "imageDigest": "sha256:774dc1d1f4216fb49d6ad366eefd7a7d01261a8793b9ae20732d3fe004bbe9e3",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-18T05:22:43Z",
-   "imageCreated": "2026-11-05T08:30:34Z",
+   "tagDigest": "sha256:2cc01addde3f5bfdcca3640681e9dbcb38d5e1ee7c72d35520d743e361defdea",
+   "imageDigest": "sha256:8704b10ae8c672be537efa82be931ba469896d365182f21677c075624f14c199",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:58:47Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -6291,23 +6291,23 @@
    "platform": "linux/arm64",
    "kind": "latest",
    "owner": "app-official",
-   "tagDigest": "sha256:3631239a8cc0f3911f0cdae00f5475f48a65b9f2c9f120ba137766bba28c945c",
-   "imageDigest": "sha256:5c4bae53409546b60c14fa8a09c25d0002e91b583a1ef299a137e041644bd7de",
-   "checkedAt": "2026-11-19T05:25:07Z",
-   "scannedAt": "2026-11-18T05:22:43Z",
-   "imageCreated": "2026-11-05T08:27:40Z",
+   "tagDigest": "sha256:2cc01addde3f5bfdcca3640681e9dbcb38d5e1ee7c72d35520d743e361defdea",
+   "imageDigest": "sha256:242e0e3bfa85361edf97bddd81bd7af3b82262285849e1fa63059a37d688e5e2",
+   "checkedAt": "2026-11-20T05:22:56Z",
+   "scannedAt": "2026-11-20T05:22:56Z",
+   "imageCreated": "2026-11-19T14:55:59Z",
    "builtBeforeFix": false,
    "distro": "debian 13.7",
    "php": [
     {
      "name": "libphp",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "apache-module"
     },
     {
      "name": "php-cli",
-     "version": "8.5.12",
+     "version": "8.5.13",
      "source": "upstream-build",
      "sapi": "cli"
     }
@@ -6327,7 +6327,7 @@
    "owner": "community",
    "tagDigest": "sha256:2e4b2aeebadf1c204bc3fc94c28a086ff3d1503a8ff015544a98832ed086b14d",
    "imageDigest": "sha256:99de24c53c8f705fb96aaa260721820b7a76a3233043121a51940849f17a7157",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-15T05:23:08Z",
    "imageCreated": "2026-11-07T21:19:47Z",
    "builtBeforeFix": false,
@@ -6355,7 +6355,7 @@
    "owner": "community",
    "tagDigest": "sha256:2e4b2aeebadf1c204bc3fc94c28a086ff3d1503a8ff015544a98832ed086b14d",
    "imageDigest": "sha256:09510cb65c5bea4e9cb69e9ef68a5674003b89fc23800fc3fc82459bfaa03ad7",
-   "checkedAt": "2026-11-19T05:25:07Z",
+   "checkedAt": "2026-11-20T05:22:56Z",
    "scannedAt": "2026-11-15T05:23:08Z",
    "imageCreated": "2026-11-07T21:32:14Z",
    "builtBeforeFix": false,
