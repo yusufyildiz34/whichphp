@@ -3,7 +3,7 @@
   <title>whichphp: drupal:11-apache</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of drupal:11-apache, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:5b78c2c4a36623d5b3f4e3db7761dac5</id>
-  <updated>2026-11-20T05:22:56Z</updated>
+  <updated>2026-11-21T05:21:51Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/drupal-11-apache-02743db1.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A11-apache"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>drupal:11-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:b338bd5cf00771554146f8ba8b2438be</id>
+    <updated>2026-11-21T05:21:51Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A11-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:bea3324e7f7f12ed82c4226f8b95726f9a4656b785dcb92021a8ac21a426a8af (was sha256:4960d2c0966eb304a92af94a150b0594bdc6a22c5c8b38f02a6eee31a563cf82)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A11-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>drupal:11-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:d58ffbd854b18a3c3207c6b4c8a42c2f</id>
+    <updated>2026-11-21T05:21:51Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A11-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2c47715bd673da39fc39fd7e0c5bd8d4d8e4055d7920bf4295bc281a285c5192 (was sha256:4690ce1ae0200840002da7a2cf75bc68dafcba5c6cc7eb90b418f6b6ee021289)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A11-apache&#xA;</content>
+  </entry>
   <entry>
     <title>drupal:11-apache (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:8660968c779306badaabe98e95abdde0</id>

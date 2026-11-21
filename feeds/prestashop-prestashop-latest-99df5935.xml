@@ -3,7 +3,7 @@
   <title>whichphp: prestashop/prestashop:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of prestashop/prestashop:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:0603792fd7f343426ad15fed22555826</id>
-  <updated>2026-11-11T05:23:06Z</updated>
+  <updated>2026-11-21T05:21:51Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/prestashop-prestashop-latest-99df5935.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=prestashop%2Fprestashop%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>prestashop/prestashop:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:5b03ba84fe2db12822013c21d3d74adc</id>
+    <updated>2026-11-21T05:21:51Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=prestashop%2Fprestashop%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:ad738f11fbaba0aff77fab8fcd1790474b4244df19e319ef466524d7d807278b (was sha256:e6ef6beb9c39a98f34eea50f9c4aed89c036f72fb48d316b45e579fd818997a0)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=prestashop%2Fprestashop%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>prestashop/prestashop:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:f77789ef0c45729a5b077571f862b820</id>
+    <updated>2026-11-21T05:21:51Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=prestashop%2Fprestashop%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a74c843340716d6b2b05ae0fd043f4df2eaea7faae4756ebaea854c965fe5886 (was sha256:d82e02c2a6ae5e5afe5a535728a204ddffd45dfb90b158960bd764216ded2af9)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=prestashop%2Fprestashop%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>prestashop/prestashop:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:5debcf964085ee35ab2b1307b75a3544</id>

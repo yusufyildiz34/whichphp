@@ -3,7 +3,7 @@
   <title>whichphp: dunglas/frankenphp:php8.3</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of dunglas/frankenphp:php8.3, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:75bc69197e7fe4e516cb6b346c012120</id>
-  <updated>2026-11-20T05:22:56Z</updated>
+  <updated>2026-11-21T05:21:51Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/dunglas-frankenphp-php8.3-cef22abb.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>dunglas/frankenphp:php8.3 (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:aba61b45d73116ff3e8f22eab8da85d4</id>
+    <updated>2026-11-21T05:21:51Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:6d4c60d77d10f27766fee9c301f428a22bf986585149088dc709cfcda0c00d69 (was sha256:a3edaf86beff4d8320a240eb6dbebfbfb9124d2331a82f49e19ca61707c48632)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3&#xA;</content>
+  </entry>
+  <entry>
+    <title>dunglas/frankenphp:php8.3 (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c60f2d74f4b101319048f9134f7b6a80</id>
+    <updated>2026-11-21T05:21:51Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:1c520bf8de8563d1532d209b8f49ce9bf9f727277b0c40a2c9dcd162482a2689 (was sha256:b97b59c83daccb019313d5c4af25ce38a9d853d2c5759675a81bcd9b99bb8a92)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3&#xA;</content>
+  </entry>
   <entry>
     <title>dunglas/frankenphp:php8.3 (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:dffb33640204003ac1e88e5c31ecd50b</id>

@@ -3,7 +3,7 @@
   <title>whichphp: kimai/kimai2:apache</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of kimai/kimai2:apache, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:fc6e2c150631f22cdc3d39e15ea58177</id>
-  <updated>2026-11-14T05:22:41Z</updated>
+  <updated>2026-11-21T05:21:51Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/kimai-kimai2-apache-52c37aaa.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=kimai%2Fkimai2%3Aapache"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>kimai/kimai2:apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e828423ec72961a8b486a6f62b5095ce</id>
+    <updated>2026-11-21T05:21:51Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=kimai%2Fkimai2%3Aapache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0b9390100bf9afafd5d16afa2d1dc653de0aefea35b317c63f529516544c5dea (was sha256:c49bc9a9cd4a82a9041f9973bea0227dfffff11b205b268091982f477f4bd0c3)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=kimai%2Fkimai2%3Aapache&#xA;</content>
+  </entry>
+  <entry>
+    <title>kimai/kimai2:apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:39229699ba59eb222295fe2df769a7fa</id>
+    <updated>2026-11-21T05:21:51Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=kimai%2Fkimai2%3Aapache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:dc930d5b6813c2b56aa95fa55e59f020f64f45f652b8ee0476f3a554c3fbb705 (was sha256:dcb0761e9cb2eedb7bba71dc2499d4113feba65c9b0b7edc7e18729ea97fd3aa)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=kimai%2Fkimai2%3Aapache&#xA;</content>
+  </entry>
   <entry>
     <title>kimai/kimai2:apache (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:13dc99f753a0a14c829d71528cead781</id>
