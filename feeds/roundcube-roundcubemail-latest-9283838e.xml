@@ -3,7 +3,7 @@
   <title>whichphp: roundcube/roundcubemail:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of roundcube/roundcubemail:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:94ed59b4b9da088977af7f4f94f61a8c</id>
-  <updated>2026-11-21T05:21:51Z</updated>
+  <updated>2026-11-24T05:23:54Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/roundcube-roundcubemail-latest-9283838e.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=roundcube%2Froundcubemail%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>roundcube/roundcubemail:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:2c81dfaec531f769fcaf1db5d1dcda88</id>
+    <updated>2026-11-24T05:23:54Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=roundcube%2Froundcubemail%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0b5f9c9a3e4dcdf50602644e28831bda512fc08bacd3101a2b320234259b6cbc (was sha256:0cb2bdbb51b8d631bd5bdbb889fbced5adb89d79e86a768a4af5910a854baf24)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=roundcube%2Froundcubemail%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>roundcube/roundcubemail:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:9a87bcd15aa70b586723bf148ce918f2</id>
+    <updated>2026-11-24T05:23:54Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=roundcube%2Froundcubemail%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:bbd898a09336eba76c3415c033114a4b08bc29de2f873fba7b2ed1cecd48f323 (was sha256:7f0dac1465afdddb7204417a4e971711eecc793cb58871940298ac1329a36815)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=roundcube%2Froundcubemail%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>roundcube/roundcubemail:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:01909ccd7d8ffa6b7aea06c2509bfb56</id>

@@ -3,7 +3,7 @@
   <title>whichphp: adminer:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of adminer:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:07fc5d6a6c5b79a23b06c3b57a8a671c</id>
-  <updated>2026-11-20T05:22:56Z</updated>
+  <updated>2026-11-24T05:23:54Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/adminer-latest-e64867fe.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=adminer%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>adminer:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:030655a51124e6e4f078a512f42dc17d</id>
+    <updated>2026-11-24T05:23:54Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=adminer%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:49bdfed3c2586fc47ee18b14eae6ec21c7b035947e16377228ddd744082c4e6a (was sha256:cf0d9e360da6b8054b6ec71160c5003b8c302f4ce2daf155cb59924bd7f3b13e)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=adminer%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>adminer:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:72a041e65bb57758dba7d1336b72edaf</id>
+    <updated>2026-11-24T05:23:54Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=adminer%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2864400de48b30aa5e96bc6dbdce3b11f604f87dc2a4901cb4c5d6253b91d1a1 (was sha256:3182e2361ff8e341df8a10bb9196d77d2f2df65607ad1bae43ba9c5afcb54463)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=adminer%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>adminer:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6492afc046301d326dcb0243d946be45</id>

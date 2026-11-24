@@ -3,7 +3,7 @@
   <title>whichphp: matomo:fpm-alpine</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of matomo:fpm-alpine, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:409ca65e5318ac4b1ce492a502206200</id>
-  <updated>2026-11-20T05:22:56Z</updated>
+  <updated>2026-11-24T05:23:54Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/matomo-fpm-alpine-93b1a5d4.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=matomo%3Afpm-alpine"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>matomo:fpm-alpine (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3110e63fbd4ec0f32ed18146e5f3ab56</id>
+    <updated>2026-11-24T05:23:54Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=matomo%3Afpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:e487f88452b8ca36011a26d96b7e7db424eb59b34839fd7f3c3c8f28b22d2981 (was sha256:e6792f755a0a6d2968f734d9ca3a65eb6fed259de65112ebe6dee9920c1d0db6)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=matomo%3Afpm-alpine&#xA;</content>
+  </entry>
+  <entry>
+    <title>matomo:fpm-alpine (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3e8d6e13ee83a94970f2006ff8956a0b</id>
+    <updated>2026-11-24T05:23:54Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=matomo%3Afpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0155e9aee2dba5824361483e9723ae703cda7a2bba213047bdcdedf7178566b5 (was sha256:e5bb78079a0ad24d3535192ba3a946677ee2abd271e71d175f9e237f8efc5e74)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=matomo%3Afpm-alpine&#xA;</content>
+  </entry>
   <entry>
     <title>matomo:fpm-alpine (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:00297562f97382631589ac6ad82b5e38</id>

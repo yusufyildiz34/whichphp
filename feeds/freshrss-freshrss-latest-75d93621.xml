@@ -3,7 +3,7 @@
   <title>whichphp: freshrss/freshrss:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of freshrss/freshrss:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:b23e54939ee3dd25368edda2d465e95b</id>
-  <updated>2026-10-31T01:35:10Z</updated>
+  <updated>2026-11-24T05:23:54Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/freshrss-freshrss-latest-75d93621.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=freshrss%2Ffreshrss%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>freshrss/freshrss:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:de37deddccf6883fea8b696295194770</id>
+    <updated>2026-11-24T05:23:54Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=freshrss%2Ffreshrss%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0e96aa405358d6c85c4e99879693abdf21177f2898922fd4630b9a236715a241 (was sha256:a003730e81c89abf86c3ca9c8b263c818804734b574469d59586234364f425b0)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=freshrss%2Ffreshrss%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>freshrss/freshrss:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e3b50133742612b4af5d3acd393875f3</id>
+    <updated>2026-11-24T05:23:54Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=freshrss%2Ffreshrss%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:97d4bd1ac3a00eaa7ff9b759d98490e149e6d4fa9619c982c345268f1921a660 (was sha256:c889a3e8baddfb73dc1cecc553697f250c70cbfc7dbac6212626bf5cbccfc797)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=freshrss%2Ffreshrss%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>freshrss/freshrss:latest (linux/amd64): first checked, no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:cde84dc34e66c6d945a967eb8f00ad2f</id>
