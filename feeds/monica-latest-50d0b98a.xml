@@ -3,7 +3,7 @@
   <title>whichphp: monica:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of monica:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:f0f6bdb2e34409306188c16e62be8054</id>
-  <updated>2026-11-20T05:22:56Z</updated>
+  <updated>2026-11-25T05:24:03Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/monica-latest-50d0b98a.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=monica%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>monica:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:63d4e186b2e4640465cf2f1eed5d4c47</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=monica%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2b3e92707370950deaa4dd1249f5751d6df43c3ff304f48c7ce1a36306bc03d3 (was sha256:88e0cef52dee0be5135bfa5152fff68836f4fdf70a557e67ca61c443ae842573)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=monica%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>monica:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:a57a9a102d648b0c1268563f8bbce877</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=monica%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:c40ba3b43fa03570c71877fda417068e5458316772a020cc6a2e7cb8cb359527 (was sha256:781eace731dc05352a67eb297d0d6de521d8adc1dd7bd163d5d84353543474e8)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=monica%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>monica:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:60fe5c8747ab21eab064aad6e18985fe</id>

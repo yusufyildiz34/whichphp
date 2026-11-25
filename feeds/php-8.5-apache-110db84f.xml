@@ -3,7 +3,7 @@
   <title>whichphp: php:8.5-apache</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of php:8.5-apache, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:7dee5fa99adb554b5b64da316333062a</id>
-  <updated>2026-11-20T05:22:56Z</updated>
+  <updated>2026-11-25T05:24:03Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/php-8.5-apache-110db84f.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.5-apache"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>php:8.5-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:db853ae7f2a79cf0e5c06e8d0c22d0b7</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.5-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:70c5e288b6be3c8fb123ffcb10d4144054e16176634a58746d0f3df9e935deee (was sha256:d682023211236f5aa2a1c269f27111f83b223d98b7d47ca407bcd130b205b72c)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.5-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.5-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:d43510eea104ba1a7e35c9994b6fa76a</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.5-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:bf18a582a7d0fca057421cd8be017cc6ee18e519a7b414ee471dc8085132f33f (was sha256:23c3e2b21eab81db1a856892b95ab6ce55293e66cd347bd49dbe0712fa474cd5)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.5-apache&#xA;</content>
+  </entry>
   <entry>
     <title>php:8.5-apache (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:dd563ad3ad1b663b8c109c92490eeea3</id>

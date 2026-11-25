@@ -3,7 +3,7 @@
   <title>whichphp: all index changes</title>
   <subtitle>The latest changes to the PHP2Shell status of the images in the whichphp index.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:fd2e21aea2cdcac33e0c6f53b48ee0b4</id>
-  <updated>2026-11-24T05:23:54Z</updated>
+  <updated>2026-11-25T05:24:03Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/all.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/"></link>
   <author>
@@ -11,6 +11,580 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>composer:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:ad269b4126ad7e2dbcc8afc4a228e1ba</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=composer%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:00c34bf107ea859ce808b598ac1edad6ad3879136fc4425c8c8ab3cfb45b1b83 (was sha256:0c8f8d7aeaa391cad87124f6d6f492b110104702076c292145ab791f001d785b)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=composer%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>composer:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:de6051203ac3672f98c4fdad22a26279</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=composer%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:272b76325f09d97d4db42ea83936a60fbdd98423c1e600ae7d2d6036b34ed62f (was sha256:cb37b9b67681dd560b986206c566b9a8db7931ee3346bbb516c0a5847bbf7d01)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=composer%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>drupal:10-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:2d68bf20b7226afe8f806745b4e0d573</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:ac09895eea23962f39fa4c6fdf569a7b191dc0a456ad2a3575ee617b10e1bf07 (was sha256:26a231957516ee7f9b486be1d0a68bae2e744c2fd902a91ffa11f5f743b154a0)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>drupal:10-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c76cf0a4381eae8340118409ee94feae</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:e736376cbc7ff16d717ce906b481462f4d48a739c662338d4763e0f66a26ea9f (was sha256:0389c4c6f5775b87dcc8b6e1ff8131796abce8b291d3c4ae9f8e9be05f291028)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>drupal:10-fpm-alpine (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:5732802d3dfcf6c7d36efaf6a820e4b0</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a178ffe0db17e76503e3a1bbcc60bcb1b9994397d4fb553dc3c7e29be81c068f (was sha256:2b782d9f9e7d6a87caa37bff91c896c492df6a56b7b67eab8e38194ac57281e8)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine&#xA;</content>
+  </entry>
+  <entry>
+    <title>drupal:10-fpm-alpine (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e09c3c678b06b87aa184f101e6d85872</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:4b0b7f81f9750aa76ff70b3d87714b74104601d38751d54797a59278b503e04a (was sha256:823ee1d6e4b494d61a2af70a2d1af892ddca6a87b87df9139a9c069b0c9d0d51)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine&#xA;</content>
+  </entry>
+  <entry>
+    <title>drupal:11-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:275d222060fdc23056a5d16730881dda</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A11-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0ba910b0eeb668adb045f33b8fa615354dffe67f57f96fb6fdc795c578c88898 (was sha256:bea3324e7f7f12ed82c4226f8b95726f9a4656b785dcb92021a8ac21a426a8af)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A11-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>drupal:11-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:792e611576b905b5840d416e2b1e64d5</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A11-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:de31968111e69fbdd374cfdc1cd70d6874a0a725d8958cbb4825bd4757d63383 (was sha256:2c47715bd673da39fc39fd7e0c5bd8d4d8e4055d7920bf4295bc281a285c5192)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A11-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>drupal:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:29f8e22ec47fa98faec3b958a721b1c5</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0ba910b0eeb668adb045f33b8fa615354dffe67f57f96fb6fdc795c578c88898 (was sha256:bea3324e7f7f12ed82c4226f8b95726f9a4656b785dcb92021a8ac21a426a8af)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>drupal:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:85384c3361bbb596249cd686c73c7830</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:de31968111e69fbdd374cfdc1cd70d6874a0a725d8958cbb4825bd4757d63383 (was sha256:2c47715bd673da39fc39fd7e0c5bd8d4d8e4055d7920bf4295bc281a285c5192)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>dunglas/frankenphp:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:fc74d674248790f6458778ff4305e0f4</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:5babc6f23bfe59686065e890a3c15ab536ceab48fa55338e4f8586e38bcc8598 (was sha256:e090780542f1b62759d5ee65a8ba340fd46373f4811b35fa1903878394d11167)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>dunglas/frankenphp:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:21cc362a5584a8926a10ad98228ff58f</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:fa8579ad82342e039f54b0c1592d46cb34f8aa54ed90b230f5f55b50105543e8 (was sha256:8260a4db612e814452570337797187b48465dc19386b16c7fc11e04aaec816ca)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>dunglas/frankenphp:php8.3 (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6ccbcd89c16d367800a585204e49c519</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:b021237d5246718aa42e2a5356c5de19fa1396d295961b6428442ec56bf04759 (was sha256:c0d0e09dfcc367012da7c21c31abf2ab6f11ba1c411357ce9e7b5bae30b602f9)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3&#xA;</content>
+  </entry>
+  <entry>
+    <title>dunglas/frankenphp:php8.3 (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c430b83203cbe77fd304bfe406de18de</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:49ab75ec1563b8557e7b9622fc7d4c86f65e1af42c8bd9156e1b1a8e10894d0d (was sha256:74719c73984122116444687c36553fbce85f11303c84aff4906882a7bd6a4a65)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3&#xA;</content>
+  </entry>
+  <entry>
+    <title>invoiceninja/invoiceninja:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e9f9aab0ca529f5a46d8cfe489167394</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=invoiceninja%2Finvoiceninja%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:ef28ee2590eb3e3bae826a756e236b1f2a35d2095a6b8869e039536f28b4b417 (was sha256:991d3d7b4f54fb17669e6cb0198889e0a93aca75cf9801c65c2d1350bef849b8)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=invoiceninja%2Finvoiceninja%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>invoiceninja/invoiceninja:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:5bae78bcdd780a0be4e4059aff7abf13</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=invoiceninja%2Finvoiceninja%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:7af2101e4d269c6f8c2c964ad6755847418a6b0b92fa56ec7f11421941a773cc (was sha256:a898c80d7e7002db797e49be47e8af0de38a6128e116037a2e551b670af6a844)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=invoiceninja%2Finvoiceninja%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>joomla:5-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:0c17e2c22bf497e392904b909d313c5f</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=joomla%3A5-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:c41684880a11149e4ff40e215f7116d441e8461d4529fb6a0fe08a8447c22d37 (was sha256:05ea47e71a533cfaf137d4ab4e66dfd8b6c7dac8282854ea1e9c1742a39d16fb)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=joomla%3A5-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>joomla:5-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6a2d141e7fb4865f1cae295b46da65f0</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=joomla%3A5-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:ab5451f960d46f825034fde6819733942c848750849e4f63865464998f304254 (was sha256:0e22e6d1b90a39c5c3d7fe5c07c1587549f1f47d6f04080bcaa13700a713cce9)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=joomla%3A5-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>joomla:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:91e937a79bc384427f71d347d427ca80</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=joomla%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a5bc5ed0e288a7ad88d538904b0b1cd11d7236cb5e141b0c5d522d8226963485 (was sha256:6458e2117b542b1e3a1c8c5e21c224b0f3c8f45c69f499dae6c1e9745a797853)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=joomla%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>joomla:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:4daf67871b1d93e1bf41316443b40931</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=joomla%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a7f7ba9f04be8f25b12e3ac55e3a148c304b121270e64438d92b6bb49d1694d0 (was sha256:deeac0793783c015ec2cf408f2e4e7b3636571245c4d5e8016561f453f0b3166)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=joomla%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>matomo:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e1a5ae99107412065a45b06b1dccf6f0</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=matomo%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:6cb93e56232cf748ef8158eb872dc93e82d4969899f4b2e1ddbbbc931c9da899 (was sha256:76c7c376468a322a412cec5ded165b7658fcee7c5d37225307174ff0c7adb1b1)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=matomo%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>matomo:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e165443214ebaf35f7800cc3f426cc00</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=matomo%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:9904c32ff9fe4d011812a25e506b6657359141a36a6ddc48515bbfdcde028f14 (was sha256:565d055de0f3a53d22a6f92020504ed3a91b59805ee15c667e9fbd5b37fbab64)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=matomo%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>mediawiki:1.43 (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:d7fb64055306b6e05a218c3c13ab41e7</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.43"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a63de71c7c14fe4553a04a7e4aff322120964cf4fb85952002b085dcdb028162 (was sha256:3f0ba3d719995e6be7d0903a2d577d2157832bf5f4ea30af1ea814b24c737265)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.43&#xA;</content>
+  </entry>
+  <entry>
+    <title>mediawiki:1.43 (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:810befe8c01f539847684a29b5b200fc</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.43"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0f8c501fd4ea71331470eeb01d02653c2759334f23e0ab32ecc31ec56b68df06 (was sha256:6aa3cf90d8ab36909471bd5bc8205debb27402ddc5abec08f102e13cbae99306)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.43&#xA;</content>
+  </entry>
+  <entry>
+    <title>mediawiki:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:8a09bb3947cf7629654ed1eb1dd41f87</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:88dbe1b8ebb52a47babe28a71e1ff5cf5e1a10e17ab2b78f86957d3ddf22db8c (was sha256:db52f022f5283f3e4d7e4c039e1e81aaac9bb6fc5146ba347f8863fa553060fc)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>mediawiki:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:7d05a01d01a593c811b22b60f0e95f37</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:ab9295122f198cb70cd7050774cb356872bd1940769dfaceed70fde606acaae2 (was sha256:e650674ca4bc9d0a7e457f497c0a0088bf08856c3ca490fce85a8a2fe13f0893)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>monica:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:63d4e186b2e4640465cf2f1eed5d4c47</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=monica%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2b3e92707370950deaa4dd1249f5751d6df43c3ff304f48c7ce1a36306bc03d3 (was sha256:88e0cef52dee0be5135bfa5152fff68836f4fdf70a557e67ca61c443ae842573)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=monica%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>monica:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:a57a9a102d648b0c1268563f8bbce877</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=monica%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:c40ba3b43fa03570c71877fda417068e5458316772a020cc6a2e7cb8cb359527 (was sha256:781eace731dc05352a67eb297d0d6de521d8adc1dd7bd163d5d84353543474e8)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=monica%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>nextcloud:32-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:4f2b564fe4908ba3906c27f0ffcbe6c9</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A32-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a2b6ce3d02c59b9c7037d8685df7690fd5a75f99d9b20a1d61ec70f5fea36341 (was sha256:44a104384b4b889703ad306b6c03b1515a06e303c58ade4f414952091eeb066d)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A32-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>nextcloud:32-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:dfd40d3ce2b8ea2db40b5f16adf9cda4</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A32-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:d1c8f96a169a819c5afb40cb592de62844804aac5c8025e0e2c0e6b016023329 (was sha256:136d662de94c15651db4273dcd064ebc685638694a6b56f8ecad55bc79e7b392)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A32-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>nextcloud:35-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:1aa367a21cf62c87da19de20027142d8</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A35-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a46ea519c0e1f9ea7d45b9584b012055c0ff8ca5756cd18cebb3d417ee660db7 (was sha256:e2c42eda8c4a54dd69ebbb6462fa3fb015b3eedc0b65690319096d92d2733d42)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A35-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>nextcloud:35-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:8877a07d82c8d99c4cf4d7a354db21cd</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A35-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:594424b54278052c644c27c2fb5f40fc7632ebdb745212fcb6e24d27ecf0485c (was sha256:5b255be16c00cd5ab3be71bd7f0e551a956ef4d6f1bce44fd38534a6029ea416)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3A35-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>nextcloud:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:676c83411548866a6a8272fa2fccb92f</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a46ea519c0e1f9ea7d45b9584b012055c0ff8ca5756cd18cebb3d417ee660db7 (was sha256:e2c42eda8c4a54dd69ebbb6462fa3fb015b3eedc0b65690319096d92d2733d42)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>nextcloud:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e62efc11e4fc4cd44e55c12010d3ad01</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:594424b54278052c644c27c2fb5f40fc7632ebdb745212fcb6e24d27ecf0485c (was sha256:5b255be16c00cd5ab3be71bd7f0e551a956ef4d6f1bce44fd38534a6029ea416)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=nextcloud%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.2-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6f674bfdb3ec0252b1269c23efe882ff</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.2-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:c98cb0258cb16748c9da88d5f9e4367077c11c10e8ee74b8c881e9f699df8aca (was sha256:87c7f452b14784f8f30fcc167610848a38884fdb5a5e45e692a95dd05ee00758)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.2-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.2-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:8bd77fa0189281616500e9e91167aa3c</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.2-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a3fb8c4ac24cf551929de1f1916c7fd41b1616d62c9c831f6f499147a7fa9b79 (was sha256:68061a73ca75123021fa5da81f56ae64696b3144134f77c1bdc03ed4227137a8)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.2-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.2-fpm (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:ef88ee9d44c07b32ad17694d2bc6a7d6</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.2-fpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:7758d241c862ba6fd434536ae307578583e14ef84be25aa59ec28e2ae54297e2 (was sha256:cf0532a9b381216c6291b098edac68d769a3d663f2e8e4a0ecf3f53bb9e06b5e)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.2-fpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.2-fpm (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c5ee97a447abe22574324d0afe6597e0</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.2-fpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:9165fc2bb4e8a00d059bee45190a17a6f895a5aef0b3f2aca6604f112bedec04 (was sha256:615dedc3e65549d0d3b626ecdd0ba4d2df4f65d06b5935566aa1859c2db0d24a)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.2-fpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.3-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c25d7b87702716d5394fa9f4f5b2b95e</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0d91a3b2c8d2c0510c8b4911ba660f145a0ea2ce1938f548cd7899e4d1cf7c2f (was sha256:1c30149f5c677e734bae11ba53de42d5d2afcb4e0275d4917b912a6897e164c2)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.3-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:4dd2ae46faa5ddc6f0b6d09c00412245</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:268553dd5d439e5ba1a6cf740243d7c38544ec135d924ca13f9b03148f0859a2 (was sha256:435e548bbe9d2746530894e93139cf25feef98fee704d50d864f5e99b6fbcd99)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.3-fpm (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:eae230c64c6464af356e99f4e99a4f21</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-fpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:9c4fd0c34ef099c32649b40f3e0cf75b2e427cb678dc7f60ebb6d1d66a95ef9a (was sha256:52959055fd379f84c4faf56b94f0cc65bbb715c96b2749fc825b6f2c44944354)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-fpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.3-fpm (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3c37cb8023d6e9cbec5fe2c1f69edce5</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-fpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:bd66d9e814070cbb1abd3b9f4d4e431db33ece9819f83fec414cd9822e76268c (was sha256:98b10f5eb3b86d8ec7e15cae3f9cf9f93dfbaa48bd8f8532ac5314536ede50d0)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.3-fpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.4-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:9c32595c9a13dd8e533d35fd781e949a</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a49818480993ee826118f0f55e65c2fbcd5185a21ccf7b3b4e7c148eaee2a526 (was sha256:053dffe7c9899af07527d1b31e87e27b0d83cfb7f588eb043499c90a76bcdae2)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.4-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:9fa49a452c7196edf2e24737ab6837d5</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:7e48110ae597b5346df772956404f9c3db3a5f00952b0efd2613810b3313e4a9 (was sha256:2bc95efc3a01106c416b4ef4a46832d150c486b34d34de5392bc311cf74fbb02)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.4-fpm (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:0aa5ce8c965d3ed73ad60ed6da4b0a47</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-fpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:1327e83d244197daaedb1047a0517b9effc66313b3c99939c837fdc9d142d3ce (was sha256:c72624058fbdb7823171aeda7e36a4b707c3a4f169fa5251ebc14a4bea3d4bea)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-fpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.4-fpm (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:7c4b2a459fce9897844e2ff00129e782</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-fpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:e9703e0d126e1e5f72e60fff7ee4a7eecf0e0dc80ff6318f663f3acfa51fc235 (was sha256:81708a6907ba9eaf219c89407be8bed8e250abe826cc9d79d41262d01b248f0f)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.4-fpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.5-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:db853ae7f2a79cf0e5c06e8d0c22d0b7</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.5-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:70c5e288b6be3c8fb123ffcb10d4144054e16176634a58746d0f3df9e935deee (was sha256:d682023211236f5aa2a1c269f27111f83b223d98b7d47ca407bcd130b205b72c)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.5-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:8.5-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:d43510eea104ba1a7e35c9994b6fa76a</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3A8.5-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:bf18a582a7d0fca057421cd8be017cc6ee18e519a7b414ee471dc8085132f33f (was sha256:23c3e2b21eab81db1a856892b95ab6ce55293e66cd347bd49dbe0712fa474cd5)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3A8.5-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:8e0b96c2d6daea543efd5120cbbc5ecf</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3Aapache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:1f9e334cae414a9976e39f179488437a408aa5f7666c0d582b8ed2f4aa3a0d5e (was sha256:585df0f4055430c826edd19c6961e2ce9f9875dd0fe85ab8d49021fb3202d228)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3Aapache&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:bc29b0d3d9521941232a449767979b39</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3Aapache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:9e2e7498863d476973ecc9b89a1a94e5cd7d57c13dcadfd209ee56643139ae7c (was sha256:43127ff210dcb5724cc82036d99c877611f993f89c230b3d403653e31e47175e)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3Aapache&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:fpm (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:01f8e7925b2f3ec273253ed00872acd1</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3Afpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:b6b4d0a28fada45e189cbddb72906e5a76ddd847eb47e7d7a8b8c7479a0f1915 (was sha256:6c8ad60f595aa02ec6f69bc3f16e8534fdef8d986a521549c04bc6d391f7e058)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3Afpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>php:fpm (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:213591abd53e1c7e9a4b73da7d30e0e6</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=php%3Afpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:6f125b8e2b63443957795371d7010fbbc3ffcfe059784120213ff7dc3f9f6ed5 (was sha256:8fde53ab4683305a8368d2b98a25807aa4b92911e226c0c23ac94bdbf3ca5d8d)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=php%3Afpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>phpmyadmin:5.2-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:eba49baf0005cd991cd6f2cbc3ca4701</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=phpmyadmin%3A5.2-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:ec508ad6e288af0fe9a56ce70c6cc8e1a7207fb7ab273f1f9fd2052f5151434a (was sha256:435446c15976ee0567acc3e275a963f6984bc2091f7d7921ef8aacb0c4b84a10)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=phpmyadmin%3A5.2-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>phpmyadmin:5.2-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:25c2a85b32fc405919cc0e795a565248</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=phpmyadmin%3A5.2-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2f44df3aa8966cd65b5c09b4fde7cc48c1819a68e5cebf24df57bd2008d9ff95 (was sha256:043b6dea27ced8fcabf56e0589c3aa911b9bcef8bbb08a2de598edf72029b6a1)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=phpmyadmin%3A5.2-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>phpmyadmin:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:03d98479988bc7b28c6d109528f4384f</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=phpmyadmin%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:ec508ad6e288af0fe9a56ce70c6cc8e1a7207fb7ab273f1f9fd2052f5151434a (was sha256:435446c15976ee0567acc3e275a963f6984bc2091f7d7921ef8aacb0c4b84a10)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=phpmyadmin%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>phpmyadmin:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e6667c8b7e822c7f84c979f44791c616</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=phpmyadmin%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2f44df3aa8966cd65b5c09b4fde7cc48c1819a68e5cebf24df57bd2008d9ff95 (was sha256:043b6dea27ced8fcabf56e0589c3aa911b9bcef8bbb08a2de598edf72029b6a1)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=phpmyadmin%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>serversideup/php:8.2-fpm-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:4a8e5dd79a4e0613b730aab21f3bf9b5</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.2-fpm-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:4999d6a1cc0ef31d6a84e8af097e88ba2ce693badc8a0808633ae9f01d8284d8 (was sha256:6729e66a9bc180665ec57b0cde9b767cd3b0bb4f115a50238b7ea779dbbe728e)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.2-fpm-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>serversideup/php:8.2-fpm-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:55f03e1f7008c3b198bc9a6a9e7cb733</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.2-fpm-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:cd803faec5deb95e519710102ee9b5bbd36496c1f75712e3cdb1fef0c13f397f (was sha256:1231b6953ef8186a938098faa729efa729eb0d3cc60547e05eca52ff2482d21c)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.2-fpm-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>serversideup/php:8.3-fpm-nginx (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:2502515efde07e7965413c5ce9f9fa04</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:d5d26e7689c418b3c725402d6ce9d151b10b30b8bcb5e24403ac443f5cdea811 (was sha256:9b63466b1e06b1e98d402de9e1dbccd298974819b8799ed7b64d4cf8a5d07aa5)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx&#xA;</content>
+  </entry>
+  <entry>
+    <title>serversideup/php:8.3-fpm-nginx (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:227ad4dda9cf17e26b89aca3e637282c</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:10f39216f2e8ce206854451111eaca320491a119935571a687bbe1ac05e0f81c (was sha256:f2ec19a0c9ee8d142a0cc7dcd441c5e995ba1f528d0781efe8f54316391bc67e)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx&#xA;</content>
+  </entry>
+  <entry>
+    <title>serversideup/php:8.4-fpm-nginx (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:bdd72dda090930709d94d9de5a70f2d7</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.4-fpm-nginx"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:d427f37ec3ce9f59da5b1885e96d4659b32d56622142547636dda99e73c29598 (was sha256:038c2eaa0f69d9003819a885d31b30a9a5c59a5cfb75caacce12ab9076a7443e)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.4-fpm-nginx&#xA;</content>
+  </entry>
+  <entry>
+    <title>serversideup/php:8.4-fpm-nginx (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:a43067b6c5ca861139fdaa060088cffb</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.4-fpm-nginx"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:026accf6712f3398aaafbb0d80c9bd591e8c9ab8e81b2f987e7bfeb2b0a47766 (was sha256:fdeab442e32995c99843095c4a056c74f278559ac988552b677e39c9295a0c33)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.4-fpm-nginx&#xA;</content>
+  </entry>
+  <entry>
+    <title>snipe/snipe-it:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:a3dcca9ff548c0b1adda2c0cb07ef19b</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:4132d0e75138069083e38ea25d3674aee144827631f62674d5275aa643a539d3 (was sha256:7433cd25b13419e57c271ec3e4898ef499aa33ce1c1ec1ad4e343084e3d14f54)&#xA;CVE-2026-109618: FIXED_BY_DISTRO_BACKPORT&#xA;CVE-2026-109619: FIXED_BY_DISTRO_BACKPORT&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>snipe/snipe-it:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:77aeb5534cecfa1921a04fd41ab28201</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0324b12eb803edda34448d6af00d503d904693642f0d15ce778ddcae3f6d54b3 (was sha256:1261d1f593819b6a3fffcd1241c02daea364b689c15f7804f60175c30cba976b)&#xA;CVE-2026-109618: FIXED_BY_DISTRO_BACKPORT&#xA;CVE-2026-109619: FIXED_BY_DISTRO_BACKPORT&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>webdevops/php-apache:8.2 (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:f6f35a6c1384536ea63282d24660067a</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:85504c23a2286e00f5bc7302ec95f998bae3af3873bb07f39a739bb7bb701821 (was sha256:a46586027f058d1acc244b2e22695456dc929629b649f200601629c1715b3cc5)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2&#xA;</content>
+  </entry>
+  <entry>
+    <title>webdevops/php-apache:8.2 (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3492d3ed36bc036e016702a438edb05e</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:d978ce7a43ad9a697019764f5cde2398848ad0edc3b33af2e9f2a9a6530cd676 (was sha256:f626180e051adc4173b2b661d8fc8cf17b237396d3ec251bd9dbfb58eb380982)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2&#xA;</content>
+  </entry>
+  <entry>
+    <title>webdevops/php-nginx:8.3 (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:365c476a6aa6a8a7af087f21867a0c2c</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:042f9270c1d8e73b8e70d801a9788a2bfd8563dbea4e458e316a1c63ea14a93f (was sha256:ee36e47aa7bca76614ccc5831dde9739cb17c6ccba8ef2138d67f0397a947507)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3&#xA;</content>
+  </entry>
+  <entry>
+    <title>webdevops/php-nginx:8.3 (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:d90484a8969388f807fac77dc4ce63b9</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:5cdd6c2099c016d0f7c3be86e59d5bfdb26da354aa97b08d9e9d7f6cc99d2f3e (was sha256:1204116ac9149b93cf4efc1f6100e4dcebec15688b2089581656d3ac94310207)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3&#xA;</content>
+  </entry>
+  <entry>
+    <title>webdevops/php-nginx:8.4 (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:59971dedbecc12d902a6347a5a421c43</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:067cf18251c40442d267ef85594d7cf2d2f48ba41c5e52ab5af7aad40eada52a (was sha256:6b7f005e1a2a62eaabef789f8c5d5a197c2ca086c3adbd1066d24d27782a2004)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4&#xA;</content>
+  </entry>
+  <entry>
+    <title>webdevops/php-nginx:8.4 (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:1fbdb2c651eb792e1095da0b3700f83d</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:25f129b91f063b095d0f08b8a57d57c1ab103b7be79dd914fb6d13420a5ccaf0 (was sha256:c8dc8507c8bf59992997d01cb0536bff81c2c9b4e3503f441b9cc6de55e8a5a4)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4&#xA;</content>
+  </entry>
+  <entry>
+    <title>wordpress:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:b32584902d18c727dcec3ddccd9038ef</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:c0e9307f299de9b16f1054f7b7b85a5e7d11aacde727252d2a0eb41f7210a3c3 (was sha256:abe34a6e9d4436ca0e1649c4babbe1f1b6cc4a86364acd98707d97a5e89139e4)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>wordpress:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3c23b3e139fcfbba782d1446f4b810d2</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:178668705ccd99cde1f073a566ac10373c559b9bc2824887774d828f955572e8 (was sha256:3631244cbc110221e5c53791cb1df6b8647d00e070ce61567261d772d0b92210)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>wordpress:php8.2-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:0620a39ce464d0b6e7dea7e61e89a705</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.2-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:5c31aed67144dd5ae5793b9179c4c2cfb6a57588fc551de4ac7daac060effef0 (was sha256:e3b6d256eafd6f7b97d7169a48b8d9f39eff618b80fe62167186004f39a9bbd4)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.2-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>wordpress:php8.2-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:8b4984adcf2edebdf2bfaafd476e67cf</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.2-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:fde5a2d17e626de5bd3ffa0a3cc4c818f54a92b78bdd6a805b4bf8ecade35d86 (was sha256:f0cca10b439e1f9cdaec6717d61eb525bd5dd2f0d3ad726319c02198402223f6)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.2-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>wordpress:php8.3-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:b158db09ac7ea43e87ad602df5d02bf1</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.3-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:c0e9307f299de9b16f1054f7b7b85a5e7d11aacde727252d2a0eb41f7210a3c3 (was sha256:abe34a6e9d4436ca0e1649c4babbe1f1b6cc4a86364acd98707d97a5e89139e4)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.3-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>wordpress:php8.3-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6dae80f864326935b231543fd544c2bb</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.3-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:178668705ccd99cde1f073a566ac10373c559b9bc2824887774d828f955572e8 (was sha256:3631244cbc110221e5c53791cb1df6b8647d00e070ce61567261d772d0b92210)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.3-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>wordpress:php8.3-fpm (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:fd7545618c60b756c57995025ce8a87b</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.3-fpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:8004e78c611373522c70e63c392b9556c59d752b6850e261d30356a63cf436a3 (was sha256:cc1fcbb7dcec472cc57bef184ab6e490a9d5a1f9f11dbb03a018a1cbb0a92eae)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.3-fpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>wordpress:php8.3-fpm (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3c08db8f7450875901fb1f6d061cf539</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.3-fpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:078494ebdefd8b809cd99e3da9d349a254699b38753288ca2d2c1d6680bf0e99 (was sha256:58fe47cafd38791c63e34627561f325e5af2433f5f435682f2f923765a0989d1)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.3-fpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>wordpress:php8.4-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:636161a1cd0efa4b44909e264fc04700</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.4-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2bf7573f4d7fc3b5ba7ed97d27bdeb0c0fa94c1a46c7700fcb0086fbaf70f003 (was sha256:719892229371bfab374bfd9580cf01a91d789149706eccbcd8b8ffc0b6a635de)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.4-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>wordpress:php8.4-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e027f6ed4dda5abd4a25b989fc0c47ef</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.4-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0263eb6f8084df52704c26cdaee21a802cfe4c7f0eb0ce41d1277dacaf43b1f8 (was sha256:4341b33b327c4595e0c1d9f9770b599b04ea54bfb755f018f5e09fb1bcfb6b70)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.4-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>yourls:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c845ee043d4124ae3d77664514ab76c5</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=yourls%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2786cfefde42ba13248eb6008ac9429bcb91c0ad5a8d0fd7112b34a697a19bc8 (was sha256:8704b10ae8c672be537efa82be931ba469896d365182f21677c075624f14c199)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=yourls%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>yourls:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:a23496e3a2a5f633fd159349b6e4d220</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=yourls%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:81a6cf1677dc1a7d391182a71833cc106919432cbeeb584a01adca57a7f271ae (was sha256:242e0e3bfa85361edf97bddd81bd7af3b82262285849e1fa63059a37d688e5e2)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=yourls%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>adminer:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:030655a51124e6e4f078a512f42dc17d</id>
@@ -136,579 +710,5 @@
     <updated>2026-11-24T05:23:54Z</updated>
     <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest"></link>
     <content type="text">Status: no action needed.&#xA;Image digest: sha256:1261d1f593819b6a3fffcd1241c02daea364b689c15f7804f60175c30cba976b (was sha256:30eb7bc4a329c2c63c3c42624b5ef185cb105a99f8364f865ecf5f817ce30cf8)&#xA;CVE-2026-109618: FIXED_BY_DISTRO_BACKPORT&#xA;CVE-2026-109619: FIXED_BY_DISTRO_BACKPORT&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-apache:8.2 (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:eeefbf3ab88e101a1501816458af4a9b</id>
-    <updated>2026-11-24T05:23:54Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a46586027f058d1acc244b2e22695456dc929629b649f200601629c1715b3cc5 (was sha256:9874ad61d2bb584f9f8935123e4dd023a814d182aae02b8b496b1d66f9baea4a)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-apache:8.2 (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:35e1ccc591f24f3e4d8fd29876db377c</id>
-    <updated>2026-11-24T05:23:54Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:f626180e051adc4173b2b661d8fc8cf17b237396d3ec251bd9dbfb58eb380982 (was sha256:ff17062b5a27fe2ee5c2dd319116c70f6cb2d0cef8a470ada4882a09e1f367fb)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.3 (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:0834638c56882de4716f02484e3e95e7</id>
-    <updated>2026-11-24T05:23:54Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:ee36e47aa7bca76614ccc5831dde9739cb17c6ccba8ef2138d67f0397a947507 (was sha256:3c95762a4f0bbcc2658fc1d02d8c65aee47782a6429704cfb9ab9557b167cb12)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.3 (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:5a4bf17c0aaad9e4744d85649917bbec</id>
-    <updated>2026-11-24T05:23:54Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:1204116ac9149b93cf4efc1f6100e4dcebec15688b2089581656d3ac94310207 (was sha256:a135195f1771979abf1ff21c7c05c136fd8f22236926ba3f5add47ec41183f3c)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.4 (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6497e01c1be451bd704baae4e1d34df5</id>
-    <updated>2026-11-24T05:23:54Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:6b7f005e1a2a62eaabef789f8c5d5a197c2ca086c3adbd1066d24d27782a2004 (was sha256:b17b457a26b2b58e6ef4683b261b13f33595dd482907119c8648bc1d3226d7fe)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.4 (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:ed152a8d8e3679a4ef9be61b3d2af1a3</id>
-    <updated>2026-11-24T05:23:54Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:c8dc8507c8bf59992997d01cb0536bff81c2c9b4e3503f441b9cc6de55e8a5a4 (was sha256:f52e93b8dc5639b8c40a3117fa38e5082b04fa8b1460ac684b5c8c63766eade8)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-24T05:23:54Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4&#xA;</content>
-  </entry>
-  <entry>
-    <title>snipe/snipe-it:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:9d8141f53790675f456ef880da461b26</id>
-    <updated>2026-11-23T05:25:41Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:c9e94cf720206a1c053bf3821b75443f980e14d06ba4d9899f4d654a77870748 (was sha256:fe6ea14b138d41287d1f94b5ea810ede80ff221fd80b5a25563b6204f3b46de4)&#xA;CVE-2026-109618: FIXED_BY_DISTRO_BACKPORT&#xA;CVE-2026-109619: FIXED_BY_DISTRO_BACKPORT&#xA;Checked by the whichphp index at 2026-11-23T05:25:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>snipe/snipe-it:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:49371684efb54803b02bbc26a7c49f30</id>
-    <updated>2026-11-23T05:25:41Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:30eb7bc4a329c2c63c3c42624b5ef185cb105a99f8364f865ecf5f817ce30cf8 (was sha256:60ca91d2b4c41ff5969dcb400fadcabd8fad9db9a42f7c999bf58d50e4a56aac)&#xA;CVE-2026-109618: FIXED_BY_DISTRO_BACKPORT&#xA;CVE-2026-109619: FIXED_BY_DISTRO_BACKPORT&#xA;Checked by the whichphp index at 2026-11-23T05:25:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-apache:8.2 (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:dcba1b48b08412ee06e14078fe582a60</id>
-    <updated>2026-11-23T05:25:41Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:9874ad61d2bb584f9f8935123e4dd023a814d182aae02b8b496b1d66f9baea4a (was sha256:22fc098fcf5e52b360a1b9b6d081ec8e5340b1af14d4084297f250502bc92819)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-23T05:25:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-apache:8.2 (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:68d9a06b70c456ede34d3d4bac744b7d</id>
-    <updated>2026-11-23T05:25:41Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:ff17062b5a27fe2ee5c2dd319116c70f6cb2d0cef8a470ada4882a09e1f367fb (was sha256:f2bafc908bacc4c1c33b2849ac462ebd5849be3592c6a357f5e5b24e1e6608c0)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-23T05:25:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.3 (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6b629b7817e6c9fb692e31f60ca08bd9</id>
-    <updated>2026-11-23T05:25:41Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:3c95762a4f0bbcc2658fc1d02d8c65aee47782a6429704cfb9ab9557b167cb12 (was sha256:6b50cb00fe65b875b548122e4727105ac4bdaddcf88b73cd22d5c734033bbc85)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-23T05:25:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.3 (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:a3a3c06be08ed3d937e4efbb18952356</id>
-    <updated>2026-11-23T05:25:41Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a135195f1771979abf1ff21c7c05c136fd8f22236926ba3f5add47ec41183f3c (was sha256:cf08581326a7bedb4deee50fed59381c67614c85cae81ff5fbb9963397345e47)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-23T05:25:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.4 (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e4108dea58c6745c559d6048a576aa88</id>
-    <updated>2026-11-23T05:25:41Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:b17b457a26b2b58e6ef4683b261b13f33595dd482907119c8648bc1d3226d7fe (was sha256:4cf07686b12a6dd1f437e8522fbc10a021a260f0de41b868e8855ca4e70c9b04)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-23T05:25:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.4 (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:f210f124f0389241b44c129ff7be6458</id>
-    <updated>2026-11-23T05:25:41Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:f52e93b8dc5639b8c40a3117fa38e5082b04fa8b1460ac684b5c8c63766eade8 (was sha256:521152c8f47a7a37963c832b0e4eb7d194cbbf72e448b618f78f8494b6d29954)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-23T05:25:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4&#xA;</content>
-  </entry>
-  <entry>
-    <title>zabbix/zabbix-web-nginx-mysql:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:7be64a568c3449c6f273e371f30fd7ec</id>
-    <updated>2026-11-23T05:25:41Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=zabbix%2Fzabbix-web-nginx-mysql%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:d4e2de3e2fb9417fb823469a3df3b5e8c363648c62fce1e7a6f065af10e13bf9 (was sha256:99de24c53c8f705fb96aaa260721820b7a76a3233043121a51940849f17a7157)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-23T05:25:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=zabbix%2Fzabbix-web-nginx-mysql%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>zabbix/zabbix-web-nginx-mysql:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:f501b0a342020192e5fede5a7a2d4afe</id>
-    <updated>2026-11-23T05:25:41Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=zabbix%2Fzabbix-web-nginx-mysql%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:e767ae493b5a2043da11c7af99dd7fc2d0e515fa6a54511f2cfa0f76ab5133ec (was sha256:09510cb65c5bea4e9cb69e9ef68a5674003b89fc23800fc3fc82459bfaa03ad7)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-23T05:25:41Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=zabbix%2Fzabbix-web-nginx-mysql%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>dunglas/frankenphp:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:02ec70714cc52d412a3d113561100b24</id>
-    <updated>2026-11-22T05:22:17Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:e090780542f1b62759d5ee65a8ba340fd46373f4811b35fa1903878394d11167 (was sha256:679986858c4cbf265047344f925551c02789a24092bf2136d928f70601e9027e)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-22T05:22:17Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>dunglas/frankenphp:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:72c4ab0cb73dd7bde30ac54b43548e93</id>
-    <updated>2026-11-22T05:22:17Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:8260a4db612e814452570337797187b48465dc19386b16c7fc11e04aaec816ca (was sha256:f91f2afdb4304a623a029c4b291716632689a4b5abf1c965459127bc35e631c5)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-22T05:22:17Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>dunglas/frankenphp:php8.3 (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:b08dad40d8b476521b01592fa2abd959</id>
-    <updated>2026-11-22T05:22:17Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:c0d0e09dfcc367012da7c21c31abf2ab6f11ba1c411357ce9e7b5bae30b602f9 (was sha256:6d4c60d77d10f27766fee9c301f428a22bf986585149088dc709cfcda0c00d69)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-22T05:22:17Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3&#xA;</content>
-  </entry>
-  <entry>
-    <title>dunglas/frankenphp:php8.3 (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:a0e2c5fd4727734a1adfca625ba13a5e</id>
-    <updated>2026-11-22T05:22:17Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:74719c73984122116444687c36553fbce85f11303c84aff4906882a7bd6a4a65 (was sha256:1c520bf8de8563d1532d209b8f49ce9bf9f727277b0c40a2c9dcd162482a2689)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-22T05:22:17Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3&#xA;</content>
-  </entry>
-  <entry>
-    <title>shlinkio/shlink:stable (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:461cb7347c3047b80316d4050870bce1</id>
-    <updated>2026-11-22T05:22:17Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=shlinkio%2Fshlink%3Astable"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2c26d312cad2cd394b3c8bf199c2914c71b116bf77fad40e16aac02564c016a1 (was sha256:9083dc4ba2b682c43e1a477b69ef451738253fc8ad680db072663ea68530a973)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-22T05:22:17Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=shlinkio%2Fshlink%3Astable&#xA;</content>
-  </entry>
-  <entry>
-    <title>shlinkio/shlink:stable (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e1187d72dff7dc0f4b72af60b4f9aadc</id>
-    <updated>2026-11-22T05:22:17Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=shlinkio%2Fshlink%3Astable"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:97318b91d8021f2fec7de2f6010527a47651224edca2adb9e2d247177e1a6551 (was sha256:c1b363e945602b51e139ad73baf5d7f01e50bf67b1ecf617045fa98deb04fb48)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-22T05:22:17Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=shlinkio%2Fshlink%3Astable&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-apache:8.2 (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:137400cca11fcc0709476a947067afbe</id>
-    <updated>2026-11-22T05:22:17Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:22fc098fcf5e52b360a1b9b6d081ec8e5340b1af14d4084297f250502bc92819 (was sha256:8bf12ed8961448e7a610d0fa4da6c921d43ae17a83ae0829727d2a5c02ee82f9)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-22T05:22:17Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-apache:8.2 (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:7ece2a73111be7c9483d2a68434586fa</id>
-    <updated>2026-11-22T05:22:17Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:f2bafc908bacc4c1c33b2849ac462ebd5849be3592c6a357f5e5b24e1e6608c0 (was sha256:3c394a1fbe7db02bcb114cdaa7ba585a137310f5cc26cb9f2db2321640a355f4)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-22T05:22:17Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.3 (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:a89467e70ae2bfb6d5a2fd66edc0c611</id>
-    <updated>2026-11-22T05:22:17Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:6b50cb00fe65b875b548122e4727105ac4bdaddcf88b73cd22d5c734033bbc85 (was sha256:a206a13e199fd9e1c3c9e4c25f4ac65212e9afa011e9f981bc5d336e52b31415)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-22T05:22:17Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.3 (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:f99ae0ad2bceeb607e79fa7ec3550f08</id>
-    <updated>2026-11-22T05:22:17Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:cf08581326a7bedb4deee50fed59381c67614c85cae81ff5fbb9963397345e47 (was sha256:e99d26cde87ccd7f3e3d0e1f2b9a1b30768498d0d06dc8fc2aa460a11cb0a50c)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-22T05:22:17Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.4 (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:866a980341ccb4d660859c59ff67982e</id>
-    <updated>2026-11-22T05:22:17Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:4cf07686b12a6dd1f437e8522fbc10a021a260f0de41b868e8855ca4e70c9b04 (was sha256:1402880cb21ce84e039ef5df7d983fd63d7ac0c289b5f374fa24260846217c52)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-22T05:22:17Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.4 (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:ffb4d41a769cdf5056e04011a934847b</id>
-    <updated>2026-11-22T05:22:17Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:521152c8f47a7a37963c832b0e4eb7d194cbbf72e448b618f78f8494b6d29954 (was sha256:7deeeb453c953891e932751481e6a055762fb8d5bf340f22e8a5deaa78739fb7)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-22T05:22:17Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4&#xA;</content>
-  </entry>
-  <entry>
-    <title>composer:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:53f8bb2182525d97bdcfbae63262abee</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=composer%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0c8f8d7aeaa391cad87124f6d6f492b110104702076c292145ab791f001d785b (was sha256:12d3bebef9c7c1b0466978288f5f628312786137398101206121e75cb9dd1198)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=composer%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>composer:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:34a4d067da94e3ba061808b787d500d5</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=composer%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:cb37b9b67681dd560b986206c566b9a8db7931ee3346bbb516c0a5847bbf7d01 (was sha256:311998893feb05dae01f1743aa1c6a75469c24d0856946f5fd2dbbef5ce41077)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=composer%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>drupal:10-apache (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:b5d25f46fdbeb2daefb97ac45701beb7</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-apache"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:26a231957516ee7f9b486be1d0a68bae2e744c2fd902a91ffa11f5f743b154a0 (was sha256:02708c2aa20aeea9c7f59c6d7729ddbe66c0e134ad7f2f0cef0b6d29d050c565)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-apache&#xA;</content>
-  </entry>
-  <entry>
-    <title>drupal:10-apache (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:8991354f66d926f4b6edf56e78b16ab0</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-apache"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0389c4c6f5775b87dcc8b6e1ff8131796abce8b291d3c4ae9f8e9be05f291028 (was sha256:4e597cda581f13eab24b10ca9dbe6d34e00ec45873201735280548dc2fdff7b4)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-apache&#xA;</content>
-  </entry>
-  <entry>
-    <title>drupal:10-fpm-alpine (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:5839daf3347bae4139a5a5ce22b646f2</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2b782d9f9e7d6a87caa37bff91c896c492df6a56b7b67eab8e38194ac57281e8 (was sha256:e1bdffdc38894b202f6640d7b937b6969bf729b02d4fb4952cb9d325602dff55)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine&#xA;</content>
-  </entry>
-  <entry>
-    <title>drupal:10-fpm-alpine (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:586140e2ed244f172ea6908e16d0aa31</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:823ee1d6e4b494d61a2af70a2d1af892ddca6a87b87df9139a9c069b0c9d0d51 (was sha256:f9e46a4f6e1e849266298e1afa2ec72ef0544fc16cdcbad39aba6fa2352c5866)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-fpm-alpine&#xA;</content>
-  </entry>
-  <entry>
-    <title>drupal:11-apache (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:b338bd5cf00771554146f8ba8b2438be</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A11-apache"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:bea3324e7f7f12ed82c4226f8b95726f9a4656b785dcb92021a8ac21a426a8af (was sha256:4960d2c0966eb304a92af94a150b0594bdc6a22c5c8b38f02a6eee31a563cf82)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A11-apache&#xA;</content>
-  </entry>
-  <entry>
-    <title>drupal:11-apache (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:d58ffbd854b18a3c3207c6b4c8a42c2f</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A11-apache"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2c47715bd673da39fc39fd7e0c5bd8d4d8e4055d7920bf4295bc281a285c5192 (was sha256:4690ce1ae0200840002da7a2cf75bc68dafcba5c6cc7eb90b418f6b6ee021289)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A11-apache&#xA;</content>
-  </entry>
-  <entry>
-    <title>drupal:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6d4b9af6c970b8cf71a770cc8e2ca207</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:bea3324e7f7f12ed82c4226f8b95726f9a4656b785dcb92021a8ac21a426a8af (was sha256:4960d2c0966eb304a92af94a150b0594bdc6a22c5c8b38f02a6eee31a563cf82)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>drupal:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:4d073b9a406775df9d251fd1bb34f371</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2c47715bd673da39fc39fd7e0c5bd8d4d8e4055d7920bf4295bc281a285c5192 (was sha256:4690ce1ae0200840002da7a2cf75bc68dafcba5c6cc7eb90b418f6b6ee021289)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>dunglas/frankenphp:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e8876a48d24508cb38627c5c308e92f6</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:679986858c4cbf265047344f925551c02789a24092bf2136d928f70601e9027e (was sha256:b3ef4a5b91c5cd95cccf57672a427cea2456555d071adb754447b8c2f2178334)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>dunglas/frankenphp:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:786c573dd38e806c5cbc4300a7001e93</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:f91f2afdb4304a623a029c4b291716632689a4b5abf1c965459127bc35e631c5 (was sha256:c1f5fcb97758beee1de1bfe21758774e5a7bf6908d10547e196e0e4bd0f7197e)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>dunglas/frankenphp:php8.3 (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:aba61b45d73116ff3e8f22eab8da85d4</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:6d4c60d77d10f27766fee9c301f428a22bf986585149088dc709cfcda0c00d69 (was sha256:a3edaf86beff4d8320a240eb6dbebfbfb9124d2331a82f49e19ca61707c48632)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3&#xA;</content>
-  </entry>
-  <entry>
-    <title>dunglas/frankenphp:php8.3 (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c60f2d74f4b101319048f9134f7b6a80</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:1c520bf8de8563d1532d209b8f49ce9bf9f727277b0c40a2c9dcd162482a2689 (was sha256:b97b59c83daccb019313d5c4af25ce38a9d853d2c5759675a81bcd9b99bb8a92)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=dunglas%2Ffrankenphp%3Aphp8.3&#xA;</content>
-  </entry>
-  <entry>
-    <title>kimai/kimai2:apache (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e828423ec72961a8b486a6f62b5095ce</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=kimai%2Fkimai2%3Aapache"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0b9390100bf9afafd5d16afa2d1dc653de0aefea35b317c63f529516544c5dea (was sha256:c49bc9a9cd4a82a9041f9973bea0227dfffff11b205b268091982f477f4bd0c3)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=kimai%2Fkimai2%3Aapache&#xA;</content>
-  </entry>
-  <entry>
-    <title>kimai/kimai2:apache (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:39229699ba59eb222295fe2df769a7fa</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=kimai%2Fkimai2%3Aapache"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:dc930d5b6813c2b56aa95fa55e59f020f64f45f652b8ee0476f3a554c3fbb705 (was sha256:dcb0761e9cb2eedb7bba71dc2499d4113feba65c9b0b7edc7e18729ea97fd3aa)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=kimai%2Fkimai2%3Aapache&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/bookstack:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3c2cf3991ed1f25aa2e7a8f1320d01c4</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fbookstack%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:6d36bf9f97f289188bb833eb38898a83f6075874fa4884bc4babf427b8ed3dab (was sha256:94b759cc6b471b15aac2e2ac09aacb9032c9d41a1f1a5b95bb5b0e19b9ad3161)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fbookstack%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/bookstack:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:abfcc0dc9f776619020499975fccf997</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fbookstack%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:8b20967058013e3d88c5de85cd9ef324c1e2e386c0bc6c3e4400d64c49b5e7fe (was sha256:c85e53281beee832a77b8e107e33dc486dbdb2abf5668a31c563ebaf1604db2e)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fbookstack%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/dokuwiki:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:4da7e4522762389db3543d24b4738b60</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fdokuwiki%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:1640c8f77b6de939ffa9b10ec98b1285a8d28adb1a02b30e773eb4f05b93850a (was sha256:346c7e835988b45a95932bd80b83d32017845de43b31290934524a29ed670fed)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fdokuwiki%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/dokuwiki:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:25dc494865abdec6ca52f0e8dcbc83f0</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fdokuwiki%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:b55bd52e59489489b7412e3b4c039d599f1fcdf8dff03b3f70ca57db1f56a998 (was sha256:786f2c84290f3ce78891971d67b533ed257c907d212407bab5a4d927a393e306)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fdokuwiki%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/freshrss:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3325b8d3cf44f16375d4007b89006817</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Ffreshrss%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:393adc28ef13ed76f54083bed729c2d109aff22703e194d6468e54648e1cb069 (was sha256:32204dd0db6e15934177e265d63ef58a5a4391cd32d87532b5bebcad16ea55d7)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Ffreshrss%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/freshrss:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:f38248b3e8f0a571656f2049e3ce293c</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Ffreshrss%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:3a8a4be01172de08b871518c010ba7b57c5d24ac645080ab5d0117d45da08fcf (was sha256:b0099b283868ced084a7cca95fcfa3b380bdd01cdda3212c99630fd0fd25d08e)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Ffreshrss%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/grocy:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:1ce3a6dce0dbf058645938aba0667c0f</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fgrocy%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:6cbf2c8b58a7ef17a20a20fef76874e9ce4ded0d1110cdef9703a0f0e27ae8ff (was sha256:862e44326e03bf5a64951cc8ec2416c5c8021edc6d4237ec73026a3deae09e0f)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fgrocy%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/grocy:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:cb4826b0822cd0ed3cd08e0ae2c5a562</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fgrocy%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2c5248cdf12edc3be3e43649ce8da2a65a5c56b7983d5216a5b26b04bd89aff4 (was sha256:54e2f2b3e4b66d0373f642a57469de68a4f3b4e73b9c90bfe545b60358fbccc2)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fgrocy%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/heimdall:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e99525982636a9bcf020be434ef5368e</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fheimdall%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:4f0d1c3c39410257e1590d53afbd9dba757a411d8db3a60c8dc414850b4f53e9 (was sha256:db5368d9eb72930dfc51ccbc166a339c7691f9167d14eb839df068bc659742e4)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fheimdall%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/heimdall:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:a10c67314985942011043f36b7fec320</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fheimdall%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:68b36a4732d6b92813f84cb3f947c6a71546bccdef859b3bb5e971030554666e (was sha256:8238341639aceb0b412001af9e8f583bed60cac0ccf763961bf61a7bd80e4537)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fheimdall%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/nextcloud:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:548d5dd238acce5bcb49489c87181f27</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fnextcloud%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:3c855f1bc3811101bcdbc6d5cf9434794646fbc293fb1166c9643bf2512815fa (was sha256:6f7a8ca8334aa2fac224b3e9950153234cd58f1396f6a28b6bf29d98c3b69409)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fnextcloud%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/nextcloud:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c0031acdc7ba8b5b6793663baa05b238</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fnextcloud%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:1896c405033a2b628d3fa8615ef0b2d970e92862c2f2061234c79b3cf780b6dd (was sha256:6cbb10750de7ff18915d5d2dc2586c6f5ec131dd1397ba508dd3757bbc8ba67c)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fnextcloud%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/phpmyadmin:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:2d722087b77b20f5a29e278cedc2e2bd</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fphpmyadmin%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:cab8c915e770d5cfd78c71b0c7579faafca4d0b9e75e6927183d4538fec4e2dc (was sha256:8c2413ef777ee31483d784f7db7b4a8f419c0f54a582c8973411aa20c522eeae)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fphpmyadmin%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/phpmyadmin:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:235ec23747aa917875921b1ab0a2d04e</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fphpmyadmin%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:8e80c0769c6eb1e56777d48904ddc6a9093d03a81b94c5798fe8a0cdde8767dd (was sha256:ab2ce92377e7af32d0d25dbaac2cc9554089e5bbaf7a2f7edf7e9683850f9fb7)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fphpmyadmin%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/piwigo:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:ca78896c9bae9e8d691e8101574d5dbd</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fpiwigo%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:c97c8b6029672254692d4bc79fd45d4efeb080d596fb82ef81a0ae71f2e00e7d (was sha256:18de90aac7a594b88cc1a4eba88337e99932829bf4cd06a73ab60c07018b2dae)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fpiwigo%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>linuxserver/piwigo:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:4ae35f73b56dba3f110e9e8b0f1c70c9</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fpiwigo%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:26a8531300c4ea99821d504e654d4fb85b3750b3e6e9823248a5658ced7837b9 (was sha256:94ed9a2f2b8e01509d7127eb3378ef972ae06412d0d469776ae3756736980b8d)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fpiwigo%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>prestashop/prestashop:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:5b03ba84fe2db12822013c21d3d74adc</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=prestashop%2Fprestashop%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:ad738f11fbaba0aff77fab8fcd1790474b4244df19e319ef466524d7d807278b (was sha256:e6ef6beb9c39a98f34eea50f9c4aed89c036f72fb48d316b45e579fd818997a0)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=prestashop%2Fprestashop%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>prestashop/prestashop:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:f77789ef0c45729a5b077571f862b820</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=prestashop%2Fprestashop%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a74c843340716d6b2b05ae0fd043f4df2eaea7faae4756ebaea854c965fe5886 (was sha256:d82e02c2a6ae5e5afe5a535728a204ddffd45dfb90b158960bd764216ded2af9)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=prestashop%2Fprestashop%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>roundcube/roundcubemail:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:01909ccd7d8ffa6b7aea06c2509bfb56</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=roundcube%2Froundcubemail%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:0cb2bdbb51b8d631bd5bdbb889fbced5adb89d79e86a768a4af5910a854baf24 (was sha256:6924de9e4874052961fd643c53d7163af62afd4b2e8bec19672243dc802b9c65)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=roundcube%2Froundcubemail%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>roundcube/roundcubemail:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:ac1a367c6b358236720c7c841af6a0ae</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=roundcube%2Froundcubemail%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:7f0dac1465afdddb7204417a4e971711eecc793cb58871940298ac1329a36815 (was sha256:85cee5f06a6697c0eb3cd9624d839dc2bc04b69dbec2f795a4ea239de187add0)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=roundcube%2Froundcubemail%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>serversideup/php:8.2-fpm-apache (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:19aecce33c2e82176e7781f03a384803</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.2-fpm-apache"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:6729e66a9bc180665ec57b0cde9b767cd3b0bb4f115a50238b7ea779dbbe728e (was sha256:02de6f3e947d4092cfd642e8a801d573b67f5779ae47e4113026bab9bf2de1a5)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.2-fpm-apache&#xA;</content>
-  </entry>
-  <entry>
-    <title>serversideup/php:8.2-fpm-apache (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:00f68588f2cf64064aa2a29e8d61aa43</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.2-fpm-apache"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:1231b6953ef8186a938098faa729efa729eb0d3cc60547e05eca52ff2482d21c (was sha256:19b296a9c2bc331c1835f25606e6d5d5df9f5fdd076f6697c4371f2ffbc6a02c)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.2-fpm-apache&#xA;</content>
-  </entry>
-  <entry>
-    <title>serversideup/php:8.3-fpm-nginx (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:cb1369cc5f1734af059cf78f19d429df</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:9b63466b1e06b1e98d402de9e1dbccd298974819b8799ed7b64d4cf8a5d07aa5 (was sha256:66d49573fbaca5e9036619662274f594cf09e82c5f98c3fc9ad78bdddff4dec7)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx&#xA;</content>
-  </entry>
-  <entry>
-    <title>serversideup/php:8.3-fpm-nginx (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:d47dccef2d0aca7ebf987b720b1a8c5b</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:f2ec19a0c9ee8d142a0cc7dcd441c5e995ba1f528d0781efe8f54316391bc67e (was sha256:d303a059e45b0aae5a699bb81f3f91ededdf8ccde8914fce09c02be8856598ea)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.3-fpm-nginx&#xA;</content>
-  </entry>
-  <entry>
-    <title>serversideup/php:8.4-fpm-nginx (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:45fa6b557c6ffca8bf239e925d84524f</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.4-fpm-nginx"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:038c2eaa0f69d9003819a885d31b30a9a5c59a5cfb75caacce12ab9076a7443e (was sha256:ffbe14d6dc8c86c5fa2b6f495937f5accd0db46f4ad1a233c325ee4a8641ff76)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.4-fpm-nginx&#xA;</content>
-  </entry>
-  <entry>
-    <title>serversideup/php:8.4-fpm-nginx (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:07f9712d1f69039337595b61be173b7c</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.4-fpm-nginx"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:fdeab442e32995c99843095c4a056c74f278559ac988552b677e39c9295a0c33 (was sha256:39df87d6fb701e4ab9665f653e6e9e1bfc05d388ed470f39514d6bb236e86633)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=serversideup%2Fphp%3A8.4-fpm-nginx&#xA;</content>
-  </entry>
-  <entry>
-    <title>snipe/snipe-it:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:543c71c07ee94b0dc52220dce61fb31e</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:fe6ea14b138d41287d1f94b5ea810ede80ff221fd80b5a25563b6204f3b46de4 (was sha256:e3c062471aee8d440bbc557e84368a3b7ee073848d3e5969f3677c6645f06259)&#xA;CVE-2026-109618: FIXED_BY_DISTRO_BACKPORT&#xA;CVE-2026-109619: FIXED_BY_DISTRO_BACKPORT&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>snipe/snipe-it:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e1aeb2d9d97624326ea62e732e1b0c40</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:60ca91d2b4c41ff5969dcb400fadcabd8fad9db9a42f7c999bf58d50e4a56aac (was sha256:e31d00015ee6447f4a5bdfb49620852f382a44074f7a1514694c5fa8b810b38c)&#xA;CVE-2026-109618: FIXED_BY_DISTRO_BACKPORT&#xA;CVE-2026-109619: FIXED_BY_DISTRO_BACKPORT&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=snipe%2Fsnipe-it%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-apache:8.2 (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:7137e7096d153aabcf7589c09434f129</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:8bf12ed8961448e7a610d0fa4da6c921d43ae17a83ae0829727d2a5c02ee82f9 (was sha256:7a8872d6906ba3d5a1300f2e18906dcaf608e2948bfdbe383a53334dae350e2a)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-apache:8.2 (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:87e448bb104b5b8d06c3e2155ba4b823</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:3c394a1fbe7db02bcb114cdaa7ba585a137310f5cc26cb9f2db2321640a355f4 (was sha256:da456bd170afea86bd987a8fd60c3ab0ea455148e6e831afbfe1a9991c650955)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-apache%3A8.2&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.3 (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3f4a2270247069f6f43cae718f73927b</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a206a13e199fd9e1c3c9e4c25f4ac65212e9afa011e9f981bc5d336e52b31415 (was sha256:dc290984cbbb44dbe0abddf178c4d29c986cfb3f234dafb5f57492b6a2e4e3d6)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.3 (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:7e52b0345083fbe8e5ab69de4a99510a</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:e99d26cde87ccd7f3e3d0e1f2b9a1b30768498d0d06dc8fc2aa460a11cb0a50c (was sha256:051c706cce02255ecaf3d4647a7415e64e53fc23aada47e01b9b2428a088c4da)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.3&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.4 (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3033fcb0e0e22e6a0c3754ece8eb8991</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:1402880cb21ce84e039ef5df7d983fd63d7ac0c289b5f374fa24260846217c52 (was sha256:b10dd0b6aadea8f7aafd19082590f6e956aeaebea47651aa63b02f7ac6b5e607)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4&#xA;</content>
-  </entry>
-  <entry>
-    <title>webdevops/php-nginx:8.4 (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:85d217b10925a7376b5bbb3513d39db2</id>
-    <updated>2026-11-21T05:21:51Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:7deeeb453c953891e932751481e6a055762fb8d5bf340f22e8a5deaa78739fb7 (was sha256:305a471ecb827ac64027fb857969f45008dc27d4dfd9c31a7637e5f980dd57f0)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-21T05:21:51Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=webdevops%2Fphp-nginx%3A8.4&#xA;</content>
-  </entry>
-  <entry>
-    <title>adminer:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6492afc046301d326dcb0243d946be45</id>
-    <updated>2026-11-20T05:22:56Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=adminer%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:cf0d9e360da6b8054b6ec71160c5003b8c302f4ce2daf155cb59924bd7f3b13e (was sha256:5d2ff3df2a82447c2a9169c48de7b0f70c55ddddacb81058db822c4aae3a9271)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-20T05:22:56Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=adminer%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>adminer:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:fc6962bda9b10fe24d5f02fd00de98c0</id>
-    <updated>2026-11-20T05:22:56Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=adminer%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:3182e2361ff8e341df8a10bb9196d77d2f2df65607ad1bae43ba9c5afcb54463 (was sha256:e3fa100aaf0e0b7d8c9bf06fa46e5bbd16f9fff0aa0e3bed5376a0fe1d7d107f)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-20T05:22:56Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=adminer%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>composer:latest (linux/amd64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6d3463c07fbb50e168d14503aec651b4</id>
-    <updated>2026-11-20T05:22:56Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=composer%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:12d3bebef9c7c1b0466978288f5f628312786137398101206121e75cb9dd1198 (was sha256:c4a7ecd02a3469b6ff2b73930d3911831c5095ae760c3d15065df22cdf40e7f0)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-20T05:22:56Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=composer%3Alatest&#xA;</content>
-  </entry>
-  <entry>
-    <title>composer:latest (linux/arm64): new image, still no action needed</title>
-    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:d8e8161c06bbeb983152ee5aee3f59f2</id>
-    <updated>2026-11-20T05:22:56Z</updated>
-    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=composer%3Alatest"></link>
-    <content type="text">Status: no action needed.&#xA;Image digest: sha256:311998893feb05dae01f1743aa1c6a75469c24d0856946f5fd2dbbef5ce41077 (was sha256:d76824a7c8666ef28306f0264d7214dfd71915c6e6194f75ded62372fa932293)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-20T05:22:56Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=composer%3Alatest&#xA;</content>
   </entry>
 </feed>

@@ -3,7 +3,7 @@
   <title>whichphp: mediawiki:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of mediawiki:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:7026246f4a3c71a7513499d79e5044ab</id>
-  <updated>2026-11-20T05:22:56Z</updated>
+  <updated>2026-11-25T05:24:03Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/mediawiki-latest-a37eb890.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>mediawiki:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:8a09bb3947cf7629654ed1eb1dd41f87</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:88dbe1b8ebb52a47babe28a71e1ff5cf5e1a10e17ab2b78f86957d3ddf22db8c (was sha256:db52f022f5283f3e4d7e4c039e1e81aaac9bb6fc5146ba347f8863fa553060fc)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>mediawiki:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:7d05a01d01a593c811b22b60f0e95f37</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:ab9295122f198cb70cd7050774cb356872bd1940769dfaceed70fde606acaae2 (was sha256:e650674ca4bc9d0a7e457f497c0a0088bf08856c3ca490fce85a8a2fe13f0893)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>mediawiki:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:fcd359d4749ba3cc64093dffc8e20da0</id>

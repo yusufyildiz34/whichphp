@@ -3,7 +3,7 @@
   <title>whichphp: yourls:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of yourls:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:fa0a56a5de7b4b769df29d6f4e193f9a</id>
-  <updated>2026-11-20T05:22:56Z</updated>
+  <updated>2026-11-25T05:24:03Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/yourls-latest-260ac5bd.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=yourls%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>yourls:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c845ee043d4124ae3d77664514ab76c5</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=yourls%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:2786cfefde42ba13248eb6008ac9429bcb91c0ad5a8d0fd7112b34a697a19bc8 (was sha256:8704b10ae8c672be537efa82be931ba469896d365182f21677c075624f14c199)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=yourls%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>yourls:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:a23496e3a2a5f633fd159349b6e4d220</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=yourls%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:81a6cf1677dc1a7d391182a71833cc106919432cbeeb584a01adca57a7f271ae (was sha256:242e0e3bfa85361edf97bddd81bd7af3b82262285849e1fa63059a37d688e5e2)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=yourls%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>yourls:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c7973e711d1195cd466beedece0acaa4</id>

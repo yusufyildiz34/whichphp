@@ -3,7 +3,7 @@
   <title>whichphp: matomo:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of matomo:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:d505917b4d00f490cae50ab1724c5f6b</id>
-  <updated>2026-11-24T05:23:54Z</updated>
+  <updated>2026-11-25T05:24:03Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/matomo-latest-6d886637.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=matomo%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>matomo:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e1a5ae99107412065a45b06b1dccf6f0</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=matomo%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:6cb93e56232cf748ef8158eb872dc93e82d4969899f4b2e1ddbbbc931c9da899 (was sha256:76c7c376468a322a412cec5ded165b7658fcee7c5d37225307174ff0c7adb1b1)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=matomo%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>matomo:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e165443214ebaf35f7800cc3f426cc00</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=matomo%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:9904c32ff9fe4d011812a25e506b6657359141a36a6ddc48515bbfdcde028f14 (was sha256:565d055de0f3a53d22a6f92020504ed3a91b59805ee15c667e9fbd5b37fbab64)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=matomo%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>matomo:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:5f1341ee4302f6e3473db86b730771bb</id>

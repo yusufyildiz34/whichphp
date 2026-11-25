@@ -3,7 +3,7 @@
   <title>whichphp: wordpress:php8.3-fpm</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of wordpress:php8.3-fpm, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:785be200881fa334d3bda47a74d7cfc3</id>
-  <updated>2026-11-20T05:22:56Z</updated>
+  <updated>2026-11-25T05:24:03Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/wordpress-php8.3-fpm-3b34e9b7.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.3-fpm"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>wordpress:php8.3-fpm (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:fd7545618c60b756c57995025ce8a87b</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.3-fpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:8004e78c611373522c70e63c392b9556c59d752b6850e261d30356a63cf436a3 (was sha256:cc1fcbb7dcec472cc57bef184ab6e490a9d5a1f9f11dbb03a018a1cbb0a92eae)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.3-fpm&#xA;</content>
+  </entry>
+  <entry>
+    <title>wordpress:php8.3-fpm (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3c08db8f7450875901fb1f6d061cf539</id>
+    <updated>2026-11-25T05:24:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.3-fpm"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:078494ebdefd8b809cd99e3da9d349a254699b38753288ca2d2c1d6680bf0e99 (was sha256:58fe47cafd38791c63e34627561f325e5af2433f5f435682f2f923765a0989d1)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-25T05:24:03Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=wordpress%3Aphp8.3-fpm&#xA;</content>
+  </entry>
   <entry>
     <title>wordpress:php8.3-fpm (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:ae900830f77864e41016eebffa0172a7</id>
