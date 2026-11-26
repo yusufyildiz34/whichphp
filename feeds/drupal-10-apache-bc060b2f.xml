@@ -3,7 +3,7 @@
   <title>whichphp: drupal:10-apache</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of drupal:10-apache, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:6b6b92cb60610c1d0762f44b62640204</id>
-  <updated>2026-11-25T05:24:03Z</updated>
+  <updated>2026-11-26T05:22:53Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/drupal-10-apache-bc060b2f.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-apache"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>drupal:10-apache (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:200cd61ce8fabf011f6c13017cce149d</id>
+    <updated>2026-11-26T05:22:53Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:66cdb331e215dbdfda83721fb45314e85bd5745a630eec77c1bd03eb1d5c20e1 (was sha256:ac09895eea23962f39fa4c6fdf569a7b191dc0a456ad2a3575ee617b10e1bf07)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-26T05:22:53Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-apache&#xA;</content>
+  </entry>
+  <entry>
+    <title>drupal:10-apache (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:688bd929c0b54509a3dd3a4effff9fa7</id>
+    <updated>2026-11-26T05:22:53Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-apache"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:ab57998362785d4e2016c8bc479b6f9154229c5aac2495215d4cebb851dea65b (was sha256:e736376cbc7ff16d717ce906b481462f4d48a739c662338d4763e0f66a26ea9f)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-26T05:22:53Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3A10-apache&#xA;</content>
+  </entry>
   <entry>
     <title>drupal:10-apache (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:2d68bf20b7226afe8f806745b4e0d573</id>

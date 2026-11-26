@@ -3,7 +3,7 @@
   <title>whichphp: drupal:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of drupal:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:6d6f1e298f9bbabfcc88dc76f51ca5fe</id>
-  <updated>2026-11-25T05:24:03Z</updated>
+  <updated>2026-11-26T05:22:53Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/drupal-latest-f1399720.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>drupal:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:2f2c16ec843b82b3406519ec34976042</id>
+    <updated>2026-11-26T05:22:53Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:aae416d69b62a134ce53b1ad9c75ad2d1315d642909dd86b0619bb3328e9a8ae (was sha256:0ba910b0eeb668adb045f33b8fa615354dffe67f57f96fb6fdc795c578c88898)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-26T05:22:53Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>drupal:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:853e7d09c42e674064ad61a115949377</id>
+    <updated>2026-11-26T05:22:53Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=drupal%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:52eedb17e93432a31292df3deeb21facbd5503283479ef72261f866a912a10ee (was sha256:de31968111e69fbdd374cfdc1cd70d6874a0a725d8958cbb4825bd4757d63383)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-26T05:22:53Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=drupal%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>drupal:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:29f8e22ec47fa98faec3b958a721b1c5</id>
