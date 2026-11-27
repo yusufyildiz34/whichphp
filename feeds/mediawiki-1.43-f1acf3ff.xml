@@ -3,7 +3,7 @@
   <title>whichphp: mediawiki:1.43</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of mediawiki:1.43, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:90b90101018702e5c8d181d4c3482d60</id>
-  <updated>2026-11-25T05:24:03Z</updated>
+  <updated>2026-11-27T05:23:05Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/mediawiki-1.43-f1acf3ff.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.43"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>mediawiki:1.43 (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:196dc5e85b41d3361b32da4dd8a48a18</id>
+    <updated>2026-11-27T05:23:05Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.43"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:cdbe94cd502bc50d43108fe658464cf251b68bc4746f8ea5207c68ca0b2fe7ab (was sha256:a63de71c7c14fe4553a04a7e4aff322120964cf4fb85952002b085dcdb028162)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-27T05:23:05Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.43&#xA;</content>
+  </entry>
+  <entry>
+    <title>mediawiki:1.43 (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:6394f9ebdb4689089085f3608052ade8</id>
+    <updated>2026-11-27T05:23:05Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.43"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:1fc7d056e2741c8ee4998006626e906c561b4ba8a6b8e3067d1d4dee906d0c85 (was sha256:0f8c501fd4ea71331470eeb01d02653c2759334f23e0ab32ecc31ec56b68df06)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-27T05:23:05Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=mediawiki%3A1.43&#xA;</content>
+  </entry>
   <entry>
     <title>mediawiki:1.43 (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:d7fb64055306b6e05a218c3c13ab41e7</id>
