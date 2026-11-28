@@ -3,7 +3,7 @@
   <title>whichphp: linuxserver/heimdall:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of linuxserver/heimdall:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:154ddf3c23521931019c1000295cb557</id>
-  <updated>2026-11-21T05:21:51Z</updated>
+  <updated>2026-11-28T05:22:22Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/linuxserver-heimdall-latest-838cb47b.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fheimdall%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>linuxserver/heimdall:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:7fde89e54959da6ce4129183a6ee5ddb</id>
+    <updated>2026-11-28T05:22:22Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fheimdall%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:9e1b174ccdc19a5503c58e48051e1554f1d2240d0ceba61504ed8a7455275d67 (was sha256:4f0d1c3c39410257e1590d53afbd9dba757a411d8db3a60c8dc414850b4f53e9)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-28T05:22:22Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fheimdall%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>linuxserver/heimdall:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:c9f328aab406f5c3a3d72f578d7b2fbd</id>
+    <updated>2026-11-28T05:22:22Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fheimdall%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:69bf967031d0f5b1a37cc00b513e5e7fdb4f948d7fbf832dfc63af49a0f3211b (was sha256:68b36a4732d6b92813f84cb3f947c6a71546bccdef859b3bb5e971030554666e)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-28T05:22:22Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fheimdall%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>linuxserver/heimdall:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:e99525982636a9bcf020be434ef5368e</id>

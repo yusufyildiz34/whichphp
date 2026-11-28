@@ -3,7 +3,7 @@
   <title>whichphp: linuxserver/phpmyadmin:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of linuxserver/phpmyadmin:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:91824159493240bdabf461bc8a6a0c76</id>
-  <updated>2026-11-21T05:21:51Z</updated>
+  <updated>2026-11-28T05:22:22Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/linuxserver-phpmyadmin-latest-952a43b9.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fphpmyadmin%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>linuxserver/phpmyadmin:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:67aa2da77d89b88a4f18d1f0195fb9ce</id>
+    <updated>2026-11-28T05:22:22Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fphpmyadmin%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:234a35d42ed221e2abe15e682c405be1515f817bb7dd5d84610cd8f162a63ba8 (was sha256:cab8c915e770d5cfd78c71b0c7579faafca4d0b9e75e6927183d4538fec4e2dc)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-28T05:22:22Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fphpmyadmin%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>linuxserver/phpmyadmin:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:3cb5a2b3ce67653859f775f7b86b8a13</id>
+    <updated>2026-11-28T05:22:22Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fphpmyadmin%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:84c9049d05a27bbf7a397becd132519e78bb36129d8d9df79911c06b30443a3f (was sha256:8e80c0769c6eb1e56777d48904ddc6a9093d03a81b94c5798fe8a0cdde8767dd)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-28T05:22:22Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fphpmyadmin%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>linuxserver/phpmyadmin:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:2d722087b77b20f5a29e278cedc2e2bd</id>

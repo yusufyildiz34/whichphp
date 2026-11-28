@@ -3,7 +3,7 @@
   <title>whichphp: linuxserver/dokuwiki:latest</title>
   <subtitle>Changes to the PHP2Shell status (CVE-2026-109618, CVE-2026-109619) of linuxserver/dokuwiki:latest, per platform.</subtitle>
   <id>tag:yusufyildiz34.github.io,2026:whichphp:feed:30e3b31a51ac865f476a234a039a2c7a</id>
-  <updated>2026-11-21T05:21:51Z</updated>
+  <updated>2026-11-28T05:22:22Z</updated>
   <link rel="self" type="application/atom+xml" href="https://yusufyildiz34.github.io/whichphp/feeds/linuxserver-dokuwiki-latest-8e3fbc2b.xml"></link>
   <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fdokuwiki%3Alatest"></link>
   <author>
@@ -11,6 +11,20 @@
     <uri>https://github.com/yusufyildiz34/whichphp</uri>
   </author>
   <generator>whichphp</generator>
+  <entry>
+    <title>linuxserver/dokuwiki:latest (linux/amd64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:ab797bb59f7f270278f05d06e31f1c29</id>
+    <updated>2026-11-28T05:22:22Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fdokuwiki%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:a4e4b5bfa9faec06340bade1c18f77db798ec3147556cc8aa589c8ab6537698c (was sha256:1640c8f77b6de939ffa9b10ec98b1285a8d28adb1a02b30e773eb4f05b93850a)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-28T05:22:22Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fdokuwiki%3Alatest&#xA;</content>
+  </entry>
+  <entry>
+    <title>linuxserver/dokuwiki:latest (linux/arm64): new image, still no action needed</title>
+    <id>tag:yusufyildiz34.github.io,2026:whichphp:change:082f25107e6963f8e674b669ea66399a</id>
+    <updated>2026-11-28T05:22:22Z</updated>
+    <link rel="alternate" type="text/html" href="https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fdokuwiki%3Alatest"></link>
+    <content type="text">Status: no action needed.&#xA;Image digest: sha256:b6af44b7923ba9c141071f1ca3b4a89a8bf6bb315d1e3f152f1a84a3677cabee (was sha256:b55bd52e59489489b7412e3b4c039d599f1fcdf8dff03b3f70ca57db1f56a998)&#xA;CVE-2026-109618: FIXED&#xA;CVE-2026-109619: FIXED&#xA;Checked by the whichphp index at 2026-11-28T05:22:22Z.&#xA;Details: https://yusufyildiz34.github.io/whichphp/?q=linuxserver%2Fdokuwiki%3Alatest&#xA;</content>
+  </entry>
   <entry>
     <title>linuxserver/dokuwiki:latest (linux/amd64): new image, still no action needed</title>
     <id>tag:yusufyildiz34.github.io,2026:whichphp:change:4da7e4522762389db3543d24b4738b60</id>
